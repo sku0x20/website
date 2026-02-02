@@ -3,7 +3,7 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose \u2192 K8s migration, IaC (Terraform).",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).",
     'projects': {
         'assertG': "A lightweight Go library for test assertions.\nLink: https://github.com/sku0x20/assertG",
         'MapAny-kotlinx-serialization': "Custom serialization utilities and extensions for Kotlinx Serialization.\nLink: https://github.com/sku0x20/MapAny-kotlinx-serialization",
@@ -18,6 +18,7 @@ const fileSystem = {
 const commands = {
     'help': 'List all available commands',
     'ls': 'List directory contents',
+    'cd [dir]': 'Change directory',
     'cat [file]': 'Print file content',
     'alias': 'List command aliases',
     'date': 'Display current date and time',
@@ -29,19 +30,66 @@ const aliases = {
     'bio': 'cat about.txt'
 };
 
+let currentPath = []; // Array of directory names representing CWD
+
 function resolvePath(path) {
-    if (!path) return fileSystem;
-    path = path.replace(/\/+$/, '');
-    const parts = path.split('/');
+    if (!path) return { node: getDirNode(currentPath), path: currentPath.join('/') };
+    
+    let parts;
+    let tempPath;
+
+    if (path === '/') {
+        return { node: fileSystem, path: '' };
+    } else if (path.startsWith('/')) {
+        parts = path.split('/').filter(p => p);
+        tempPath = [];
+    } else {
+        parts = path.split('/').filter(p => p);
+        tempPath = [...currentPath];
+    }
+
     let current = fileSystem;
+    // Resolve absolute base if needed
+    for (const p of tempPath) {
+        current = current[p];
+    }
+
     for (const part of parts) {
-        if (current && typeof current === 'object' && part in current) {
-            current = current[part];
+        if (part === '.') {
+            continue;
+        } else if (part === '..') {
+            if (tempPath.length > 0) {
+                tempPath.pop();
+                // Recalculate node from root for '..'
+                current = fileSystem;
+                for (const p of tempPath) {
+                    current = current[p];
+                }
+            }
         } else {
-            return null;
+            if (current && typeof current === 'object' && part in current) {
+                current = current[part];
+                tempPath.push(part);
+            } else {
+                return null;
+            }
         }
     }
+    
+    return { node: current, path: tempPath.join('/') };
+}
+
+function getDirNode(pathArray) {
+    let current = fileSystem;
+    for (const p of pathArray) {
+        current = current[p];
+    }
     return current;
+}
+
+function updatePrompt() {
+    const pathStr = currentPath.length === 0 ? '~' : '~/' + currentPath.join('/');
+    document.querySelector('.prompt').innerText = `guest@sku20.dev:${pathStr}$`;
 }
 
 const asciiArt = [
@@ -66,6 +114,7 @@ let historyIndex = -1;
 
 function init() {
     printOutput(welcomeHtml, 'welcome-msg', true);
+    updatePrompt();
     commandInput.focus();
 }
 
@@ -111,8 +160,8 @@ function processCommand(cmdRaw) {
         finalCmdRaw = aliases[firstWord] + cmdRaw.substring(firstWord.length);
     }
 
-    const prompt = document.querySelector('.prompt').innerText;
-    printOutput(`${prompt} ${cmdRaw}`, 'command-echo');
+    const promptText = document.querySelector('.prompt').innerText;
+    printOutput(`${promptText} ${cmdRaw}`, 'command-echo');
 
     const args = finalCmdRaw.split(' ');
     const cmd = args[0].toLowerCase();
@@ -132,13 +181,30 @@ function processCommand(cmdRaw) {
             const target = resolvePath(arg1);
             if (target === null) {
                 printOutput(`ls: ${arg1}: No such file or directory`, 'error');
-            } else if (typeof target === 'string') {
-                printOutput(arg1, 'file-list');
+            } else if (typeof target.node === 'string') {
+                printOutput(arg1 || target.path.split('/').pop(), 'file-list');
             } else {
-                const keys = Object.keys(target).sort().map(k => {
-                    return typeof target[k] === 'object' ? k + '/' : k;
+                const keys = Object.keys(target.node).sort().map(k => {
+                    return typeof target.node[k] === 'object' ? k + '/' : k;
                 });
                 keys.forEach(key => printOutput(key, 'file-list'));
+            }
+            break;
+
+        case 'cd':
+            if (!arg1 || arg1 === '~') {
+                currentPath = [];
+                updatePrompt();
+            } else {
+                const target = resolvePath(arg1);
+                if (target === null) {
+                    printOutput(`cd: ${arg1}: No such file or directory`, 'error');
+                } else if (typeof target.node === 'string') {
+                    printOutput(`cd: ${arg1}: Not a directory`, 'error');
+                } else {
+                    currentPath = target.path ? target.path.split('/') : [];
+                    updatePrompt();
+                }
             }
             break;
 
@@ -146,14 +212,13 @@ function processCommand(cmdRaw) {
             if (!arg1) {
                 printOutput('Usage: cat [filename]', 'error');
             } else {
-                const node = resolvePath(arg1);
-                if (node === null) {
+                const res = resolvePath(arg1);
+                if (res === null) {
                     printOutput(`cat: ${arg1}: No such file or directory`, 'error');
-                } else if (typeof node === 'object') {
+                } else if (typeof res.node === 'object') {
                     printOutput(`cat: ${arg1}: Is a directory`, 'error');
                 } else {
-                    // Format content: bolding, newlines, and clickable URLs
-                    let content = node
+                    let content = res.node
                         .replace(/\x1b\[1m/g, '<strong>')
                         .replace(/\x1b\[0m/g, '</strong>')
                         .replace(/\n/g, '<br>')
