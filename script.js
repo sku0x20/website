@@ -19,7 +19,7 @@ const commands = {
 };
 
 // "Slant" style ASCII art for "sku0x20"
-// This is wider and has a natural italic/motion feel to it.
+// Double backslashes used to ensure they print correctly.
 const asciiArt = [
     "   _____ __           ___       ___   ___  ",
     "  / ___// /____  __  / _ \_  __/|  | / _ \ ",
