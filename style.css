@@ -79,9 +79,8 @@ input[type="text"] {
 
 /* New layout for the banner */
 .welcome-container {
-    display: flex;
+    display: inline-flex; /* Shrink to fit content (ASCII art width) */
     flex-direction: column;
-    width: 100%;
     margin-bottom: 30px;
     gap: 10px;
 }
@@ -98,7 +97,8 @@ input[type="text"] {
 .welcome-info {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
+    align-items: flex-end; /* Align items inside to right */
+    align-self: flex-end;   /* Align box itself to right of container */
     text-align: right;
 }
 
