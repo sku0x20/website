@@ -3,7 +3,7 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).\n",
     'projects': {
         'relay': "Project Relay.\nLink: https://github.com/sku0x20/RELAY",
         'stopgap': "Project Stopgap.\nLink: https://github.com/sku0x20/STOPGAP",
@@ -21,7 +21,8 @@ const fileSystem = {
         'Dijkstra_Algorithm': "Shortest path algorithm implementation in C++.\nLink: https://github.com/sku0x20/Dijkstra_Algorithm",
         'c_hashmap': "Hashmap data structure implementation in C.\nLink: https://github.com/sku0x20/c_hashmap",
         'SemiColonAdder': "A tool to automatically add missing semicolons.\nLink: https://github.com/sku0x20/SemiColonAdder"
-    }
+    },
+    'matrix': "\x1b[1mBinary file (7.2MB). Use './matrix' to execute.\x1b[0m"
 };
 
 const commands = {
@@ -32,14 +33,18 @@ const commands = {
     'alias': 'List command aliases',
     'date': 'Display current date and time',
     'clear': 'Clear the terminal screen',
-    'banner': 'Display the welcome banner'
+    'banner': 'Display the welcome banner',
+    'matrix': 'Enter the Matrix'
 };
 
 const aliases = {
-    'bio': 'cat about.txt'
+    'bio': 'cat about.txt',
+    './matrix': 'matrix'
 };
 
 let currentPath = []; // Array of directory names representing CWD
+let isMatrixActive = false;
+let matrixInterval;
 
 function resolvePath(path) {
     if (!path) return { node: getDirNode(currentPath), path: currentPath.join('/') };
@@ -128,6 +133,18 @@ function init() {
 }
 
 commandInput.addEventListener('keydown', function(event) {
+    // Handle Ctrl+C to stop Matrix
+    if (isMatrixActive && event.ctrlKey && event.key === 'c') {
+        stopMatrixEffect();
+        return;
+    }
+    
+    // Ignore other keys if matrix is active
+    if (isMatrixActive) {
+        event.preventDefault();
+        return;
+    }
+
     if (event.key === 'Enter') {
         const input = commandInput.value.trim();
         if (input) {
@@ -157,7 +174,8 @@ commandInput.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('click', () => {
-    if (window.getSelection().toString() === '') {
+    // Prevent focus stealing if matrix is running
+    if (!isMatrixActive && window.getSelection().toString() === '') {
         commandInput.focus();
     }
 });
@@ -257,6 +275,10 @@ function processCommand(cmdRaw) {
         case 'banner':
             printOutput(welcomeHtml, 'welcome-msg', true);
             break;
+        
+        case 'matrix':
+            startMatrixEffect();
+            break;
             
 default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
@@ -278,5 +300,79 @@ function printOutput(text, className = '', isHtml = false) {
     outputDiv.appendChild(div);
     terminal.scrollTop = terminal.scrollHeight;
 }
+
+// Matrix Effect Logic
+function startMatrixEffect() {
+    isMatrixActive = true;
+    
+    // Create canvas if it doesn't exist
+    let canvas = document.getElementById('matrix-canvas');
+    if (!canvas) {
+        canvas = document.createElement('canvas');
+        canvas.id = 'matrix-canvas';
+        document.body.appendChild(canvas);
+    }
+    
+    canvas.style.display = 'block';
+    const ctx = canvas.getContext('2d');
+
+    // Make canvas full screen
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+
+    const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
+    const fontSize = 16;
+    const columns = canvas.width / fontSize;
+
+    const drops = [];
+    for (let x = 0; x < columns; x++) {
+        drops[x] = 1;
+    }
+
+    function draw() {
+        // Translucent black background to create trail effect
+        ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+        ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+        ctx.fillStyle = '#0F0'; // Green text
+        ctx.font = fontSize + 'px monospace';
+
+        for (let i = 0; i < drops.length; i++) {
+            const text = letters.charAt(Math.floor(Math.random() * letters.length));
+            ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+
+            if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                drops[i] = 0;
+            }
+            drops[i]++;
+        }
+    }
+
+    matrixInterval = setInterval(draw, 33);
+    
+    // Focus logic is handled in the keydown listener
+}
+
+function stopMatrixEffect() {
+    isMatrixActive = false;
+    clearInterval(matrixInterval);
+    const canvas = document.getElementById('matrix-canvas');
+    if (canvas) {
+        canvas.style.display = 'none';
+    }
+    commandInput.focus();
+    printOutput('^C', 'command-echo'); // Simulate echo of Ctrl+C
+}
+
+// Handle window resize for matrix
+window.addEventListener('resize', () => {
+    if (isMatrixActive) {
+        const canvas = document.getElementById('matrix-canvas');
+        if (canvas) {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+    }
+});
 
 document.addEventListener('DOMContentLoaded', init);
