@@ -21,8 +21,7 @@ const fileSystem = {
         'Dijkstra_Algorithm': "Shortest path algorithm implementation in C++.\nLink: https://github.com/sku0x20/Dijkstra_Algorithm",
         'c_hashmap': "Hashmap data structure implementation in C.\nLink: https://github.com/sku0x20/c_hashmap",
         'SemiColonAdder': "A tool to automatically add missing semicolons.\nLink: https://github.com/sku0x20/SemiColonAdder"
-    },
-    'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
+    }
 };
 
 const commands = {
