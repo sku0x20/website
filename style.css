@@ -80,22 +80,37 @@ input[type="text"] {
 /* New layout for the banner */
 .welcome-container {
     display: flex;
-    align-items: flex-end; /* Align bottom so link is near the bottom of art */
-    flex-wrap: wrap;
-    gap: 20px;
+    justify-content: space-between; /* Art Left, Info Right */
+    align-items: flex-end; /* Align bottom */
+    width: 100%;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Safety for small screens */
+    border-bottom: 1px solid var(--dim-color);
+    padding-bottom: 15px;
 }
 
 .ascii-art {
     color: var(--text-color);
     white-space: pre; /* Enforce exact spacing for art */
-    line-height: 1.2;
+    line-height: 1.1;
+    font-weight: bold;
+    font-style: italic; /* CSS italics as requested */
+    font-size: 14px; /* Default size */
+}
+
+/* Responsive adjustment for very small screens */
+@media (max-width: 800px) {
+    .ascii-art {
+        font-size: 10px;
+    }
 }
 
 .welcome-info {
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
-    margin-bottom: 5px; /* slight adjustment */
+    text-align: right;
+    margin-bottom: 5px;
 }
 
 .help-table {

@@ -18,14 +18,15 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
-// Bigger, cleaner ASCII art for "sku0x20"
+// "Slant" style ASCII art for "sku0x20"
+// This is wider and has a natural italic/motion feel to it.
 const asciiArt = [
-    "       _          ___      ___   ___  ",
-    "  ___ | | ___ __ / _ \ __ |_  | / _ \ ",
-    " / __|| |/ / '__| | | |\ \/ / |/ / | |",
-    " \__ \|   <| |  | |_| | >  <| / /_ | |",
-    " |___/|_|\_\_|   \___/ /_/\_\____| \_/",
-    "                                      "
+    "   _____ __           ___       ___   ___  ",
+    "  / ___// /____  __  / _ \_  __/|  | / _ \ ",
+    "  \__ \/ //_/ / / / / /_/ />  < / / / // /  ",
+    " ___/ / ,< / /_/ / / /_/ />  < / / / // /  ",
+    "/____/_/|_|\__,_/  \____/_/|_|/___/\___/   ",
+    "                                           "
 ].join('\n');
 
 const welcomeHtml = `
@@ -130,7 +131,7 @@ function processCommand(cmdRaw) {
             outputDiv.innerHTML = '';
             return;
             
-        default:
+default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
