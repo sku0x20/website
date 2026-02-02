@@ -14,6 +14,29 @@
             <input type="text" id="command-input" autocomplete="off" autofocus>
         </div>
     </div>
+
+    <!-- GUI Interface (File Browser) -->
+    <div id="gui-interface" style="display: none;">
+        <div class="gui-header">
+            <div class="breadcrumbs" id="gui-breadcrumbs">~/</div>
+        </div>
+        <div class="gui-grid" id="gui-content">
+            <!-- Items injected by JS -->
+        </div>
+    </div>
+
+    <!-- File Viewer Modal -->
+    <div id="file-viewer" style="display: none;">
+        <div class="viewer-header">
+            <span id="viewer-filename">filename.txt</span>
+            <button id="close-viewer-btn">[X] Close</button>
+        </div>
+        <div class="viewer-body" id="viewer-content"></div>
+    </div>
+
+    <!-- Floating Toggle Button -->
+    <button id="mode-toggle">GUI MODE</button>
+
     <script src="script.js"></script>
 </body>
 </html>

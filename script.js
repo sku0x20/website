@@ -1,9 +1,17 @@
 const terminal = document.getElementById('terminal');
 const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
+const guiInterface = document.getElementById('gui-interface');
+const modeToggleBtn = document.getElementById('mode-toggle');
+const guiBreadcrumbs = document.getElementById('gui-breadcrumbs');
+const guiContent = document.getElementById('gui-content');
+const fileViewer = document.getElementById('file-viewer');
+const viewerContent = document.getElementById('viewer-content');
+const viewerFilename = document.getElementById('viewer-filename');
+const closeViewerBtn = document.getElementById('close-viewer-btn');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot.\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).\n",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).\n",
     'projects': {
         'relay': "Project Relay.\nLink: https://github.com/sku0x20/RELAY",
         'stopgap': "Project Stopgap.\nLink: https://github.com/sku0x20/STOPGAP",
@@ -43,8 +51,11 @@ const aliases = {
 };
 
 let currentPath = []; // Array of directory names representing CWD
+let isGuiMode = false;
 let isMatrixActive = false;
 let matrixInterval;
+
+// --- SHARED PATH RESOLUTION ---
 
 function resolvePath(path) {
     if (!path) return {node: getDirNode(currentPath), path: currentPath.join('/')};
@@ -74,7 +85,6 @@ function resolvePath(path) {
         } else if (part === '..') {
             if (tempPath.length > 0) {
                 tempPath.pop();
-                // Recalculate node from root for '..'
                 current = fileSystem;
                 for (const p of tempPath) {
                     current = current[p];
@@ -101,17 +111,19 @@ function getDirNode(pathArray) {
     return current;
 }
 
+// --- TERMINAL LOGIC ---
+
 function updatePrompt() {
     const pathStr = currentPath.length === 0 ? '~' : '~/' + currentPath.join('/');
     document.querySelector('.prompt').innerText = `guest@sku0x20:${pathStr}$`;
 }
 
 const asciiArt = "        __          _______         _______________   \n" +
-    "  _____|  | ____ __ \\   _  \\ ___  __\\_____  \\   _  \\  \n" +
-    " /  ___/  |/ /  |  \\/  /_\\  \\\\  \\/  //  ____/  /_\\  \\ \n" +
-    " \\___ \\|    &lt;|  |  /\\  \\_/   \\&gt;    &lt;/       \\  \\_/   \\\n" +
-    "/____  &gt;__|_ \\____/  \\_____  /__/\\_ \\_______ \\_____  /\n" +
-    "     \\/     \\/             \\/      \\/       \\/     \\/ "
+    "  _____|  | ____ __ \   _  \ ___  __\_____  \   _  \  \n" +
+    " /  ___/  |/ /  |  \/  /_\  \\  \/  //  ____/  /_\  \ \n" +
+    " \___ \|    &lt;|  |  /\  \_/   \&gt;    &lt;/       \  \_/   \ \n" +
+"/____  &gt;__|_ \____/  \_____  /__/\_ \_______ \_____  / " +
+"     \/     \/             \/      \/       \/     \/ "
 
 const welcomeHtml = `
 <div class="welcome-container">
@@ -123,24 +135,144 @@ const welcomeHtml = `
 </div>
 `;
 
-let commandHistory = [];
-let historyIndex = -1;
-
 function init() {
-    printOutput(welcomeHtml, 'welcome-msg', true);
-    updatePrompt();
-    commandInput.focus();
+    // Check for mobile device (simplified check)
+    if (window.innerWidth <= 768) {
+        toggleMode(true); // Force GUI mode on mobile
+    } else {
+        printOutput(welcomeHtml, 'welcome-msg', true);
+        updatePrompt();
+        commandInput.focus();
+    }
 }
 
-// Global listener to catch Ctrl+C even if input loses focus
-document.addEventListener('keydown', function (event) {
+// --- GUI LOGIC ---
+
+function toggleMode(forceGui = false) {
+    if (forceGui || !isGuiMode) {
+        // Switch to GUI
+        isGuiMode = true;
+        terminal.style.display = 'none';
+        guiInterface.style.display = 'flex';
+        modeToggleBtn.innerText = 'TERMINAL MODE';
+        renderGui();
+    } else {
+        // Switch to Terminal
+        isGuiMode = false;
+        terminal.style.display = 'block';
+        guiInterface.style.display = 'none';
+        modeToggleBtn.innerText = 'GUI MODE';
+        commandInput.focus();
+        // Sync terminal path with GUI path (if we changed it in GUI)
+        updatePrompt();
+    }
+}
+
+function renderGui() {
+    const dirNode = getDirNode(currentPath);
+    guiContent.innerHTML = '';
+    guiBreadcrumbs.innerText = currentPath.length === 0 ? '~/' : '~/' + currentPath.join('/');
+
+    // 'Up' folder if not root
+    if (currentPath.length > 0) {
+        const upItem = createGuiItem('..', 'DIR', () => {
+            currentPath.pop();
+            renderGui();
+        });
+        guiContent.appendChild(upItem);
+    }
+
+    const keys = Object.keys(dirNode).sort(); // Sort mainly for UI consistency
+    
+    // Sort directories first
+    const sortedKeys = keys.sort((a, b) => {
+        const aIsDir = typeof dirNode[a] === 'object';
+        const bIsDir = typeof dirNode[b] === 'object';
+        if (aIsDir && !bIsDir) return -1;
+        if (!aIsDir && bIsDir) return 1;
+        return a.localeCompare(b);
+    });
+
+    sortedKeys.forEach(key => {
+        const isDir = typeof dirNode[key] === 'object';
+        const type = isDir ? 'DIR' : 'FILE';
+        const item = createGuiItem(key, type, () => {
+            if (isDir) {
+                currentPath.push(key);
+                renderGui();
+            } else {
+                openFileViewer(key, dirNode[key]);
+            }
+        });
+        guiContent.appendChild(item);
+    });
+}
+
+function createGuiItem(name, type, onClick) {
+    const div = document.createElement('div');
+    div.className = 'gui-item';
+    
+    const icon = document.createElement('div');
+    icon.className = 'gui-icon';
+    // ASCII-style icons
+    if (name === '..') {
+        icon.innerHTML = '&#11013;'; // Left Arrow
+    } else if (type === 'DIR') {
+        icon.innerHTML = '&#128193;'; // Folder
+    } else if (name === 'matrix') {
+        icon.innerHTML = '&#128187;'; // PC Icon for binary
+    } else {
+        icon.innerHTML = '&#128196;'; // File
+    }
+
+    const nameSpan = document.createElement('span');
+    nameSpan.className = 'gui-name';
+    nameSpan.textContent = name;
+
+    div.appendChild(icon);
+    div.appendChild(nameSpan);
+    div.onclick = onClick;
+    
+    return div;
+}
+
+function openFileViewer(filename, content) {
+    // Special case for Matrix
+    if (filename === 'matrix') {
+        // Switch to terminal mode temporarily to run matrix?
+        // Or just run it on top?
+        toggleMode(); // Switch back to terminal
+        startMatrixEffect();
+        return;
+    }
+
+    viewerFilename.innerText = filename;
+    
+    // Format content like 'cat'
+    let formatted = content
+        .replace(/\x1b\[1m/g, '<strong>')
+        .replace(/\x1b\[0m/g, '</strong>')
+        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+        
+    viewerContent.innerHTML = formatted;
+    fileViewer.style.display = 'flex';
+}
+
+closeViewerBtn.onclick = () => {
+    fileViewer.style.display = 'none';
+};
+
+modeToggleBtn.onclick = () => toggleMode();
+
+// --- EVENT LISTENERS ---
+
+document.addEventListener('keydown', function(event) {
     if (isMatrixActive && event.ctrlKey && event.key === 'c') {
         stopMatrixEffect();
     }
 });
 
-commandInput.addEventListener('keydown', function (event) {
-    // Ignore keys if matrix is active (except Ctrl+C which is handled globally)
+commandInput.addEventListener('keydown', function(event) {
     if (isMatrixActive) {
         event.preventDefault();
         return;
@@ -161,7 +293,6 @@ commandInput.addEventListener('keydown', function (event) {
         commandInput.value = '';
     } else if (event.key === 'Tab') {
         event.preventDefault();
-        // Tab completion removed as requested, but keeping focus.
     } else if (event.key === 'ArrowUp') {
         event.preventDefault();
         if (historyIndex > 0) {
@@ -178,8 +309,7 @@ commandInput.addEventListener('keydown', function (event) {
 });
 
 document.addEventListener('click', () => {
-    // Prevent focus stealing if matrix is running
-    if (!isMatrixActive && window.getSelection().toString() === '') {
+    if (!isMatrixActive && !isGuiMode && window.getSelection().toString() === '') {
         commandInput.focus();
     }
 });
@@ -215,7 +345,7 @@ function processCommand(cmdRaw) {
             } else if (typeof target.node === 'string') {
                 printOutput(arg1 || target.path.split('/').pop(), 'file-list');
             } else {
-                const keys = Object.keys(target.node).map(k => {
+                const keys = Object.keys(target.node).sort().map(k => {
                     return typeof target.node[k] === 'object' ? k + '/' : k;
                 });
                 keys.forEach(key => printOutput(key, 'file-list'));
@@ -267,7 +397,7 @@ function processCommand(cmdRaw) {
             aliasHtml += '</div>';
             printOutput(aliasHtml, '', true);
             break;
-
+            
         case 'date':
             printOutput(new Date().toString());
             break;
@@ -279,12 +409,12 @@ function processCommand(cmdRaw) {
         case 'banner':
             printOutput(welcomeHtml, 'welcome-msg', true);
             break;
-
+        
         case 'matrix':
             startMatrixEffect();
             break;
-
-        default:
+            
+default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
@@ -294,67 +424,51 @@ function processCommand(cmdRaw) {
 function printOutput(text, className = '', isHtml = false) {
     const div = document.createElement('div');
     div.className = 'output-line ' + className;
-
+    
     if (isHtml) {
         div.innerHTML = text;
     } else {
         div.textContent = text;
     }
-
+    
     outputDiv.appendChild(div);
     terminal.scrollTop = terminal.scrollHeight;
 }
 
-// Matrix Effect Logic
 function startMatrixEffect() {
     isMatrixActive = true;
-
-    // Create canvas if it doesn't exist
     let canvas = document.getElementById('matrix-canvas');
     if (!canvas) {
         canvas = document.createElement('canvas');
         canvas.id = 'matrix-canvas';
         document.body.appendChild(canvas);
     }
-
     canvas.style.display = 'block';
     const ctx = canvas.getContext('2d');
-
-    // Make canvas full screen
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-
     const letters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789@#$%^&*()*&^%';
     const fontSize = 16;
     const columns = canvas.width / fontSize;
-
     const drops = [];
     for (let x = 0; x < columns; x++) {
         drops[x] = 1;
     }
-
     function draw() {
-        // Translucent black background to create trail effect
         ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-        ctx.fillStyle = '#0F0'; // Green text
+        ctx.fillStyle = '#0F0';
         ctx.font = fontSize + 'px monospace';
-
         for (let i = 0; i < drops.length; i++) {
             const text = letters.charAt(Math.floor(Math.random() * letters.length));
             ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
             }
             drops[i]++;
         }
     }
-
     matrixInterval = setInterval(draw, 33);
-
-    // Focus logic is handled in the keydown listener
 }
 
 function stopMatrixEffect() {
@@ -364,11 +478,12 @@ function stopMatrixEffect() {
     if (canvas) {
         canvas.style.display = 'none';
     }
-    commandInput.focus();
-    printOutput('^C', 'command-echo'); // Simulate echo of Ctrl+C
+    if (!isGuiMode) {
+        commandInput.focus();
+        printOutput('^C', 'command-echo');
+    }
 }
 
-// Handle window resize for matrix
 window.addEventListener('resize', () => {
     if (isMatrixActive) {
         const canvas = document.getElementById('matrix-canvas');
