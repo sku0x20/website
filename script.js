@@ -121,11 +121,11 @@ function updatePrompt() {
 }
 
 const asciiArt = "        __          _______         _______________   \n" +
-    "  _____|  | ____ __ \   _  \ ___  __\_____  \   _  \  \n" +
-    " /  ___/  |/ /  |  \/  /_\  \\  \/  //  ____/  /_\  \ \n" +
-    " \___ \|    &lt;|  |  /\  \_/   \&gt;    &lt;/       \  \_/   \ \n" +
-    "/____  &gt;__|_ \____/  \_____  /__/\_ \_______ \_____  /\n" +
-    "     \/     \/             \/      \/       \/     \/ "
+    "  _____|  | ____ __ \\   _  \\ ___  __\\_____  \\   _  \\  \n" +
+    " /  ___/  |/ /  |  \\/  /_\\  \\\\  \\/  //  ____/  /_\\  \\ \n" +
+    " \\___ \\|    &lt;|  |  /\\  \\_/   \\&gt;    &lt;/       \\  \\_/   \\\n" +
+    "/____  &gt;__|_ \\____/  \\_____  /__/\\_ \\_______ \\_____  /\n" +
+    "     \\/     \\/             \\/      \\/       \\/     \\/ "
 
 const welcomeHtml = `
 <div class="welcome-container">
@@ -446,7 +446,7 @@ function initBackground() {
     
     let width, height;
     let particles = [];
-    const particleCount = 60; // Adjust for density
+    const particleCount = 68; // Adjust for density
     const connectionDistance = 150;
     
     // Mouse tracking
