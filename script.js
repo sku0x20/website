@@ -5,11 +5,11 @@ const commandInput = document.getElementById('command-input');
 const fileSystem = {
     'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose \u2192 K8s migration, IaC (Terraform).",
     'projects': {
-        'assertG': "https://github.com/sku0x20/assertG",
-        'MapAny-kotlinx-serialization': "https://github.com/sku0x20/MapAny-kotlinx-serialization",
-        'c_oop': "https://github.com/sku0x20/c_oop",
-        'fake-server-js': "https://github.com/sku0x20/fake-server-js",
-        'DNSResolver': "https://github.com/sku0x20/DNSResolver"
+        'assertG': "A lightweight Go library for test assertions.\nLink: https://github.com/sku0x20/assertG",
+        'MapAny-kotlinx-serialization': "Custom serialization utilities and extensions for Kotlinx Serialization.\nLink: https://github.com/sku0x20/MapAny-kotlinx-serialization",
+        'c_oop': "Implementing Object-Oriented Programming principles (polymorphism, encapsulation) in pure C.\nLink: https://github.com/sku0x20/c_oop",
+        'fake-server-js': "A flexible mock server for JavaScript applications to simulate API responses.\nLink: https://github.com/sku0x20/fake-server-js",
+        'DNSResolver': "A simple DNS resolver implementation using Java and Swing for the UI.\nLink: https://github.com/sku0x20/DNSResolver"
     },
     'skills.md': "- Languages: Kotlin, Go, TypeScript, Python, Rust\n- Frameworks: Spring Boot, Node.js, Bun, Deno, FastAPI\n- Infra: AWS, GCP, Terraform, Kubernetes, Docker\n- Databases: MongoDB, ClickHouse, PostgreSQL, Redis\n- Comm: gRPC, Protocol Buffers",
     'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
@@ -29,27 +29,21 @@ const aliases = {
     'bio': 'cat about.txt'
 };
 
-// Helper to resolve path
 function resolvePath(path) {
-    if (!path) return fileSystem; // Root
-    
-    // Remove trailing slash
+    if (!path) return fileSystem;
     path = path.replace(/\/+$/, '');
-    
     const parts = path.split('/');
     let current = fileSystem;
-    
     for (const part of parts) {
         if (current && typeof current === 'object' && part in current) {
             current = current[part];
         } else {
-            return null; // Not found
+            return null;
         }
     }
     return current;
 }
 
-// "sku0x20" with lowercase small 's' and very clear '2'
 const asciiArt = [
     "      _             ___             ___   ___  ",
     "  ___| | ___ _   _ / _ \__  __     |_  ) / _ \ ",
@@ -111,7 +105,6 @@ document.addEventListener('click', () => {
 });
 
 function processCommand(cmdRaw) {
-    // Check for aliases
     let finalCmdRaw = cmdRaw;
     const firstWord = cmdRaw.split(' ')[0].toLowerCase();
     if (aliases[firstWord]) {
@@ -159,17 +152,13 @@ function processCommand(cmdRaw) {
                 } else if (typeof node === 'object') {
                     printOutput(`cat: ${arg1}: Is a directory`, 'error');
                 } else {
-                    // Check if content is a URL
-                    if (node.startsWith('http')) {
-                        printOutput(`Opening ${node}...`, 'system-msg');
-                        window.open(node, '_blank');
-                    } else {
-                        let content = node
-                            .replace(/\x1b\[1m/g, '<strong>')
-                            .replace(/\x1b\[0m/g, '</strong>')
-                            .replace(/\n/g, '<br>');
-                        printOutput(content, '', true);
-                    }
+                    // Format content: bolding, newlines, and clickable URLs
+                    let content = node
+                        .replace(/\x1b\[1m/g, '<strong>')
+                        .replace(/\x1b\[0m/g, '</strong>')
+                        .replace(/\n/g, '<br>')
+                        .replace(/(https?:\/\/[^\s]+)/g, '<a href="$1" target="_blank">$1</a>');
+                    printOutput(content, '', true);
                 }
             }
             break;
