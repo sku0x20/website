@@ -53,7 +53,4 @@
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
 *   **Methodologies:** TDD (Test Driven Development), Domain Driven Design (DDD) Interest, CI/CD, GitOps.
 
----
 
-### **Education**
-*   **Computer Science & Engineering** | Undergraduate Coursework (Focus on Algorithms, Data Structures, and Systems Programming).
