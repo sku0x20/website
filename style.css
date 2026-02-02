@@ -122,7 +122,6 @@ input[type="text"] {
 .help-cmd {
     display: table-cell;
     padding-right: 20px;
-    font-weight: bold;
     color: var(--text-color);
 }
 .help-desc {
