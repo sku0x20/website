@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-Backend and Infrastructure Engineer with 4 years of experience and deep expertise in **Linux internals**, **Cloud Architecture**, and **System Optimization**. As the sole owner of backend and infrastructure at **WiZNSystems**, successfully modernized legacy architectures, reduced data storage costs by **98%** via ClickHouse, and established **Zero-Downtime** deployment pipelines. Strong advocate for **TDD** and **Clean Architecture**, with a proven track record of delivering stable, scalable solutions for critical production systems.
+**Backend & Infrastructure Architect** with 4 years of experience as the **Sole Technical Lead** for end-to-end cloud systems. Expert in **Self-Driven Research & Execution**—independently evaluating, architecting, and implementing complex migrations (Spring 4→Boot 2.7, Disk→ClickHouse) without senior guidance. Deep expertise in **Linux Internals**, **GCP Cost Optimization**, and **System Stability**. Proven track record of reducing storage costs by **98%** and engineering custom zero-downtime solutions when standard tools didn't fit the constraints.
 
 ---
 
@@ -28,7 +28,10 @@ Backend and Infrastructure Engineer with 4 years of experience and deep expertis
 *   **Data Optimization & ClickHouse Migration:** Architected a high-performance binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
     *   **Dataset A:** Reduced from **90GB to 1.1GB** (98.7% reduction).
     *   **Dataset B:** Reduced from **25GB to 650MB** (97.4% reduction).
-*   **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
+*   **Independent Technical Leadership:** Solely responsible for all architectural research and decision-making. Evaluated and rejected **Kafka** as overkill for current scale; prototyped **HashiCorp Nomad** before selecting **EKS**; independently drove the adoption of **ClickHouse** for analytics.
+*   **GCP Cost & Storage Optimization:** Reduced cloud spend by implementing lifecycle policies for storage buckets (Standard vs. Coldline/Archive) and configuring automated disk snapshots for disaster recovery.
+*   **Database Management:** Managed production **MongoDB** (currently standalone), planning a zero-downtime migration to a **Replica Set** for high availability.
+*   **Reliability Engineering:** Stabilized a volatile backend system by implementing comprehensive observability with **Loki, Grafana, and Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
 *   **Security:** Currently redesigning the entire Authentication and Authorization framework to meet modern security standards.
 
 ---
