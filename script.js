@@ -125,7 +125,7 @@ function processCommand(cmdRaw) {
             outputDiv.innerHTML = '';
             return;
             
-default:
+        default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
