@@ -103,7 +103,7 @@ function getDirNode(pathArray) {
 
 function updatePrompt() {
     const pathStr = currentPath.length === 0 ? '~' : '~/' + currentPath.join('/');
-    document.querySelector('.prompt').innerText = `guest@sku20.dev:${pathStr}$`;
+    document.querySelector('.prompt').innerText = `guest@sku0x20:${pathStr}$`;
 }
 
 const asciiArt = "        __          _______         _______________   \n" +
