@@ -37,14 +37,14 @@
 
 *   **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion library for **Go**, developed to enable **AssertJ-style testing patterns** in the Go ecosystem.
 *   **Relay** ([github.com/sku0x20/relay](https://github.com/sku0x20/relay)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
-*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/STOPGAP)): A **fully TDD-developed** microservice template built with **Helidon SE** and Virtual Threads. Selected Helidon SE after evaluating Quarkus/Micronaut to achieve maximum control and simplicity, bypassing Netty for a lightweight, high-performance architecture.
+*   **Stopgap** ([github.com/sku0x20/stopgap](https://github.com/sku0x20/stopgap)): A **fully TDD-developed** microservice kotlin template built with **Helidon SE** and Virtual Threads. Selected Helidon SE after evaluating Quarkus/Micronaut to achieve maximum control and simplicity, bypassing Netty for a lightweight, high-performance architecture.
 *   **K8s & Terraform Configs**: Public repositories demonstrating best-practices for Infrastructure as Code and Kubernetes manifest management.
 
 ---
 
 ### **Technical Skills**
 
-*   **Languages:** Kotlin, Java (Spring Boot), Go, Shell Scripting, Zig (Experimental), Python.
+*   **Languages:** Kotlin, Java, Go, Shell Scripting, Zig (Experimental), Python.
 *   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
