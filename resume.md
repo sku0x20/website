@@ -24,24 +24,19 @@
 *   **Linux Administration:** Deepened system stability by tuning kernel parameters (`ulimits`) and performing advanced performance analysis using `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
 
 **Backend Architecture & Performance**
-*   **Legacy Modernization:** Led the migration of the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, refactoring legacy code into modular, testable components.
+*   **Legacy Modernization (TDD Driven):** Led the migration of the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, refactoring legacy code into modular, testable components with **100% test-driven development (TDD)** to ensure zero regressions.
 *   **Data Optimization & ClickHouse Migration:** Architected a high-performance binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
     *   **Dataset A:** Reduced from **90GB to 1.1GB** (98.7% reduction).
     *   **Dataset B:** Reduced from **25GB to 650MB** (97.4% reduction).
-*   **Independent Technical Leadership:** Solely responsible for all architectural research and decision-making. Evaluated and rejected **Kafka** as overkill for current scale; prototyped **HashiCorp Nomad** before selecting **EKS**; independently drove the adoption of **ClickHouse** for analytics.
-*   **GCP Cost & Storage Optimization:** Reduced cloud spend by implementing lifecycle policies for storage buckets (Standard vs. Coldline/Archive) and configuring automated disk snapshots for disaster recovery.
-*   **Database Management:** Managed production **MongoDB** (currently standalone), planning a zero-downtime migration to a **Replica Set** for high availability.
-*   **Reliability Engineering:** Stabilized a volatile backend system by implementing comprehensive observability with **Loki, Grafana, and Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
-*   **Security:** Currently redesigning the entire Authentication and Authorization framework to meet modern security standards.
+*   **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
+*   **Security:** Currently redesigning the entire Authentication and Authorization framework to meet modern security standards, utilizing TDD to validate complex permission logic.
 
 ---
 
 ### **Key Projects & Open Source**
 
-*   **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion library for **Go**, inspired by AssertJ, to improve test readability and developer experience.
-*   **Relay** ([github.com/sku0x20/RELAY](https://github.com/sku0x20/RELAY)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed.
-*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/STOPGAP)): Exploration of **Java Virtual Threads** (Project Loom) to improve concurrency models in high-throughput applications.
-*   **K8s & Terraform Configs**: Public repositories demonstrating best-practices for Infrastructure as Code and Kubernetes manifest management.
+*   **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion library for **Go**, developed to enable **AssertJ-style testing patterns** in the Go ecosystem.
+*   **Relay** ([github.com/sku0x20/RELAY](https://github.com/sku0x20/RELAY)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
 
 ---
 
@@ -51,6 +46,6 @@
 *   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
-*   **Methodologies:** TDD (Test Driven Development), Domain Driven Design (DDD) Interest, CI/CD, GitOps.
+*   **Methodologies:** **TDD (Test Driven Development)**, Clean Architecture, Domain Driven Design (DDD) Principles, CI/CD, GitOps.
 
 
