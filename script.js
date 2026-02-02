@@ -18,15 +18,13 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
-// "Slant" style ASCII art for "sku0x20"
-// Double backslashes used to ensure they print correctly.
+// "Block" style ASCII art for "sku0x20"
 const asciiArt = [
-    "   _____ __           ___       ___   ___  ",
-    "  / ___// /____  __  / _ \_  __/|  | / _ \ ",
-    "  \__ \/ //_/ / / / / /_/ />  < / / / // /  ",
-    " ___/ / ,< / /_/ / / /_/ />  < / / / // /  ",
-    "/____/_/|_|\__,_/  \____/_/|_|/___/\___/   ",
-    "                                           "
+    "  ____  _  __ _   _    ___             ____   ___  ",
+    " / ___|| |/ /| | | |  / _ \  __  __   |___ \ / _ \ ",
+    " \___ \| ' / | | | | | | | | \ \/ /     __) | | | |",
+    "  ___) | . \ | |_| | | |_| |  >  <     / __/| |_| |",
+    " |____/|_|\_\ \___/   \___/  /_/\_\   |_____|\___/ "
 ].join('\n');
 
 const welcomeHtml = `
