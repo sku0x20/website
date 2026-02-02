@@ -85,8 +85,6 @@ input[type="text"] {
     width: 100%;
     margin-bottom: 20px;
     flex-wrap: wrap; /* Safety for small screens */
-    border-bottom: 1px solid var(--dim-color);
-    padding-bottom: 15px;
 }
 
 .ascii-art {
