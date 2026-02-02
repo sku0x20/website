@@ -31,6 +31,9 @@ const welcomeMessage = `
  Type 'help' to see available commands.
 `;
 
+let commandHistory = [];
+let historyIndex = -1;
+
 function init() {
     printOutput(welcomeMessage, 'welcome-msg');
     commandInput.focus();
@@ -40,6 +43,8 @@ commandInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         const input = commandInput.value.trim();
         if (input) {
+            commandHistory.push(input);
+            historyIndex = commandHistory.length; // Reset index to end
             try {
                 processCommand(input);
             } catch (e) {
@@ -48,6 +53,18 @@ commandInput.addEventListener('keydown', function(event) {
             }
         }
         commandInput.value = '';
+    } else if (event.key === 'ArrowUp') {
+        event.preventDefault();
+        if (historyIndex > 0) {
+            historyIndex--;
+            commandInput.value = commandHistory[historyIndex];
+        }
+    } else if (event.key === 'ArrowDown') {
+        event.preventDefault();
+        if (historyIndex < commandHistory.length) {
+            historyIndex++;
+            commandInput.value = commandHistory[historyIndex] || '';
+        }
     }
 });
 
