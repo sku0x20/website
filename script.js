@@ -15,7 +15,8 @@ const commands = {
     'cat [file]': 'Print file content',
     'whoami': 'Display current user',
     'date': 'Display current date and time',
-    'clear': 'Clear the terminal screen'
+    'clear': 'Clear the terminal screen',
+    'banner': 'Display the welcome banner'
 };
 
 // "sku0x20" with lowercase small 's' and very clear '2'
@@ -125,12 +126,15 @@ function processCommand(cmdRaw) {
             printOutput(new Date().toString());
             break;
 
-        case 'clear':
-            outputDiv.innerHTML = '';
-            return;
-            
-default:
-            printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
+                case 'clear':
+                    outputDiv.innerHTML = '';
+                    return;
+        
+                case 'banner':
+                    printOutput(welcomeHtml, 'welcome-msg', true);
+                    break;
+                    
+                default:            printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
     terminal.scrollTop = terminal.scrollHeight;
