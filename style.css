@@ -1,0 +1,100 @@
+:root {
+    --bg-color: #0d1117;
+    --text-color: #00ff41; /* Classic Terminal Green */
+    --prompt-color: #00bfff; /* Bright Blue for user prompt */
+    --error-color: #ff5f5f;
+    --dim-color: #8b949e;
+    --font-family: 'Courier New', Courier, monospace;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    font-family: var(--font-family);
+    margin: 0;
+    padding: 20px;
+    height: 100vh;
+    box-sizing: border-box;
+    overflow: hidden; /* Prevent body scroll, handle in terminal */
+    display: flex;
+    flex-direction: column;
+}
+
+.terminal {
+    flex: 1;
+    overflow-y: auto;
+    padding-bottom: 20px;
+}
+
+/* Custom Scrollbar for Webkit */
+.terminal::-webkit-scrollbar {
+    width: 8px;
+}
+.terminal::-webkit-scrollbar-track {
+    background: var(--bg-color);
+}
+.terminal::-webkit-scrollbar-thumb {
+    background: var(--dim-color);
+    border-radius: 4px;
+}
+
+.input-line {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.prompt {
+    color: var(--prompt-color);
+    margin-right: 8px;
+    white-space: nowrap;
+}
+
+input[type="text"] {
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-family: var(--font-family);
+    font-size: 1rem;
+    flex: 1;
+    outline: none;
+    caret-color: var(--text-color);
+}
+
+.output-line {
+    margin-bottom: 5px;
+    white-space: pre-wrap; /* Preserve formatting */
+    line-height: 1.4;
+}
+
+.command-echo {
+    color: var(--dim-color);
+}
+
+.welcome-msg {
+    margin-bottom: 20px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.help-table {
+    display: table;
+}
+.help-row {
+    display: table-row;
+}
+.help-cmd {
+    display: table-cell;
+    padding-right: 20px;
+    font-weight: bold;
+    color: #fff;
+}
+.help-desc {
+    display: table-cell;
+    color: var(--dim-color);
+}
+
+a {
+    color: #fff;
+    text-decoration: underline;
+}
