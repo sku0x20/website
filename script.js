@@ -121,11 +121,11 @@ function updatePrompt() {
 }
 
 const asciiArt = "        __          _______         _______________   \n" +
-    "  _____|  | ____ __ \\   _  \\ ___  __\\_____  \\   _  \\  \n" +
-    " /  ___/  |/ /  |  \\/  /_\\  \\\\  \\/  //  ____/  /_\\  \\ \n" +
-    " \\___ \\|    &lt;|  |  /\\  \\_/   \\&gt;    &lt;/       \\  \\_/   \\\n" +
-    "/____  &gt;__|_ \\____/  \\_____  /__/\\_ \\_______ \\_____  /\n" +
-    "     \\/     \\/             \\/      \\/       \\/     \\/ "
+    "  _____|  | ____ __ \   _  \ ___  __\_____  \   _  \  \n" +
+    " /  ___/  |/ /  |  \/  /_\  \\  \/  //  ____/  /_\  \ \n" +
+    " \___ \|    &lt;|  |  /\  \_/   \&gt;    &lt;/       \  \_/   \ \n" +
+    "/____  &gt;__|_ \____/  \_____  /__/\_ \_______ \_____  /\n" +
+    "     \/     \/             \/      \/       \/     \/ "
 
 const welcomeHtml = `
 <div class="welcome-container">
@@ -138,6 +138,7 @@ const welcomeHtml = `
 `;
 
 function init() {
+    initBackground(); // Start dynamic background
     // Check for mobile device (simplified check)
     if (window.innerWidth <= 768) {
         toggleMode(true); // Force GUI mode on mobile
@@ -437,6 +438,127 @@ function printOutput(text, className = '', isHtml = false) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
+// --- DYNAMIC BACKGROUND ---
+function initBackground() {
+    const canvas = document.getElementById('bg-canvas');
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    
+    let width, height;
+    let particles = [];
+    const particleCount = 60; // Adjust for density
+    const connectionDistance = 150;
+    
+    // Mouse tracking
+    let mouse = { x: null, y: null };
+    
+    window.addEventListener('mousemove', (e) => {
+        mouse.x = e.x;
+        mouse.y = e.y;
+    });
+    
+    window.addEventListener('resize', resize);
+    
+    function resize() {
+        width = canvas.width = window.innerWidth;
+        height = canvas.height = window.innerHeight;
+    }
+    
+    class Particle {
+        constructor() {
+            this.x = Math.random() * width;
+            this.y = Math.random() * height;
+            this.vx = (Math.random() - 0.5) * 0.5; // Slow velocity
+            this.vy = (Math.random() - 0.5) * 0.5;
+            this.size = Math.random() * 2 + 1;
+        }
+        
+        update() {
+            this.x += this.vx;
+            this.y += this.vy;
+            
+            // Bounce off edges
+            if (this.x < 0 || this.x > width) this.vx *= -1;
+            if (this.y < 0 || this.y > height) this.vy *= -1;
+            
+            // Mouse interaction
+            if (mouse.x != null) {
+                let dx = mouse.x - this.x;
+                let dy = mouse.y - this.y;
+                let distance = Math.sqrt(dx * dx + dy * dy);
+                if (distance < 200) {
+                    const forceDirectionX = dx / distance;
+                    const forceDirectionY = dy / distance;
+                    const force = (200 - distance) / 200;
+                    // Gentle push away or pull towards? Let's do gentle pull to form shapes
+                    // Actually, nodes usually float. Let's just draw lines to mouse.
+                }
+            }
+        }
+        
+        draw() {
+            ctx.fillStyle = 'rgba(0, 255, 65, 0.3)'; // Dim green
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.fill();
+        }
+    }
+    
+    function initParticles() {
+        particles = [];
+        resize();
+        for (let i = 0; i < particleCount; i++) {
+            particles.push(new Particle());
+        }
+    }
+    
+    function animate() {
+        ctx.clearRect(0, 0, width, height);
+        
+        for (let i = 0; i < particles.length; i++) {
+            particles[i].update();
+            particles[i].draw();
+            
+            // Connect to other particles
+            for (let j = i; j < particles.length; j++) {
+                let dx = particles[i].x - particles[j].x;
+                let dy = particles[i].y - particles[j].y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                
+                if (distance < connectionDistance) {
+                    ctx.strokeStyle = `rgba(0, 255, 65, ${1 - distance/connectionDistance})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(particles[j].x, particles[j].y);
+                    ctx.stroke();
+                }
+            }
+            
+            // Connect to mouse
+            if (mouse.x != null) {
+                let dx = particles[i].x - mouse.x;
+                let dy = particles[i].y - mouse.y;
+                let distance = Math.sqrt(dx*dx + dy*dy);
+                
+                if (distance < 200) {
+                    ctx.strokeStyle = `rgba(0, 255, 65, ${1 - distance/200})`;
+                    ctx.lineWidth = 1;
+                    ctx.beginPath();
+                    ctx.moveTo(particles[i].x, particles[i].y);
+                    ctx.lineTo(mouse.x, mouse.y);
+                    ctx.stroke();
+                }
+            }
+        }
+        requestAnimationFrame(animate);
+    }
+    
+    initParticles();
+    animate();
+}
+
+// Matrix Effect Logic
 function startMatrixEffect() {
     isMatrixActive = true;
     let canvas = document.getElementById('matrix-canvas');
