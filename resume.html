@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siddhant - Resume</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            line-height: 1.5;
+            color: #333;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+        h1 {
+            font-size: 32px;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        h2 {
+            font-size: 18px;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+        h3 {
+            font-size: 16px;
+            margin-bottom: 5px;
+            margin-top: 20px;
+        }
+        p {
+            margin-bottom: 10px;
+        }
+        a {
+            color: #0066cc;
+            text-decoration: none;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .section-title {
+            font-weight: bold;
+        }
+        ul {
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        li {
+            margin-bottom: 5px;
+        }
+        .role-header {
+            display: flex;
+            justify-content: space-between;
+            font-weight: bold;
+        }
+        .company {
+            font-weight: bold;
+        }
+        .dates {
+            font-style: italic;
+        }
+        .tech-skills strong {
+            font-weight: bold;
+            color: #222;
+        }
+        @media print {
+            body {
+                padding: 0;
+            }
+            a {
+                text-decoration: none;
+                color: #000;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Siddhant</h1>
+        <div class="contact-info">
+            <a href="https://www.sku20.dev/">sku20.dev</a> | 
+            <a href="https://github.com/sku0x20">github.com/sku0x20</a> | 
+            siddhantkumarupmanyu@gmail.com | 
+            +91 8383056329
+        </div>
+    </div>
+
+    <p><strong>Backend & Infrastructure Engineer</strong> focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from <strong>architectural research</strong> to <strong>production troubleshooting</strong>. Passionate about <strong>emerging data technologies</strong> and <strong>data-intensive workloads</strong>. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a <strong>95%+ reduction</strong> in storage costs. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while <strong>learning from senior mentorship</strong> and solving problems at scale.</p>
+
+    <h2>Experience</h2>
+
+    <div class="role-header">
+        <span>Backend & Infrastructure Engineer | WiZNSystems</span>
+        <span class="dates">March 2022 – Present</span>
+    </div>
+    <p><em>Served as the <strong>Sole Backend & Infrastructure Lead</strong>, managing the complete lifecycle of product development, cloud deployment, and system reliability.</em></p>
+
+    <h3>Cross-Functional Leadership & Collaboration</h3>
+    <ul>
+        <li><strong>Mentorship & Hiring:</strong> Lead the technical recruitment process, designing comprehensive <strong>coding challenges</strong> (<a href="https://github.com/sku0x20/recruitment">github.com/sku0x20/recruitment</a>). Provide <strong>cross-team mentorship</strong> and architectural guidance to developers across the organization, ensuring consistency in system design and best practices.</li>
+        <li><strong>Product Partnership:</strong> Collaborate daily with <strong>Product Managers</strong> to refine requirements, explain technical constraints, and propose architectural alternatives to meet business goals.</li>
+        <li><strong>API Design & Integration:</strong> Designed and implemented highly scalable REST/gRPC APIs in close collaboration with <strong>Frontend and App Developers</strong>, ensuring optimal data flow and handling technical trade-offs across multiple client platforms.</li>
+    </ul>
+
+    <h3>Infrastructure & DevOps</h3>
+    <ul>
+        <li><strong>Zero-Downtime Deployments:</strong> Implemented a practical blue-green deployment strategy using <strong>iptables</strong> to manage traffic routing, ensuring 100% uptime during releases without complex load balancer setups.</li>
+        <li><strong>Performance & Network Tuning:</strong> Optimized system throughput by tuning <strong>TCP/UDP kernel parameters</strong> and <code>ulimits</code>, ensuring stability for data-intensive workloads.</li>
+        <li><strong>CI/CD Pipeline:</strong> Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.</li>
+        <li><strong>Infrastructure Modernization (In Progress):</strong> Currently working on a migration from Docker Compose to <strong>AWS EKS</strong> (Managed Kubernetes) and <strong>Terraform</strong> to improve scalability and reproducibility. Evaluated HashiCorp Nomad prior to selecting EKS.</li>
+        <li><strong>Linux Troubleshooting:</strong> Maintained system stability by tuning kernel parameters (<code>ulimits</code>) and diagnosing production issues using standard Linux tools like <code>sar</code>, <code>strace</code>, <code>tcpdump</code>, <code>vmstat</code>, and <code>iotop</code>. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.</li>
+    </ul>
+
+    <h3>Backend Architecture & Performance</h3>
+    <ul>
+        <li><strong>Legacy Modernization (TDD Driven):</strong> Refactored and migrated the core monolithic backend from Spring 4 to <strong>Spring Boot 2.7+</strong>, breaking down legacy code into modular components using <strong>100% test-driven development (TDD)</strong> to prevent regressions.</li>
+        <li><strong>Data Optimization & ClickHouse Migration:</strong> Designed and executed a binary data migration to <strong>ClickHouse</strong>, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
+            <ul>
+                <li><strong>Dataset A:</strong> Reduced from <strong>90GB to 3.7GB</strong> (95.8% reduction).</li>
+                <li><strong>Dataset B:</strong> Reduced from <strong>25GB to 780MB</strong> (96.8% reduction).</li>
+            </ul>
+        </li>
+        <li><strong>Observability & Log Management:</strong> Migrated legacy disk-based logging to <strong>Loki</strong>, significantly reducing <strong>disk I/O pressure</strong> and improving searchability via Grafana. Implemented comprehensive monitoring with <strong>Prometheus</strong>, drastically reducing mean-time-to-recovery (MTTR).</li>
+        <li><strong>Security:</strong> Currently redesigning the Authentication and Authorization framework to meet modern security standards, utilizing TDD to validate complex permission logic.</li>
+    </ul>
+
+    <h3>Independent Technical Leadership</h3>
+    <ul>
+        <li><strong>Research & Decision Making:</strong> Responsible for evaluating and selecting technical solutions suited for the company's scale. Evaluated and rejected <strong>Kafka</strong> as overkill; prototyped <strong>HashiCorp Nomad</strong> before selecting <strong>EKS</strong>; independently drove the adoption of <strong>ClickHouse</strong> for analytics.</li>
+        <li><strong>GCP Cost & Storage Optimization:</strong> Reduced cloud spend by implementing lifecycle policies for storage buckets (Standard vs. Coldline/Archive) and configuring automated disk snapshots for disaster recovery.</li>
+        <li><strong>Database Management:</strong> Managed production <strong>MongoDB</strong> (currently standalone), planning a zero-downtime migration to a **Replica Set** for high availability.</li>
+    </ul>
+
+    <h2>Key Projects & Open Source</h2>
+    <ul>
+        <li><strong>assertG</strong> (<a href="https://github.com/sku0x20/assertG">github.com/sku0x20/assertG</a>): A lightweight, fluent assertion library for <strong>Go</strong>, developed to enable <strong>AssertJ-style testing patterns</strong> in the Go ecosystem.</li>
+        <li><strong>Relay</strong> (<a href="https://github.com/sku0x20/relay">github.com/sku0x20/relay</a>): High-performance networking experiments using <strong>Zig</strong>, focusing on low-level memory management and speed, validated through rigorous unit testing.</li>
+        <li><strong>Stopgap</strong> (<a href="https://github.com/sku0x20/stopgap">github.com/sku0x20/stopgap</a>): A <strong>fully TDD-developed</strong> microservice kotlin template built with <strong>Helidon SE</strong> and Virtual Threads. Selected Helidon SE after evaluating Quarkus/Micronaut to achieve maximum control and simplicity, bypassing Netty for a lightweight, high-performance architecture.</li>
+        <li><strong>K8s & Terraform Configs:</strong> Public repositories demonstrating best-practices for Infrastructure as Code and Kubernetes manifest management.</li>
+    </ul>
+
+    <h2>Technical Skills</h2>
+    <div class="tech-skills">
+        <ul>
+            <li><strong>Languages:</strong> Kotlin, Java, Go, Shell Scripting, Zig (Experimental), Python.</li>
+            <li><strong>Infrastructure:</strong> Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).</li>
+            <li><strong>Databases:</strong> ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.</li>
+            <li><strong>Observability:</strong> Grafana, Loki, Prometheus, vmstat, iotop.</li>
+            <li><strong>Methodologies:</strong> <strong>TDD</strong>, Clean Architecture, CI/CD, GitOps. Actively Researching <strong>High-Performance Data Systems</strong> (ScyllaDB, VictoriaMetrics, TigerBeetle).</li>
+        </ul>
+    </div>
+
+    <h2>Education</h2>
+    <ul>
+        <li><strong>Computer Science & Engineering</strong> | Undergraduate Coursework</li>
+    </ul>
+
+</body>
+</html>
