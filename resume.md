@@ -37,7 +37,7 @@
 
 *   **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion library for **Go**, developed to enable **AssertJ-style testing patterns** in the Go ecosystem.
 *   **Relay** ([github.com/sku0x20/relay](https://github.com/sku0x20/relay)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
-*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/STOPGAP)): Exploration of **Java Virtual Threads** (Project Loom) using **Helidon Nima**, architecting high-throughput services that bypass Netty-based overhead for a more direct, thread-per-request model.
+*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/STOPGAP)): A **fully TDD-developed** microservice template built with **Helidon SE** and Virtual Threads. Selected Helidon SE after evaluating Quarkus/Micronaut to achieve maximum control and simplicity, bypassing Netty for a lightweight, high-performance architecture.
 *   **K8s & Terraform Configs**: Public repositories demonstrating best-practices for Infrastructure as Code and Kubernetes manifest management.
 
 ---
