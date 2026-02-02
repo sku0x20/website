@@ -3,8 +3,7 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, MongoDB, ClickHouse, Loki, Grafana\n\n\x1b[1mCurrent Focus:\x1b[0m\n- Architecting cloud systems and backend microservices.\n- Managing self-hosted deployments (Docker Compose \u2192 K8s).\n- Implementing IaC (Terraform) and optimizing database schemas.\n- Automating infrastructure and operations.",
-    'backend.txt': "\x1b[1mBackend Engineering & Microservices\x1b[0m\n----------------------------------------\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Successfully migrated from legacy Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Developing high-performance services in Go, Node.js, Bun, Deno, and Python.\n- \x1b[1mCommunication:\x1b[0m gRPC for efficient, type-safe inter-service communication.\n- \x1b[1mArchitecture:\x1b[0m Transitioning monolithic legacy logic into a scalable microservices mesh.",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Self-hosted deployments, Docker Compose \u2192 K8s migration, IaC (Terraform).\",
     'projects': "1. \x1b[1mKube-scaler\x1b[0m: An auto-scaler for k8s based on custom metrics.\n2. \x1b[1mCache-money\x1b[0m: A distributed caching layer written in Rust.\n3. \x1b[1mInfra-bot\x1b[0m: Discord bot to manage AWS instances.",
     'skills.md': "- Languages: Kotlin, Go, TypeScript, Python, Rust\n- Frameworks: Spring Boot, Node.js, Bun, Deno, FastAPI\n- Infra: AWS, GCP, Terraform, Kubernetes, Docker\n- Databases: MongoDB, ClickHouse, PostgreSQL, Redis\n- Comm: gRPC, Protocol Buffers",
     'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
@@ -21,8 +20,7 @@ const commands = {
 };
 
 const aliases = {
-    'bio': 'cat about.txt',
-    'tech': 'cat backend.txt'
+    'bio': 'cat about.txt'
 };
 
 // "sku0x20" with lowercase small 's' and very clear '2'
