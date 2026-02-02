@@ -48,6 +48,6 @@
 *   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
-*   **Methodologies:** **TDD (Test Driven Development)**, Clean Architecture, Domain Driven Design (DDD) Principles, CI/CD, GitOps.
+*   **Methodologies:** **TDD (Test Driven Development)**, Clean Architecture, Actively Exploring **DDD (Domain Driven Design)**, CI/CD, GitOps.
 
 
