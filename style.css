@@ -81,8 +81,8 @@ input[type="text"] {
 .welcome-container {
     display: inline-flex; /* Shrink to fit content (ASCII art width) */
     flex-direction: column;
-    margin-bottom: 30px;
-    gap: 10px;
+    margin-bottom: 10px; /* Reduced to bring prompt closer */
+    gap: 15px;          /* Increased gap between art and link */
 }
 
 .ascii-art {
