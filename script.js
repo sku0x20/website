@@ -19,14 +19,15 @@ const commands = {
 };
 
 // Fixed ASCII art with safe escaping
+// We use double backslashes to escape backslashes, and backslash-backtick to escape backticks.
 const welcomeMessage = `
    _____ _    _     _ _                 _   
   / ____(_)  | |   | | |               | |  
  | (___  _ __| | __| | |__   __ _ _ __ | |_ 
   \___ \| / _` |/ _` | '_ \ / _` | '_ \| __|
   ____) | | (_| | (_| | | | | (_| | | | | |_ 
- |_____/|_|\__,_|\__,_|_| |_|\__,_|_| |_|\__|                                             
-
+ |_____/|_|\__,_|\__,_|_| |_|\__,_|_| |_|\__|
+                                             
  Welcome to Siddhant's CLI Portfolio v1.0.0
  Type 'help' to see available commands.
 `;
