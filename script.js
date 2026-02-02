@@ -159,6 +159,59 @@ commandInput.addEventListener('keydown', function (event) {
             }
         }
         commandInput.value = '';
+    } else if (event.key === 'Tab') {
+        event.preventDefault();
+        const input = commandInput.value;
+        const tokens = input.split(' ');
+        
+        // Command completion (first token)
+        if (tokens.length === 1) {
+            const partial = tokens[0].toLowerCase();
+            const candidates = [
+                ...Object.keys(commands),
+                ...Object.keys(aliases)
+            ].filter(c => c.startsWith(partial));
+            
+            if (candidates.length === 1) {
+                commandInput.value = candidates[0] + ' ';
+            } else if (candidates.length > 1) {
+                // Optional: Show possibilities or cycle. 
+                // For now, let's just complete up to common prefix
+                // Simpler: just do nothing or print candidates?
+                // Let's print candidates if there are multiple
+                // printOutput(candidates.join(' '), 'command-echo'); // Might be too spammy
+            }
+        } 
+        // Path completion (second token+)
+        else if (tokens.length > 1) {
+            const lastToken = tokens[tokens.length - 1];
+            // Resolve the directory part of the token
+            const lastSlashIndex = lastToken.lastIndexOf('/');
+            let dirPath = '';
+            let partialName = lastToken;
+            
+            if (lastSlashIndex !== -1) {
+                dirPath = lastToken.substring(0, lastSlashIndex + 1);
+                partialName = lastToken.substring(lastSlashIndex + 1);
+            }
+            
+            // Resolve the directory object
+            const target = resolvePath(dirPath || '.');
+            
+            if (target && typeof target.node === 'object') {
+                const candidates = Object.keys(target.node).filter(k => k.startsWith(partialName));
+                
+                if (candidates.length === 1) {
+                    const completion = candidates[0];
+                    const isDir = typeof target.node[completion] === 'object';
+                    const suffix = isDir ? '/' : '';
+                    
+                    // Reconstruct input
+                    tokens[tokens.length - 1] = dirPath + completion + suffix;
+                    commandInput.value = tokens.join(' ');
+                }
+            }
+        }
     } else if (event.key === 'ArrowUp') {
         event.preventDefault();
         if (historyIndex > 0) {
