@@ -63,7 +63,7 @@
 ---
 
 ### **Education**
-*   **Computer Science & Engineering** | Undergraduate Coursework (Focus on Algorithms, Data Structures, and Systems Programming).
+*   **Computer Science & Engineering** | Undergraduate Coursework (Algorithms, Data Structures, and Systems Programming).
 
 
 
