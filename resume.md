@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Passionate about **emerging data technologies** and **data-intensive workloads**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **95%+ reduction** in storage costs. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while **learning from senior mentorship** and solving problems at scale.
+**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Passionate about **emerging data technologies** and **data-intensive workloads**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **95%+ reduction** in storage costs. I am now seeking to join a collaborative engineering team where I can contribute my **hands-on problem-solving approach** while **learning from senior mentorship** and solving problems at scale.
 
 ---
 
