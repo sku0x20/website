@@ -18,6 +18,7 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
+// Fixed ASCII art with safe escaping
 const welcomeMessage = `
    _____ _    _     _ _                 _   
   / ____(_)  | |   | | |               | |  
@@ -39,17 +40,25 @@ commandInput.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
         const input = commandInput.value.trim();
         if (input) {
-            processCommand(input);
+            try {
+                processCommand(input);
+            } catch (e) {
+                printOutput(`Error processing command: ${e.message}`, 'error');
+                console.error(e);
+            }
         }
         commandInput.value = '';
     }
 });
 
-// Always keep focus on input unless user explicitly clicks away (optional, strict CLI feel)
-document.addEventListener('click', () => commandInput.focus());
+document.addEventListener('click', () => {
+    // Only autofocus if the user isn't selecting text
+    if (window.getSelection().toString() === '') {
+        commandInput.focus();
+    }
+});
 
 function processCommand(cmdRaw) {
-    // Echo the command
     const prompt = document.querySelector('.prompt').innerText;
     printOutput(`${prompt} ${cmdRaw}`, 'command-echo');
 
@@ -76,8 +85,6 @@ function processCommand(cmdRaw) {
             if (!arg1) {
                 printOutput('Usage: cat [filename]', 'error');
             } else if (fileSystem[arg1]) {
-                // Handle simple ANSI-like codes for bolding if needed, or just plain text
-                // formatting specifically for our "bold" hack in projects
                 let content = fileSystem[arg1]
                     .replace(/\x1b\[1m/g, '<strong>')
                     .replace(/\x1b\[0m/g, '</strong>')
@@ -98,14 +105,13 @@ function processCommand(cmdRaw) {
 
         case 'clear':
             outputDiv.innerHTML = '';
-            // Re-print welcome message? usage choice. Let's not for "true" clear.
-            return; // Exit early to avoid scrolling
+            return;
             
 default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
-    // Auto scroll to bottom
+    // Scroll to bottom
     terminal.scrollTop = terminal.scrollHeight;
 }
 
@@ -116,7 +122,6 @@ function printOutput(text, className = '', isHtml = false) {
     if (isHtml) {
         div.innerHTML = text;
     } else {
-        // Safe text node for default
         div.textContent = text;
     }
     
@@ -124,4 +129,5 @@ function printOutput(text, className = '', isHtml = false) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
-init();
+// Wait for DOM to be ready
+document.addEventListener('DOMContentLoaded', init);
