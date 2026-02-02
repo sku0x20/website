@@ -22,7 +22,7 @@ const fileSystem = {
         'c_hashmap': "Hashmap data structure implementation in C.\nLink: https://github.com/sku0x20/c_hashmap",
         'SemiColonAdder': "A tool to automatically add missing semicolons.\nLink: https://github.com/sku0x20/SemiColonAdder"
     },
-    'matrix': "\x1b[1mBinary file (7.2MB). Use './matrix' to execute.\x1b[0m"
+    'matrix': "Binary file (7.2MB). Use './matrix' to execute."
 };
 
 const commands = {
