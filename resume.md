@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Technical foundation in **Linux internals**, **GCP Cost Optimization**, and **Observability**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **95%+ reduction** in storage costs and improved system stability. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while **learning from senior mentorship** and solving problems at scale.
+**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Passionate about **emerging data technologies** and **data-intensive workloads**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **95%+ reduction** in storage costs. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while **learning from senior mentorship** and solving problems at scale.
 
 ---
 
@@ -58,7 +58,7 @@
 *   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
-*   **Methodologies:** **TDD (Test Driven Development)**, Clean Architecture, Actively Exploring **DDD (Domain Driven Design)**, CI/CD, GitOps.
+*   **Methodologies:** **TDD**, Clean Architecture, CI/CD, GitOps. Actively Researching **High-Performance Data Systems** (ScyllaDB, VictoriaMetrics, TigerBeetle).
 
 ---
 
