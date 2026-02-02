@@ -77,6 +77,27 @@ input[type="text"] {
     font-weight: bold;
 }
 
+/* New layout for the banner */
+.welcome-container {
+    display: flex;
+    align-items: flex-end; /* Align bottom so link is near the bottom of art */
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.ascii-art {
+    color: var(--text-color);
+    white-space: pre; /* Enforce exact spacing for art */
+    line-height: 1.2;
+}
+
+.welcome-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-bottom: 5px; /* slight adjustment */
+}
+
 .help-table {
     display: table;
 }

@@ -18,24 +18,31 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
-// ASCII art for "sku0x20"
-const welcomeMessage = [
-    "      _             ___         ___   ___  ",
-    " ___ | |__ _  _    / _ \ __ __ |_  ) / _ \ ",
-    "(_-< | / /| || |  | (_) |\ \ /  / / | (_) |",
-    "/__/ |_\_\ \_,_|   \___/ /_\_\ /___| \___/ ",
-    "                                           ",
-    " Welcome to Siddhant's CLI Portfolio v1.1.0",
-    " GitHub: <a href=\"https://github.com/sku0x20\" target=\"_blank\">github.com/sku0x20</a>",
-    " Type 'help' to see available commands.",
-    ""
+// Bigger, cleaner ASCII art for "sku0x20"
+const asciiArt = [
+    "       _          ___      ___   ___  ",
+    "  ___ | | ___ __ / _ \ __ |_  | / _ \ ",
+    " / __|| |/ / '__| | | |\ \/ / |/ / | |",
+    " \__ \|   <| |  | |_| | >  <| / /_ | |",
+    " |___/|_|\_\_|   \___/ /_/\_\____| \_/",
+    "                                      "
 ].join('\n');
+
+const welcomeHtml = `
+<div class="welcome-container">
+    <div class="ascii-art">${asciiArt}</div>
+    <div class="welcome-info">
+        <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
+        <span>Type 'help' to start.</span>
+    </div>
+</div>
+`;
 
 let commandHistory = [];
 let historyIndex = -1;
 
 function init() {
-    printOutput(welcomeMessage, 'welcome-msg', true);
+    printOutput(welcomeHtml, 'welcome-msg', true);
     commandInput.focus();
 }
 
@@ -123,7 +130,7 @@ function processCommand(cmdRaw) {
             outputDiv.innerHTML = '';
             return;
             
-default:
+        default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
