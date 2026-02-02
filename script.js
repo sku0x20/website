@@ -47,13 +47,13 @@ let isMatrixActive = false;
 let matrixInterval;
 
 function resolvePath(path) {
-    if (!path) return { node: getDirNode(currentPath), path: currentPath.join('/') };
-    
+    if (!path) return {node: getDirNode(currentPath), path: currentPath.join('/')};
+
     let parts;
     let tempPath;
 
     if (path === '/') {
-        return { node: fileSystem, path: '' };
+        return {node: fileSystem, path: ''};
     } else if (path.startsWith('/')) {
         parts = path.split('/').filter(p => p);
         tempPath = [];
@@ -89,8 +89,8 @@ function resolvePath(path) {
             }
         }
     }
-    
-    return { node: current, path: tempPath.join('/') };
+
+    return {node: current, path: tempPath.join('/')};
 }
 
 function getDirNode(pathArray) {
@@ -106,12 +106,12 @@ function updatePrompt() {
     document.querySelector('.prompt').innerText = `guest@sku20.dev:${pathStr}$`;
 }
 
-const asciiArt = [
-    "      _             ___             ___   ___  ",
-    "  ___| | ___ _   _ / _ \__  __     |_  ) / _ \ ",
-    " (_ -| |/ / | | | | (_) | \/ /      / / | (_) |",
-    " /___|_|\_\ \_,_|  \___/ /_/\_\    /___| \___/ "
-].join('\n');
+const asciiArt = "        __          _______         _______________   \n" +
+    "  _____|  | ____ __ \\   _  \\ ___  __\\_____  \\   _  \\  \n" +
+    " /  ___/  |/ /  |  \\/  /_\\  \\\\  \\/  //  ____/  /_\\  \\ \n" +
+    " \\___ \\|    &lt;|  |  /\\  \\_/   \\&gt;    &lt;/       \\  \\_/   \\\n" +
+    "/____  &gt;__|_ \\____/  \\_____  /__/\\_ \\_______ \\_____  /\n" +
+    "     \\/     \\/             \\/      \\/       \\/     \\/ "
 
 const welcomeHtml = `
 <div class="welcome-container">
@@ -133,13 +133,13 @@ function init() {
 }
 
 // Global listener to catch Ctrl+C even if input loses focus
-document.addEventListener('keydown', function(event) {
+document.addEventListener('keydown', function (event) {
     if (isMatrixActive && event.ctrlKey && event.key === 'c') {
         stopMatrixEffect();
     }
 });
 
-commandInput.addEventListener('keydown', function(event) {
+commandInput.addEventListener('keydown', function (event) {
     // Ignore keys if matrix is active (except Ctrl+C which is handled globally)
     if (isMatrixActive) {
         event.preventDefault();
@@ -264,7 +264,7 @@ function processCommand(cmdRaw) {
             aliasHtml += '</div>';
             printOutput(aliasHtml, '', true);
             break;
-            
+
         case 'date':
             printOutput(new Date().toString());
             break;
@@ -276,12 +276,12 @@ function processCommand(cmdRaw) {
         case 'banner':
             printOutput(welcomeHtml, 'welcome-msg', true);
             break;
-        
+
         case 'matrix':
             startMatrixEffect();
             break;
-            
-default:
+
+        default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
@@ -291,13 +291,13 @@ default:
 function printOutput(text, className = '', isHtml = false) {
     const div = document.createElement('div');
     div.className = 'output-line ' + className;
-    
+
     if (isHtml) {
         div.innerHTML = text;
     } else {
         div.textContent = text;
     }
-    
+
     outputDiv.appendChild(div);
     terminal.scrollTop = terminal.scrollHeight;
 }
@@ -305,7 +305,7 @@ function printOutput(text, className = '', isHtml = false) {
 // Matrix Effect Logic
 function startMatrixEffect() {
     isMatrixActive = true;
-    
+
     // Create canvas if it doesn't exist
     let canvas = document.getElementById('matrix-canvas');
     if (!canvas) {
@@ -313,7 +313,7 @@ function startMatrixEffect() {
         canvas.id = 'matrix-canvas';
         document.body.appendChild(canvas);
     }
-    
+
     canvas.style.display = 'block';
     const ctx = canvas.getContext('2d');
 
@@ -350,7 +350,7 @@ function startMatrixEffect() {
     }
 
     matrixInterval = setInterval(draw, 33);
-    
+
     // Focus logic is handled in the keydown listener
 }
 

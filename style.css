@@ -88,7 +88,6 @@ input[type="text"] {
     color: var(--text-color);
     white-space: pre;
     line-height: 1.1;
-    font-style: italic;
     font-size: 14px;
 }
 
