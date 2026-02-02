@@ -3,8 +3,14 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose \u2192 K8s migration, IaC (Terraform).",
-    'projects': "1. \x1b[1massertG\x1b[0m: A Go library for assertions.\n2. \x1b[1mMapAny-kotlinx-serialization\x1b[0m: Custom serialization utilities for Kotlin.\n3. \x1b[1mc_oop\x1b[0m: Object-Oriented Programming concepts implemented in C.\n4. \x1b[1mfake-server-js\x1b[0m: A lightweight mock server implementation in JavaScript.\n5. \x1b[1mDNSResolver\x1b[0m: A simple DNS resolver built with Java and Swing.",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose \u2192 K8s migration, IaC (Terraform).\",
+    'projects': {
+        'assertG': "https://github.com/sku0x20/assertG",
+        'MapAny-kotlinx-serialization': "https://github.com/sku0x20/MapAny-kotlinx-serialization",
+        'c_oop': "https://github.com/sku0x20/c_oop",
+        'fake-server-js': "https://github.com/sku0x20/fake-server-js",
+        'DNSResolver': "https://github.com/sku0x20/DNSResolver"
+    },
     'skills.md': "- Languages: Kotlin, Go, TypeScript, Python, Rust\n- Frameworks: Spring Boot, Node.js, Bun, Deno, FastAPI\n- Infra: AWS, GCP, Terraform, Kubernetes, Docker\n- Databases: MongoDB, ClickHouse, PostgreSQL, Redis\n- Comm: gRPC, Protocol Buffers",
     'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
 };
@@ -22,6 +28,26 @@ const commands = {
 const aliases = {
     'bio': 'cat about.txt'
 };
+
+// Helper to resolve path
+function resolvePath(path) {
+    if (!path) return fileSystem; // Root
+    
+    // Remove trailing slash
+    path = path.replace(/\/+$/, '');
+    
+    const parts = path.split('/');
+    let current = fileSystem;
+    
+    for (const part of parts) {
+        if (current && typeof current === 'object' && part in current) {
+            current = current[part];
+        } else {
+            return null; // Not found
+        }
+    }
+    return current;
+}
 
 // "sku0x20" with lowercase small 's' and very clear '2'
 const asciiArt = [
@@ -110,21 +136,41 @@ function processCommand(cmdRaw) {
             break;
 
         case 'ls':
-            const files = Object.keys(fileSystem).join('   ');
-            printOutput(files, 'file-list');
+            const target = resolvePath(arg1);
+            if (target === null) {
+                printOutput(`ls: ${arg1}: No such file or directory`, 'error');
+            } else if (typeof target === 'string') {
+                printOutput(arg1, 'file-list');
+            } else {
+                const keys = Object.keys(target).map(k => {
+                    return typeof target[k] === 'object' ? k + '/' : k;
+                });
+                printOutput(keys.join('   '), 'file-list');
+            }
             break;
 
         case 'cat':
             if (!arg1) {
                 printOutput('Usage: cat [filename]', 'error');
-            } else if (fileSystem[arg1]) {
-                let content = fileSystem[arg1]
-                    .replace(/\x1b\[1m/g, '<strong>')
-                    .replace(/\x1b\[0m/g, '</strong>')
-                    .replace(/\n/g, '<br>');
-                printOutput(content, '', true);
             } else {
-                printOutput(`cat: ${arg1}: No such file or directory`, 'error');
+                const node = resolvePath(arg1);
+                if (node === null) {
+                    printOutput(`cat: ${arg1}: No such file or directory`, 'error');
+                } else if (typeof node === 'object') {
+                    printOutput(`cat: ${arg1}: Is a directory`, 'error');
+                } else {
+                    // Check if content is a URL
+                    if (node.startsWith('http')) {
+                        printOutput(`Opening ${node}...`, 'system-msg');
+                        window.open(node, '_blank');
+                    } else {
+                        let content = node
+                            .replace(/\x1b\[1m/g, '<strong>')
+                            .replace(/\x1b\[0m/g, '</strong>')
+                            .replace(/\n/g, '<br>');
+                        printOutput(content, '', true);
+                    }
+                }
             }
             break;
 
