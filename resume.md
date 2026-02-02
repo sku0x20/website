@@ -16,6 +16,10 @@
 
 *Served as the **Sole Backend & Infrastructure Lead**, managing the complete lifecycle of product development, cloud deployment, and system reliability.*
 
+**Cross-Functional Leadership & Collaboration**
+*   **Product Partnership:** Collaborate daily with **Product Managers** to refine requirements, explain technical constraints, and propose architectural alternatives to meet business goals.
+*   **API Design & Frontend Integration:** Designed and implemented highly scalable REST/gRPC APIs in close collaboration with **Frontend Developers**, ensuring optimal data flow and handling technical trade-offs across the stack.
+
 **Infrastructure & DevOps**
 *   **Zero-Downtime Deployments:** Engineered a custom blue-green deployment strategy using **iptables** to manage traffic routing, ensuring 100% uptime during releases without a load balancer.
 *   **Performance & Network Tuning:** Optimized system throughput by tuning **TCP/UDP kernel parameters** and `ulimits`, ensuring stability for data-intensive workloads.
