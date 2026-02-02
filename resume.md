@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-**Backend & Infrastructure Architect** with 4 years of experience as the **Sole Technical Lead** for end-to-end cloud systems. Expert in **Self-Driven Research & Execution**—independently evaluating, architecting, and implementing complex migrations (Spring 4→Boot 2.7, Disk→ClickHouse) without senior guidance. Deep expertise in **Linux Internals**, **GCP Cost Optimization**, and **System Stability**. Proven track record of reducing storage costs by **98%** and engineering custom zero-downtime solutions when standard tools didn't fit the constraints.
+**Backend & Infrastructure Engineer** with 4 years of hands-on experience building and maintaining end-to-end cloud systems. As the sole developer for backend and infrastructure, I focus on **building practical, reliable solutions** and **troubleshooting complex issues** independently. Strong foundation in **Linux systems**, **GCP Cost Optimization**, and **Observability**. Proven ability to research and implement migrations (Spring Boot, ClickHouse, EKS) to solve real business problems, such as reducing storage costs by **98%** and ensuring high availability.
 
 ---
 
@@ -22,19 +22,24 @@
 *   **API Design & Integration:** Designed and implemented highly scalable REST/gRPC APIs in close collaboration with **Frontend and App Developers**, ensuring optimal data flow and handling technical trade-offs across multiple client platforms.
 
 **Infrastructure & DevOps**
-*   **Zero-Downtime Deployments:** Engineered a custom blue-green deployment strategy using **iptables** to manage traffic routing, ensuring 100% uptime during releases without a load balancer.
+*   **Zero-Downtime Deployments:** Implemented a practical blue-green deployment strategy using **iptables** to manage traffic routing, ensuring 100% uptime during releases without complex load balancer setups.
 *   **Performance & Network Tuning:** Optimized system throughput by tuning **TCP/UDP kernel parameters** and `ulimits`, ensuring stability for data-intensive workloads.
 *   **CI/CD Pipeline:** Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.
-*   **Infrastructure Modernization (In Progress):** Currently architecting a migration from Docker Compose to **AWS EKS** (Managed Kubernetes) and **Terraform** to improve scalability and reproducibility. Evaluated HashiCorp Nomad prior to selecting EKS.
-*   **Linux Administration:** Deepened system stability by tuning kernel parameters (`ulimits`) and performing advanced performance analysis using `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
+*   **Infrastructure Modernization (In Progress):** Currently working on a migration from Docker Compose to **AWS EKS** (Managed Kubernetes) and **Terraform** to improve scalability and reproducibility. Evaluated HashiCorp Nomad prior to selecting EKS.
+*   **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters (`ulimits`) and diagnosing production issues using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
 
 **Backend Architecture & Performance**
-*   **Legacy Modernization (TDD Driven):** Led the migration of the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, refactoring legacy code into modular, testable components with **100% test-driven development (TDD)** to ensure zero regressions.
-*   **Data Optimization & ClickHouse Migration:** Architected a high-performance binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
+*   **Legacy Modernization (TDD Driven)::** Refactored and migrated the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent regressions.
+*   **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
     *   **Dataset A:** Reduced from **90GB to 1.1GB** (98.7% reduction).
     *   **Dataset B:** Reduced from **25GB to 650MB** (97.4% reduction).
 *   **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
-*   **Security:** Currently redesigning the entire Authentication and Authorization framework to meet modern security standards, utilizing TDD to validate complex permission logic.
+*   **Security:** Currently redesigning the Authentication and Authorization framework to meet modern security standards, utilizing TDD to validate complex permission logic.
+
+**Independent Technical Leadership**
+*   **Research & Decision Making:** Responsible for evaluating and selecting technical solutions suited for the company's scale. Evaluated and rejected **Kafka** as overkill; prototyped **HashiCorp Nomad** before selecting **EKS**; independently drove the adoption of **ClickHouse** for analytics.
+*   **GCP Cost & Storage Optimization:** Reduced cloud spend by implementing lifecycle policies for storage buckets (Standard vs. Coldline/Archive) and configuring automated disk snapshots for disaster recovery.
+*   **Database Management:** Managed production **MongoDB** (currently standalone), planning a zero-downtime migration to a **Replica Set** for high availability.
 
 ---
 
