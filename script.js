@@ -3,7 +3,7 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "I am Siddhant, a Backend & Infrastructure Engineer.\nI specialize in building scalable systems, cloud architecture, and automating everything.\nCurrently optimizing pipelines and wrestling with Kubernetes.",
+    'about.txt': "Cloud Infra, DevOps & Backend Engineer.\nSpecializing in self-managed deployments (Docker/Compose), DB management (Mongo, ClickHouse), and Observability (Loki/Grafana).\nCurrently architecting microservices on GCP/AWS and migrating to Terraform & Kubernetes.",
     'projects': "1. \x1b[1mKube-scaler\x1b[0m: An auto-scaler for k8s based on custom metrics.\n2. \x1b[1mCache-money\x1b[0m: A distributed caching layer written in Rust.\n3. \x1b[1mInfra-bot\x1b[0m: Discord bot to manage AWS instances.",
     'skills.md': "- Languages: Go, Rust, Python, TypeScript\n- Infra: AWS, Terraform, Kubernetes, Docker\n- Databases: PostgreSQL, Redis, DynamoDB\n- Tools: Prometheus, Grafana, GitHub Actions",
     'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
@@ -13,7 +13,7 @@ const commands = {
     'help': 'List all available commands',
     'ls': 'List directory contents',
     'cat [file]': 'Print file content',
-    'whoami': 'Display current user',
+    'bio': 'Display professional summary',
     'date': 'Display current date and time',
     'clear': 'Clear the terminal screen',
     'banner': 'Display the welcome banner'
@@ -118,8 +118,20 @@ function processCommand(cmdRaw) {
             }
             break;
 
-        case 'whoami':
-            printOutput('guest');
+        case 'bio':
+            const summary = [
+                "<strong>Cloud Infrastructure & Backend Architect</strong>",
+                "----------------------------------------",
+                "<strong>Roles:</strong> DevOps, Backend Dev, Infra Architect",
+                "<strong>Stack:</strong> GCP, AWS, Docker, MongoDB, ClickHouse, Loki, Grafana",
+                "",
+                "<strong>Current Focus:</strong>",
+                "- Architecting cloud systems and backend microservices.",
+                "- Managing self-hosted deployments (Docker Compose \u2192 K8s).",
+                "- Implementing IaC (Terraform) and optimizing database schemas.",
+                "- Automating infrastructure and operations."
+            ].join('<br>');
+            printOutput(summary, '', true);
             break;
             
         case 'date':
