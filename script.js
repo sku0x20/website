@@ -18,13 +18,13 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
-// "Slant" style ASCII art for "sku0x20" (properly escaped)
+// "Slant" style ASCII art for "sku0x20"
+// 's' is lowercase, and '2' has been refined for clarity.
 const asciiArt = [
-    "   _____ __           ___       ___   ___  ",
-    "  / ___// /____  __  / _ \\_  __/|  | / _ \\ ",
-    "  \\__ \\/ //_/ / / / / / /| |/_/ / / / // / ",
-    " ___/ / ,< / /_/ / / /_/ />  < / / / // /  ",
-    "/____/_/|_|\\__,_/  \\____/_/|_|/___/\\___/   "
+    "   ____  __            ____         _  __ ___    ____ ",
+    "  / __/ / /____  __   / __ \ _  __ | |/_/|__ \  / __ \",
+    " _\ \  / //_/ / / /  / / / /| |/_/ |  <   / __/ / / / /",
+    "/___/ /_/_\\_\ \_,_/   \____//_/\_\ /_/ |_|/____/ \____/ "
 ].join('\n');
 
 const welcomeHtml = `
