@@ -6,7 +6,7 @@ const fileSystem = {
     'about.txt': "I am Siddhant, a Backend & Infrastructure Engineer.\nI specialize in building scalable systems, cloud architecture, and automating everything.\nCurrently optimizing pipelines and wrestling with Kubernetes.",
     'projects': "1. \x1b[1mKube-scaler\x1b[0m: An auto-scaler for k8s based on custom metrics.\n2. \x1b[1mCache-money\x1b[0m: A distributed caching layer written in Rust.\n3. \x1b[1mInfra-bot\x1b[0m: Discord bot to manage AWS instances.",
     'skills.md': "- Languages: Go, Rust, Python, TypeScript\n- Infra: AWS, Terraform, Kubernetes, Docker\n- Databases: PostgreSQL, Redis, DynamoDB\n- Tools: Prometheus, Grafana, GitHub Actions",
-    'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/siddhant\nLinkedIn: linkedin.com/in/siddhant"
+    'contact.txt': "Email: siddhant@example.com\nGitHub: github.com/sku0x20\nLinkedIn: linkedin.com/in/siddhant"
 };
 
 const commands = {
@@ -18,16 +18,15 @@ const commands = {
     'clear': 'Clear the terminal screen'
 };
 
-// Fixed ASCII art using array join to avoid template literal escaping issues
+// ASCII art for "sku0x20"
 const welcomeMessage = [
-    "   _____ _    _     _ _                 _   ",
-    "  / ____(_)  | |   | | |               | |  ",
-    " | (___  _ __| | __| | |__   __ _ _ __ | |_ ",
-    "  \___ \| / _` |/ _` | '_ \ / _` | '_ \| __|",
-    "  ____) | | (_| | (_| | | | | (_| | | | | |_ ",
-    " |_____/|_|\__,_|\__,_|_| |_|\__,_|_| |_|\__|",
-    "                                             ",
-    " Welcome to Siddhant's CLI Portfolio v1.0.0",
+    "      _             ___         ___   ___  ",
+    " ___ | |__ _  _    / _ \ __ __ |_  ) / _ \ ",
+    "(_-< | / /| || |  | (_) |\ \ /  / / | (_) |",
+    "/__/ |_\_\ \_,_|   \___/ /_\_\ /___| \___/ ",
+    "                                           ",
+    " Welcome to Siddhant's CLI Portfolio v1.1.0",
+    " GitHub: <a href=\"https://github.com/sku0x20\" target=\"_blank\">github.com/sku0x20</a>",
     " Type 'help' to see available commands.",
     ""
 ].join('\n');
@@ -36,7 +35,7 @@ let commandHistory = [];
 let historyIndex = -1;
 
 function init() {
-    printOutput(welcomeMessage, 'welcome-msg');
+    printOutput(welcomeMessage, 'welcome-msg', true);
     commandInput.focus();
 }
 
@@ -45,7 +44,7 @@ commandInput.addEventListener('keydown', function(event) {
         const input = commandInput.value.trim();
         if (input) {
             commandHistory.push(input);
-            historyIndex = commandHistory.length; // Reset index to end
+            historyIndex = commandHistory.length;
             try {
                 processCommand(input);
             } catch (e) {
@@ -70,7 +69,6 @@ commandInput.addEventListener('keydown', function(event) {
 });
 
 document.addEventListener('click', () => {
-    // Only autofocus if the user isn't selecting text
     if (window.getSelection().toString() === '') {
         commandInput.focus();
     }
@@ -129,7 +127,6 @@ default:
             printOutput(`Command not found: ${cmd}. Type 'help' for available commands.`, 'error');
     }
 
-    // Scroll to bottom
     terminal.scrollTop = terminal.scrollHeight;
 }
 
@@ -147,5 +144,4 @@ function printOutput(text, className = '', isHtml = false) {
     terminal.scrollTop = terminal.scrollHeight;
 }
 
-// Wait for DOM to be ready
 document.addEventListener('DOMContentLoaded', init);
