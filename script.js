@@ -3,18 +3,18 @@ const outputDiv = document.getElementById('output');
 const commandInput = document.getElementById('command-input');
 
 const fileSystem = {
-    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).\",
+    'about.txt': "\x1b[1mCloud Infrastructure & Backend Architect\x1b[0m\n----------------------------------------\n\x1b[1mRoles:\x1b[0m DevOps, Backend Dev, Infra Architect\n\x1b[1mStack:\x1b[0m GCP, AWS, Docker, Kubernetes, Terraform\n\n\x1b[1mBackend & Microservices:\x1b[0m\n- \x1b[1mPrimary Stack:\x1b[0m Kotlin + Spring Boot 2.7 (Migrated from Spring 4).\n- \x1b[1mPolyglot Services:\x1b[0m Go, Node.js, Bun, Deno, Python.\n- \x1b[1mCommunication:\x1b[0m gRPC & Protocol Buffers.\n- \x1b[1mArchitecture:\x1b[0m Designing scalable microservice meshes.\n\n\x1b[1mInfrastructure & DevOps:\x1b[0m\n- \x1b[1mCloud & SysAdmin:\x1b[0m Managing VM fleets (AWS/GCP), Linux Administration, Shell Scripting.\n- \x1b[1mDatabases:\x1b[0m MongoDB, ClickHouse, Redis, PostgreSQL.\n- \x1b[1mObservability:\x1b[0m Loki, Grafana, Prometheus.\n- \x1b[1mOperations:\x1b[0m Docker Compose → K8s migration, IaC (Terraform).",
     'projects': {
         'relay': "Project Relay.\nLink: https://github.com/sku0x20/RELAY",
         'stopgap': "Project Stopgap.\nLink: https://github.com/sku0x20/STOPGAP",
+        'k8s-config': "Kubernetes configurations and manifests.\nLink: https://github.com/sku0x20/K8S-CONFIG",
         'llcc': "Project LLCC.\nLink: https://github.com/sku0x20/LLCC",
         'hrh': "Project HRH.\nLink: https://github.com/sku0x20/HRH",
-        'assertG': "A lightweight Go library for test assertions.\nLink: https://github.com/sku0x20/assertG",
-        'gRunner': "Grunner task runner project.\nLink: https://github.com/sku0x20/GRUNNER",
         'c_oop': "Implementing Object-Oriented Programming principles in pure C.\nLink: https://github.com/sku0x20/c_oop",
-        'k8s-config': "Kubernetes configurations and manifests.\nLink: https://github.com/sku0x20/K8S-CONFIG",
         'terraform-configs': "Infrastructure as Code using Terraform.\nLink: https://github.com/sku0x20/TERRAFORM-CONFIGS",
+        'assertG': "A lightweight Go library for test assertions.\nLink: https://github.com/sku0x20/assertG",
         'fake-server-js': "A flexible mock server for JavaScript applications.\nLink: https://github.com/sku0x20/fake-server-js",
+        'gRunner': "Grunner task runner project.\nLink: https://github.com/sku0x20/GRUNNER",
         'request-generator': "HTTP request generation tool.\nLink: https://github.com/sku0x20/REQUEST-GENERATOR",
         'DNSResolver': "A simple DNS resolver implementation using Java and Swing.\nLink: https://github.com/sku0x20/DNSResolver",
         'Define-Bot': "A bot for definitions.\nLink: https://github.com/sku0x20/Define-Bot",
@@ -195,7 +195,7 @@ function processCommand(cmdRaw) {
             } else if (typeof target.node === 'string') {
                 printOutput(arg1 || target.path.split('/').pop(), 'file-list');
             } else {
-                const keys = Object.keys(target.node).sort().map(k => {
+                const keys = Object.keys(target.node).map(k => {
                     return typeof target.node[k] === 'object' ? k + '/' : k;
                 });
                 keys.forEach(key => printOutput(key, 'file-list'));
