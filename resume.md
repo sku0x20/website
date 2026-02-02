@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-**Backend & Infrastructure Engineer** with 4 years of hands-on experience building and maintaining end-to-end cloud systems. As the sole developer for backend and infrastructure, I focus on **building practical, reliable solutions** and **troubleshooting complex issues** independently. Strong foundation in **Linux systems**, **GCP Cost Optimization**, and **Observability**. Proven ability to research and implement migrations (Spring Boot, ClickHouse, EKS) to solve real business problems, such as reducing storage costs by **98%** and ensuring high availability.
+**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Strong technical foundation in **Linux internals**, **GCP Cost Optimization**, and **Observability**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **98% reduction** in storage costs and improved system stability.
 
 ---
 
