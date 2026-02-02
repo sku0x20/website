@@ -50,6 +50,8 @@ const aliases = {
     './matrix': 'matrix'
 };
 
+let commandHistory = [];
+let historyIndex = -1;
 let currentPath = []; // Array of directory names representing CWD
 let isGuiMode = false;
 let isMatrixActive = false;
