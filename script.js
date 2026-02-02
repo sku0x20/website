@@ -132,14 +132,15 @@ function init() {
     commandInput.focus();
 }
 
-commandInput.addEventListener('keydown', function(event) {
-    // Handle Ctrl+C to stop Matrix
+// Global listener to catch Ctrl+C even if input loses focus
+document.addEventListener('keydown', function(event) {
     if (isMatrixActive && event.ctrlKey && event.key === 'c') {
         stopMatrixEffect();
-        return;
     }
-    
-    // Ignore other keys if matrix is active
+});
+
+commandInput.addEventListener('keydown', function(event) {
+    // Ignore keys if matrix is active (except Ctrl+C which is handled globally)
     if (isMatrixActive) {
         event.preventDefault();
         return;
