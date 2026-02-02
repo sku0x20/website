@@ -17,7 +17,7 @@
 *Served as the **Sole Backend & Infrastructure Lead**, managing the complete lifecycle of product development, cloud deployment, and system reliability.*
 
 **Cross-Functional Leadership & Collaboration**
-*   **Mentorship & Hiring:** Lead the technical recruitment process, designing comprehensive **coding challenges** ([github.com/sku0x20/recruitment](https://github.com/sku0x20/recruitment)) covering Docker, gRPC, and Observability. Actively mentor junior engineers and new hires, enforcing best practices in **TDD** and system design.
+*   **Mentorship & Hiring:** Lead the technical recruitment process, designing comprehensive **coding challenges** ([github.com/sku0x20/recruitment](https://github.com/sku0x20/recruitment)). Provide **cross-team mentorship** and architectural guidance to developers across the organization, ensuring consistency in system design and best practices.
 *   **Product Partnership:** Collaborate daily with **Product Managers** to refine requirements, explain technical constraints, and propose architectural alternatives to meet business goals.
 *   **API Design & Integration:** Designed and implemented highly scalable REST/gRPC APIs in close collaboration with **Frontend and App Developers**, ensuring optimal data flow and handling technical trade-offs across multiple client platforms.
 
@@ -59,5 +59,11 @@
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
 *   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
 *   **Methodologies:** **TDD (Test Driven Development)**, Clean Architecture, Actively Exploring **DDD (Domain Driven Design)**, CI/CD, GitOps.
+
+---
+
+### **Education**
+*   **Computer Science & Engineering** | Undergraduate Coursework (Focus on Algorithms, Data Structures, and Systems Programming).
+
 
 
