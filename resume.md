@@ -36,8 +36,8 @@
 ### **Key Projects & Open Source**
 
 *   **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion library for **Go**, developed to enable **AssertJ-style testing patterns** in the Go ecosystem.
-*   **Relay** ([github.com/sku0x20/RELAY](https://github.com/sku0x20/RELAY)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
-*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/STOPGAP)): Exploration of **Java Virtual Threads** (Project Loom) to improve concurrency models in high-throughput applications.
+*   **Relay** ([github.com/sku0x20/RELAY](https://github.com/sku0x20/relay)): High-performance networking experiments using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
+*   **Stopgap** ([github.com/sku0x20/STOPGAP](https://github.com/sku0x20/stopgap)): Exploration of **Java Virtual Threads** (Project Loom) to improve concurrency models in high-throughput applications.
 *   **K8s & Terraform Configs**: Public repositories demonstrating best-practices for Infrastructure as Code and Kubernetes manifest management.
 
 ---
