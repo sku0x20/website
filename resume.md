@@ -5,7 +5,7 @@
 ---
 
 ### **Professional Summary**
-**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Technical foundation in **Linux internals**, **GCP Cost Optimization**, and **Observability**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while **learning from senior mentorship** and solving problems at scale.
+**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural research** to **production troubleshooting**. Technical foundation in **Linux internals**, **GCP Cost Optimization**, and **Observability**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a **95%+ reduction** in storage costs and improved system stability. I am now seeking to join a collaborative engineering team where I can contribute my "owner's mindset" while **learning from senior mentorship** and solving problems at scale.
 
 ---
 
@@ -31,8 +31,8 @@
 **Backend Architecture & Performance**
 *   **Legacy Modernization (TDD Driven)::** Refactored and migrated the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent regressions.
 *   **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
-    *   **Dataset A:** Reduced from **90GB to 1.1GB** (98.7% reduction).
-    *   **Dataset B:** Reduced from **25GB to 650MB** (97.4% reduction).
+    *   **Dataset A:** Reduced from **90GB to 3.7GB** (95.8% reduction).
+    *   **Dataset B:** Reduced from **25GB to 780MB** (96.8% reduction).
 *   **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
 *   **Security:** Currently redesigning the Authentication and Authorization framework to meet modern security standards, utilizing TDD to validate complex permission logic.
 
