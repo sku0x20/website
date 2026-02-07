@@ -72,15 +72,23 @@
 * **Independent Research & Self-Directed Learning:** Proactive learner with a relentless curiosity for systems
   engineering. Continuously mastering new technologies through deep-dives into documentation, RFCs, and hands-on
   experimentation.
-* **Technical Bibliography:** Deep-diving into systems architecture, TDD, and networking through intensive study of core
-  literature:
-    * **Architecture & Patterns:** *Patterns of Enterprise Application Architecture*, *POSA Vol 1*, *Clean Code*, *Agile
-      Software Development*.
-    * **TDD & Testing:** *TDD by Example*, *Growing Object Oriented Software Guided by Tests*.
-    * **Systems & Networking:** *Computer Networking: A Top-Down Approach*, *Linux in Action*, *Designing Data-Intensive
-      Applications* (In-Progress).
-    * **Future Focus:** *Domain-Driven Design* (Evans), *Extreme Programming Explained*, and *Elixir in Action* (
-      Current).
+* **Technical Bibliography:**
+    * **Architecture & Patterns:**
+        * *Patterns of Enterprise Application Architecture*
+        * *Pattern-Oriented Software Architecture: A System of Patterns, Volume 1*
+        * *Clean Code*
+        * *Agile Software Development: Principles, Patterns, and Practices*
+    * **TDD & Testing:**
+        * *Test-Driven Development by Example*
+        * *Growing Object-Oriented Software, Guided by Tests*
+    * **Systems & Networking:**
+        * *Computer Networking: A Top-Down Approach*
+        * *Linux in Action*
+        * *Designing Data-Intensive Applications* (In-Progress)
+    * **Future Focus:**
+        * *Domain-Driven Design: Tackling Complexity in the Heart of Software*
+        * *Extreme Programming Explained*
+        * *Elixir in Action* (Current)
 
 
 
