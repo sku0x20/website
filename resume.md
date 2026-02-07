@@ -25,7 +25,7 @@
 *   **Zero-Downtime Deployments:** Implemented a practical blue-green deployment strategy using **iptables** to manage traffic routing, ensuring 100% uptime during releases without complex load balancer setups.
 *   **Network Engineering:** Understanding of **TCP/UDP protocols** and networking fundamentals, gained through developing and maintaining products operating on raw network sockets. Optimized system throughput by tuning kernel parameters.
 *   **CI/CD Pipeline:** Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.
-*   **Infrastructure Modernization (In Progress):** Refactoring legacy codebase while adding features and researching scalability solutions with **AWS EKS**, **Kafka**, and **Terraform**. Prototyped HashiCorp Nomad prior to selecting EKS.
+*   **Infrastructure Modernization (In Progress):** Refactoring legacy codebase while adding features and **architecting scalable systems** using **AWS EKS**, **Kafka**, and **Terraform**. Prototyped HashiCorp Nomad prior to selecting EKS.
 *   **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters and diagnosing production issues using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
 
 **Backend Architecture & Performance**
