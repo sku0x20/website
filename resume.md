@@ -121,22 +121,22 @@ deployment, and system reliability.*
   engineering. Continuously mastering new technologies through deep-dives into documentation, RFCs, and hands-on
   experimentation.
 * **Technical Bibliography:**
-    * **Architecture & Patterns:**
-        * *Patterns of Enterprise Application Architecture*
-        * *Pattern-Oriented Software Architecture: A System of Patterns, Volume 1*
-        * *Clean Code*
-        * *Agile Software Development: Principles, Patterns, and Practices*
-    * **TDD & Testing:**
-        * *Test-Driven Development by Example*
-        * *Growing Object-Oriented Software, Guided by Tests*
-  * **Systems, Networking & Languages:**
-        * *Computer Networking: A Top-Down Approach*
-        * *Linux in Action*
-      * *Designing Data-Intensive Applications* (reading)
-      * *Elixir in Action* (reading)
-  * **Methodologies & Future Focus:**
-        * *Domain-Driven Design: Tackling Complexity in the Heart of Software*
-        * *Extreme Programming Explained*
+    - **Architecture & Patterns:**
+        - *Patterns of Enterprise Application Architecture*
+        - *Pattern-Oriented Software Architecture: A System of Patterns, Volume 1*
+        - *Clean Code*
+        - *Agile Software Development: Principles, Patterns, and Practices*
+    - **TDD & Testing:**
+        - *Test-Driven Development by Example*
+        - *Growing Object-Oriented Software, Guided by Tests*
+    - **Systems, Networking & Languages:**
+        - *Computer Networking: A Top-Down Approach*
+        - *Linux in Action*
+        - *Designing Data-Intensive Applications* (reading)
+        - *Elixir in Action* (reading)
+    - **Readlist:**
+        - *Domain-Driven Design: Tackling Complexity in the Heart of Software*
+        - *Extreme Programming Explained*
 
 
 
