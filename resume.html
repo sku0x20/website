@@ -115,16 +115,19 @@
     <h3>Infrastructure & DevOps</h3>
     <ul>
         <li><strong>Zero-Downtime Deployments:</strong> Implemented a practical blue-green deployment strategy using <strong>iptables</strong> to manage traffic routing, ensuring 100% uptime during releases without complex load balancer setups.</li>
-        <li><strong>Performance & Network Tuning:</strong> Optimized system throughput by tuning <strong>TCP/UDP kernel parameters</strong> and <code>ulimits</code>, ensuring stability for data-intensive workloads.</li>
+        <li><strong>Network Engineering:</strong> Understanding of <strong>TCP/UDP protocols</strong> and networking fundamentals, gained through developing and maintaining products operating on raw network sockets. Optimized system throughput by tuning kernel parameters.</li>
         <li><strong>CI/CD Pipeline:</strong> Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.</li>
-        <li><strong>Infrastructure Modernization (In Progress):</strong> Currently working on a migration from Docker Compose to <strong>AWS EKS</strong> (Managed Kubernetes) and <strong>Terraform</strong> to improve scalability and reproducibility. Evaluated HashiCorp Nomad prior to selecting EKS.</li>
-        <li><strong>Linux Troubleshooting:</strong> Maintained system stability by tuning kernel parameters (<code>ulimits</code>) and diagnosing production issues using standard Linux tools like <code>sar</code>, <code>strace</code>, <code>tcpdump</code>, <code>vmstat</code>, and <code>iotop</code>. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.</li>
+        <li><strong>Infrastructure Modernization (In Progress):</strong> Refactoring legacy codebase while adding features and <strong>architecting scalable systems</strong> using <strong>AWS EKS</strong>, <strong>Kafka</strong>, and <strong>Terraform</strong>. Prototyped HashiCorp Nomad prior to selecting EKS.</li>
+        <li><strong>Linux Troubleshooting:</strong> Maintained system stability by tuning kernel parameters and diagnosing production issues using standard Linux tools like <code>sar</code>, <code>strace</code>, <code>tcpdump</code>, <code>vmstat</code>, and <code>iotop</code>. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.</li>
     </ul>
 
     <h3>Backend Architecture & Performance</h3>
     <ul>
+        <li><strong>JVM Performance & Profiling:</strong> Leveraged <strong>async-profiler, JMC, VisualVM, and IntelliJ Profiler</strong> to identify and optimize hot code paths via <strong>Flame Graphs</strong>. Reduced latency and improved throughput by implementing <strong>ThreadLocal</strong> for costly initializations, optimizing caching strategies, and reducing unneeded code on hot paths.</li>
+        <li><strong>Memory & Latency Optimization:</strong> Analyzed <strong>allocation profile data</strong> to minimize object allocations and tuned JVM parameters (GC, heap, stack) to optimize performance. Utilized <strong>wall-clock profiling</strong> to eliminate latency bottlenecks in high-concurrency scenarios.</li>
+        <li><strong>Microservices & gRPC:</strong> Decoupled legacy monolithic components into independent microservices, utilizing <strong>gRPC</strong> for high-performance inter-service communication.</li>
         <li><strong>Legacy Modernization (TDD Driven):</strong> Refactored and migrated the core monolithic backend from Spring 4 to <strong>Spring Boot 2.7+</strong>, breaking down legacy code into modular components using <strong>100% test-driven development (TDD)</strong> to prevent regressions.</li>
-        <li><strong>Data Optimization & ClickHouse Migration:</strong> Designed and executed a binary data migration to <strong>ClickHouse</strong>, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
+        <li><strong>Data Optimization & ClickHouse Migration:</strong> Designed and executed a binary data migration to <strong>ClickHouse</strong>, rewriting core data ingestion services from Kotlin to <strong>Go</strong> to maximize throughput and efficiency. Utilized specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
             <ul>
                 <li><strong>Dataset A:</strong> Reduced from <strong>90GB to 3.7GB</strong> (95.8% reduction).</li>
                 <li><strong>Dataset B:</strong> Reduced from <strong>25GB to 780MB</strong> (96.8% reduction).</li>
@@ -153,10 +156,11 @@
     <div class="tech-skills">
         <ul>
             <li><strong>Languages:</strong> Kotlin, Java, Go, Shell Scripting, Zig (Experimental), Python.</li>
-            <li><strong>Infrastructure:</strong> Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).</li>
+            <li><strong>Infrastructure:</strong> Kubernetes (EKS), Docker, Terraform, Kafka (Researching), Shell Scripting, Linux (Debian/Ubuntu).</li>
             <li><strong>Databases:</strong> ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.</li>
-            <li><strong>Observability:</strong> Grafana, Loki, Prometheus, vmstat, iotop.</li>
-            <li><strong>Methodologies:</strong> <strong>TDD</strong>, Clean Architecture, CI/CD, GitOps. Actively Researching <strong>High-Performance Data Systems</strong> (ScyllaDB, VictoriaMetrics, TigerBeetle).</li>
+            <li><strong>Observability & Profiling:</strong> Grafana, Loki, Prometheus, <strong>async-profiler</strong>, <strong>JMC</strong>, <strong>VisualVM</strong>, <strong>IntelliJ Profiler</strong>, Flame Graphs.</li>
+            <li><strong>Networking & RPC:</strong> <strong>gRPC</strong>, Protocol Buffers, TCP/UDP, Socket Programming.</li>
+            <li><strong>Methodologies:</strong> <strong>TDD</strong>, Clean Architecture, CI/CD, GitOps, Microservices. Actively Researching <strong>High-Performance Data Systems</strong> (ScyllaDB, VictoriaMetrics, TigerBeetle).</li>
         </ul>
     </div>
 
