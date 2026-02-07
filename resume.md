@@ -69,9 +69,18 @@
 ### **Education & Continuous Learning**
 
 * **Computer Science & Engineering** | Undergraduate Coursework
-* **Independent Research & Self-Directed Learning:** Deeply self-motivated learner with a relentless curiosity for
-  systems engineering. Continuously mastering new technologies and paradigms (Go, Zig, Distributed Systems) through
-  deep-dives into documentation, RFCs, and hands-on experimentation.
+* **Independent Research & Self-Directed Learning:** Proactive learner with a relentless curiosity for systems
+  engineering. Continuously mastering new technologies through deep-dives into documentation, RFCs, and hands-on
+  experimentation.
+* **Technical Bibliography:** Deep-diving into systems architecture, TDD, and networking through intensive study of core
+  literature:
+    * **Architecture & Patterns:** *Patterns of Enterprise Application Architecture*, *POSA Vol 1*, *Clean Code*, *Agile
+      Software Development*.
+    * **TDD & Testing:** *TDD by Example*, *Growing Object Oriented Software Guided by Tests*.
+    * **Systems & Networking:** *Computer Networking: A Top-Down Approach*, *Linux in Action*, *Designing Data-Intensive
+      Applications* (In-Progress).
+    * **Future Focus:** *Domain-Driven Design* (Evans), *Extreme Programming Explained*, and *Elixir in Action* (
+      Current).
 
 
 
