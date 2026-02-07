@@ -33,7 +33,7 @@
 *   **Memory & Latency Optimization:** Analyzed **allocation profile data** to minimize object allocations and tuned JVM parameters (GC, heap, stack) to optimize performance. Utilized **wall-clock profiling** to eliminate latency bottlenecks in high-concurrency scenarios.
 *   **Microservices & gRPC:** Decoupled legacy monolithic components into independent microservices, utilizing **gRPC** for high-performance inter-service communication.
 *   **Legacy Modernization (TDD Driven):** Refactored and migrated the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent regressions.
-*   **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
+*   **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**, rewriting core data ingestion services from Kotlin to **Go** to maximize throughput and efficiency. Utilized specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
     *   **Dataset A:** Reduced from **90GB to 3.7GB** (95.8% reduction).
     *   **Dataset B:** Reduced from **25GB to 780MB** (96.8% reduction).
 *   **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**, drastically reducing mean-time-to-recovery (MTTR).
