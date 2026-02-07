@@ -66,8 +66,12 @@
 
 ---
 
-### **Education**
-*   **Computer Science & Engineering** | Undergraduate Coursework
+### **Education & Continuous Learning**
+
+* **Computer Science & Engineering** | Undergraduate Coursework
+* **Independent Research & Self-Directed Learning:** Deeply self-motivated learner with a relentless curiosity for
+  systems engineering. Continuously mastering new technologies and paradigms (Go, Zig, Distributed Systems) through
+  deep-dives into documentation, RFCs, and hands-on experimentation.
 
 
 
