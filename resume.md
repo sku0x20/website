@@ -23,13 +23,16 @@
 
 **Infrastructure & DevOps**
 *   **Zero-Downtime Deployments:** Implemented a practical blue-green deployment strategy using **iptables** to manage traffic routing, ensuring 100% uptime during releases without complex load balancer setups.
-*   **Performance & Network Tuning:** Optimized system throughput by tuning **TCP/UDP kernel parameters** and `ulimits`, ensuring stability for data-intensive workloads.
+*   **Network Engineering:** Understanding of **TCP/UDP protocols** and networking fundamentals, gained through developing and maintaining products operating on raw network sockets. Optimized system throughput by tuning kernel parameters.
 *   **CI/CD Pipeline:** Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.
-*   **Infrastructure Modernization (In Progress):** Currently working on a migration from Docker Compose to **AWS EKS** (Managed Kubernetes) and **Terraform** to improve scalability and reproducibility. Evaluated HashiCorp Nomad prior to selecting EKS.
+*   **Infrastructure Modernization (In Progress):** Refactoring legacy codebase while adding features and researching scalability solutions with **AWS EKS**, **Kafka**, and **Terraform**. Prototyped HashiCorp Nomad prior to selecting EKS.
 *   **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters (`ulimits`) and diagnosing production issues using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
 
 **Backend Architecture & Performance**
-*   **Legacy Modernization (TDD Driven)::** Refactored and migrated the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent regressions.
+*   **JVM Performance & Profiling:** Leveraged **async-profiler, JMC, VisualVM, and IntelliJ Profiler** to identify and optimize hot code paths via **Flame Graphs**. Reduced latency and improved throughput by implementing **ThreadLocal** for costly initializations, optimizing caching strategies, and reducing unneeded code on hot paths.
+*   **Memory & Latency Optimization:** Analyzed **allocation profile data** to minimize object allocations and tuned JVM parameters (GC, heap, stack) to optimize performance. Utilized **wall-clock profiling** to eliminate latency bottlenecks in high-concurrency scenarios.
+*   **Microservices & gRPC:** Decoupled legacy monolithic components into independent microservices, utilizing **gRPC** for high-performance inter-service communication.
+*   **Legacy Modernization (TDD Driven):** Refactored and migrated the core monolithic backend from Spring 4 to **Spring Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent regressions.
 *   **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**, utilizing specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
     *   **Dataset A:** Reduced from **90GB to 3.7GB** (95.8% reduction).
     *   **Dataset B:** Reduced from **25GB to 780MB** (96.8% reduction).
