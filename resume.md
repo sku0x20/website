@@ -26,7 +26,7 @@
 *   **Network Engineering:** Understanding of **TCP/UDP protocols** and networking fundamentals, gained through developing and maintaining products operating on raw network sockets. Optimized system throughput by tuning kernel parameters.
 *   **CI/CD Pipeline:** Built and maintained GitHub Actions pipelines for automated testing, building, and deployment, significantly reducing release friction.
 *   **Infrastructure Modernization (In Progress):** Refactoring legacy codebase while adding features and researching scalability solutions with **AWS EKS**, **Kafka**, and **Terraform**. Prototyped HashiCorp Nomad prior to selecting EKS.
-*   **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters (`ulimits`) and diagnosing production issues using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
+*   **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters and diagnosing production issues using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS upgrades (Debian/Ubuntu) in live production environments.
 
 **Backend Architecture & Performance**
 *   **JVM Performance & Profiling:** Leveraged **async-profiler, JMC, VisualVM, and IntelliJ Profiler** to identify and optimize hot code paths via **Flame Graphs**. Reduced latency and improved throughput by implementing **ThreadLocal** for costly initializations, optimizing caching strategies, and reducing unneeded code on hot paths.
