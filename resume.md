@@ -58,10 +58,11 @@
 ### **Technical Skills**
 
 *   **Languages:** Kotlin, Java, Go, Shell Scripting, Zig (Experimental), Python.
-*   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Shell Scripting, Linux (Debian/Ubuntu).
+*   **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Kafka (Researching), Shell Scripting, Linux (Debian/Ubuntu).
 *   **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
-*   **Observability:** Grafana, Loki, Prometheus, vmstat, iotop.
-*   **Methodologies:** **TDD**, Clean Architecture, CI/CD, GitOps. Actively Researching **High-Performance Data Systems** (ScyllaDB, VictoriaMetrics, TigerBeetle).
+*   **Observability & Profiling:** Grafana, Loki, Prometheus, **async-profiler**, **JMC**, **VisualVM**, **IntelliJ Profiler**, Flame Graphs.
+*   **Networking & RPC:** **gRPC**, Protocol Buffers, TCP/UDP, Socket Programming.
+*   **Methodologies:** **TDD**, Clean Architecture, CI/CD, GitOps, Microservices. Actively Researching **High-Performance Data Systems** (ScyllaDB, VictoriaMetrics, TigerBeetle).
 
 ---
 
