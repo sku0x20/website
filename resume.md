@@ -91,13 +91,13 @@ Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM 
 
 ## Skills
 
-**Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell
-**Backend:** Spring Boot, Helidon SE, gRPC, Protocol Buffers
-**Infrastructure:** Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)
-**Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
-**Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
-**Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
-**Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal
+- **Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell
+- **Frameworks & Protocols:** Spring Boot, Helidon SE, gRPC, Protocol Buffers
+- **Infrastructure:** Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)
+- **Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
+- **Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
+- **Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
+- **Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal
 
 ---
 
