@@ -14,7 +14,7 @@
 ### eGlu Smart Homes (WiZNSystems)
 
 **Senior Systems Architect** · Apr 2026 – Present
-**Backend & Infrastructure Engineer** · Mar 2022 – May 2026
+**Backend & Infrastructure Engineer** · Mar 2022 – Mar 2026
 
 *Bengaluru, India · 4+ years*
 
@@ -23,20 +23,21 @@
 **Architecture & API Design**
 
 - Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status. App and firmware teams build against these before a line of code is written.
-- Promoted to Sr. Systems Architect in Apr 2026. Now lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.
+- Lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.
 
 **IoT Protocol & Real-time Systems**
 
 - Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.
-- Built a low-level UDP echo server using nftables to handle NAT traversal — shifted packet reflection from userspace to kernel, bypassing conntrack overhead.
-- Tuned kernel parameters for high-throughput IoT workloads (socket buffers, IP forwarding, connection tracking table).
+- Pushed network work to the kernel when needed: nftables UDP echo server for NAT traversal (packet reflection without userspace), IP rate limiting via per-source dynamic sets at prerouting priority.
+- Tuned kernel parameters for high-throughput IoT workloads: socket buffers, IP forwarding, connection tracking table size.
 
 **Platform & Automation Engine**
 
 - Built the scene and rule automation engine: multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.
-- Built the device provisioning system from scratch (extracted from monolith): hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes, DALI sub-type handling.
+- Built the device provisioning system from scratch (extracted from monolith): hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.
 - Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.
-- Built a feature flags system; introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs.
+- Built a feature flags system for controlled rollouts.
+- Introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs — full CI pipeline: publish pact → can-i-deploy → release → mark deployed.
 
 **Performance Engineering**
 
@@ -96,12 +97,15 @@ Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM 
 **Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
 **Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
 **Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
-**Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal, DALI
+**Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal
 
 ---
 
 ## Reading
 
-*Patterns of Enterprise Application Architecture* · *Pattern-Oriented Software Architecture Vol. 1* · *Clean Code* · *Agile Software Development: Principles, Patterns, and Practices* · *Test-Driven Development by Example* · *Growing Object-Oriented Software, Guided by Tests* · *Computer Networking: A Top-Down Approach* · *Designing Data-Intensive Applications* (reading) · *Elixir in Action* (reading)
+- *Patterns of Enterprise Application Architecture* · *Pattern-Oriented Software Architecture Vol. 1*
+- *Clean Code* · *Agile Software Development: Principles, Patterns, and Practices*
+- *Test-Driven Development by Example* · *Growing Object-Oriented Software, Guided by Tests*
+- *Computer Networking: A Top-Down Approach* · *Designing Data-Intensive Applications* (reading) · *Elixir in Action* (reading)
 
 **Readlist:** *Domain-Driven Design* · *Extreme Programming Explained*

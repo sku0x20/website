@@ -42,7 +42,7 @@ Custom binary protocol over UDP/TCP between IoT hubs and cloud. NAT hole punchin
 Multi-hub scene automation: nested scene fragments, scene sync, local loop creation, access control. IFTTT-style rules, cloud scheduling for advanced rules.
 
 ### 3. Device Provisioning
-Full refactor extracted from monolith. Hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes, DALI sub-type handling.
+Full refactor extracted from monolith. Hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.
 
 ### 4. New Node Type (SNode)
 Designed and built the new smart node product line end-to-end: polymorphic type hierarchy, execute-only settings, retry logic, feature mapping.
@@ -78,7 +78,6 @@ Production and staging deployment configs. Shell-based deploy automation. GitHub
 
 ## Product Domain Knowledge
 
-- **DALI** — Digital Addressable Lighting Interface (building automation lighting protocol)
 - **IoT mesh networking** — hub-repeater topology, mesh signal propagation
 - **Smart home protocols** — custom binary over UDP, HTTP REST, gRPC
 - **Home automation patterns** — Scenes, Rules, Favourites, Room/Place hierarchy
