@@ -1,139 +1,107 @@
-# Siddhant
+# Siddhant Kumar Upmanyu
 
-**Backend & Infrastructure Engineer**
-[sku20.dev](https://www.sku20.dev/) | [github.com/sku0x20](https://github.com/sku0x20) | [siddhantkumarupmanyu@gmail.com] |
-+91 8383056329
-
----
-
-### **Professional Summary**
-
-**Backend & Infrastructure Engineer** focused on solving complex technical challenges with practical, reliable
-solutions. I bring 4 years of experience taking full ownership of backend and cloud systems, from **architectural
-research** to **production troubleshooting**. Passionate about **emerging data technologies** and **data-intensive
-workloads**. Proven track record of leveraging new technologies (ClickHouse, EKS) to drive efficiency, including a
-**95%+ reduction** in storage costs. I am now seeking to join a collaborative engineering team where I can contribute my
-**hands-on problem-solving approach** while **learning from senior mentorship** and solving problems at scale.
+**Senior Systems Architect**
+[sku20.dev](https://www.sku20.dev) · [github.com/sku0x20](https://github.com/sku0x20) · [eglu.tech](https://eglu.tech) · siddhantkumarupmanyu@gmail.com · +91 8383056329
 
 ---
 
-### **Experience**
-
-**Backend & Infrastructure Engineer** | **WiZNSystems**
-*March 2022 – Present*
-
-*Served as the **Sole Backend & Infrastructure Lead**, managing the complete lifecycle of product development, cloud
-deployment, and system reliability.*
-
-**Cross-Functional Leadership & Collaboration**
-
-- **Mentorship & Hiring:** Lead the technical recruitment process, designing comprehensive **coding challenges
-  ** ([github.com/sku0x20/recruitment](https://github.com/sku0x20/recruitment)). Provide **cross-team mentorship** and
-  architectural guidance to developers across the organization, ensuring consistency in system design and best
-  practices.
-- **Product Partnership:** Collaborate daily with **Product Managers** to refine requirements, explain technical
-  constraints, and propose architectural alternatives to meet business goals.
-- **API Design & Integration:** Designed and implemented highly scalable REST/gRPC APIs in close collaboration with
-  **Frontend and App Developers**, ensuring optimal data flow and handling technical trade-offs across multiple client
-  platforms.
-
-**Infrastructure & DevOps**
-
-- **Zero-Downtime Deployments:** Implemented a practical blue-green deployment strategy using **iptables** to manage
-  traffic routing, ensuring 100% uptime during releases without complex load balancer setups.
-- **Network Engineering:** Understanding of **TCP/UDP protocols** and networking fundamentals, gained through developing
-  and maintaining products operating on raw network sockets. Optimized system throughput by tuning kernel parameters.
-- **CI/CD Pipeline:** Built and maintained GitHub Actions pipelines for automated testing, building, and deployment,
-  significantly reducing release friction.
-- **Infrastructure Modernization (In Progress):** Refactoring legacy codebase while adding features and **architecting
-  scalable systems** using **AWS EKS**, **Kafka**, and **Terraform**. Prototyped HashiCorp Nomad prior to selecting EKS.
-- **Linux Troubleshooting:** Maintained system stability by tuning kernel parameters and diagnosing production issues
-  using standard Linux tools like `sar`, `strace`, `tcpdump`, `vmstat`, and `iotop`. Successfully performed major OS
-  upgrades (Debian/Ubuntu) in live production environments.
-
-**Backend Architecture & Performance**
-
-- **JVM Performance & Profiling:** Leveraged **async-profiler, JMC, VisualVM, and IntelliJ Profiler** to identify and
-  optimize hot code paths via **Flame Graphs**. Reduced latency and improved throughput by implementing **ThreadLocal**
-  for costly initializations, optimizing caching strategies, and reducing unneeded code on hot paths.
-- **Memory & Latency Optimization:** Analyzed **allocation profile data** to minimize object allocations and tuned JVM
-  parameters (GC, heap, stack) to optimize performance. Utilized **wall-clock profiling** to eliminate latency
-  bottlenecks in high-concurrency scenarios.
-- **Microservices & gRPC:** Decoupled legacy monolithic components into independent microservices, utilizing **gRPC**
-  for high-performance inter-service communication.
-- **Legacy Modernization (TDD Driven):** Refactored and migrated the core monolithic backend from Spring 4 to **Spring
-  Boot 2.7+**, breaking down legacy code into modular components using **100% test-driven development (TDD)** to prevent
-  regressions.
-- **Data Optimization & ClickHouse Migration:** Designed and executed a binary data migration to **ClickHouse**,
-  rewriting core data ingestion services from Kotlin to **Go** to maximize throughput and efficiency. Utilized
-  specialized codecs and schema optimization to achieve massive storage reductions across production datasets:
-    - **Dataset A:** Reduced from **90GB to 3.7GB** (95.8% reduction).
-    - **Dataset B:** Reduced from **25GB to 780MB** (96.8% reduction).
-- **Observability & Log Management:** Migrated legacy disk-based logging to **Loki**, significantly reducing **disk I/O
-  pressure** and improving searchability via Grafana. Implemented comprehensive monitoring with **Prometheus**,
-  drastically reducing mean-time-to-recovery (MTTR).
-- **Security:** Currently redesigning the Authentication and Authorization framework to meet modern security standards,
-  utilizing TDD to validate complex permission logic.
-
-**Independent Technical Leadership**
-
-- **Research & Decision Making:** Responsible for evaluating and selecting technical solutions suited for the company's
-  scale. Evaluated and rejected **Kafka** as overkill; prototyped **HashiCorp Nomad** before selecting **EKS**;
-  independently drove the adoption of **ClickHouse** for analytics.
-- **GCP Cost & Storage Optimization:** Reduced cloud spend by implementing lifecycle policies for storage buckets (
-  Standard vs. Coldline/Archive) and configuring automated disk snapshots for disaster recovery.
-- **Database Management:** Managed production **MongoDB** (currently standalone), planning a zero-downtime migration to
-  a **Replica Set** for high availability.
+4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company. I design at the protocol level when needed — custom binary over UDP, kernel-level traffic routing, nftables packet reflection. I publish the tools I build: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. TDD is non-negotiable across every language and every project.
 
 ---
 
-### **Key Projects & Open Source**
+## Experience
 
-- **assertG** ([github.com/sku0x20/assertG](https://github.com/sku0x20/assertG)): A lightweight, fluent assertion
-  library for **Go**, developed to enable **AssertJ-style testing patterns** in the Go ecosystem.
-- **Relay** ([github.com/sku0x20/relay](https://github.com/sku0x20/relay)): High-performance networking experiments
-  using **Zig**, focusing on low-level memory management and speed, validated through rigorous unit testing.
-- **Stopgap** ([github.com/sku0x20/stopgap](https://github.com/sku0x20/stopgap)): A **fully TDD-developed** microservice
-  kotlin template built with **Helidon SE** and Virtual Threads. Selected Helidon SE after evaluating Quarkus/Micronaut
-  to achieve maximum control and simplicity, bypassing Netty for a lightweight, high-performance architecture.
-- **K8s & Terraform Configs**: Public repositories demonstrating best-practices for Infrastructure as Code and
-  Kubernetes manifest management.
+### eGlu Smart Homes (WiZNSystems)
+
+**Senior Systems Architect** · Apr 2026 – Present
+**Backend & Infrastructure Engineer** · Mar 2022 – May 2026
+
+*Bengaluru, India · 4+ years*
 
 ---
 
-### **Technical Skills**
+**Architecture & API Design**
 
-- **Languages:** Kotlin, Java, Go, Shell Scripting, Zig (Experimental), Python.
-- **Infrastructure:** Kubernetes (EKS), Docker, Terraform, Kafka (Researching), Shell Scripting, Linux (Debian/Ubuntu).
-- **Databases:** ClickHouse (High Performance), PostgreSQL, MongoDB, Redis.
-- **Observability & Profiling:** Grafana, Loki, Prometheus, **async-profiler**, **JMC**, **VisualVM**, **IntelliJ
-  Profiler**, Flame Graphs.
-- **Networking & RPC:** **gRPC**, Protocol Buffers, TCP/UDP, Socket Programming.
-- **Methodologies:** **TDD**, Clean Architecture, CI/CD, GitOps, Microservices. Actively Researching **High-Performance
-  Data Systems** (ScyllaDB, VictoriaMetrics, TigerBeetle).
+- Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status. App and firmware teams build against these before a line of code is written.
+- Promoted to Sr. Systems Architect in Apr 2026. Now lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.
+
+**IoT Protocol & Real-time Systems**
+
+- Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.
+- Built a low-level UDP echo server using nftables to handle NAT traversal — shifted packet reflection from userspace to kernel, bypassing conntrack overhead.
+- Tuned kernel parameters for high-throughput IoT workloads (socket buffers, IP forwarding, connection tracking table).
+
+**Platform & Automation Engine**
+
+- Built the scene and rule automation engine: multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.
+- Built the device provisioning system from scratch (extracted from monolith): hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes, DALI sub-type handling.
+- Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.
+- Built a feature flags system; introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs.
+
+**Performance Engineering**
+
+- ClickHouse migration: rewrote core ingestion pipeline in Go, achieved **95%+ storage reduction** (90 GB → 3.7 GB, 25 GB → 780 MB) via schema design and specialized codecs.
+- JVM profiling with async-profiler and flame graphs — eliminated CPU spikes from per-packet object allocations using ThreadLocal; tuned GC for throughput.
+- Zero-downtime blue-green deploys via iptables: flushed conntrack for immediate cut-over, applied rules to both PREROUTING and OUTPUT chains for internal routing.
+- Implemented structured ThreadPool error handling after debugging silently swallowed exceptions in async paths (no logs, no traces — the bug that inspired [the blog post](https://eglu.tech/blog/java-exceptions-swallowed)).
+
+**Infrastructure & Reliability**
+
+- Migrated disk-based logging to Loki; built Prometheus + Grafana monitoring — significantly reduced MTTR.
+- Architected EKS migration using Terraform; evaluated HashiCorp Nomad first, selected EKS.
+- Implemented TLS client authentication with a custom CA and certificate revocation list (CRL) in Go.
+- Maintained production Linux systems: kernel tuning, live Debian/Ubuntu upgrades, `tcpdump`, `strace`, `sar`, `iotop`.
+- Built and maintained GitHub Actions CI/CD pipelines for automated testing, building, and deployment.
+
+**Codebase & Quality**
+
+- Migrated core monolith (Spring 4 / Java) to Spring Boot 2.7+ / Kotlin — 100% TDD throughout to prevent regressions.
+- Decoupled monolith into gRPC microservices.
+- Led technical recruitment: designed coding challenges, conducted interviews.
 
 ---
 
-### **Education & Continuous Learning**
+## Open Source
 
-- **Computer Science & Engineering** | Undergraduate Coursework
-- **Independent Research & Self-Directed Learning:** Proactive learner with a relentless curiosity for systems
-  engineering. Continuously mastering new technologies through deep-dives into documentation, RFCs, and hands-on
-  experimentation.
-- **Technical Bibliography:**
-    - **Architecture & Patterns:**
-        - *Patterns of Enterprise Application Architecture*
-        - *Pattern-Oriented Software Architecture: A System of Patterns, Volume 1*
-        - *Clean Code*
-        - *Agile Software Development: Principles, Patterns, and Practices*
-    - **TDD & Testing:**
-        - *Test-Driven Development by Example*
-        - *Growing Object-Oriented Software, Guided by Tests*
-    - **Systems, Networking & Languages:**
-        - *Computer Networking: A Top-Down Approach*
-        - *Linux in Action*
-        - *Designing Data-Intensive Applications* (reading)
-        - *Elixir in Action* (reading)
-    - **Readlist:**
-        - *Domain-Driven Design: Tackling Complexity in the Heart of Software*
-        - *Extreme Programming Explained*
+**[stopgap](https://github.com/sku0x20/stopgap)** · Kotlin · Maven Central
+Microservice framework on Helidon SE (Nima) + Project Loom. Custom compile-time DI via KSP — no runtime reflection. Three-tier testing: unit → in-process integration server → Docker E2E via Testcontainers. Gradle plugin that wires the full build pipeline. Published at `dev.sku20.stopgap:*:2.8.0`.
+
+**[assertgo](https://github.com/sku0x20/assertgo)** · Go
+Type-safe assertion library with generics. Fluent API, chainable `Not()`, custom matchers, zero dependencies. v1.0.0.
+
+**[hrh](https://github.com/sku0x20/hrh)** · Rust
+Helm Release Helper — reads a YAML release declaration, invokes `helm upgrade --install`. Diff mode, `--atomic` rollback, chart versioning. Installable via `cargo install`.
+
+**[avoid](https://github.com/sku0x20/avoid)** · Shell
+Minimal Linux distribution based on Void Linux, built for servers and recovery disks. Ships `.img.gz` and `.qcow2` images via GitHub Actions releases.
+
+**[c_oop](https://github.com/sku0x20/c_oop)** · C
+OOP and London-style TDD in pure C. Polymorphism via interface structs, heap-allocated objects with constructors. v5.0.0, CI.
+
+---
+
+## Technical Writing
+
+Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM internals, and systems design.
+
+*Zero-Downtime Deployments with Iptables* · *Java Exceptions Swallowed: The ThreadPool Trap* · *ThreadLocal Optimizations and Project Loom* · *A Low-Level UDP Echo Server for NAT Traversal* · *What is Rate Limiting?* · *Optimizing Hex Formatting* · *Avoid — A Void Linux Distribution*
+
+---
+
+## Skills
+
+**Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell
+**Backend:** Spring Boot, Helidon SE, gRPC, Protocol Buffers
+**Infrastructure:** Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)
+**Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
+**Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
+**Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
+**Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal, DALI
+
+---
+
+## Reading
+
+*Patterns of Enterprise Application Architecture* · *Pattern-Oriented Software Architecture Vol. 1* · *Clean Code* · *Agile Software Development: Principles, Patterns, and Practices* · *Test-Driven Development by Example* · *Growing Object-Oriented Software, Guided by Tests* · *Computer Networking: A Top-Down Approach* · *Designing Data-Intensive Applications* (reading) · *Elixir in Action* (reading)
+
+**Readlist:** *Domain-Driven Design* · *Extreme Programming Explained*
