@@ -3,41 +3,175 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siddhant | Backend & Infra</title>
+    <title>Siddhant Kumar Upmanyu</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <canvas id="bg-canvas"></canvas>
-    <div class="terminal" id="terminal">
-        <div id="output"></div>
-        <div class="input-line">
-            <span class="prompt">guest@sku0x20:~$</span>
-            <input type="text" id="command-input" autocomplete="off" autofocus>
-        </div>
-    </div>
+    <main>
+        <header>
+            <h1>Siddhant Kumar Upmanyu</h1>
+            <p class="subtitle">Senior Systems Architect</p>
+            <nav class="links">
+                <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
+                <a href="https://eglu.tech" target="_blank">eglu.tech</a>
+                <a href="mailto:siddhantkumarupmanyu@gmail.com">email</a>
+            </nav>
+        </header>
 
-    <!-- GUI Interface (File Browser) -->
-    <div id="gui-interface" style="display: none;">
-        <div class="gui-header">
-            <div class="breadcrumbs" id="gui-breadcrumbs">~/</div>
-        </div>
-        <div class="gui-grid" id="gui-content">
-            <!-- Items injected by JS -->
-        </div>
-    </div>
+        <section class="bio">
+            <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company. I design at the protocol level when needed — custom binary over UDP, kernel-level traffic routing, nftables packet reflection. I publish the tools I build: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. TDD is non-negotiable across every language and every project.</p>
+        </section>
 
-    <!-- File Viewer Modal -->
-    <div id="file-viewer" style="display: none;">
-        <div class="viewer-header">
-            <span id="viewer-filename">filename.txt</span>
-            <button id="close-viewer-btn">[X] Close</button>
-        </div>
-        <div class="viewer-body" id="viewer-content"></div>
-    </div>
+        <section class="experience">
+            <h2>Experience</h2>
 
-    <!-- Floating Toggle Button -->
-    <button id="mode-toggle">GUI MODE</button>
+            <div class="company">
+                <div class="company-meta">
+                    <h3>eGlu Smart Homes <span class="muted">(WiZNSystems)</span></h3>
+                    <span class="muted">Bengaluru, India · 4+ years</span>
+                </div>
 
-    <script src="script.js"></script>
+                <div class="roles">
+                    <div class="role">
+                        <span class="role-title">Senior Systems Architect</span>
+                        <span class="role-period muted">Apr 2026 – Present</span>
+                    </div>
+                    <div class="role">
+                        <span class="role-title">Backend &amp; Infrastructure Engineer</span>
+                        <span class="role-period muted">Mar 2022 – Mar 2026</span>
+                    </div>
+                </div>
+
+                <div class="domain-group">
+                    <h4>Architecture &amp; API Design</h4>
+                    <ul>
+                        <li>Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status. App and firmware teams build against these before a line of code is written.</li>
+                        <li>Lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.</li>
+                    </ul>
+                </div>
+
+                <div class="domain-group">
+                    <h4>IoT Protocol &amp; Real-time Systems</h4>
+                    <ul>
+                        <li>Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.</li>
+                        <li>Pushed network work to the kernel when needed: nftables UDP echo server for NAT traversal (packet reflection without userspace), IP rate limiting via per-source dynamic sets at prerouting priority.</li>
+                        <li>Tuned kernel parameters for high-throughput IoT workloads: socket buffers, IP forwarding, connection tracking table size.</li>
+                    </ul>
+                </div>
+
+                <div class="domain-group">
+                    <h4>Platform &amp; Automation Engine</h4>
+                    <ul>
+                        <li>Built the scene and rule automation engine: multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.</li>
+                        <li>Built the device provisioning system from scratch (extracted from monolith): hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.</li>
+                        <li>Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.</li>
+                        <li>Built a feature flags system for controlled rollouts.</li>
+                        <li>Introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs — full CI pipeline: publish pact → can-i-deploy → release → mark deployed.</li>
+                    </ul>
+                </div>
+
+                <div class="domain-group">
+                    <h4>Performance Engineering</h4>
+                    <ul>
+                        <li>ClickHouse migration: rewrote core ingestion pipeline in Go, achieved <strong>95%+ storage reduction</strong> (90 GB → 3.7 GB, 25 GB → 780 MB) via schema design and specialized codecs.</li>
+                        <li>JVM profiling with async-profiler and flame graphs — eliminated CPU spikes from per-packet object allocations using ThreadLocal; tuned GC for throughput.</li>
+                        <li>Zero-downtime blue-green deploys via iptables: flushed conntrack for immediate cut-over, applied rules to both PREROUTING and OUTPUT chains for internal routing.</li>
+                        <li>Implemented structured ThreadPool error handling after debugging silently swallowed exceptions in async paths (no logs, no traces — the bug that inspired <a href="https://eglu.tech/blog/java-exceptions-swallowed" target="_blank">the blog post</a>).</li>
+                    </ul>
+                </div>
+
+                <div class="domain-group">
+                    <h4>Infrastructure &amp; Reliability</h4>
+                    <ul>
+                        <li>Migrated disk-based logging to Loki; built Prometheus + Grafana monitoring — significantly reduced MTTR.</li>
+                        <li>Architected EKS migration using Terraform; evaluated HashiCorp Nomad first, selected EKS.</li>
+                        <li>Implemented TLS client authentication with a custom CA and certificate revocation list (CRL) in Go.</li>
+                        <li>Maintained production Linux systems: kernel tuning, live Debian/Ubuntu upgrades, <code>tcpdump</code>, <code>strace</code>, <code>sar</code>, <code>iotop</code>.</li>
+                        <li>Built and maintained GitHub Actions CI/CD pipelines for automated testing, building, and deployment.</li>
+                    </ul>
+                </div>
+
+                <div class="domain-group">
+                    <h4>Codebase &amp; Quality</h4>
+                    <ul>
+                        <li>Migrated core monolith (Spring 4 / Java) to Spring Boot 2.7+ / Kotlin — 100% TDD throughout to prevent regressions.</li>
+                        <li>Decoupled monolith into gRPC microservices.</li>
+                        <li>Led technical recruitment: designed coding challenges, conducted interviews.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="open-source">
+            <h2>Open Source</h2>
+
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/stopgap" target="_blank">stopgap</a>
+                    <span class="muted">Kotlin · Maven Central</span>
+                </div>
+                <p>Microservice framework on Helidon SE (Nima) + Project Loom. Custom compile-time DI via KSP — no runtime reflection. Three-tier testing: unit → in-process integration server → Docker E2E via Testcontainers. Gradle plugin that wires the full build pipeline. Published at <code>dev.sku20.stopgap:*:2.8.0</code>.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/assertgo" target="_blank">assertgo</a>
+                    <span class="muted">Go</span>
+                </div>
+                <p>Type-safe assertion library with generics. Fluent API, chainable <code>Not()</code>, custom matchers, zero dependencies. v1.0.0.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/hrh" target="_blank">hrh</a>
+                    <span class="muted">Rust</span>
+                </div>
+                <p>Helm Release Helper — reads a YAML release declaration, invokes <code>helm upgrade --install</code>. Diff mode, <code>--atomic</code> rollback, chart versioning. Installable via <code>cargo install</code>.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/avoid" target="_blank">avoid</a>
+                    <span class="muted">Shell</span>
+                </div>
+                <p>Minimal Linux distribution based on Void Linux, built for servers and recovery disks. Ships <code>.img.gz</code> and <code>.qcow2</code> images via GitHub Actions releases.</p>
+            </div>
+
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/c_oop" target="_blank">c_oop</a>
+                    <span class="muted">C</span>
+                </div>
+                <p>OOP and London-style TDD in pure C. Polymorphism via interface structs, heap-allocated objects with constructors. v5.0.0, CI.</p>
+            </div>
+        </section>
+
+        <section class="writing">
+            <h2>Technical Writing</h2>
+            <p class="writing-intro">Writing at <a href="https://eglu.tech" target="_blank">eglu.tech</a> about production engineering, JVM internals, and systems design.</p>
+            <ul class="articles">
+                <li>Zero-Downtime Deployments with Iptables</li>
+                <li>Java Exceptions Swallowed: The ThreadPool Trap</li>
+                <li>ThreadLocal Optimizations and Project Loom</li>
+                <li>A Low-Level UDP Echo Server for NAT Traversal</li>
+                <li>What is Rate Limiting?</li>
+                <li>Optimizing Hex Formatting</li>
+                <li>Avoid — A Void Linux Distribution</li>
+            </ul>
+        </section>
+
+        <section class="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
+                <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
+                <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
+                <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
+                <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
+                <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
+                <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
+            </ul>
+        </section>
+    </main>
 </body>
 </html>
