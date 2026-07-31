@@ -81,6 +81,13 @@ OOP and London-style TDD in pure C. Polymorphism via interface structs, heap-all
 
 ---
 
+## Publications
+
+**[Connection-Agnostic Presence Tracking for Stateless Distributed Backends](https://doi.org/10.5281/zenodo.21717242)** · Preprint · Zenodo
+Redis-based architecture for tracking IoT device online/offline status across stateless distributed backends — sorted sets scored by expiry deadlines, throttled batch writes, asymmetric fault-tolerance guarantees ensuring offline transitions are never lost. Derives worst-case detection latency bounds. v1.3.0.
+
+---
+
 ## Technical Writing
 
 Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM internals, and systems design.
