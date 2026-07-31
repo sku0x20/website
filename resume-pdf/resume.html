@@ -5,6 +5,19 @@
 <title>Siddhant Kumar Upmanyu — Resume</title>
 <link rel="stylesheet" href="../style.css">
 <style>
+  /* Light theme for print — the site's --bg/--text/etc are tuned for
+     a dark screen background, which reads poorly on printed paper. */
+  :root {
+    --bg: #ffffff;
+    --text: #2a2a2a;
+    --muted: #6e6e6e;
+    --accent: #000000;
+    --border: #d9d9d9;
+    --code-bg: #f0f0f0;
+  }
+  code {
+    color: #3a3a3a;
+  }
   /* Print overrides: vertical spacing comes from the PDF page margin
      (set via Puppeteer), not from container padding — padding on a
      flowed box only appears at the true start/end of the document,
