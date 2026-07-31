@@ -110,9 +110,14 @@ Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM 
 
 ## Reading
 
-- *Patterns of Enterprise Application Architecture* · *Pattern-Oriented Software Architecture Vol. 1*
-- *Clean Code* · *Agile Software Development: Principles, Patterns, and Practices*
-- *Test-Driven Development by Example* · *Growing Object-Oriented Software, Guided by Tests*
-- *Computer Networking: A Top-Down Approach* · *Designing Data-Intensive Applications* (reading) · *Elixir in Action* (reading)
+- *Patterns of Enterprise Application Architecture*
+- *Pattern-Oriented Software Architecture Vol. 1*
+- *Clean Code*
+- *Agile Software Development: Principles, Patterns, and Practices*
+- *Test-Driven Development by Example*
+- *Growing Object-Oriented Software, Guided by Tests*
+- *Computer Networking: A Top-Down Approach*
+- *Designing Data-Intensive Applications* (reading)
+- *Elixir in Action* (reading)
 
 **Readlist:** *Domain-Driven Design* · *Extreme Programming Explained*
