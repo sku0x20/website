@@ -1,0 +1,119 @@
+/* — Page intro sections (About / Blog headers) — */
+
+.section {
+    padding: 64px 48px;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.section-intro {
+    padding: 80px 48px;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.section-intro h1 {
+    font-size: 40px;
+    margin-bottom: 24px;
+}
+
+.section-intro p {
+    font-size: 17px;
+    max-width: 680px;
+    opacity: 0.85;
+}
+
+.section-label {
+    font-size: 14px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-700);
+    margin-bottom: 28px;
+}
+
+/* — Skill chips — */
+
+.chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.chip {
+    font-size: 13px;
+    padding: 8px 14px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+}
+
+/* — Values grid — */
+
+.value-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 2px;
+    background: var(--color-divider);
+}
+
+.value-cell {
+    background: var(--color-bg);
+    padding: 0 28px;
+}
+
+.value-cell:first-child {
+    padding-left: 0;
+}
+
+.value-cell:last-child {
+    padding-right: 0;
+}
+
+.value-cell h3 {
+    font-size: 19px;
+    margin-bottom: 10px;
+}
+
+.value-cell p {
+    font-size: 14px;
+    opacity: 0.75;
+}
+
+/* — Reading list — */
+
+.reading-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 24px;
+}
+
+.reading-list:last-child {
+    margin-bottom: 0;
+}
+
+.reading-list li {
+    font-size: 14px;
+    opacity: 0.85;
+    padding-left: 20px;
+    position: relative;
+}
+
+.reading-list li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    opacity: 0.55;
+}
+
+.reading-sublabel {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    opacity: 0.55;
+    margin: 24px 0 12px;
+}
+
+/* — Resume section — */
+
+.section-resume {
+    padding: 56px 48px;
+}

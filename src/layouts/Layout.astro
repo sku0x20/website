@@ -1,4 +1,13 @@
 ---
+import '../styles/tokens.css';
+import '../styles/nav.css';
+import '../styles/buttons.css';
+import '../styles/home.css';
+import '../styles/about.css';
+import '../styles/blog.css';
+import '../styles/article.css';
+import '../styles/responsive.css';
+
 interface Props {
     title: string;
 }
@@ -14,7 +23,6 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
-    <link rel="stylesheet" href="/style.css">
 </head>
 <body>
     <nav class="nav">
