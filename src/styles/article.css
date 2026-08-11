@@ -1,5 +1,5 @@
 .article-header {
-    padding: 80px 48px 40px 64px;
+    padding: 80px 48px 40px 96px;
     border-bottom: 2px solid var(--color-divider);
 }
 
@@ -26,7 +26,7 @@
 }
 
 .article-body {
-    padding: 48px 48px 96px 64px;
+    padding: 48px 48px 96px 96px;
 }
 
 .prose {
