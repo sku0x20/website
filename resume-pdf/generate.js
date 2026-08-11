@@ -11,7 +11,7 @@ const CHROME_PATH = process.env.CHROME_PATH || '/Applications/Google Chrome.app/
   const page = await browser.newPage();
   await page.goto('file://' + path.join(__dirname, 'resume.html'), { waitUntil: 'networkidle0' });
   await page.pdf({
-    path: path.join(__dirname, '..', 'resume.pdf'),
+    path: path.join(__dirname, '..', 'public', 'resume.pdf'),
     format: 'Letter',
     printBackground: true,
     // Real per-page margins — not container padding, which only shows
