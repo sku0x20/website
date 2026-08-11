@@ -10,6 +10,19 @@
     --color-divider: color-mix(in srgb, #201e1d 40%, transparent);
     --font-heading: "Archivo", system-ui, sans-serif;
     --font-body: "Archivo", system-ui, sans-serif;
+
+    /* Shiki (code block) colors — flat and monochrome, matching the rest of the design */
+    --astro-code-color-background: var(--color-surface);
+    --astro-code-color-text: var(--color-text);
+    --astro-code-token-constant: var(--color-accent-700);
+    --astro-code-token-string: var(--color-accent-700);
+    --astro-code-token-comment: color-mix(in srgb, var(--color-text) 55%, transparent);
+    --astro-code-token-keyword: var(--color-text);
+    --astro-code-token-parameter: var(--color-text);
+    --astro-code-token-function: var(--color-text);
+    --astro-code-token-string-expression: var(--color-accent-700);
+    --astro-code-token-punctuation: var(--color-text);
+    --astro-code-token-link: var(--color-accent-700);
 }
 
 *, *::before, *::after {
@@ -318,8 +331,15 @@ a:hover {
 }
 
 .post-card {
+    display: block;
     background: var(--color-bg);
     padding: 32px;
+    color: inherit;
+    text-decoration: none;
+}
+
+.post-card:hover h3 {
+    color: var(--color-accent-600);
 }
 
 .post-kicker {
@@ -346,15 +366,135 @@ a:hover {
     opacity: 0.55;
 }
 
-.blog-outlink {
-    padding: 0 48px 96px;
-    font-size: 14px;
+/* — Article (single post) — */
+
+.article-header {
+    padding: 80px 48px 40px;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.back-link {
+    display: inline-block;
+    font-size: 13px;
+    opacity: 0.7;
+    margin-bottom: 24px;
+}
+
+.back-link:hover {
+    color: var(--color-accent-600);
+    opacity: 1;
+}
+
+.article-header .post-kicker {
+    margin-bottom: 16px;
+}
+
+.article-header h1 {
+    font-size: 40px;
+    max-width: 780px;
+    margin-bottom: 16px;
+}
+
+.article-body {
+    padding: 48px 48px 96px;
+}
+
+.prose {
+    max-width: 720px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.prose > *:first-child {
+    margin-top: 0;
+}
+
+.prose p {
+    margin: 0 0 20px;
+}
+
+.prose h2 {
+    font-size: 26px;
+    margin: 40px 0 16px;
+}
+
+.prose h3 {
+    font-size: 20px;
+    margin: 32px 0 12px;
+}
+
+.prose h4 {
+    font-size: 17px;
+    margin: 24px 0 10px;
+}
+
+.prose strong {
+    font-weight: 800;
+}
+
+.prose ul, .prose ol {
+    margin: 0 0 20px;
+    padding-left: 24px;
+}
+
+.prose li {
+    margin-bottom: 8px;
+}
+
+.prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.prose code {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    font-size: 0.85em;
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: 2px 6px;
+}
+
+.prose pre {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 0 0 24px;
+}
+
+.prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.prose blockquote {
+    margin: 0 0 24px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-accent);
+    opacity: 0.85;
+    font-style: italic;
+}
+
+.prose img {
+    max-width: 100%;
+    margin: 8px 0 24px;
+    border: 1px solid var(--color-divider);
+}
+
+.prose hr {
+    border: 0;
+    height: 2px;
+    background: var(--color-divider);
+    margin: 40px 0;
 }
 
 /* — Mobile — */
 
 @media (max-width: 700px) {
-    .nav, .hero, .section, .section-intro, .section-resume, .blog-header, .blog-grid-wrap, .blog-outlink, .site-footer {
+    .nav, .hero, .section, .section-intro, .section-resume, .blog-header, .blog-grid-wrap, .article-header, .article-body, .site-footer {
         padding-left: 24px;
         padding-right: 24px;
     }
