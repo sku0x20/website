@@ -20,17 +20,19 @@
 .blog-grid {
     display: flex;
     flex-direction: column;
-    gap: 2px;
-    background: var(--color-divider);
 }
 
 .post-card {
     display: block;
     max-width: 680px;
-    background: var(--color-bg);
     padding: 28px 0;
+    border-bottom: 2px solid var(--color-divider);
     color: inherit;
     text-decoration: none;
+}
+
+.post-card:last-child {
+    border-bottom: none;
 }
 
 .post-card:hover h3 {
