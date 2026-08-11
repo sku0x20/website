@@ -36,28 +36,6 @@
   h2, h3, h4 {
     break-after: avoid;
   }
-  .reading {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  .reading li {
-    font-size: 0.875rem;
-    color: var(--text);
-    padding-left: 20px;
-    position: relative;
-  }
-  .reading li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
-  .readlist {
-    margin-top: 16px;
-    font-size: 0.875rem;
-  }
 </style>
 </head>
 <body>
@@ -78,8 +56,21 @@
         <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company. I design at the protocol level when needed — custom binary over UDP, kernel-level traffic routing, nftables packet reflection. I publish the tools I build: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. TDD is non-negotiable across every language and every project.</p>
     </section>
 
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
+            <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
+            <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
+            <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
+            <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
+            <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
+            <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
+        </ul>
+    </section>
+
     <section class="experience">
-        <h2>Experience</h2>
+        <h2>Work Experience</h2>
 
         <div class="company">
             <div class="company-meta">
@@ -158,6 +149,11 @@
         </div>
     </section>
 
+    <section class="education">
+        <h2>Education</h2>
+        <p><strong>BCA</strong> from Maharaja Agrasen Himalayan Garhwal University <span class="muted">· 2019–2022</span></p>
+    </section>
+
     <section class="open-source">
         <h2>Open Source</h2>
 
@@ -213,47 +209,6 @@
         </div>
     </section>
 
-    <section class="writing">
-        <h2>Technical Writing</h2>
-        <p class="writing-intro">Writing at <a href="https://eglu.tech">eglu.tech</a> about production engineering, JVM internals, and systems design.</p>
-        <ul class="articles">
-            <li>Zero-Downtime Deployments with Iptables</li>
-            <li>Java Exceptions Swallowed: The ThreadPool Trap</li>
-            <li>ThreadLocal Optimizations and Project Loom</li>
-            <li>A Low-Level UDP Echo Server for NAT Traversal</li>
-            <li>What is Rate Limiting?</li>
-            <li>Optimizing Hex Formatting</li>
-            <li>Avoid — A Void Linux Distribution</li>
-        </ul>
-    </section>
-
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
-            <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
-            <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
-            <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
-            <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
-            <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
-            <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
-        </ul>
-    </section>
-
-    <section class="reading-section">
-        <h2>Reading</h2>
-        <ul class="reading">
-            <li>Patterns of Enterprise Application Architecture</li>
-            <li>Pattern-Oriented Software Architecture Vol. 1</li>
-            <li>Clean Code</li>
-            <li>Agile Software Development: Principles, Patterns, and Practices</li>
-            <li>Test-Driven Development by Example</li>
-            <li>Growing Object-Oriented Software, Guided by Tests</li>
-            <li>Computer Networking: A Top-Down Approach</li>
-            <li>Designing Data-Intensive Applications (reading)</li>
-            <li>Elixir in Action (reading)</li>
-        </ul>
-        <p class="readlist"><strong>Readlist:</strong> <span class="muted">Domain-Driven Design · Extreme Programming Explained</span></p>
     </section>
 </main>
 </body>

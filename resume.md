@@ -9,7 +9,19 @@
 
 ---
 
-## Experience
+## Skills
+
+- **Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell
+- **Frameworks & Protocols:** Spring Boot, Helidon SE, gRPC, Protocol Buffers
+- **Infrastructure:** Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)
+- **Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
+- **Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
+- **Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
+- **Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal
+
+---
+
+## Work Experience
 
 ### eGlu Smart Homes (WiZNSystems)
 
@@ -62,6 +74,12 @@
 
 ---
 
+## Education
+
+**BCA** from Maharaja Agrasen Himalayan Garhwal University · 2019–2022
+
+---
+
 ## Open Source
 
 **[stopgap](https://github.com/sku0x20/stopgap)** · Kotlin · Maven Central
@@ -86,38 +104,3 @@ OOP and London-style TDD in pure C. Polymorphism via interface structs, heap-all
 **[Connection-Agnostic Presence Tracking for Stateless Distributed Backends](https://doi.org/10.5281/zenodo.21717242)** · Preprint · Zenodo
 Redis-based architecture for tracking IoT device online/offline status across stateless distributed backends — sorted sets scored by expiry deadlines, throttled batch writes, asymmetric fault-tolerance guarantees ensuring offline transitions are never lost. Derives worst-case detection latency bounds. v1.3.0.
 
----
-
-## Technical Writing
-
-Writing at **[eglu.tech](https://eglu.tech)** about production engineering, JVM internals, and systems design.
-
-*Zero-Downtime Deployments with Iptables* · *Java Exceptions Swallowed: The ThreadPool Trap* · *ThreadLocal Optimizations and Project Loom* · *A Low-Level UDP Echo Server for NAT Traversal* · *What is Rate Limiting?* · *Optimizing Hex Formatting* · *Avoid — A Void Linux Distribution*
-
----
-
-## Skills
-
-- **Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell
-- **Frameworks & Protocols:** Spring Boot, Helidon SE, gRPC, Protocol Buffers
-- **Infrastructure:** Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)
-- **Databases:** ClickHouse, MongoDB, PostgreSQL, Redis
-- **Observability:** Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs
-- **Testing:** TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers
-- **Networking:** TCP/UDP socket programming, iptables, nftables, NAT traversal
-
----
-
-## Reading
-
-- *Patterns of Enterprise Application Architecture*
-- *Pattern-Oriented Software Architecture Vol. 1*
-- *Clean Code*
-- *Agile Software Development: Principles, Patterns, and Practices*
-- *Test-Driven Development by Example*
-- *Growing Object-Oriented Software, Guided by Tests*
-- *Computer Networking: A Top-Down Approach*
-- *Designing Data-Intensive Applications* (reading)
-- *Elixir in Action* (reading)
-
-**Readlist:** *Domain-Driven Design* · *Extreme Programming Explained*
