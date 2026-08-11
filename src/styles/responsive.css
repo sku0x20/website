@@ -21,10 +21,6 @@
         padding: 0 0 24px;
     }
 
-    .blog-grid {
-        grid-template-columns: 1fr;
-    }
-
     .site-footer {
         flex-direction: column;
         align-items: flex-start;

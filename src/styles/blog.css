@@ -18,16 +18,17 @@
 }
 
 .blog-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: column;
     gap: 2px;
     background: var(--color-divider);
 }
 
 .post-card {
     display: block;
+    max-width: 680px;
     background: var(--color-bg);
-    padding: 32px;
+    padding: 28px 0;
     color: inherit;
     text-decoration: none;
 }
