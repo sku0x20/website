@@ -226,7 +226,15 @@ a:hover {
 
 .value-cell {
     background: var(--color-bg);
-    padding: 0 28px 0 0;
+    padding: 0 28px;
+}
+
+.value-cell:first-child {
+    padding-left: 0;
+}
+
+.value-cell:last-child {
+    padding-right: 0;
 }
 
 .value-cell h3 {
