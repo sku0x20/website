@@ -1,6 +1,12 @@
 .article-header {
-    padding: 80px 48px 40px 144px;
+    padding: 80px 0 40px;
     border-bottom: 2px solid var(--color-divider);
+}
+
+.article-header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px 0 80px;
 }
 
 .back-link {
@@ -15,18 +21,24 @@
     opacity: 1;
 }
 
-.article-header .post-kicker {
+.article-header-inner .post-kicker {
     margin-bottom: 16px;
 }
 
-.article-header h1 {
+.article-header-inner h1 {
     font-size: 40px;
     max-width: 780px;
     margin-bottom: 16px;
 }
 
 .article-body {
-    padding: 48px 48px 96px 144px;
+    padding: 48px 0 96px;
+}
+
+.article-body-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 32px 0 80px;
 }
 
 .prose {
