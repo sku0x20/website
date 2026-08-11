@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Siddhant Kumar Upmanyu — Resume</title>
-<link rel="stylesheet" href="../style.css">
+<link rel="stylesheet" href="../public/style.css">
 <style>
   /* Light theme for print — the site's --bg/--text/etc are tuned for
      a dark screen background, which reads poorly on printed paper. */
@@ -36,27 +36,21 @@
   h2, h3, h4 {
     break-after: avoid;
   }
-  .reading {
-    list-style: none;
-    display: flex;
+  /* Stack label/value and title/date pairs instead of laying them out
+     side-by-side with justify-content: space-between. PDF text
+     extractors (what ATS parsers use) cluster text by x/y position —
+     when a right-hand value wraps to a second line, its row collides
+     with the next label and the reading order gets scrambled. A
+     single vertical column always extracts top-to-bottom, in order. */
+  .company-meta,
+  .role,
+  .skills li {
     flex-direction: column;
-    gap: 10px;
+    align-items: flex-start;
+    gap: 2px;
   }
-  .reading li {
-    font-size: 0.875rem;
-    color: var(--text);
-    padding-left: 20px;
-    position: relative;
-  }
-  .reading li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--muted);
-  }
-  .readlist {
-    margin-top: 16px;
-    font-size: 0.875rem;
+  .skill-label {
+    min-width: unset;
   }
 </style>
 </head>
@@ -75,11 +69,25 @@
     </header>
 
     <section class="bio">
-        <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company. I design at the protocol level when needed — custom binary over UDP, kernel-level traffic routing, nftables packet reflection. I publish the tools I build: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. TDD is non-negotiable across every language and every project.</p>
+        <h2>Profile Summary</h2>
+        <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company — from protocol design through production operations. Design at the protocol level when the problem calls for it: custom binary transports over UDP, kernel-level traffic routing, nftables packet reflection. Publish the tools that come out of that work: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. Treat TDD as non-negotiable across every language and project.</p>
+    </section>
+
+    <section class="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
+            <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
+            <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
+            <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
+            <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
+            <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
+            <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
+        </ul>
     </section>
 
     <section class="experience">
-        <h2>Experience</h2>
+        <h2>Work Experience</h2>
 
         <div class="company">
             <div class="company-meta">
@@ -101,61 +109,66 @@
             <div class="domain-group">
                 <h4>Architecture &amp; API Design</h4>
                 <ul>
-                    <li>Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status. App and firmware teams build against these before a line of code is written.</li>
-                    <li>Lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.</li>
+                    <li><strong>API Contract Ownership</strong>: Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status; app and firmware teams build against these before a line of code is written.</li>
+                    <li><strong>Technical Direction</strong>: Lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.</li>
                 </ul>
             </div>
 
             <div class="domain-group">
                 <h4>IoT Protocol &amp; Real-time Systems</h4>
                 <ul>
-                    <li>Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.</li>
-                    <li>Pushed network work to the kernel when needed: nftables UDP echo server for NAT traversal (packet reflection without userspace), IP rate limiting via per-source dynamic sets at prerouting priority.</li>
-                    <li>Tuned kernel parameters for high-throughput IoT workloads: socket buffers, IP forwarding, connection tracking table size.</li>
+                    <li><strong>Custom Protocol Design</strong>: Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.</li>
+                    <li><strong>Kernel-Level Networking</strong>: Pushed network work to the kernel when needed — nftables UDP echo server for NAT traversal (packet reflection without userspace), IP rate limiting via per-source dynamic sets at prerouting priority.</li>
+                    <li><strong>Kernel Tuning</strong>: Tuned kernel parameters for high-throughput IoT workloads — socket buffers, IP forwarding, connection tracking table size.</li>
                 </ul>
             </div>
 
             <div class="domain-group">
                 <h4>Platform &amp; Automation Engine</h4>
                 <ul>
-                    <li>Built the scene and rule automation engine: multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.</li>
-                    <li>Built the device provisioning system from scratch (extracted from monolith): hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.</li>
-                    <li>Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.</li>
-                    <li>Built a feature flags system for controlled rollouts.</li>
-                    <li>Introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs — full CI pipeline: publish pact → can-i-deploy → release → mark deployed.</li>
+                    <li><strong>Automation Engine</strong>: Built the scene and rule automation engine — multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.</li>
+                    <li><strong>Provisioning System</strong>: Built the device provisioning system from scratch (extracted from monolith) — hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.</li>
+                    <li><strong>Third-Party Integrations</strong>: Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.</li>
+                    <li><strong>Controlled Rollouts</strong>: Built a feature flags system for controlled rollouts.</li>
+                    <li><strong>Contract Testing</strong>: Introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs — full CI pipeline: publish pact → can-i-deploy → release → mark deployed.</li>
                 </ul>
             </div>
 
             <div class="domain-group">
                 <h4>Performance Engineering</h4>
                 <ul>
-                    <li>ClickHouse migration: rewrote core ingestion pipeline in Go, achieved <strong>95%+ storage reduction</strong> (90 GB → 3.7 GB, 25 GB → 780 MB) via schema design and specialized codecs.</li>
-                    <li>JVM profiling with async-profiler and flame graphs — eliminated CPU spikes from per-packet object allocations using ThreadLocal; tuned GC for throughput.</li>
-                    <li>Zero-downtime blue-green deploys via iptables: flushed conntrack for immediate cut-over, applied rules to both PREROUTING and OUTPUT chains for internal routing.</li>
-                    <li>Implemented structured ThreadPool error handling after debugging silently swallowed exceptions in async paths (no logs, no traces — the bug that inspired <a href="https://eglu.tech/blog/java-exceptions-swallowed">the blog post</a>).</li>
+                    <li><strong>Storage Optimization</strong>: ClickHouse migration — rewrote core ingestion pipeline in Go, achieved <strong>95%+ storage reduction</strong> (90 GB → 3.7 GB, 25 GB → 780 MB) via schema design and specialized codecs.</li>
+                    <li><strong>JVM Performance</strong>: Profiled with async-profiler and flame graphs — eliminated CPU spikes from per-packet object allocations using ThreadLocal; tuned GC for throughput.</li>
+                    <li><strong>Zero-Downtime Deploys</strong>: Blue-green deploys via iptables — flushed conntrack for immediate cut-over, applied rules to both PREROUTING and OUTPUT chains for internal routing.</li>
+                    <li><strong>Error Handling</strong>: Implemented structured ThreadPool error handling after debugging silently swallowed exceptions in async paths (no logs, no traces — the bug that inspired <a href="https://eglu.tech/blog/java-exceptions-swallowed">the blog post</a>).</li>
                 </ul>
             </div>
 
             <div class="domain-group">
                 <h4>Infrastructure &amp; Reliability</h4>
                 <ul>
-                    <li>Migrated disk-based logging to Loki; built Prometheus + Grafana monitoring — significantly reduced MTTR.</li>
-                    <li>Architected EKS migration using Terraform; evaluated HashiCorp Nomad first, selected EKS.</li>
-                    <li>Implemented TLS client authentication with a custom CA and certificate revocation list (CRL) in Go.</li>
-                    <li>Maintained production Linux systems: kernel tuning, live Debian/Ubuntu upgrades, <code>tcpdump</code>, <code>strace</code>, <code>sar</code>, <code>iotop</code>.</li>
-                    <li>Built and maintained GitHub Actions CI/CD pipelines for automated testing, building, and deployment.</li>
+                    <li><strong>Observability Overhaul</strong>: Migrated disk-based logging to Loki; built Prometheus + Grafana monitoring — significantly reduced MTTR.</li>
+                    <li><strong>Cloud Migration</strong>: Architected EKS migration using Terraform; evaluated HashiCorp Nomad first, selected EKS.</li>
+                    <li><strong>Security</strong>: Implemented TLS client authentication with a custom CA and certificate revocation list (CRL) in Go.</li>
+                    <li><strong>Systems Administration</strong>: Maintained production Linux systems — kernel tuning, live Debian/Ubuntu upgrades, <code>tcpdump</code>, <code>strace</code>, <code>sar</code>, <code>iotop</code>.</li>
+                    <li><strong>CI/CD</strong>: Built and maintained GitHub Actions pipelines for automated testing, building, and deployment.</li>
                 </ul>
             </div>
 
             <div class="domain-group">
                 <h4>Codebase &amp; Quality</h4>
                 <ul>
-                    <li>Migrated core monolith (Spring 4 / Java) to Spring Boot 2.7+ / Kotlin — 100% TDD throughout to prevent regressions.</li>
-                    <li>Decoupled monolith into gRPC microservices.</li>
-                    <li>Led technical recruitment: designed coding challenges, conducted interviews.</li>
+                    <li><strong>Framework Migration</strong>: Migrated core monolith (Spring 4 / Java) to Spring Boot 2.7+ / Kotlin — 100% TDD throughout to prevent regressions.</li>
+                    <li><strong>Microservices</strong>: Decoupled monolith into gRPC microservices.</li>
+                    <li><strong>Technical Hiring</strong>: Led technical recruitment — designed coding challenges, conducted interviews.</li>
                 </ul>
             </div>
         </div>
+    </section>
+
+    <section class="education">
+        <h2>Education</h2>
+        <p><strong>BCA</strong> from Maharaja Agrasen Himalayan Garhwal University <span class="muted">· 2019–2022</span></p>
     </section>
 
     <section class="open-source">
@@ -211,49 +224,6 @@
             </div>
             <p>Redis-based architecture for tracking IoT device online/offline status across stateless distributed backends — sorted sets scored by expiry deadlines, throttled batch writes, asymmetric fault-tolerance guarantees ensuring offline transitions are never lost. Derives worst-case detection latency bounds. v1.3.0.</p>
         </div>
-    </section>
-
-    <section class="writing">
-        <h2>Technical Writing</h2>
-        <p class="writing-intro">Writing at <a href="https://eglu.tech">eglu.tech</a> about production engineering, JVM internals, and systems design.</p>
-        <ul class="articles">
-            <li>Zero-Downtime Deployments with Iptables</li>
-            <li>Java Exceptions Swallowed: The ThreadPool Trap</li>
-            <li>ThreadLocal Optimizations and Project Loom</li>
-            <li>A Low-Level UDP Echo Server for NAT Traversal</li>
-            <li>What is Rate Limiting?</li>
-            <li>Optimizing Hex Formatting</li>
-            <li>Avoid — A Void Linux Distribution</li>
-        </ul>
-    </section>
-
-    <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
-            <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
-            <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
-            <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
-            <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
-            <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
-            <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
-        </ul>
-    </section>
-
-    <section class="reading-section">
-        <h2>Reading</h2>
-        <ul class="reading">
-            <li>Patterns of Enterprise Application Architecture</li>
-            <li>Pattern-Oriented Software Architecture Vol. 1</li>
-            <li>Clean Code</li>
-            <li>Agile Software Development: Principles, Patterns, and Practices</li>
-            <li>Test-Driven Development by Example</li>
-            <li>Growing Object-Oriented Software, Guided by Tests</li>
-            <li>Computer Networking: A Top-Down Approach</li>
-            <li>Designing Data-Intensive Applications (reading)</li>
-            <li>Elixir in Action (reading)</li>
-        </ul>
-        <p class="readlist"><strong>Readlist:</strong> <span class="muted">Domain-Driven Design · Extreme Programming Explained</span></p>
     </section>
 </main>
 </body>

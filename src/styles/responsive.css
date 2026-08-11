@@ -1,0 +1,41 @@
+@media (max-width: 700px) {
+    .nav, .hero, .section, .section-intro, .section-resume, .blog-header, .blog-grid-wrap, .site-footer {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .article-header-inner, .article-body-inner {
+        padding-left: 24px;
+        padding-right: 24px;
+    }
+
+    .hero {
+        padding-top: 72px;
+        padding-bottom: 56px;
+    }
+
+    .hero h1 {
+        font-size: 40px;
+    }
+
+    .value-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .value-cell {
+        padding: 24px 0;
+    }
+
+    .value-cell:first-child {
+        padding-top: 0;
+    }
+
+    .value-cell:last-child {
+        padding-bottom: 0;
+    }
+
+    .site-footer {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}

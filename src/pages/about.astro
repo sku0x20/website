@@ -1,0 +1,91 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const skills = [
+    'Systems Design',
+    'Distributed Systems',
+    'Cloud Infrastructure (GCP/AWS)',
+    'Kubernetes / EKS',
+    'Kotlin & Go',
+    'ClickHouse',
+    'Observability (Grafana/Loki)',
+    'Performance Engineering',
+];
+
+const values = [
+    {
+        title: 'TDD First',
+        body: 'London style — test against interfaces, test behavior, mocks as DRYed fakes. Non-negotiable across every language and project, not a phase I grew out of.',
+    },
+    {
+        title: 'Minimalism',
+        body: 'The smaller dependency wins by default. Every addition is a maintenance liability I have to justify keeping, not a convenience I get for free.',
+    },
+    {
+        title: 'First Principles',
+        body: "Understanding beats memorizing an API. I'd rather learn how a pattern or protocol actually works by building a rough version of it myself than lean on a framework's abstraction of it.",
+    },
+    {
+        title: 'Simplicity Over Cleverness',
+        body: 'Readable code beats clever code. I distrust magic — reflection, hidden containers, framework bloat — it\'s always the first thing that breaks at 2am.',
+    },
+];
+
+const reading = [
+    'Patterns of Enterprise Application Architecture',
+    'Pattern-Oriented Software Architecture Vol. 1',
+    'Clean Code',
+    'Agile Software Development: Principles, Patterns, and Practices',
+    'Test-Driven Development by Example',
+    'Growing Object-Oriented Software, Guided by Tests',
+    'Computer Networking: A Top-Down Approach',
+    'Designing Data-Intensive Applications (reading)',
+    'Elixir in Action (reading)',
+];
+
+const readlist = [
+    'Domain-Driven Design',
+    'Extreme Programming Explained',
+];
+---
+
+<Layout title="About — Siddhant Kumar Upmanyu">
+    <section class="section-intro">
+        <h1>About</h1>
+        <p>I'm a Senior Systems Architect at eGlu, part of WiZNSystems. My work sits at the intersection of platform design, distributed systems, and long-term infrastructure decisions &mdash; the kind that get more expensive to change the longer you wait.</p>
+    </section>
+
+    <section class="section">
+        <h2 class="section-label">Skills &amp; tools</h2>
+        <div class="chips">
+            {skills.map((skill) => <span class="chip">{skill}</span>)}
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-label">Values &amp; philosophy</h2>
+        <div class="value-grid">
+            {values.map((value) => (
+                <div class="value-cell">
+                    <h3>{value.title}</h3>
+                    <p>{value.body}</p>
+                </div>
+            ))}
+        </div>
+    </section>
+
+    <section class="section">
+        <h2 class="section-label">Bookshelf</h2>
+        <ul class="reading-list">
+            {reading.map((book) => <li>{book}</li>)}
+        </ul>
+        <div class="reading-sublabel">Readlist</div>
+        <ul class="reading-list">
+            {readlist.map((book) => <li>{book}</li>)}
+        </ul>
+    </section>
+
+    <section class="section-resume">
+        <a href="/resume.pdf" download="resume.pdf" class="btn btn-primary">Download resume (PDF)</a>
+    </section>
+</Layout>

@@ -1,0 +1,118 @@
+.article-header {
+    padding: 80px 0 40px;
+    border-bottom: 2px solid var(--color-divider);
+}
+
+.article-header-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 64px 0 160px;
+}
+
+.article-header-inner h1 {
+    font-size: 40px;
+    max-width: 780px;
+    margin-bottom: 16px;
+}
+
+.article-body {
+    padding: 48px 0 96px;
+}
+
+.article-body-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 64px 0 160px;
+}
+
+.prose {
+    max-width: 720px;
+    font-size: 16px;
+    line-height: 1.7;
+}
+
+.prose > *:first-child {
+    margin-top: 0;
+}
+
+.prose p {
+    margin: 0 0 20px;
+}
+
+.prose h2 {
+    font-size: 26px;
+    margin: 40px 0 16px;
+}
+
+.prose h3 {
+    font-size: 20px;
+    margin: 32px 0 12px;
+}
+
+.prose h4 {
+    font-size: 17px;
+    margin: 24px 0 10px;
+}
+
+.prose strong {
+    font-weight: 800;
+}
+
+.prose ul, .prose ol {
+    margin: 0 0 20px;
+    padding-left: 24px;
+}
+
+.prose li {
+    margin-bottom: 8px;
+}
+
+.prose a {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.prose code {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    font-size: 0.85em;
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: 2px 6px;
+}
+
+.prose pre {
+    background: var(--color-surface);
+    border: 1px solid var(--color-divider);
+    padding: 16px 20px;
+    overflow-x: auto;
+    margin: 0 0 24px;
+}
+
+.prose pre code {
+    background: none;
+    border: none;
+    padding: 0;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+.prose blockquote {
+    margin: 0 0 24px;
+    padding-left: 20px;
+    border-left: 2px solid var(--color-accent);
+    opacity: 0.85;
+    font-style: italic;
+}
+
+.prose img {
+    max-width: 100%;
+    margin: 8px 0 24px;
+    border: 1px solid var(--color-divider);
+}
+
+.prose hr {
+    border: 0;
+    height: 2px;
+    background: var(--color-divider);
+    margin: 40px 0;
+}
