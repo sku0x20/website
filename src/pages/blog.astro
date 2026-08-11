@@ -22,6 +22,7 @@ const posts = (await getCollection('blog')).sort(
                         <p>{post.data.description}</p>
                         <div class="post-meta-row">
                             <span class="post-meta">{post.data.date}</span>
+                            <span class="post-meta-bullet">&bull;</span>
                             <span class="post-kicker">{post.data.tag}</span>
                         </div>
                     </article>

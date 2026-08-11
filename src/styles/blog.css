@@ -61,8 +61,13 @@
 
 .post-meta-row {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 8px;
+}
+
+.post-meta-bullet {
+    font-size: 12px;
+    opacity: 0.4;
 }
 
 .post-meta {
