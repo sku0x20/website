@@ -2,7 +2,7 @@
 title: "Avoid - A Void Linux Distribution"
 description: "Creating a minimalist, server-oriented Linux distribution based on Void Linux to escape the bloat of systemd and unnecessary firmware."
 date: "Jun 9, 2026"
-tag: "Systems"
+tags: ["Systems"]
 ---
 
 I wanted a minimal system that I could use for build machines and occasional recovery. It was frustratingly difficult to find something that fit the bill; every distribution I tested felt bloated. Even "server" variants often came with more than I needed.

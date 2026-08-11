@@ -2,7 +2,7 @@
 title: "Optimizing Hex Formatting"
 description: "How a simple change from String.format to JDK 17's HexFormat removed a significant bottleneck in a high-throughput backend."
 date: "May 17, 2026"
-tag: "JVM"
+tags: ["JVM"]
 ---
 
 I was browsing YouTube recently and stumbled upon [this video](https://youtu.be/VYTF4KIF2z0?si=wcpaJfXKUyxdRilc) about performance. It reminded me of a similar optimization I tackled a few years back.

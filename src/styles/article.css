@@ -9,7 +9,10 @@
     padding: 0 32px 0 80px;
 }
 
-.article-header-inner .post-kicker {
+.post-kicker-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     margin-bottom: 16px;
 }
 

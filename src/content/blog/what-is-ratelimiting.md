@@ -2,7 +2,7 @@
 title: "WHAT is Ratelimiting??"
 description: "Deciphering rate limiting without using the word rate limit."
 date: "Jun 15, 2026"
-tag: "Systems"
+tags: ["Systems"]
 ---
 
 Rate-limiting, just like other buzzwords. The tech industry picks up words, throws them around, and somewhere the original meaning gets lost.
