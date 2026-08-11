@@ -18,16 +18,16 @@ const { title, date, tags } = post.data;
 <Layout title={`${title} — Siddhant Kumar Upmanyu`}>
     <section class="article-header">
         <div class="article-header-inner">
-            <div class="post-kicker-row">
-                {tags.map((t, i) => (
+            <h1>{title}</h1>
+            <div class="post-meta-row">
+                <span class="post-meta">{date}</span>
+                {tags.map((t) => (
                     <>
-                        {i > 0 && <span class="post-meta-bullet">&bull;</span>}
+                        <span class="post-meta-bullet">&bull;</span>
                         <span class="post-kicker">{t}</span>
                     </>
                 ))}
             </div>
-            <h1>{title}</h1>
-            <div class="post-meta">{date}</div>
         </div>
     </section>
 

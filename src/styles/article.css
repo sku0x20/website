@@ -9,13 +9,6 @@
     padding: 0 32px 0 80px;
 }
 
-.post-kicker-row {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    margin-bottom: 16px;
-}
-
 .article-header-inner h1 {
     font-size: 40px;
     max-width: 780px;
