@@ -24,7 +24,6 @@
 
 .post-card {
     display: block;
-    max-width: 680px;
     padding: 28px 0;
     border-bottom: 2px solid var(--color-divider);
     color: inherit;
@@ -54,6 +53,7 @@
 
 .post-card p {
     font-size: 14px;
+    max-width: 680px;
     opacity: 0.75;
     margin-bottom: 16px;
 }
