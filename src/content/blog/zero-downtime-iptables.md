@@ -2,7 +2,7 @@
 title: "Zero-Downtime Deployments with Iptables"
 description: "A technical walkthrough of achieving zero-downtime deployments using iptables and conntrack for a performance-critical backend."
 date: "Apr 6, 2026"
-tags: ["Infrastructure"]
+tags: ["Infrastructure", "Linux"]
 ---
 
 A backend that takes time to boot is a backend that causes downtime. In a real-time system, even a few seconds of unavailability can lead to missed packets, failed requests, and a poor user experience.

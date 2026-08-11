@@ -2,7 +2,7 @@
 title: "Java Exceptions Swallowed: The ThreadPool Trap"
 description: "Debugging silent failures in asynchronous Java code and understanding why ThreadPools might be swallowing your exceptions."
 date: "Mar 22, 2026"
-tags: ["JVM"]
+tags: ["JVM", "Java"]
 ---
 
 The other day, while debugging a production issue, I hit a frustrating wall: there were no error logs. I searched everywhere—Loki, `stderr`, `stdout`, container logs—but found nothing. Since the application was running in production, I couldn't simply attach a debugger. I had to rely on static analysis.

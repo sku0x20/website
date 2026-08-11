@@ -2,7 +2,7 @@
 title: "A Low-Level UDP Echo Server for NAT Traversal"
 description: "Exploring XDP, iptables, and nftables to build a high-performance UDP echo server in the Linux kernel."
 date: "Mar 17, 2026"
-tags: ["Networking"]
+tags: ["Networking", "Linux"]
 ---
 
 A common challenge with UDP-based systems is navigating **NAT (Network Address Translation)**. While IPv6 is designed to

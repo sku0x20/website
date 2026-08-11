@@ -2,7 +2,7 @@
 title: "Choosing Blog CMS"
 description: "Choosing the CMS for this blog"
 date: "Feb 28, 2026"
-tags: ["Meta"]
+tags: ["Meta", "Web Dev"]
 ---
 
 So many CMS softwares, fulfilling their own purpose, the needs of their niche users.
