@@ -36,6 +36,22 @@
   h2, h3, h4 {
     break-after: avoid;
   }
+  /* Stack label/value and title/date pairs instead of laying them out
+     side-by-side with justify-content: space-between. PDF text
+     extractors (what ATS parsers use) cluster text by x/y position —
+     when a right-hand value wraps to a second line, its row collides
+     with the next label and the reading order gets scrambled. A
+     single vertical column always extracts top-to-bottom, in order. */
+  .company-meta,
+  .role,
+  .skills li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+  .skill-label {
+    min-width: unset;
+  }
 </style>
 </head>
 <body>
