@@ -1,0 +1,53 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="About — Siddhant Kumar Upmanyu">
+    <header>
+        <h1>Siddhant Kumar Upmanyu</h1>
+        <p class="subtitle">About</p>
+        <nav class="links">
+            <a href="/">home</a>
+            <a href="/resume.pdf" target="_blank">resume.pdf</a>
+            <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
+            <a href="mailto:siddhantkumarupmanyu@gmail.com">email</a>
+        </nav>
+    </header>
+
+    <section class="bio">
+        <p>I care more about how software gets built than what it does. Every project on the home page is really the same handful of ideas — test-first, minimal dependencies, first principles over frameworks — applied to a different problem.</p>
+    </section>
+
+    <section class="philosophy">
+        <h2>Philosophy</h2>
+        <div class="domain-group">
+            <ul>
+                <li><strong>TDD First</strong>: London style — test against interfaces, test behavior, mocks as DRYed fakes. Non-negotiable across every language and project, not a phase I grew out of.</li>
+                <li><strong>Minimalism</strong>: Reach for the smaller dependency — Helidon SE over Spring Boot, vanilla JS over React, Void Linux over Ubuntu. Every dependency is a maintenance liability I have to justify keeping.</li>
+                <li><strong>First Principles</strong>: Understanding beats memorizing an API. I've written OOP in pure C to see how the pattern actually works, built a TCP server in Zig, put together a custom Linux distro from scratch.</li>
+                <li><strong>Simplicity Over Cleverness</strong>: Readable code beats clever code. I distrust magic — reflection, hidden containers, framework bloat — it's always the first thing that breaks at 2am.</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="reading">
+        <h2>Reading</h2>
+        <ul class="articles">
+            <li>Patterns of Enterprise Application Architecture</li>
+            <li>Pattern-Oriented Software Architecture Vol. 1</li>
+            <li>Clean Code</li>
+            <li>Agile Software Development: Principles, Patterns, and Practices</li>
+            <li>Test-Driven Development by Example</li>
+            <li>Growing Object-Oriented Software, Guided by Tests</li>
+            <li>Computer Networking: A Top-Down Approach</li>
+            <li>Designing Data-Intensive Applications (reading)</li>
+            <li>Elixir in Action (reading)</li>
+        </ul>
+        <p class="readlist"><strong>Readlist:</strong> <span class="muted">Domain-Driven Design · Extreme Programming Explained</span></p>
+    </section>
+
+    <section class="resume">
+        <h2>Resume</h2>
+        <p><a href="/resume.pdf" target="_blank">Download resume.pdf →</a></p>
+    </section>
+</Layout>

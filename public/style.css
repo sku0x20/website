@@ -251,6 +251,11 @@ h2 {
     color: var(--muted);
 }
 
+.readlist {
+    margin-top: 16px;
+    font-size: 0.875rem;
+}
+
 /* Skills */
 
 .skills ul {
