@@ -2,7 +2,7 @@
 title: "ThreadLocal Optimizations and Project Loom"
 description: "An optimization journey from identifying high-allocation hot paths with Async Profiler to leveraging ThreadLocal, and why Project Loom is forcing us to rethink these classic patterns."
 date: "Mar 29, 2026"
-tags: ["JVM", "Performance"]
+tags: ["JVM", "Performance", "Kotlin"]
 ---
 
 This is going to be one of those optimization episodes where simple tricks can yield massive performance gains.
