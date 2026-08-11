@@ -1,12 +1,12 @@
 /* — Page intro sections (About / Blog headers) — */
 
 .section {
-    padding: 64px 48px;
+    padding: 64px 96px;
     border-bottom: 2px solid var(--color-divider);
 }
 
 .section-intro {
-    padding: 80px 48px;
+    padding: 80px 96px;
     border-bottom: 2px solid var(--color-divider);
 }
 
@@ -115,5 +115,5 @@
 /* — Resume section — */
 
 .section-resume {
-    padding: 56px 48px;
+    padding: 56px 96px;
 }

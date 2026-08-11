@@ -1,5 +1,5 @@
 .blog-header {
-    padding: 80px 48px 40px;
+    padding: 80px 96px 40px;
     border-bottom: 2px solid var(--color-divider);
 }
 
@@ -14,7 +14,7 @@
 }
 
 .blog-grid-wrap {
-    padding: 48px 48px 96px;
+    padding: 48px 96px 96px;
 }
 
 .blog-grid {
