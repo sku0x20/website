@@ -36,7 +36,8 @@
     border-bottom: none;
 }
 
-.post-card:hover h3 {
+.post-card:hover h3,
+.post-card:hover .post-kicker {
     color: var(--color-accent-600);
 }
 
