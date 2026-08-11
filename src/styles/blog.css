@@ -45,7 +45,6 @@
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: var(--color-accent-700);
-    margin-bottom: 12px;
 }
 
 .post-card h3 {
@@ -58,6 +57,12 @@
     max-width: 680px;
     opacity: 0.75;
     margin-bottom: 16px;
+}
+
+.post-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .post-meta {
