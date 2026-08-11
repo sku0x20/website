@@ -1,0 +1,52 @@
+---
+import Layout from '../layouts/Layout.astro';
+
+const posts = [
+    {
+        tag: 'Infrastructure',
+        title: 'Zero-Downtime Deployments with iptables',
+        excerpt: 'Blue-green deploys without a load balancer: conntrack flushes, OUTPUT chain rewrites, and the gotchas that come with routing traffic at the kernel level.',
+        date: 'Apr 2026',
+    },
+    {
+        tag: 'JVM',
+        title: 'Java Exceptions Swallowed: The ThreadPool Trap',
+        excerpt: 'How a thread pool silently ate exceptions in production, and the debugging trail that led back to it.',
+        date: 'Mar 2026',
+    },
+    {
+        tag: 'JVM',
+        title: 'ThreadLocal Optimizations and Project Loom',
+        excerpt: 'Where ThreadLocal helps, where it hurts, and what changes once virtual threads enter the picture.',
+        date: 'Mar 2026',
+    },
+    {
+        tag: 'Networking',
+        title: 'Low-Level UDP Echo Server for NAT Traversal',
+        excerpt: 'Getting UDP heartbeats through an ISP that blocks them: from a userspace workaround to a kernel-level nftables fix.',
+        date: 'Mar 2026',
+    },
+];
+---
+
+<Layout title="Blog — Siddhant Kumar Upmanyu">
+    <section class="blog-header">
+        <h1>Blog</h1>
+        <p>Technical notes on systems architecture, infrastructure, and the tradeoffs behind them.</p>
+    </section>
+
+    <section class="blog-grid-wrap">
+        <div class="blog-grid">
+            {posts.map((post) => (
+                <article class="post-card">
+                    <div class="post-kicker">{post.tag}</div>
+                    <h3>{post.title}</h3>
+                    <p>{post.excerpt}</p>
+                    <div class="post-meta">{post.date}</div>
+                </article>
+            ))}
+        </div>
+    </section>
+
+    <p class="blog-outlink"><a href="https://eglu.tech" target="_blank">Read on eglu.tech &rarr;</a></p>
+</Layout>

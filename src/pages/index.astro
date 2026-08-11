@@ -2,70 +2,22 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout title="Siddhant Kumar Upmanyu">
-    <header>
-        <h1>Siddhant Kumar Upmanyu</h1>
-        <p class="subtitle">Senior Systems Architect</p>
-        <nav class="links">
-            <a href="/about">about</a>
-            <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
-            <a href="https://eglu.tech" target="_blank">eglu.tech</a>
-            <a href="mailto:siddhantkumarupmanyu@gmail.com">email</a>
-        </nav>
-    </header>
-
-    <section class="bio">
-        <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company. I design at the protocol level when needed — custom binary over UDP, kernel-level traffic routing, nftables packet reflection. I publish the tools I build: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. TDD is non-negotiable across every language and every project.</p>
-    </section>
-
-    <section class="now">
-        <h2>Now</h2>
-        <div class="bio">
-            <p><strong>Senior Systems Architect</strong> at eGlu Smart Homes (WiZNSystems) — Bengaluru, India · 4+ years and counting, sole owner of the backend since day one. <a href="/resume.pdf" target="_blank">Full experience on the resume →</a></p>
+<Layout title="Siddhant Kumar Upmanyu — Senior Systems Architect">
+    <section class="hero">
+        <div class="hero-kicker">Sr. Systems Architect &mdash; eGlu, WiZNSystems</div>
+        <h1>I design systems that hold up under load, and change without breaking.</h1>
+        <p>I work on platform architecture and infrastructure &mdash; the parts of a product most people never see, but everyone depends on.</p>
+        <div class="hero-actions">
+            <a href="/about" class="btn btn-primary">About me</a>
+            <a href="/blog" class="btn btn-secondary">Read the blog</a>
         </div>
     </section>
 
-    <section class="open-source">
-        <h2>Projects</h2>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/stopgap" target="_blank">stopgap</a>
-                <span class="muted">Kotlin · Maven Central</span>
-            </div>
-            <p>Microservice framework on Helidon SE (Nima) + Project Loom. Custom compile-time DI via KSP — no runtime reflection. Three-tier testing: unit → in-process integration server → Docker E2E via Testcontainers. Gradle plugin that wires the full build pipeline. Published at <code>dev.sku20.stopgap:*:2.8.0</code>.</p>
+    <footer class="site-footer">
+        <div>&copy; 2026 Siddhant Kumar Upmanyu</div>
+        <div class="site-footer-links">
+            <a href="mailto:siddhantkumarupmanyu@gmail.com">Email</a>
+            <a href="https://github.com/sku0x20" target="_blank">GitHub</a>
         </div>
-
-        <ul class="articles">
-            <li><a href="https://github.com/sku0x20/assertgo" target="_blank">assertgo</a> <span class="muted">· Go · type-safe assertions with generics</span></li>
-            <li><a href="https://github.com/sku0x20/hrh" target="_blank">hrh</a> <span class="muted">· Rust · Helm release helper</span></li>
-            <li><a href="https://github.com/sku0x20/avoid" target="_blank">avoid</a> <span class="muted">· Shell · minimal Void Linux distro</span></li>
-            <li><a href="https://github.com/sku0x20/c_oop" target="_blank">c_oop</a> <span class="muted">· C · OOP and TDD in pure C</span></li>
-        </ul>
-    </section>
-
-    <section class="publications">
-        <h2>Publications</h2>
-        <div class="project">
-            <div class="project-header">
-                <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank">Connection-Agnostic Presence Tracking for Stateless Distributed Backends</a>
-                <span class="muted">Preprint · Zenodo</span>
-            </div>
-            <p>Redis-based architecture for tracking IoT device online/offline status across stateless distributed backends — sorted sets scored by expiry deadlines, throttled batch writes, asymmetric fault-tolerance guarantees ensuring offline transitions are never lost. Derives worst-case detection latency bounds. v1.3.0.</p>
-        </div>
-    </section>
-
-    <section class="writing">
-        <h2>Writing</h2>
-        <p class="writing-intro">Production engineering, JVM internals, and systems design at <a href="https://eglu.tech" target="_blank">eglu.tech →</a></p>
-    </section>
-
-    <footer>
-        <nav class="links">
-            <a href="/about">about</a>
-            <a href="/resume.pdf" target="_blank">resume.pdf</a>
-            <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
-            <a href="mailto:siddhantkumarupmanyu@gmail.com">email</a>
-        </nav>
     </footer>
 </Layout>

@@ -4,6 +4,8 @@ interface Props {
 }
 
 const { title } = Astro.props;
+const path = Astro.url.pathname.replace(/\/$/, '') || '/';
+const isActive = (href: string) => path === href;
 ---
 
 <!DOCTYPE html>
@@ -15,6 +17,13 @@ const { title } = Astro.props;
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
+    <nav class="nav">
+        <a href="/" class="nav-brand">S. UPMANYU</a>
+        <a href="/" aria-current={isActive('/') ? 'page' : undefined}>Home</a>
+        <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>About</a>
+        <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>Blog</a>
+    </nav>
+
     <main>
         <slot />
     </main>
