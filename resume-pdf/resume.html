@@ -3,54 +3,244 @@
 <head>
 <meta charset="UTF-8">
 <title>Siddhant Kumar Upmanyu — Resume</title>
-<link rel="stylesheet" href="../public/style.css">
 <style>
-  /* Light theme for print — the site's --bg/--text/etc are tuned for
-     a dark screen background, which reads poorly on printed paper. */
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;800&display=swap');
+
   :root {
-    --bg: #ffffff;
-    --text: #2a2a2a;
-    --muted: #6e6e6e;
-    --accent: #000000;
-    --border: #d9d9d9;
-    --code-bg: #f0f0f0;
+    --color-bg: #ffffff;
+    --color-text: #201e1d;
+    --color-muted: color-mix(in srgb, #201e1d 60%, transparent);
+    --color-accent: #ec3013;
+    --color-accent-700: #ae1800;
+    --color-divider: color-mix(in srgb, #201e1d 25%, transparent);
+    --font-heading: "Archivo", system-ui, sans-serif;
+    --font-body: "Archivo", system-ui, sans-serif;
   }
-  code {
-    color: #3a3a3a;
-  }
-  /* Print overrides: vertical spacing comes from the PDF page margin
-     (set via Puppeteer), not from container padding — padding on a
-     flowed box only appears at the true start/end of the document,
-     not at each page break. */
-  main {
-    max-width: none;
-    padding: 0;
-  }
+
   * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
     -webkit-print-color-adjust: exact;
     print-color-adjust: exact;
   }
-  .domain-group, .project, .role, li {
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-body);
+    font-size: 13px;
+    line-height: 1.5;
+  }
+
+  main {
+    max-width: none;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    font-weight: 800;
+    line-height: 1.15;
+  }
+
+  a {
+    color: var(--color-accent-700);
+    text-decoration: none;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    font-size: 0.9em;
+    color: var(--color-text);
+  }
+
+  .muted {
+    color: var(--color-muted);
+  }
+
+  /* — Header — */
+
+  header {
+    padding-bottom: 20px;
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--color-divider);
+  }
+
+  header h1 {
+    font-size: 28px;
+    margin-bottom: 4px;
+  }
+
+  .subtitle {
+    font-size: 15px;
+    color: var(--color-accent-700);
+    margin-bottom: 12px;
+  }
+
+  .links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    font-size: 12px;
+  }
+
+  .links a {
+    color: var(--color-text);
+  }
+
+  /* — Sections — */
+
+  section {
+    margin-bottom: 22px;
+  }
+
+  .bio, .skills, .education {
     break-inside: avoid;
   }
+
+  section > h2 {
+    font-size: 12px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--color-accent-700);
+    margin-bottom: 10px;
+  }
+
   h2, h3, h4 {
     break-after: avoid;
   }
-  /* Stack label/value and title/date pairs instead of laying them out
-     side-by-side with justify-content: space-between. PDF text
-     extractors (what ATS parsers use) cluster text by x/y position —
-     when a right-hand value wraps to a second line, its row collides
-     with the next label and the reading order gets scrambled. A
-     single vertical column always extracts top-to-bottom, in order. */
-  .company-meta,
-  .role,
+
+  .bio p {
+    max-width: 720px;
+  }
+
+  /* — Skills — */
+
+  .skills ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .skills li {
+    display: flex;
     flex-direction: column;
     align-items: flex-start;
     gap: 2px;
   }
+
   .skill-label {
-    min-width: unset;
+    font-weight: 800;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--color-accent-700);
+  }
+
+  /* — Experience — */
+
+  .company-meta {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+    margin-bottom: 8px;
+    break-inside: avoid;
+    break-after: avoid;
+  }
+
+  .company-meta h3 {
+    font-size: 16px;
+  }
+
+  .roles {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    margin-bottom: 14px;
+    padding-bottom: 14px;
+    border-bottom: 1px solid var(--color-divider);
+  }
+
+  .role {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2px;
+  }
+
+  .role-title {
+    font-weight: 800;
+  }
+
+  .domain-group {
+    break-inside: avoid;
+    margin-bottom: 14px;
+  }
+
+  .domain-group:last-child {
+    margin-bottom: 0;
+  }
+
+  .domain-group h4 {
+    font-size: 12.5px;
+    margin-bottom: 6px;
+  }
+
+  .domain-group ul, .publications ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .domain-group li {
+    break-inside: avoid;
+    padding-left: 14px;
+    position: relative;
+  }
+
+  .domain-group li::before {
+    content: '–';
+    position: absolute;
+    left: 0;
+    color: var(--color-divider);
+  }
+
+  .domain-group strong {
+    font-weight: 800;
+  }
+
+  /* — Open source & publications — */
+
+  .project {
+    break-inside: avoid;
+    margin-bottom: 12px;
+  }
+
+  .project:last-child {
+    margin-bottom: 0;
+  }
+
+  .project-header {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 3px;
+  }
+
+  .project-header a {
+    font-weight: 800;
+    color: var(--color-text);
+  }
+
+  .project-header .muted {
+    font-size: 11.5px;
+  }
+
+  .project p {
+    font-size: 12.5px;
   }
 </style>
 </head>
