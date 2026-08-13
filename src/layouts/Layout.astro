@@ -10,11 +10,21 @@ import '../styles/responsive.css';
 
 interface Props {
     title: string;
+    description?: string;
+    image?: string;
+    type?: 'website' | 'article';
 }
 
-const { title } = Astro.props;
+const {
+    title,
+    description = 'Siddhant Kumar Upmanyu — notes on backend systems, debugging, and infrastructure.',
+    image,
+    type = 'website',
+} = Astro.props;
 const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImageURL = image ? new URL(image, Astro.site) : undefined;
 ---
 
 <!DOCTYPE html>
@@ -23,6 +33,19 @@ const isActive = (href: string) => path === href || (href !== '/' && path.starts
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{title}</title>
+    <meta name="description" content={description}>
+    <link rel="canonical" href={canonicalURL}>
+
+    <meta property="og:type" content={type}>
+    <meta property="og:title" content={title}>
+    <meta property="og:description" content={description}>
+    <meta property="og:url" content={canonicalURL}>
+    {ogImageURL && <meta property="og:image" content={ogImageURL}>}
+
+    <meta name="twitter:card" content={ogImageURL ? 'summary_large_image' : 'summary'}>
+    <meta name="twitter:title" content={title}>
+    <meta name="twitter:description" content={description}>
+    {ogImageURL && <meta name="twitter:image" content={ogImageURL}>}
 </head>
 <body>
     <nav class="nav">

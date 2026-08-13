@@ -3,6 +3,7 @@ title: "The Ghost Connection: How conntrack -F Broke Redis Pub/Sub"
 description: "A four-year debugging saga into why Redis pub/sub silently stopped working after every deployment — and how a flushed conntrack table was the real culprit."
 date: "Aug 13, 2026"
 tags: ["Redis", "Networking", "Infrastructure"]
+image: "/assets/ghost-connection-og.png"
 ---
 
 After four years, I finally found out why Redis pub/sub stops working after every deployment.
