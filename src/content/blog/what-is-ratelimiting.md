@@ -92,7 +92,7 @@ With TB at 5 req/s and b = 10, I can send 10 requests in the first 10ms, wait 20
 
 For quotas, you need a window. Windows are discrete, not continuous.
 
-![Token Bucket vs Fixed Window](/graphs/rate-limiting-comparison.svg)
+![Token Bucket vs Fixed Window](/assets/rate-limiting-comparison.svg)
 
 Hard to go further without a concrete impl. Let's take the basic fixed window:
 
