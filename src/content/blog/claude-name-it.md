@@ -1,28 +1,18 @@
-after 4+ years and having a attraction towards tdd, i learned many things. i did things badly, i did premature abstraction idk if its the right word but the idea, the concept that's definetly there. i like this word cause it goes with premature optimization, and just like that, its something that should be avoided.
+After 4+ years, and having an attraction toward TDD, I've learned a lot. I did things badly — I did premature abstraction, if that's even the right word, but the idea, the concept, is definitely there. I like this term because it echoes premature optimization: it's something that should be avoided just the same.
 
-i did it, i sometimes still do, but nowadays it's becoming less of a problem.
-maybe its experice, a way of thinking, doing things and maybe i am doing 1-2 iterations before settling.
+I did it. I sometimes still do. But it's becoming less of a problem these days — maybe it's experience, a way of thinking about things, maybe I'm just doing 1-2 iterations before settling now.
 
-i am definetly thankful to claude. by myself, i would never delete a chunk of code i have written, it takes energy and mental preparation to let go. but with claude i am sitting a bit far.
-i can see how the code is taking shape. i am the only one leading, designing, and of couse i am still reviewing how can i tell which path to take. is it coming out good.
-review each commit and i always tell claude to commit after every meaningful edit.
+I'm definitely thankful to Claude. On my own, I'd never delete a chunk of code I've written — it takes energy and mental preparation to let go. But with Claude, I sit a bit further back. I can watch the code take shape. I'm still the one leading, designing, and of course still reviewing — deciding which path to take, whether it's coming out good. I review every commit, and I always tell Claude to commit after every meaningful edit.
 
-but if you see, every session i am reverting min once, either claude did something stupid, typically running ahead.
-and i ask it revert, or i am figuring out how to abstract, which pattern to apply, what code is telling, iterating.
+But if you look, I'm reverting at least once every session — either Claude did something stupid, typically running ahead, and I ask it to revert, or I'm still figuring out how to abstract, which pattern to apply, what the code is telling me. Iterating.
 
-i am taking taking lessions, and observing apis. if not coming out good, let's go back and try something else.
-and it very cheap now. i can think more freely, more actively, which claude is dumping character and printing on screen, i can see whats looking odd. i can actively think the other path, the what ifs.
+I'm taking lessons, observing the APIs. If it's not coming out good, let's go back and try something else. And it's very cheap now — I can think more freely, more actively, while Claude is dumping characters, printing to the screen. I can see what's looking odd. I can actively think through the other path, the what-ifs.
 
-and every piece of code is reviewed by me. that's just how i work. it's a disciplin i live by.
-well apart from how it looks. that i don't care usually. its a one time think mostly so i avoid breaking my head. but once it gets to something which have to be maintained i definetly take control.
+And every piece of code is reviewed by me. That's just how I work — it's a discipline I live by. Well, apart from how it looks — I usually don't care about that. It's mostly a one-time thing, so I avoid breaking my head over it. But once it's something that has to be maintained, I definitely take control.
 
-claude is not very good at extraction, drying things out. i tell is usually as i can see the duplication.
-sometimes to see duplication you have to shape it like that.
-i can see, sense mostly tbh. it's some kind of intuition.
+Claude isn't very good at extraction — drying things out. I usually have to tell it, once I can see the duplication myself. Sometimes you have to shape the code a certain way just to see the duplication. I can sense it, mostly, to be honest — it's some kind of intuition.
 
-so ai, imo haven't just accelerated code output but thinking, adapting, as well. i am very advert of ai tools, but as you see, i am not letting it lose, i am reviewing each and every line. understanding and if i can't understand, i ask claude to make it readable. if it cannot i sometimes do it by hand, and ask it to replicate at other places.
+So AI, in my opinion, hasn't just accelerated code output, but thinking and adapting too. I'm pretty averse to AI tools generally, but as you can see, I'm not letting it loose — I'm reviewing every single line, understanding it, and if I can't understand it, I ask Claude to make it readable. If it still can't, I sometimes do it by hand and ask it to replicate the change elsewhere.
 
-i am always a person, who keeps things simple, minimal, be it code, be it indirection, be it even ai agent.
-i am using claude and not switched till now.
-its working good enough for me. i never need to look outside. and that too sonnet. i did ask it to take advices from opus. and opus does catches issues which even i missed, so in a way even learning is accelerated.
+I'm always someone who keeps things simple and minimal — be it code, be it indirection, be it even the AI agent itself. I'm using Claude and haven't switched, not even once. It's working well enough for me — I never need to look elsewhere. And that's with Sonnet, too. I did ask it to take advice from Opus, and Opus does catch issues that even I missed — so in a way, even the learning is accelerated.
 
