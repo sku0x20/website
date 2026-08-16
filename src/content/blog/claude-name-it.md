@@ -2,7 +2,7 @@
 title: "Premature Abstraction, Code Review and AI"
 description: "Working with Claude has changed how I revert, review, and think about abstraction and duplication."
 date: "Aug 16, 2026"
-tags: ["AI", "Opinion"]
+tags: ["AI"]
 ---
 
 After 4+ years, and having an attraction toward TDD, I've learned a lot. I did things badly — I did premature abstraction, if that's even the right word, but the idea, the concept, is definitely there. I like this term because it echoes premature optimization: it's something that should be avoided just the same.

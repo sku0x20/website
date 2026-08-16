@@ -2,7 +2,7 @@
 title: "How Smart is AI?"
 description: "Can it design, or is it even good at pairing?"
 date: "Apr 18, 2026"
-tags: ["AI", "Opinion"]
+tags: ["AI"]
 ---
 
 As I said in my last post, AI is a glorified search engine. 

@@ -2,7 +2,7 @@
 title: "Ai, Agents and the Refactoring Loop"
 description: "After spending quite some time with ai tools; here are my takes. How it helps and how it slows down;"
 date: "Apr 16, 2026"
-tags: ["AI", "Opinion", "Kotlin"]
+tags: ["AI", "Kotlin"]
 ---
 
 After spending quite some time with AI tools, here are my takes.

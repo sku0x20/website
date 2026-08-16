@@ -2,7 +2,7 @@
 title: "Why I Don't Like MongoDB"
 description: "MongoDB pushes schema failures from write time to read time, and that's a much bigger problem."
 date: "Aug 16, 2026"
-tags: ["Databases", "Opinion"]
+tags: ["Databases"]
 ---
 
 MongoDB is schemaless, and it requires more discipline to work with.
