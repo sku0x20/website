@@ -16,3 +16,7 @@
 
 - Keep code clear and simple. Prefer readable over clever.
 - No unnecessary abstractions, comments, or scaffolding.
+
+## Blog Posts
+
+- Filename must match the slugified `title` in frontmatter. If the title changes during editing, rename the file to match before considering the post done.
