@@ -19,4 +19,4 @@
 
 ## Blog Posts
 
-- Filename must match the slugified `title` in frontmatter. If the title changes during editing, rename the file to match before considering the post done.
+- Filename must be prefixed with its publication date (`YYYY-MM-DD-`) and match the slugified `title` in frontmatter (e.g., `2026-09-03-local-development-with-strapi.md`). If the title changes during editing, rename the file to match before considering the post done.
