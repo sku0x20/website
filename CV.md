@@ -171,6 +171,23 @@
 * Attended the inaugural **Apache Kafka meetup in Bangalore** (the first official Kafka event in India)—my first developer conference—deepening my understanding of distributed log streams and event brokers.
 * Later attended tech events hosted by **Thoughtworks** in Bangalore, exchanging ideas with engineers solving high-scale distributed systems problems.
 
+## 2025 — Production Observability, Modern Infra & High-Performance Pipelines
+
+> **Operating Reality & Architectural Transition:**  
+> In 2025, the research from late 2024 materialized into production infrastructure. I moved the company away from single-node disk-dependent operations toward dedicated observability, declarative infrastructure, and purpose-built ingestion pipelines.
+
+### Production Observability Rollout: Grafana & Loki (Retiring `hlogger`)
+
+* **The Evolution:**  
+  Having stabilized access security in 2024 with `hlogger`, the next step was eliminating disk logging entirely in favor of a centralized, real-time observability platform.
+* **The Implementation:**  
+  - Provisioned and configured a dedicated observability VM.
+  - Deployed and tuned **Grafana** and **Loki** to ingest application and device logs centrally.
+  - Maintained declarative configuration tracking (nascent IaC) for services, log retention policies, and dashboards.
+* **The Outcome:**  
+  Gracefully retired `hlogger` and raw disk log dumping. The entire engineering organization (firmware, backend, mobile) gained instant, indexed query capabilities over real-time system logs without touching production hosts.
+
+
 
 
 
