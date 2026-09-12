@@ -1,12 +1,12 @@
 # Siddhant Kumar Upmanyu
-**Senior Systems Architect · Staff Systems Engineer**  
+**Senior Systems Architect · Staff-Level Systems Engineer**  
 Bengaluru, India · [siddhantkumarupmanyu@gmail.com](mailto:siddhantkumarupmanyu@gmail.com)  
 [sku20.dev](https://www.sku20.dev/) · [GitHub: sku0x20](https://github.com/sku0x20) · [LinkedIn: sku20](https://www.linkedin.com/in/sku20) · [Zenodo Preprint](https://doi.org/10.5281/zenodo.21717242)
 
 ---
 
-## Executive & Technical Scope
-Hands-on Systems Architect and Staff Engineer with sole architectural authority over a production IoT smart home platform. Operating under a product manager with zero technical hierarchy above me; holding single-point custody over cloud infrastructure (Google Cloud Organization Administrator), domain/DNS governance (GoDaddy), and production compute clusters. Specialist in low-level Linux kernel networking, high-throughput telemetry storage, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.
+## Executive & Staff Engineering Scope
+Hands-on Senior Systems Architect operating with Staff-level engineering scope and sole technical authority over a production IoT smart home platform. Operating under a product manager with zero backend hierarchy; holding single-point custody over cloud infrastructure (Google Cloud Organization Administrator), domain/DNS governance (GoDaddy), and production compute clusters. Specialist in low-level Linux kernel networking, high-throughput telemetry storage, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.
 
 ---
 
