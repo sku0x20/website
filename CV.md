@@ -6,6 +6,19 @@
 
 ---
 
+## Executive & Staff Engineering Scope
+
+* **Autonomous Technical Authority:**  
+  Operate with zero technical or managerial hierarchy above me, reporting directly to the CEO. Rather than executing top-down task assignments, I autonomously drive the engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&D spikes, and delivering production-hardened systems.
+* **End-to-End Product & Infrastructure Custody:**  
+  Hold sole administrative and architectural ownership over the entire operational footprint: domain and DNS governance (GoDaddy), corporate email routing, Google Cloud Organization Administration (IAM policies, VPCs, project lifecycles), on-prem staging bare metal, and production compute clusters.
+* **Cloud FinOps & Infrastructure Economics:**  
+  Directly responsible for infrastructure burn and capacity planning. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
+* **Cross-Organizational Technical Direction:**  
+  Act as the definitive decision-maker for platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and system boundaries—establishing written specifications that firmware, hardware, mobile, and backend teams build against.
+
+---
+
 ## 2022 — Software Engineer | Sole Backend Ownership & Production Modernization
 
 > **Operating Reality & Scope:**  
@@ -131,6 +144,14 @@
   Faced with scaling the single-server monolith, I conducted deep architectural research into horizontal scalability patterns: evaluating message brokers (Kafka vs. lightweight queues) for event streaming, and exploring container orchestration (Kubernetes) to understand trade-offs before jumping on hype trains.
 * **Deepening Software Craftsmanship:**  
   Beyond frameworks, I immersed myself in Extreme Programming (XP) philosophies and London-style TDD. Working solo, I realized TDD was my only real safety net against regressions. I began restructuring code for true testability—isolating side effects, enforcing strict domain boundaries, and cultivating clean code practices.
+
+### Cloud FinOps & Infrastructure Economics: 3-Year Committed Use Discount (CUD)
+
+* **Direct Economic Ownership:**  
+  With the founding engineer's exit, cloud cost management became my direct responsibility, reporting spend forecasts directly to the CEO. Unreserved on-demand VM billing was inflating monthly operational burn.
+* **The Strategy & Commitment:**  
+  - Conducted workload utilization analysis across CPU, memory, and networking to establish true minimum baseline requirements vs. variable peaks.
+  - Negotiated and committed to a **3-year Google Cloud Committed Use Discount (CUD)** on core compute instances—locking in aggressive cost reductions for the company while guaranteeing production compute availability over a multi-year horizon.
 
 ## 2024 — Promoted to Senior Software Engineer | Security Hardening, Deep Profiling & Resilience
 
@@ -285,7 +306,16 @@
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
-> In April 2026, I was promoted to **Senior Systems Architect**. My ownership expanded across the entire technical surface: domain and DNS administration (GoDaddy), edge networking (IPv6/IPv4), cloud infrastructure, protocol design, and software framework architecture.
+> In April 2026, I was promoted to **Senior Systems Architect**. With zero engineering managers or technical leads above me, I answer directly to the CEO for technical strategy, platform reliability, and cloud expenditure across the company. My mandate spans the entire product surface: domain governance, enterprise communications, multi-cloud infrastructure, protocol standards, and framework architecture.
+
+### Total Organizational & Cloud Custody: DNS, Corporate Email & Compute Lifecycle (N1 → N4)
+
+* **Autonomous Administrative & Platform Custody:**  
+  Hold single-point ownership over all foundational product resources:
+  - **Organization-Level Cloud Administration:** Google Cloud Organization Administrator holding root authority over IAM policies, project topologies, VPC networks, and firewall rules.
+  - **Edge & Domain Governance:** Full management of corporate DNS zone files, domains via GoDaddy, and enterprise email routing.
+* **Compute Lifecycle & Next-Gen Hardware Migration (N1 → N4):**  
+  As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation **N4 machine types**—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.
 
 ### Feature Flags Engine & Controlled Rollouts (2026)
 
