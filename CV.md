@@ -334,14 +334,14 @@
   - Enabled dynamic runtime evaluation, percentage-based rollouts, and instant kill-switches.
   - Allowed firmware and mobile teams to dark-launch new capabilities and gate risky protocol features without requiring backend code redeployments.
 
-### 100% Declarative Cloud Migration with Terraform (GCP Cloud Run & Cloud SQL)
+### 100% Declarative Infrastructure for Corporate Web Platform: Terraform / OpenTofu (Cloud Run & Cloud SQL)
 
 * **The Problem:**  
-  Corporate and platform web services were previously tethered to manually configured virtual machines, lacking declarative reproducibility and autoscaling.
+  The company web platform was previously coupled to manually configured virtual machines, lacking declarative reproducibility, autoscaling, and isolated resource boundaries.
 * **The Solution:**  
-  Having researched Terraform in 2025, I architected and executed a full migration to a modern, containerized serverless stack:
-  - Migrated services onto **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
-  - Codified 100% of the infrastructure in **Terraform**—networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations.
+  Created an isolated Google Cloud project and architected a modern, containerized serverless stack driven 100% by **Terraform / OpenTofu IaC**:
+  - Migrated web services onto containerized **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
+  - Codified 100% of the project infrastructure in **Terraform / OpenTofu**—VPC networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations.
 
 ### Bare-Metal Homelab & Cloud-Native Engineering (Proxmox, K8s, Nomad)
 
