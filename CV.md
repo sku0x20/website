@@ -187,6 +187,18 @@
 * **The Outcome:**  
   Gracefully retired `hlogger` and raw disk log dumping. The entire engineering organization (firmware, backend, mobile) gained instant, indexed query capabilities over real-time system logs without touching production hosts.
 
+### High-Volume Telemetry Migration: ClickHouse, Delta+ZSTD Codecs & GCS Offloading
+
+* **The Production Disk & Inode Crisis:**  
+  The production VM was facing recurring disk exhaustion from years of accumulated device health telemetry and high-churn activity logs. The legacy storage architecture had a severe filesystem flaw: files were saved across deeply nested two-letter directory trees (`/aa/bb/cc/...`), causing catastrophic filesystem **inode bloat** where directory metadata consumed massive disk space and degraded I/O throughput.
+* **The Migration & Codec Engineering:**  
+  Having evaluated ClickHouse in late 2024, I designed a pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse:
+  - **Schema & Codec Tuning:** Designed columnar schemas leveraging specialized compression: combined **Delta encoding** (for monotonically increasing timestamps and sequential device metrics) with **ZSTD (Zstandard)**, achieving an astonishing **95%+ storage reduction** (e.g., compressing ~90 GB down to ~3.7 GB).
+  - **Cold Storage Tiering:** Integrated ClickHouse storage policies to offload and archive compressed tables to Google Cloud Storage (GCS).
+* **The Outcome:**  
+  Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining lightning-fast analytical queries over historical data.
+
+
 
 
 
