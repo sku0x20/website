@@ -4,17 +4,22 @@
 <meta charset="UTF-8">
 <title>Siddhant Kumar Upmanyu — Resume</title>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;800&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;600;800&display=swap');
 
   :root {
     --color-bg: #ffffff;
-    --color-text: #201e1d;
-    --color-muted: color-mix(in srgb, #201e1d 60%, transparent);
-    --color-accent: #ec3013;
-    --color-accent-700: #ae1800;
-    --color-divider: color-mix(in srgb, #201e1d 25%, transparent);
-    --font-heading: "Archivo", system-ui, sans-serif;
-    --font-body: "Archivo", system-ui, sans-serif;
+    --color-text: #18181b;
+    --color-muted: #52525b;
+    --color-accent: #09090b;
+    --color-accent-700: #09090b;
+    --color-divider: #e4e4e7;
+    --font-heading: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  }
+
+  @page {
+    size: letter;
+    margin: 0.42in 0.5in;
   }
 
   * {
@@ -29,29 +34,33 @@
     background: var(--color-bg);
     color: var(--color-text);
     font-family: var(--font-body);
-    font-size: 13px;
-    line-height: 1.5;
+    font-size: 11.5px;
+    line-height: 1.42;
   }
 
   main {
-    max-width: none;
+    max-width: 100%;
   }
 
   h1, h2, h3, h4 {
     font-family: var(--font-heading);
     font-weight: 800;
-    line-height: 1.15;
+    line-height: 1.2;
+    color: #09090b;
   }
 
   a {
-    color: var(--color-accent-700);
+    color: #09090b;
     text-decoration: none;
+    border-bottom: 1px solid #d4d4d8;
   }
 
   code {
     font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
     font-size: 0.9em;
-    color: var(--color-text);
+    background: #f4f4f5;
+    padding: 1px 3px;
+    border-radius: 2px;
   }
 
   .muted {
@@ -61,122 +70,123 @@
   /* — Header — */
 
   header {
-    padding-bottom: 20px;
-    margin-bottom: 24px;
-    border-bottom: 2px solid var(--color-divider);
+    padding-bottom: 10px;
+    margin-bottom: 12px;
+    border-bottom: 1.5px solid #18181b;
   }
 
   header h1 {
-    font-size: 28px;
-    margin-bottom: 4px;
+    font-size: 24px;
+    letter-spacing: -0.02em;
+    margin-bottom: 2px;
   }
 
   .subtitle {
-    font-size: 15px;
-    color: var(--color-accent-700);
-    margin-bottom: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #3f3f46;
+    margin-bottom: 6px;
   }
 
   .links {
     display: flex;
     flex-wrap: wrap;
-    gap: 4px 14px;
-    font-size: 12px;
+    align-items: center;
+    gap: 4px 10px;
+    font-size: 11px;
+    color: #52525b;
   }
 
   .links a {
-    color: var(--color-text);
+    color: #18181b;
   }
 
   /* — Sections — */
 
   section {
-    margin-bottom: 22px;
-  }
-
-  .bio, .skills, .education {
-    break-inside: avoid;
+    margin-bottom: 12px;
   }
 
   section > h2 {
-    font-size: 12px;
-    letter-spacing: 0.1em;
+    font-size: 11px;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
-    color: var(--color-accent-700);
-    margin-bottom: 10px;
+    color: #09090b;
+    border-bottom: 1px solid #18181b;
+    padding-bottom: 2px;
+    margin-bottom: 6px;
   }
 
   h2, h3, h4 {
     break-after: avoid;
+    page-break-after: avoid;
   }
 
   .bio p {
-    max-width: 720px;
+    font-size: 11px;
+    line-height: 1.42;
+    color: #27272a;
   }
 
   /* — Skills — */
 
-  .skills ul {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-  }
-
-  .skills li {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 140px 1fr;
+    row-gap: 3px;
+    column-gap: 8px;
+    font-size: 10.5px;
+    line-height: 1.35;
   }
 
   .skill-label {
     font-weight: 800;
-    font-size: 11px;
-    letter-spacing: 0.05em;
+    font-size: 10px;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--color-text);
+    color: #09090b;
   }
 
   /* — Experience — */
 
+  .company {
+    break-inside: auto;
+  }
+
   .company-meta {
     display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-    margin-bottom: 8px;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 4px;
     break-inside: avoid;
-    break-after: avoid;
+    page-break-inside: avoid;
   }
 
   .company-meta h3 {
-    font-size: 16px;
+    font-size: 14px;
   }
 
-  .roles {
-    display: flex;
-    flex-direction: column;
-    gap: 2px;
-    margin-bottom: 14px;
-    padding-bottom: 14px;
-    border-bottom: 1px solid var(--color-divider);
+  .company-location {
+    font-size: 11px;
+    color: #71717a;
+    font-weight: 600;
   }
 
-  .role {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 2px;
-  }
-
-  .role-title {
-    font-weight: 800;
+  .roles-bar {
+    font-size: 11px;
+    font-weight: 600;
+    color: #3f3f46;
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1px dashed #e4e4e7;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 
   .domain-group {
     break-inside: avoid;
-    margin-bottom: 14px;
+    page-break-inside: avoid;
+    margin-bottom: 9px;
   }
 
   .domain-group:last-child {
@@ -184,63 +194,84 @@
   }
 
   .domain-group h4 {
-    font-size: 12.5px;
-    margin-bottom: 6px;
+    font-size: 11.5px;
+    margin-bottom: 4px;
+    color: #09090b;
   }
 
-  .domain-group ul, .publications ul {
+  .domain-group ul {
     list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  .domain-group li {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    padding-left: 12px;
+    position: relative;
+    font-size: 10.5px;
+    line-height: 1.38;
+    color: #27272a;
+  }
+
+  .domain-group li::before {
+    content: '▪';
+    position: absolute;
+    left: 0;
+    font-size: 8px;
+    top: 1px;
+    color: #71717a;
+  }
+
+  .domain-group strong {
+    font-weight: 800;
+    color: #09090b;
+  }
+
+  /* — Projects & Publications — */
+
+  .projects-grid {
     display: flex;
     flex-direction: column;
     gap: 6px;
   }
 
-  .domain-group li {
-    break-inside: avoid;
-    padding-left: 14px;
-    position: relative;
-  }
-
-  .domain-group li::before {
-    content: '–';
-    position: absolute;
-    left: 0;
-    color: var(--color-divider);
-  }
-
-  .domain-group strong {
-    font-weight: 800;
-  }
-
-  /* — Open source & publications — */
-
   .project {
     break-inside: avoid;
-    margin-bottom: 12px;
-  }
-
-  .project:last-child {
-    margin-bottom: 0;
+    page-break-inside: avoid;
   }
 
   .project-header {
     display: flex;
     align-items: baseline;
-    gap: 10px;
-    margin-bottom: 3px;
+    gap: 8px;
+    margin-bottom: 2px;
   }
 
   .project-header a {
     font-weight: 800;
-    color: var(--color-text);
+    font-size: 11.5px;
+    color: #09090b;
   }
 
   .project-header .muted {
-    font-size: 11.5px;
+    font-size: 10.5px;
   }
 
   .project p {
-    font-size: 12.5px;
+    font-size: 10.5px;
+    line-height: 1.35;
+    color: #27272a;
+  }
+
+  .education-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 11px;
+    break-inside: avoid;
+    page-break-inside: avoid;
   }
 </style>
 </head>
@@ -248,171 +279,152 @@
 <main>
     <header>
         <h1>Siddhant Kumar Upmanyu</h1>
-        <p class="subtitle">Senior Systems Architect</p>
-        <nav class="links">
+        <p class="subtitle">Senior Systems Architect · Staff Systems Engineer</p>
+        <div class="links">
+            <span>Bengaluru, India</span>
+            <span>•</span>
             <a href="https://www.sku20.dev/">sku20.dev</a>
-            <a href="https://github.com/sku0x20">github.com/sku0x20</a>
-            <a href="https://www.linkedin.com/in/sku20">linkedin.com/in/sku20</a>
+            <span>•</span>
+            <a href="https://github.com/sku0x20" target="_blank">github.com/sku0x20</a>
+            <span>•</span>
+            <a href="https://www.linkedin.com/in/sku20" target="_blank">linkedin.com/in/sku20</a>
+            <span>•</span>
             <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
-            <span class="muted">+91 8383056329</span>
-        </nav>
+            <span>•</span>
+            <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank">Zenodo Preprint</a>
+        </div>
     </header>
 
     <section class="bio">
-        <h2>Profile Summary</h2>
-        <p>4+ years of full ownership over backend and cloud infrastructure at an IoT smart home company — from protocol design through production operations. Design at the protocol level when the problem calls for it: custom binary transports over UDP, kernel-level traffic routing, nftables packet reflection. Publish the tools that come out of that work: a Kotlin microservice framework on Maven Central, a Go assertion library, a Helm CLI in Rust, a custom Linux distro. Treat TDD as non-negotiable across every language and project.</p>
+        <h2>Executive &amp; Technical Scope</h2>
+        <p>Hands-on Systems Architect with sole technical authority over an IoT smart home and commercial platform. Operating under a product manager with zero backend hierarchy; holding single-point custody over cloud infrastructure (Google Cloud Organization Administrator), domain/DNS governance (GoDaddy), on-prem bare metal, and production compute clusters. Specialist in low-level Linux kernel networking, high-throughput telemetry storage, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.</p>
     </section>
 
     <section class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li><span class="skill-label">Languages</span>Kotlin, Java, Go, Rust, Zig, C, Shell</li>
-            <li><span class="skill-label">Frameworks &amp; Protocols</span>Spring Boot, Helidon SE, gRPC, Protocol Buffers</li>
-            <li><span class="skill-label">Infrastructure</span>Kubernetes (EKS), Terraform, Docker, GitHub Actions, Linux (Debian/Ubuntu)</li>
-            <li><span class="skill-label">Databases</span>ClickHouse, MongoDB, PostgreSQL, Redis</li>
-            <li><span class="skill-label">Observability</span>Loki, Prometheus, Grafana, async-profiler, JMC, VisualVM, Flame Graphs</li>
-            <li><span class="skill-label">Testing</span>TDD (London style), Pact (Consumer-Driven Contracts), Playwright, Testcontainers</li>
-            <li><span class="skill-label">Networking</span>TCP/UDP socket programming, iptables, nftables, NAT traversal</li>
-        </ul>
+        <h2>Technical Competencies</h2>
+        <div class="skills-grid">
+            <span class="skill-label">Languages</span>
+            <span>Kotlin, Java, Go, Rust, Zig, C, Shell scripting (POSIX/Bash), SQL</span>
+
+            <span class="skill-label">Kernel &amp; Networking</span>
+            <span>Linux kernel (<code>nftables</code>, <code>iptables</code>), in-kernel NAT64 (<code>Jool</code>), TCP/UDP socket programming, mTLS &amp; custom PKI (CA/CRL), packet reflection, conntrack tuning</span>
+
+            <span class="skill-label">Distributed &amp; Storage</span>
+            <span>ClickHouse (columnar modeling, Delta+ZSTD codecs), Redis, PostgreSQL, MongoDB, gRPC, Protocol Buffers, REST</span>
+
+            <span class="skill-label">Cloud &amp; SRE</span>
+            <span>Google Cloud (Org Admin, Cloud Run, Cloud SQL, VPC, GCS, IAM), AWS, Terraform / OpenTofu IaC, Docker, Proxmox VE, GitHub Actions, Linux administration (Debian, Ubuntu)</span>
+
+            <span class="skill-label">Observability</span>
+            <span>Grafana, Loki, Mimir, Alloy, VictoriaMetrics, VictoriaLogs, <code>async-profiler</code>, JMC, VisualVM, Linux performance tools (<code>sar</code>, <code>vmstat</code>, <code>iotop</code>, <code>pidstat</code>)</span>
+
+            <span class="skill-label">Methodology</span>
+            <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact), Testcontainers</span>
+        </div>
     </section>
 
     <section class="experience">
-        <h2>Work Experience</h2>
+        <h2>Professional Experience</h2>
 
         <div class="company">
             <div class="company-meta">
                 <h3>eGlu Smart Homes <span class="muted">(WiZNSystems)</span></h3>
-                <span class="muted">Bengaluru, India · 4+ years</span>
+                <span class="company-location">Bengaluru, India · 2022 – Present</span>
             </div>
 
-            <div class="roles">
-                <div class="role">
-                    <span class="role-title">Senior Systems Architect</span>
-                    <span class="role-period muted">Apr 2026 – Present</span>
+            <div class="roles-bar">
+                Senior Systems Architect (Apr 2026 – Present) &nbsp;|&nbsp; Senior Software Engineer (2024 – 2026) &nbsp;|&nbsp; Software Engineer (2022 – 2024)
+            </div>
+
+            <div class="domain-group">
+                <h4>Systems Architecture &amp; Kernel Networking</h4>
+                <ul>
+                    <li><strong>In-Kernel Dual-Stack NAT64 (<code>Jool</code> + <code>nftables</code>):</strong> Resolved an edge network partition where cellular IoT hubs operated strictly over IPv6 while backend services were IPv4. Bypassed userspace proxies to preserve CPU credits; deployed the <code>Jool</code> kernel module with Explicit Address Mapping Tables (EAMT) alongside <code>nftables</code> DNAT to cleanly partition source port ranges on a shared public IPv4.</li>
+                    <li><strong>Prerouting Packet Reflection &amp; Dynamic Abuse Mitigation:</strong> Offloaded UDP NAT traversal echo responses directly into the Linux kernel using <code>nftables</code> packet reflection (<code>notrack</code>) at prerouting priority, avoiding userspace context switches. Implemented kernel-level DDoS mitigation via <code>nftables</code> dynamic sets (<code>limit rate over 10/second burst 20 packets</code> at prerouting priority -301) dropping sweeps before socket allocation.</li>
+                    <li><strong>Zero-Downtime Kernel Switching:</strong> Designed zero-downtime deployment pipelines using <code>iptables</code> DNAT cutovers across both <code>PREROUTING</code> and <code>OUTPUT</code> chains, explicitly flushing the <code>conntrack</code> state table to switch backend traffic without dropping active connections. Hardened recovery scripts after triaging a corrupted iptables routing table live during an emergency deployment incident.</li>
+                    <li><strong>Academic Preprint Publication (Zenodo):</strong> Authored and published <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank"><em>Connection-Agnostic Presence Tracking for Stateless Distributed Backends</em></a>: formulated a Redis sorted-set architecture with expiration deadlines and throttled batch writes to track IoT device state with mathematically bounded detection latency.</li>
+                </ul>
+            </div>
+
+            <div class="domain-group">
+                <h4>High-Throughput Telemetry &amp; Storage Systems</h4>
+                <ul>
+                    <li><strong>ClickHouse Ingestion Engine (95%+ Compression):</strong> Resolved a filesystem inode exhaustion crisis caused by nested directory log dumps. Designed high-throughput columnar ClickHouse schemas (<code>FixedString</code>, <code>LowCardinality</code>, Delta + ZSTD codecs, sparse composite primary keys), slashing telemetry footprint by 95%+ (compressing <code>device_health</code> telemetry from 17 GB down to 300 MB on disk).</li>
+                    <li><strong>Decoupled Ingestion Microservice:</strong> Engineered an auxiliary Go microservice communicating via binary gRPC with strict Protocol Buffers contracts to encapsulate ClickHouse, shielding the primary Kotlin/Spring Boot monolith from database driver coupling.</li>
+                    <li><strong>Binary Payload Decoupling:</strong> Architected and executed a zero-downtime data migration pipeline extracting legacy binary image blobs out of primary database tables, streaming them to secure Google Cloud Storage (GCS) buckets, and swapping schemas to immutable URIs.</li>
+                </ul>
+            </div>
+
+            <div class="domain-group">
+                <h4>Concurrency, Runtime &amp; JVM Performance</h4>
+                <ul>
+                    <li><strong>Dynamic IoT-Aware ThreadPool:</strong> Overhauled JVM thread management under bursty IoT packet waves by replacing default thread pools with an adaptive dynamic ThreadPool that scales worker threads based on real-time packet velocity and queue depth.</li>
+                    <li><strong>Deep JVM Profiling &amp; Zero-Allocation Hot Paths:</strong> Instrumented live production systems with <code>async-profiler</code> and JMC flame graphs. Mitigated allocation churn with buffer pooling and <code>ThreadLocal</code> storage; refactored critical packet decoding loops from <code>String.format</code> to Java 17 <code>HexFormat</code> and bitwise arithmetic, eliminating hot-path CPU bottlenecks. Pinned heap boundaries (<code>-Xms = -Xmx</code> at 4GB) and tuned GC for low pause times.</li>
+                    <li><strong>Redis Connection Pool Forensics:</strong> Diagnosed and eliminated silent "ghost connections" and thread pool poisoning in Redis Pub/Sub drivers (Lettuce vs. Jedis) that caused cascading application timeouts under transient network partitions.</li>
+                </ul>
+            </div>
+
+            <div class="domain-group">
+                <h4>Platform Engineering, Governance &amp; Cloud FinOps</h4>
+                <ul>
+                    <li><strong>Organizational Cloud Custody &amp; FinOps:</strong> Sole custodian of Google Cloud Organization IAM, VPCs, and GoDaddy DNS zone files. Analyzed multi-year resource utilization to execute a 3-year Google Cloud Committed Use Discount (CUD) on compute instances; currently leading workload evaluation for migrating production workloads from legacy N1 to modern N4 machine types.</li>
+                    <li><strong>Production Observability Stack:</strong> Replaced legacy ad-hoc disk logging and custom diagnostic tooling with an enterprise observability stack: Grafana, Loki, and Mimir fed by Alloy with blackbox HTTP/TCP probes, managed under git-tracked configuration (pragmatic GitOps).</li>
+                    <li><strong>Zero-Trust Diagnostic Tooling (<code>hlogger</code>):</strong> Built a secure client-server log inspection utility in Go using Mutual TLS (mTLS) with a custom PKI hierarchy (Root CA, Intermediate CA, client certificates, CRL), eliminating unauthenticated engineer SSH access to production instances.</li>
+                    <li><strong>On-Prem Staging Parity &amp; Bare-Metal Homelab:</strong> Built a dedicated on-prem staging environment replicating production network topology, terminating "testing in production." Configured a Proxmox VE bare-metal cluster to evaluate container orchestration (Kubernetes CNI/CSI, HashiCorp Nomad) for future platform containerization.</li>
+                    <li><strong>Declarative Marketing Infrastructure:</strong> Decoupled the public marketing website completely from core backend infrastructure into its own isolated GCP project, codifying 100% of Cloud Run, Cloud SQL (PostgreSQL), networking, and IAM via Terraform / OpenTofu.</li>
+                    <li><strong>Platform Automation &amp; Integrations:</strong> Extended scene/rule automation engines for multi-hub environments (fragment handling, cross-hub synchronization); built cloud-to-cloud OAuth integrations for Yale smart locks, Google Home, and Alexa; rewrote hardware device provisioning flows and replacement operations for failed nodes.</li>
+                    <li><strong>Technical Hiring:</strong> Formulated backend engineering evaluation rubrics and practical TDD assessments; interviewed and hired software engineering talent for the platform.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="open-source">
+        <h2>Open-Source Systems &amp; Research</h2>
+        <div class="projects-grid">
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/stopgap" target="_blank">stopgap</a>
+                    <span class="muted">Kotlin · Maven Central (<code>2.8.0</code>)</span>
                 </div>
-                <div class="role">
-                    <span class="role-title">Backend &amp; Infrastructure Engineer</span>
-                    <span class="role-period muted">Mar 2022 – Mar 2026</span>
+                <p>Microservice framework on Helidon SE (Nima) + Project Loom virtual threads. Custom compile-time DI via KSP (zero runtime reflection). Three-tier testing harness: unit → in-process integration server → Docker E2E via Testcontainers.</p>
+            </div>
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/assertgo" target="_blank">assertgo</a>
+                    <span class="muted">Go · Generics</span>
                 </div>
+                <p>Type-safe testing assertion library built with modern Go generics. Provides a fluent assertion API, chainable <code>Not()</code>, custom matchers, and zero external dependencies.</p>
             </div>
-
-            <div class="domain-group">
-                <h4>Architecture &amp; API Design</h4>
-                <ul>
-                    <li><strong>API Contract Ownership</strong>: Own the API contract suite for the entire platform — 30+ specs covering device provisioning, scene/rule automation, OTA, smart lock integrations, and real-time device status; app and firmware teams build against these before a line of code is written.</li>
-                    <li><strong>Technical Direction</strong>: Lead technical specification for the unified backend and cloud infrastructure stack, security standards, and data contracts.</li>
-                </ul>
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/relay" target="_blank">relay</a>
+                    <span class="muted">Zig · Systems</span>
+                </div>
+                <p>Low-level TCP server in pure Zig with a test-driven approach: raw POSIX socket descriptors, manual memory management without libc runtime dependencies, port binding (<code>SO_REUSEADDR</code>), and <code>SIGPIPE</code> suppression.</p>
             </div>
-
-            <div class="domain-group">
-                <h4>IoT Protocol &amp; Real-time Systems</h4>
-                <ul>
-                    <li><strong>Custom Protocol Design</strong>: Designed and implemented the custom binary protocol (UDP/TCP) between IoT hubs and cloud — packet handling, NAT hole punching, hub online/offline state machine, connection tracking, race condition handling.</li>
-                    <li><strong>Kernel-Level Networking</strong>: Pushed network work to the kernel when needed — nftables UDP echo server for NAT traversal (packet reflection without userspace), IP rate limiting via per-source dynamic sets at prerouting priority.</li>
-                    <li><strong>Kernel Tuning</strong>: Tuned kernel parameters for high-throughput IoT workloads — socket buffers, IP forwarding, connection tracking table size.</li>
-                </ul>
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/hrh" target="_blank">hrh</a>
+                    <span class="muted">Rust · CLI</span>
+                </div>
+                <p>Helm Release Helper CLI — automated declarative Helm deployments with diff previews and atomic rollback guarantees via <code>cargo install</code>.</p>
             </div>
-
-            <div class="domain-group">
-                <h4>Platform &amp; Automation Engine</h4>
-                <ul>
-                    <li><strong>Automation Engine</strong>: Built the scene and rule automation engine — multi-hub scenes, nested fragment handling for large payloads, scene sync, IFTTT-style cloud rules, scheduling.</li>
-                    <li><strong>Provisioning System</strong>: Built the device provisioning system from scratch (extracted from monolith) — hub setup, node validation, WiFi flow rewrite, replacement flow for failed nodes.</li>
-                    <li><strong>Third-Party Integrations</strong>: Integrated Google Home, Alexa, and Yale smart locks (cloud-to-cloud) into the platform.</li>
-                    <li><strong>Controlled Rollouts</strong>: Built a feature flags system for controlled rollouts.</li>
-                    <li><strong>Contract Testing</strong>: Introduced Consumer-Driven Contract Testing (Pact) for firmware delivery APIs — full CI pipeline: publish pact → can-i-deploy → release → mark deployed.</li>
-                </ul>
-            </div>
-
-            <div class="domain-group">
-                <h4>Performance Engineering</h4>
-                <ul>
-                    <li><strong>Storage Optimization</strong>: ClickHouse migration — rewrote core ingestion pipeline in Go, achieved <strong>95%+ storage reduction</strong> (90 GB → 3.7 GB, 25 GB → 780 MB) via schema design and specialized codecs.</li>
-                    <li><strong>JVM Performance</strong>: Profiled with async-profiler and flame graphs — eliminated CPU spikes from per-packet object allocations using ThreadLocal; tuned GC for throughput.</li>
-                    <li><strong>Zero-Downtime Deploys</strong>: Blue-green deploys via iptables — flushed conntrack for immediate cut-over, applied rules to both PREROUTING and OUTPUT chains for internal routing.</li>
-                    <li><strong>Error Handling</strong>: Implemented structured ThreadPool error handling after debugging silently swallowed exceptions in async paths (no logs, no traces — the bug that inspired <a href="https://eglu.tech/blog/java-exceptions-swallowed">the blog post</a>).</li>
-                </ul>
-            </div>
-
-            <div class="domain-group">
-                <h4>Infrastructure &amp; Reliability</h4>
-                <ul>
-                    <li><strong>Observability Overhaul</strong>: Migrated disk-based logging to Loki; built Prometheus + Grafana monitoring — significantly reduced MTTR.</li>
-                    <li><strong>Cloud Migration</strong>: Architected EKS migration using Terraform; evaluated HashiCorp Nomad first, selected EKS.</li>
-                    <li><strong>Security</strong>: Implemented TLS client authentication with a custom CA and certificate revocation list (CRL) in Go.</li>
-                    <li><strong>Systems Administration</strong>: Maintained production Linux systems — kernel tuning, live Debian/Ubuntu upgrades, <code>tcpdump</code>, <code>strace</code>, <code>sar</code>, <code>iotop</code>.</li>
-                    <li><strong>CI/CD</strong>: Built and maintained GitHub Actions pipelines for automated testing, building, and deployment.</li>
-                </ul>
-            </div>
-
-            <div class="domain-group">
-                <h4>Codebase &amp; Quality</h4>
-                <ul>
-                    <li><strong>Framework Migration</strong>: Migrated core monolith (Spring 4 / Java) to Spring Boot 2.7+ / Kotlin — 100% TDD throughout to prevent regressions.</li>
-                    <li><strong>Microservices</strong>: Decoupled monolith into gRPC microservices.</li>
-                    <li><strong>Technical Hiring</strong>: Led technical recruitment — designed coding challenges, conducted interviews.</li>
-                </ul>
+            <div class="project">
+                <div class="project-header">
+                    <a href="https://github.com/sku0x20/avoid" target="_blank">avoid</a>
+                    <span class="muted">Shell / Linux · Distro</span>
+                </div>
+                <p>Minimal, bootable Linux distribution based on Void Linux engineered for server disaster recovery and lightweight headless appliances.</p>
             </div>
         </div>
     </section>
 
     <section class="education">
         <h2>Education</h2>
-        <p><strong>BCA</strong> <span class="muted">· 2019–2022</span></p>
-    </section>
-
-    <section class="open-source">
-        <h2>Open Source</h2>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/stopgap">stopgap</a>
-                <span class="muted">Kotlin · Maven Central</span>
-            </div>
-            <p>Microservice framework on Helidon SE (Nima) + Project Loom. Custom compile-time DI via KSP — no runtime reflection. Three-tier testing: unit → in-process integration server → Docker E2E via Testcontainers. Gradle plugin that wires the full build pipeline. Published at <code>dev.sku20.stopgap:*:2.8.0</code>.</p>
-        </div>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/assertgo">assertgo</a>
-                <span class="muted">Go</span>
-            </div>
-            <p>Type-safe assertion library with generics. Fluent API, chainable <code>Not()</code>, custom matchers, zero dependencies. v1.0.0.</p>
-        </div>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/hrh">hrh</a>
-                <span class="muted">Rust</span>
-            </div>
-            <p>Helm Release Helper — reads a YAML release declaration, invokes <code>helm upgrade --install</code>. Diff mode, <code>--atomic</code> rollback, chart versioning. Installable via <code>cargo install</code>.</p>
-        </div>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/avoid">avoid</a>
-                <span class="muted">Shell</span>
-            </div>
-            <p>Minimal Linux distribution based on Void Linux, built for servers and recovery disks. Ships <code>.img.gz</code> and <code>.qcow2</code> images via GitHub Actions releases.</p>
-        </div>
-
-        <div class="project">
-            <div class="project-header">
-                <a href="https://github.com/sku0x20/c_oop">c_oop</a>
-                <span class="muted">C</span>
-            </div>
-            <p>OOP and London-style TDD in pure C. Polymorphism via interface structs, heap-allocated objects with constructors. v5.0.0, CI.</p>
-        </div>
-    </section>
-
-    <section class="publications">
-        <h2>Publications</h2>
-        <div class="project">
-            <div class="project-header">
-                <a href="https://doi.org/10.5281/zenodo.21717242">Connection-Agnostic Presence Tracking for Stateless Distributed Backends</a>
-                <span class="muted">Preprint · Zenodo</span>
-            </div>
-            <p>Redis-based architecture for tracking IoT device online/offline status across stateless distributed backends — sorted sets scored by expiry deadlines, throttled batch writes, asymmetric fault-tolerance guarantees ensuring offline transitions are never lost. Derives worst-case detection latency bounds. v1.3.0.</p>
+        <div class="education-row">
+            <span><strong>Bachelor of Computer Applications (BCA)</strong></span>
+            <span class="muted">2019 – 2022</span>
         </div>
     </section>
 </main>

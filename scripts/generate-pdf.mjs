@@ -70,6 +70,31 @@ function createStaticServer() {
     });
 }
 
+const resumeHtmlPath = path.resolve(process.cwd(), 'resume-pdf/resume.html');
+const resumeOutputFile = path.resolve(process.cwd(), 'public/resume.pdf');
+const distResumeOutputFile = path.resolve(distDir, 'resume.pdf');
+
+async function printDocument(chromePath, inputUrl, targetFile, distTargetFile) {
+    console.log(`Printing ${targetFile} from ${inputUrl}...`);
+    await execFileAsync(chromePath, [
+        '--headless=new',
+        '--disable-gpu',
+        '--no-pdf-header-footer',
+        `--print-to-pdf=${targetFile}`,
+        inputUrl
+    ]);
+
+    if (fs.existsSync(targetFile)) {
+        if (fs.existsSync(distDir)) {
+            fs.copyFileSync(targetFile, distTargetFile);
+        }
+        const stats = fs.statSync(targetFile);
+        console.log(`✓ Successfully generated ${targetFile} (${stats.size} bytes)`);
+    } else {
+        throw new Error(`Output file ${targetFile} was not generated.`);
+    }
+}
+
 async function main() {
     if (!fs.existsSync(distDir)) {
         throw new Error('dist/ directory not found. Please run "astro build" first.');
@@ -80,27 +105,12 @@ async function main() {
 
     await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
     const port = server.address().port;
-    const targetUrl = `http://127.0.0.1:${port}/cv/`;
-
-    console.log(`Serving dist/ at ${targetUrl}`);
-    console.log(`Printing PDF using: ${chromePath}`);
+    const cvUrl = `http://127.0.0.1:${port}/cv/`;
+    const resumeUrl = `file://${resumeHtmlPath}`;
 
     try {
-        await execFileAsync(chromePath, [
-            '--headless=new',
-            '--disable-gpu',
-            '--no-pdf-header-footer',
-            `--print-to-pdf=${outputFile}`,
-            targetUrl
-        ]);
-
-        if (fs.existsSync(outputFile)) {
-            fs.copyFileSync(outputFile, distOutputFile);
-            const stats = fs.statSync(outputFile);
-            console.log(`Successfully generated ${outputFile} (${stats.size} bytes)`);
-        } else {
-            throw new Error(`Output file ${outputFile} was not generated.`);
-        }
+        await printDocument(chromePath, cvUrl, outputFile, distOutputFile);
+        await printDocument(chromePath, resumeUrl, resumeOutputFile, distResumeOutputFile);
     } finally {
         server.close();
     }
