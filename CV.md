@@ -246,8 +246,8 @@
   Protected the platform from traffic bombardment and abusive retry loops:
   - Configured reverse-proxy rate limiting in **Nginx** to throttle excessive requests at the network perimeter (returning HTTP 429).
   - Implemented token-bucket application rate limiting using **Bucket4j** inside the gRPC Activity Log service, ensuring fair scheduling and shielding internal database pools from client spikes.
-* **Evaluating Next-Gen Telemetry (VictoriaLogs):**  
-  Used the on-prem staging environment to benchmark alternatives to Loki for heavy ingestion streams, experimenting with **VictoriaLogs / VictoriaMetrics** to evaluate memory efficiency under high-cardinality time-series workloads.
+* **Tackling Telemetry Cardinality: VictoriaMetrics & VictoriaLogs R&D:**  
+  While Grafana Loki and Mimir served initial needs, they suffered from severe **high-cardinality bottlenecks**—in IoT environments with thousands of unique device IDs and dynamic event tags, label explosion causes excessive memory consumption, index bloat, and query degradation. I deployed and benchmarked **VictoriaMetrics** and **VictoriaLogs** on the staging setup to evaluate their cardinality-agnostic architecture, achieving significantly faster queries and vastly lower memory overhead under high-volume IoT log streams.
 
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
@@ -296,6 +296,19 @@
   Synthesized years of backend lessons into a published microservice framework built on **Helidon SE (Nima) + Project Loom** virtual threads. Features compile-time dependency injection via **KSP** (zero runtime reflection) and a comprehensive three-tier testing model. Published to Maven Central at `dev.sku20.stopgap:*:2.8.0`.
 * **`assertgo` (Go Generics Assertion Library):**  
   Deprecated the older `assertG` in favor of a complete rewrite leveraging modern Go generics—providing a fluent, type-safe, zero-dependency testing library for the Go community.
+
+### Binary Blob Decoupling: Migrating In-DB Images to Google Cloud Storage (GCS)
+
+* **The Inherited Anti-Pattern:**  
+  From day one, binary image payloads were stored directly as blobs inside the primary database. Over four years, this bloated database backups, consumed expensive memory in database buffer pools, and degraded query throughput for routine transactional records.
+* **The Migration Pipeline:**  
+  Designed, authored, and executed a seamless production migration:
+  - Built a migration pipeline to extract stored binary images, upload them to secure Google Cloud Storage (GCS) buckets, and verify checksum integrity.
+  - Refactored the backend schemas and APIs to store immutable GCS references instead of raw bytes.
+  - Purged gigabytes of binary blob payloads from the primary database cluster.
+* **The Outcome:**  
+  Slashed database memory pressure and backup windows, improved transactional query latency, and established cloud object storage as the standard for all unstructured media.
+
 
 
 
