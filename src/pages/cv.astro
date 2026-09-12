@@ -1,0 +1,508 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+    title="Curriculum Vitae — Siddhant Kumar Upmanyu" 
+    description="Exhaustive career dossier of Siddhant Kumar Upmanyu — Senior Systems Architect with full platform, cloud, and kernel custody. Chronological systems engineering journey from 2022 to 2026."
+>
+    <article class="cv-container">
+        <header class="cv-header">
+            <div class="cv-title-row">
+                <div>
+                    <h1>Siddhant Kumar Upmanyu</h1>
+                    <div class="cv-progression">
+                        Software Engineer (2022–2024) &rarr; Senior Software Engineer (2024–2026) &rarr; Senior Systems Architect (Apr 2026–Present)
+                    </div>
+                </div>
+                <div class="cv-actions">
+                    <a href="/cv.pdf" class="btn btn-primary" download>Download PDF</a>
+                    <a href="/blog" class="btn btn-secondary">Technical Blog</a>
+                </div>
+            </div>
+            <div class="cv-meta-links">
+                <span><strong>Location:</strong> Bengaluru, India</span>
+                <span>&bull;</span>
+                <a href="https://www.sku20.dev/">sku20.dev</a>
+                <span>&bull;</span>
+                <a href="https://github.com/sku0x20" target="_blank">GitHub</a>
+                <span>&bull;</span>
+                <a href="https://www.linkedin.com/in/sku20" target="_blank">LinkedIn</a>
+                <span>&bull;</span>
+                <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
+                <span>&bull;</span>
+                <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank">Zenodo Preprint</a>
+            </div>
+        </header>
+
+        <!-- Executive & Staff Scope Callout -->
+        <section class="cv-scope-box">
+            <h2>Executive &amp; Staff Engineering Scope</h2>
+            <ul>
+                <li>
+                    <strong>Autonomous Technical Authority:</strong> Operate with zero technical or managerial hierarchy above me, reporting directly to the CEO. Rather than executing top-down task assignments, I autonomously drive the engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&amp;D spikes, and delivering production-hardened systems.
+                </li>
+                <li>
+                    <strong>End-to-End Product &amp; Infrastructure Custody:</strong> Hold sole administrative and architectural ownership over the entire operational footprint: domain and DNS governance (GoDaddy), corporate email routing, Google Cloud Organization Administration (IAM policies, VPCs, project lifecycles), on-prem staging bare metal, and production compute clusters.
+                </li>
+                <li>
+                    <strong>Cloud FinOps &amp; Infrastructure Economics:</strong> Directly responsible for infrastructure burn and capacity planning. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
+                </li>
+                <li>
+                    <strong>Cross-Organizational Technical Direction:</strong> Act as the definitive decision-maker for platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and system boundaries—establishing written specifications that firmware, hardware, mobile, and backend teams build against.
+                </li>
+            </ul>
+        </section>
+
+        <!-- Anchor Navigation -->
+        <nav class="cv-year-nav" aria-label="CV sections">
+            <a href="#year-2026">2026</a>
+            <a href="#year-2025">2025</a>
+            <a href="#year-2024">2024</a>
+            <a href="#year-2023">2023</a>
+            <a href="#year-2022">2022</a>
+            <a href="#open-source">Open Source</a>
+            <a href="#writing">Systems Writing</a>
+            <a href="#competencies">Skills</a>
+        </nav>
+
+        <!-- 2026 -->
+        <section id="year-2026" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>2026</h2>
+                <span class="cv-role-badge">Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking &amp; Toolmaker</span>
+            </div>
+            <div class="cv-context-quote">
+                In April 2026, I was promoted to Senior Systems Architect. With zero engineering managers or technical leads above me, I answer directly to the CEO for technical strategy, platform reliability, and cloud expenditure across the company. My mandate spans the entire product surface: domain governance, enterprise communications, multi-cloud infrastructure, protocol standards, and framework architecture.
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Total Organizational &amp; Cloud Custody: DNS, Corporate Email &amp; Compute Lifecycle (N1 &rarr; N4)</h3>
+                <ul>
+                    <li><strong>Autonomous Administrative &amp; Platform Custody:</strong> Hold single-point ownership over all foundational product resources: Google Cloud Organization Administrator holding root authority over IAM policies, project topologies, VPC networks, and firewall rules; full management of corporate DNS zone files, domains via GoDaddy, and enterprise email routing.</li>
+                    <li><strong>Compute Lifecycle &amp; Next-Gen Hardware Migration (N1 &rarr; N4):</strong> As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation N4 machine types—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Feature Flags Engine &amp; Controlled Rollouts (2026)</h3>
+                <ul>
+                    <li><strong>The Problem:</strong> Releasing high-impact changes across cloud APIs and mobile/firmware devices carried high blast radii if unexpected edge cases emerged in the field.</li>
+                    <li><strong>The Solution:</strong> Engineered an internal, lightweight feature flags system directly into the backend—enabling dynamic runtime evaluation, percentage-based rollouts, and instant kill-switches, allowing teams to dark-launch new capabilities without backend redeployments.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>100% Declarative Cloud Migration with Terraform (GCP Cloud Run &amp; Cloud SQL)</h3>
+                <ul>
+                    <li><strong>The Problem:</strong> Corporate and platform web services were previously tethered to manually configured virtual machines, lacking declarative reproducibility and autoscaling.</li>
+                    <li><strong>The Solution:</strong> Migrated services onto Google Cloud Run paired with managed Google Cloud SQL (PostgreSQL). Codified 100% of the infrastructure in Terraform—networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Bare-Metal Homelab &amp; Cloud-Native Engineering (Proxmox, K8s, Nomad)</h3>
+                <ul>
+                    <li><strong>Preparing for Platform Containerization:</strong> Built an on-prem bare-metal testbed running Proxmox VE to chart the company's future containerization roadmap: automated VM provisioning via <code>cloud-init</code>, bootstrapped and benchmarked Kubernetes clusters from scratch (evaluating CNI, CSI, and Pod Identities), and benchmarked HashiCorp Nomad vs. Kubernetes (EKS).</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Concurrency Overhaul: Dynamic IoT-Aware ThreadPool vs. ForkJoinPool</h3>
+                <ul>
+                    <li><strong>The Bottleneck:</strong> Default JVM concurrency models struggled with bursty IoT packet waves, either wasting memory on idle threads or inducing packet drops during sudden surges.</li>
+                    <li><strong>The Implementation:</strong> Replaced the legacy pool with a custom, load-adaptive dynamic ThreadPool that dynamically scales worker capacity in response to real-time incoming packet velocity and queue saturation. Eliminated legacy technical debt: obsolete dynamic TCP port provisioning flows and redundant in-memory state tracking.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Low-Level Kernel Networking &amp; Edge Protocol Translation</h3>
+                <ul>
+                    <li><strong>In-Kernel NAT64 &amp; Dual-Stack Routing (Jool + nftables):</strong> Addressed a critical network partition where cellular IoT clients operated exclusively over IPv6 while backend systems ran on IPv4. Ruled out userspace proxies (Nginx/HAProxy) that would drain burstable CPU credits; deployed the <strong>Jool</strong> Linux kernel module for stateful NAT64 (RFC 7915) via Explicit Address Mapping Tables (EAMT) alongside <code>nftables</code> DNAT, cleanly partitioning non-overlapping source port ranges on a shared public IPv4.</li>
+                    <li><strong>Kernel-Level Packet Reflection &amp; Dynamic Rate-Limiting:</strong> Offloaded UDP NAT traversal echo responses directly into the Linux kernel using <code>nftables</code> packet reflection at prerouting priority (<code>notrack</code>). Implemented kernel-level DDoS/abuse protection using <code>nftables</code> dynamic sets (<code>limit rate over 10/second burst 20 packets</code> at prerouting priority -301) to drop traffic sweeps before socket allocation.</li>
+                    <li><strong>Academic Preprint (Zenodo):</strong> Authored and published <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank"><em>Connection-Agnostic Presence Tracking for Stateless Distributed Backends</em></a>: formulated a Redis-based architecture using sorted sets scored by expiration deadlines and throttled batch writes to track IoT device online/offline transitions across stateless backends with mathematically bounded detection latency.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Binary Blob Decoupling: Migrating In-DB Images to Google Cloud Storage (GCS)</h3>
+                <ul>
+                    <li><strong>The Inherited Anti-Pattern:</strong> From day one, binary image payloads were stored directly as blobs inside the primary database, bloating backups and memory buffer pools.</li>
+                    <li><strong>The Migration Pipeline:</strong> Engineered a production migration pipeline extracting stored binary images, streaming them to secure Google Cloud Storage (GCS) buckets with checksum verification, switching schemas to immutable URIs, and purging binary blobs from the primary database cluster.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2025 -->
+        <section id="year-2025" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>2025</h2>
+                <span class="cv-role-badge">Senior Software Engineer | Production Observability, Modern Infra &amp; High-Performance Pipelines</span>
+            </div>
+            <div class="cv-context-quote">
+                In 2025, the research from late 2024 materialized into production infrastructure. I moved the company away from single-node disk-dependent operations toward dedicated observability, declarative infrastructure, and purpose-built ingestion pipelines.
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Production Observability Rollout: Grafana &amp; Loki (Retiring `hlogger`)</h3>
+                <ul>
+                    <li><strong>The Architectural Philosophy:</strong> Clarified the fundamental distinction between <em>"Is the service up?"</em> (external blackbox probes) vs. <em>"Why is the service struggling?"</em> (internal contextual metrics).</li>
+                    <li><strong>The Implementation:</strong> Provisioned a dedicated, isolated observability VM. Deployed and tuned Grafana, Loki, and Mimir fed by Alloy (running Blackbox HTTP/TCP probes alongside database and application metrics exporters). Managed all configurations in a git-tracked directory (pragmatic GitOps/IaC). Gracefully retired <code>hlogger</code> and disk log dumping.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>High-Volume Telemetry Migration: ClickHouse, Delta+ZSTD Codecs &amp; GCS Offloading</h3>
+                <ul>
+                    <li><strong>The Inode Crisis:</strong> The production VM was facing recurring disk exhaustion from telemetry saved across deeply nested two-letter directory trees (<code>/aa/bb/cc/...</code>), causing catastrophic filesystem inode bloat.</li>
+                    <li><strong>The Solution:</strong> Modeled columnar ClickHouse schemas (<code>device_health</code>, <code>pal_2024</code> activity logs, and <code>crm_logs</code>) with tight data types: <code>FixedString(23/29)</code>, <code>LowCardinality(String)</code>, Delta encoding, and ZSTD compression. Slashed storage footprint by over 95% (compressing <code>device_health</code> telemetry from 17 GB down to 300 MB on disk). Designed composite primary keys ordered from low to high cardinality to optimize block skip scans.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Ending "Testing in Production": On-Prem Staging Environment &amp; Parity</h3>
+                <ul>
+                    <li><strong>The Dangerous Status Quo:</strong> Historically, changes were deployed directly against live production systems, causing high deployment churn and regressions.</li>
+                    <li><strong>The Architecture:</strong> Configured a dedicated on-prem server behind a static public IP replicating production topology. Established a strict deployment promotion gate where all features and refactors were verified on staging before receiving production tickets—dramatically reducing hotfixes.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Decoupled Data Architecture: Go + gRPC Device Health Service (Encapsulating ClickHouse)</h3>
+                <ul>
+                    <li><strong>The Architectural Decision:</strong> Refused to tightly couple the main Kotlin/Spring Boot monolith with ClickHouse drivers. Built a standalone, lightweight Go microservice communicating over binary gRPC with strict Protocol Buffers contracts, deployed on the auxiliary VM.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>SNode Architecture &amp; The Git-Based Knowledge Base Revolution</h3>
+                <ul>
+                    <li><strong>Virtual Node Composite Abstraction:</strong> Designed the architectural federation allowing disjoint physical hardware devices (e.g. multiple dimmers) to aggregate into a single composite Virtual Node (a subtype of SNode) that behaves as one unified device.</li>
+                    <li><strong>Establishing the Knowledge Base:</strong> Spearheaded the company's first Git-based Knowledge Base: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before shipping hardware.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Multi-Tier Rate Limiting &amp; High-Ingestion Telemetry R&amp;D</h3>
+                <ul>
+                    <li><strong>Defense in Depth (Nginx + Bucket4j):</strong> Configured reverse-proxy rate limiting in Nginx (HTTP 429) and token-bucket application rate limiting via Bucket4j inside the gRPC Activity Log service.</li>
+                    <li><strong>Tackling Cardinality (VictoriaMetrics &amp; VictoriaLogs):</strong> Benchmarked VictoriaMetrics and VictoriaLogs on staging to evaluate their cardinality-agnostic architecture over Loki/Mimir when handling thousands of dynamic IoT device IDs.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Cloud-to-Cloud Integration: Yale Smart Locks (2025)</h3>
+                <ul>
+                    <li>Integrated Yale smart locks natively into the cloud platform: designed cloud-to-cloud OAuth integration, handled device state synchronization, access filtering, and real-time push notifications for remote lock and unlock events.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Technical Recruitment &amp; Engineering Standards (Late 2025 – 2026)</h3>
+                <ul>
+                    <li>Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems. Designed practical coding assessments evaluating systems thinking and TDD, conducted engineering interviews, and successfully hired an engineer into the team.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2024 -->
+        <section id="year-2024" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>2024</h2>
+                <span class="cv-role-badge">Promoted to Senior Software Engineer | Security Hardening, Deep Profiling &amp; Resilience</span>
+            </div>
+            <div class="cv-context-quote">
+                By 2024, my ownership spanned from daily database forensics and bug fixes to core infrastructure reliability. I transitioned from surviving production fires to proactively eliminating security vulnerabilities, profiling JVM runtime internals, and hardening automated recovery mechanisms.
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Zero-Trust Internal Tooling: `hlogger` (Go, mTLS &amp; Custom PKI)</h3>
+                <ul>
+                    <li><strong>The Security Flaw:</strong> Firmware engineers previously had raw SSH access to production Linux instances to read device logs—a severe audit and security vulnerability.</li>
+                    <li><strong>The Solution:</strong> Built a secure client-server diagnostic tool in Go using Mutual TLS (mTLS): engineered a complete PKI hierarchy from scratch (Root CA, Intermediate CA, client certificates with CRL support). The server enforced mutual authentication, audited commands, and streamed filtered logs without exposing interactive shells.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Production Resilience &amp; The "Hospital Bed" Recovery Incident</h3>
+                <ul>
+                    <li><strong>The Vulnerability:</strong> While hospitalized in mid-2024, an engineer triggered a deployment swap during high lag, corrupting iptables routing rules and taking down production.</li>
+                    <li><strong>Triage &amp; Remediation:</strong> The CEO video-called directly from my hospital room, aiming a camera at the engineer's terminal; I walked them through flushing corrupted rules and restoring traffic. Upon recovery, I overhauled the swap tooling to be strictly idempotent, self-healing, and guarded with sanity checks.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>JVM Deep Profiling &amp; Garbage Collection Engineering</h3>
+                <ul>
+                    <li><strong>Profiling Runtime Internals:</strong> Instrumented the runtime with <code>async-profiler</code>, Java Mission Control (JMC), and VisualVM, generating flame graphs under live traffic. Mitigated allocation churn with pooled buffers and <code>ThreadLocal</code> allocations; pinned heap boundaries (<code>-Xms</code> = <code>-Xmx</code> at 4GB) and tuned GC for low pause times.</li>
+                    <li><strong>Hot-Path Zero-Allocation Formatting:</strong> Identified CPU hotspots in binary packet decoding loops driven by <code>String.format</code>; refactored to Java 17 <code>HexFormat</code> and bitwise operations, cutting per-packet CPU overhead.</li>
+                    <li><strong>Redis Client Forensics:</strong> Evaluated Redis drivers (Jedis vs. Lettuce) for async I/O; debugged silent "ghost connections" and poisoned connection pool states in Redis Pub/Sub that caused cascading application timeouts.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>The Observability &amp; High-Ingestion Data Odyssey: Discovering ClickHouse</h3>
+                <ul>
+                    <li>Manually evaluated distributed logging and analytics engines (ELK vs. OpenSearch vs. Loki; Druid vs. Hadoop vs. ClickHouse). Identified ClickHouse as the optimal engine for high-throughput IoT time-series telemetry.</li>
+                    <li>Attended the inaugural Apache Kafka meetup in Bangalore (first official Kafka event in India) and Thoughtworks distributed systems events.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Device Provisioning Rewrite &amp; Hardware Replacement Operations (Late 2024 – Early 2025)</h3>
+                <ul>
+                    <li>Extracted and overhauled provisioning logic from the monolith: implemented strict node validation assertions and completely rewrote the WiFi onboarding state machine. Built the replacement flow for failed hardware nodes, allowing hardware swaps without losing room mappings or automations.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Consumer-Driven Contract Testing Spike: Pact (2024–2025)</h3>
+                <ul>
+                    <li>Investigated Consumer-Driven Contract Testing (Pact) across 2024 and 2025 for OTA firmware delivery APIs, researching automated verification pipelines (<code>publish pact</code> &rarr; <code>can-i-deploy</code> &rarr; <code>release</code>) to eliminate integration regressions.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2023 -->
+        <section id="year-2023" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>2023</h2>
+                <span class="cv-role-badge">Software Engineer | Inherited Firestorm &amp; Production SRE Hardening</span>
+            </div>
+            <div class="cv-context-quote">
+                In January 2023, the founding engineer departed, leaving me as the sole custodian of the entire backend, the production virtual machines, and cloud infrastructure. With no safety net, I was immediately thrust into heavy SRE firefighting—tackling cascading outages, resource starvation, and kernel bottlenecks while keeping feature development alive.
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Linux Systems Forensics: Surviving File Descriptor Depletion &amp; I/O Starvation</h3>
+                <ul>
+                    <li><strong>The Crisis:</strong> Recurring production failures where the backend was unable to allocate threads, locking out SSH sessions and forcing emergency VM reboots.</li>
+                    <li><strong>Diagnostics &amp; Fix:</strong> Used <code>sar</code>, <code>vmstat</code>, <code>iotop</code>, and <code>pidstat</code> to diagnose log flooding and <code>iowait</code> starvation. Discovered that shell <code>ulimit</code> and PAM were bypassed by systemd; reconfigured systemd unit limits (<code>LimitNOFILE=262144</code>), reloaded daemons, and tuned disk I/O scheduling using <code>nice</code> and <code>ionice</code>.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Database Connection Pool Forensics (MongoDB)</h3>
+                <ul>
+                    <li>Traced recurring database timeouts to an internal auxiliary service leaking unpooled MongoDB connections on requests; re-architected the service to use pooled connection lifecycles, immediately stabilizing database clusters.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Platform Expansion: Multi-Hub Automations &amp; Ecosystem Integrations</h3>
+                <ul>
+                    <li>Extended the scene and rule automation engine to support multi-hub environments—handling nested scene fragments for large command payloads and multi-hub scene sync.</li>
+                    <li>Engineered and stabilized cloud-to-cloud voice integrations across Google Home and Amazon Alexa.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Critical Production State-Sync Remediation (Cloud &amp; Hub Data Divergence)</h3>
+                <ul>
+                    <li>Discovered a severe, months-old bug in legacy sync code where flawed ID generation silently corrupted scene and rule automations on physical hubs. Rewrote the sync logic for deterministic conflict resolution and executed live production migration scripts across thousands of homes without breaking automations.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Cloud FinOps &amp; Infrastructure Economics: 3-Year Committed Use Discount (CUD)</h3>
+                <ul>
+                    <li>Reported cloud spend forecasts directly to the CEO. Analyzed baseline vs. burst utilization and committed to a 3-year Google Cloud Committed Use Discount (CUD) on core compute instances—locking in aggressive cost reductions for the company over a multi-year horizon.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Delivery Infrastructure: Bitbucket to GitHub Actions Migration</h3>
+                <ul>
+                    <li>Ported all build, test, and release pipelines from Bitbucket to GitHub Actions while preserving automated webhook zero-downtime cutovers without service interruptions.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Architecture Research &amp; Extreme Programming (XP) Foundations</h3>
+                <ul>
+                    <li>Researched horizontal scalability patterns (Kafka vs. lightweight queues, Kubernetes trade-offs) and immersed in Extreme Programming (XP) and London-style TDD as a non-negotiable safety net.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- 2022 -->
+        <section id="year-2022" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>2022</h2>
+                <span class="cv-role-badge">Software Engineer | Sole Backend Ownership &amp; Production Modernization</span>
+            </div>
+            <div class="cv-context-quote">
+                I joined as Software Engineer and sole dedicated backend engineer. The only other backend contributor was a founding engineer splitting focus across Android and backend systems. There was no backend team to lean on, no deployment pipeline, and years of legacy infrastructure. I stepped into immediate, end-to-end ownership of backend architecture, delivery pipelines, and production reliability.
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Zero-Downtime Blue-Green Deploys &amp; Automated Delivery</h3>
+                <ul>
+                    <li><strong>The Reality on the Ground:</strong> Deployments were completely manual (SFTP'ing Jetty WAR files and restarting processes), causing recurring downtime.</li>
+                    <li><strong>Automated Delivery &amp; Kernel Switching:</strong> Engineered an automated CI/CD pipeline on Bitbucket with automated server webhooks. Cut over traffic at the Linux kernel level using <code>iptables</code> DNAT in both <code>PREROUTING</code> (external) and <code>OUTPUT</code> (loopback) chains, explicitly flushing the <code>conntrack</code> state table for immediate cut-over without dropping active requests.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>IoT Hub Load Simulation &amp; The C10K Awakening</h3>
+                <ul>
+                    <li>Tasked with simulating hundreds of concurrent IoT hubs replaying traffic logs. Encountered the C10K bottleneck where 1:1 thread-per-socket allocation exhausted JVM stacks; dove into Java NIO (<code>Selector</code>, <code>SocketChannel</code>), Go goroutines, and early Project Loom preview builds—fundamentally reshaping my mental model toward async and non-blocking I/O.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD</h3>
+                <ul>
+                    <li>Untangled legacy XML and bean configurations to leap directly from legacy Spring 4 (JDK 8) to Spring Boot 2.7.5 (JDK 17) in the pre-AI era. The primary driver was developer velocity: unlocking modern Spring test slices and making Test-Driven Development (TDD) viable across the backend.</li>
+                </ul>
+            </div>
+
+            <div class="cv-milestone">
+                <h3>Apple HomeKit Integration Spike: Protocol Forensics &amp; HAP Bridging</h3>
+                <ul>
+                    <li>Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP). Deep-dived into mDNS/Bonjour discovery, cryptographic pairing exchanges (SRP and Curve25519), and session encryption.</li>
+                </ul>
+            </div>
+        </section>
+
+        <!-- Open Source -->
+        <section id="open-source" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>Open-Source Systems &amp; Research Projects</h2>
+            </div>
+            <div class="cv-projects-grid">
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/stopgap" target="_blank">stopgap</a></h3>
+                        <span class="cv-tag">Kotlin · Maven Central (`2.8.0`)</span>
+                    </div>
+                    <p>Modern microservice framework built on <strong>Helidon SE (Nima) + Project Loom</strong> virtual threads. Features compile-time dependency injection via <strong>KSP</strong> (eliminating runtime reflection overhead) and an integrated three-tier testing harness (unit &rarr; in-process integration server &rarr; Docker E2E via Testcontainers).</p>
+                </div>
+
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/assertgo" target="_blank">assertgo</a></h3>
+                        <span class="cv-tag">Go · Generics</span>
+                    </div>
+                    <p>Type-safe testing assertion library built with modern Go generics. Provides a fluent API, chainable negation (<code>Not()</code>), custom matchers, and zero external dependencies.</p>
+                </div>
+
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/relay" target="_blank">relay</a></h3>
+                        <span class="cv-tag">Zig · Systems</span>
+                    </div>
+                    <p>Low-level TCP server implemented in pure Zig with a test-driven approach. Explores raw POSIX socket descriptors, manual memory management without libc runtime dependencies, port binding (<code>SO_REUSEADDR</code>), and preventing broken-pipe crashes (<code>SIGPIPE</code> suppression via <code>MSG_NOSIGNAL</code>).</p>
+                </div>
+
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/hrh" target="_blank">hrh</a></h3>
+                        <span class="cv-tag">Rust · CLI (`cargo install`)</span>
+                    </div>
+                    <p>Helm Release Helper — engineered during Kubernetes research to enable lean, declarative Helm releases without operator bloat. Reads YAML declarations and executes <code>helm upgrade --install</code> with diff previews and atomic rollback guarantees.</p>
+                </div>
+
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/avoid" target="_blank">avoid</a></h3>
+                        <span class="cv-tag">Shell / Linux · OS</span>
+                    </div>
+                    <p>Minimal, purpose-built Linux distribution based on Void Linux for server recovery and lean headless appliances. Builds and publishes bootable <code>.img.gz</code> and <code>.qcow2</code> images via automated GitHub Actions pipelines.</p>
+                </div>
+
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3><a href="https://github.com/sku0x20/c_oop" target="_blank">c_oop</a></h3>
+                        <span class="cv-tag">C · TDD Spike</span>
+                    </div>
+                    <p>Object-Oriented Programming and London-style TDD in pure C (written entirely pre-AI). Implements struct polymorphism via function-pointer interface tables, heap-allocated lifecycle constructors, and isolated unit test harnesses.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Writing -->
+        <section id="writing" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>Technical Thought Leadership &amp; Systems Writing</h2>
+            </div>
+            <p style="margin-bottom: 20px; font-size: 14.5px;">
+                Authored 20+ in-depth technical post-mortems and distributed systems essays published at <a href="/blog"><strong>sku20.dev/blog</strong></a>:
+            </p>
+            <div class="cv-projects-grid">
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3>Kernel Networking &amp; Edge Routing</h3>
+                    </div>
+                    <p>
+                        <a href="/blog/betting-on-nat64-over-a-proxy">Betting on NAT64 Over a Proxy</a> &bull; 
+                        <a href="/blog/negotiating-with-jool">Negotiating with Jool</a> &bull; 
+                        <a href="/blog/udp-echo-server">Low-Level UDP Echo Server for NAT Traversal via nftables</a> &bull; 
+                        <a href="/blog/zero-downtime-iptables">Zero-Downtime Deployments with iptables</a>
+                    </p>
+                </div>
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3>Concurrency &amp; Runtime Internals</h3>
+                    </div>
+                    <p>
+                        <a href="/blog/java-exceptions-swallowed">Java Exceptions Swallowed: The ThreadPool Trap</a> &bull; 
+                        <a href="/blog/threadlocal-optimizations-and-project-loom">ThreadLocal Optimizations and Project Loom</a> &bull; 
+                        <a href="/blog/optimizing-hex-formatting">Optimizing Hex Formatting: String.format to Java 17 HexFormat</a>
+                    </p>
+                </div>
+                <div class="cv-project-card">
+                    <div class="cv-project-header">
+                        <h3>Distributed Systems &amp; Database Reliability</h3>
+                    </div>
+                    <p>
+                        <a href="/blog/ghost-connection-redis-pubsub">The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools</a> &bull; 
+                        <a href="/blog/what-is-ratelimiting">Rate-Limiting: Flow Control vs. Quota Control</a> &bull; 
+                        <a href="/blog/hunting-for-a-udp-load-balancer">Hunting for a UDP Load Balancer</a>
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Competencies -->
+        <section id="competencies" class="cv-year-section">
+            <div class="cv-year-heading">
+                <h2>Technical Competencies &amp; Education</h2>
+            </div>
+            <div class="cv-skills-list">
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Languages:</span>
+                    <span>Kotlin, Java, Go, Rust, Zig, C, Shell, SQL</span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Frameworks &amp; Protocols:</span>
+                    <span>Spring Boot, Helidon SE (Nima), Project Loom, gRPC, Protocol Buffers, REST</span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Cloud &amp; Infrastructure:</span>
+                    <span>Linux (Debian, Ubuntu), Google Cloud (Cloud Run, Cloud SQL, GCS, VPC), AWS (EKS), Terraform, Docker, Proxmox VE, GitHub Actions, Bitbucket</span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Databases &amp; Storage:</span>
+                    <span>ClickHouse, MongoDB, PostgreSQL, Redis</span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Observability &amp; SRE:</span>
+                    <span>Grafana, Loki, Mimir, Prometheus, VictoriaMetrics, VictoriaLogs, Alloy, <code>async-profiler</code>, JMC, VisualVM, Flame Graphs, <code>sar</code>, <code>vmstat</code>, <code>iotop</code></span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Networking &amp; Security:</span>
+                    <span>Socket programming (TCP/UDP), <code>iptables</code>, <code>nftables</code>, NAT64 (Jool), NAT traversal, mTLS &amp; PKI (Root/Intermediate CA, CRL)</span>
+                </div>
+                <div class="cv-skill-row">
+                    <span class="cv-skill-category">Methodology:</span>
+                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contracts (Pact), Testcontainers</span>
+                </div>
+                <div class="cv-skill-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--color-divider);">
+                    <span class="cv-skill-category">Education:</span>
+                    <span><strong>Bachelor of Computer Applications (BCA)</strong> &bull; 2019 – 2022</span>
+                </div>
+            </div>
+        </section>
+    </article>
+</Layout>
