@@ -59,4 +59,42 @@
 * **The Outcome:**  
   Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team.
 
+## 2023 — Inherited Firestorm & Production SRE Hardening
+
+> **Operating Reality & Expanded Custody:**  
+> In January 2023, the founding engineer departed, leaving me as the sole custodian of the entire backend, the production virtual machines, and cloud infrastructure. With no safety net, I was immediately thrust into heavy SRE firefighting—tackling cascading outages, resource starvation, and kernel bottlenecks while keeping feature development alive.
+
+### Linux Systems Forensics: Surviving File Descriptor Depletion & I/O Starvation
+
+* **The Crisis (SSH Lockouts & Degraded State):**  
+  The production VM suffered recurring catastrophic failures where the backend hung in a degraded state, unable to allocate new threads or accept connections. In the worst cases, OS-level file descriptor depletion locked out incoming SSH sessions entirely, forcing emergency hard VM restarts.
+* **The Root Cause & Diagnostics:**  
+  Using `iotop`, `vmstat`, and `sar`, I diagnosed two compounding bottlenecks:
+  1. *Log Flooding & Disk I/O Saturation:* Uncontrolled log dumps were thrashing the disk, creating massive I/O wait times that stalled thread execution.
+  2. *Systemd vs. User Limits:* Simply bumping `ulimit` or `rlimit` in shells didn't persist for daemon processes governed by systemd unit limits (`LimitNOFILE`).
+* **The Remediation:**  
+  - Fixed systemd service unit limits to allow the backend process to scale its open file table properly.
+  - Tuned OS disk buffers and leveraged Linux process scheduling: assigned CPU priority with `nice` and prioritized disk I/O queues using `ionice` so core backend traffic was never starved by background disk writes.
+  - Tuned kernel TCP and UDP buffer parameters and untangled messy, inefficient Nginx reverse proxy configurations.
+
+### Database Connection Pool Forensics (MongoDB)
+
+* **The Problem:**  
+  The backend suffered intermittent database timeouts caused by MongoDB connection pool exhaustion.
+* **The Investigation & Fix:**  
+  Monitored active connection counts across services to trace the source of the leak. Identified a misconfigured internal auxiliary service that opened direct database connections on requests without returning them to the shared pool. Reconfigured the service to use pooled connection lifecycles, immediately stabilizing MongoDB cluster connections.
+
+### Delivery Infrastructure: Bitbucket to GitHub Actions Migration
+
+* **The Migration:**  
+  The company decided to migrate its entire VCS footprint from Bitbucket to GitHub.
+* **The Implementation:**  
+  Re-architected and ported all build, test, and release pipelines to GitHub Actions. Maintained the automated webhook-based zero-downtime deployment mechanism on the production servers without introducing service interruptions during the transition.
+
+### Platform Continuity: New Device APIs & Ecosystem Integrations
+
+* **The Balancing Act:**  
+  Alongside infrastructure firefighting, maintained product delivery: designed and shipped backend support for new IoT device types, cleaned up legacy API contracts, and stabilized third-party voice integrations (Google Home and Amazon Alexa).
+
+
 
