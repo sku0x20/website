@@ -243,6 +243,55 @@
 * **Evaluating Next-Gen Telemetry (VictoriaLogs):**  
   Used the on-prem staging environment to benchmark alternatives to Loki for heavy ingestion streams, experimenting with **VictoriaLogs / VictoriaMetrics** to evaluate memory efficiency under high-cardinality time-series workloads.
 
+## 2026 — Senior Systems Architecture: Declarative Cloud, Kernel Networking & Toolmaker
+
+> **Operating Reality & Architectural Leadership:**  
+> In April 2026, I was promoted to **Senior Systems Architect**. My ownership expanded across the entire technical surface: domain and DNS administration (GoDaddy), edge networking (IPv6/IPv4), cloud infrastructure, protocol design, and software framework architecture.
+
+### 100% Declarative Cloud Migration with Terraform (GCP Cloud Run & Cloud SQL)
+
+* **The Problem:**  
+  Corporate and platform web services were previously tethered to manually configured virtual machines, lacking declarative reproducibility and autoscaling.
+* **The Solution:**  
+  Having researched Terraform in 2025, I architected and executed a full migration to a modern, containerized serverless stack:
+  - Migrated services onto **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
+  - Codified 100% of the infrastructure in **Terraform**—networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations.
+
+### Bare-Metal Homelab & Cloud-Native Engineering (Proxmox, K8s, Nomad)
+
+* **Preparing for Platform Containerization:**  
+  To chart the company's future migration from single-server VMs to orchestrated containers, I built an on-prem bare-metal testbed running **Proxmox VE**:
+  - Automated repeatable VM provisioning using `cloud-init` / `user-data` scripts.
+  - Bootstrapped and benchmarked **Kubernetes clusters** from scratch—exploring **CNI** (Container Network Interface), **CSI** (Container Storage Interface), and **Pod Identities** (workload identity federation).
+  - Evaluated **HashiCorp Nomad vs. Kubernetes (EKS)** to make a data-backed recommendation on operational complexity vs. ecosystem maturity for our IoT platform.
+
+### Concurrency Overhaul: Dynamic IoT-Aware ThreadPool vs. ForkJoinPool
+
+* **The Bottleneck:**  
+  Default JVM concurrency models (like standard `ForkJoinPool` or fixed thread pools) struggled with the bursty nature of IoT packet bursts, either wasting memory on idle threads or inducing packet drops during sudden surges.
+* **The Implementation:**  
+  Replaced the legacy pool with a custom, load-adaptive **dynamic ThreadPool** that dynamically scales worker capacity in response to real-time incoming packet velocity and queue saturation.
+* **Eliminating Technical Debt:**  
+  Audited and pruned legacy architecture: eliminated obsolete dynamic TCP port provisioning flows, stripped redundant in-memory state tracking, and streamlined protocol paths.
+
+### Low-Level Networking & Published Distributed Systems Research
+
+* **IPv6 to IPv4 Network Transition:**  
+  Engineered edge and backend routing adjustments to manage the transition from IPv6 to IPv4 dual-stack environments without dropping device heartbeats.
+* **Kernel-Level Packet Reflection (`nftables`):**  
+  Offloaded NAT traversal UDP echo handling directly into the Linux kernel using `nftables` packet reflection and dynamic per-source IP rate-limiting sets at prerouting priority—bypassing userspace context switches entirely.
+* **Academic Preprint (Zenodo):**  
+  Authored and published [*Connection-Agnostic Presence Tracking for Stateless Distributed Backends*](https://doi.org/10.5281/zenodo.21717242):
+  - Formulated a Redis-based architecture using sorted sets scored by expiration deadlines and throttled batch writes to track IoT device online/offline transitions across stateless backends with mathematically bounded detection latency.
+
+### Open-Source Toolmaking: Maven Central & Go Generics
+
+* **`stopgap` (Microservice Framework on Maven Central):**  
+  Synthesized years of backend lessons into a published microservice framework built on **Helidon SE (Nima) + Project Loom** virtual threads. Features compile-time dependency injection via **KSP** (zero runtime reflection) and a comprehensive three-tier testing model. Published to Maven Central at `dev.sku20.stopgap:*:2.8.0`.
+* **`assertgo` (Go Generics Assertion Library):**  
+  Deprecated the older `assertG` in favor of a complete rewrite leveraging modern Go generics—providing a fluent, type-safe, zero-dependency testing library for the Go community.
+
+
 
 
 
