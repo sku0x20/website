@@ -181,9 +181,9 @@
 * **The Evolution:**  
   Having stabilized access security in 2024 with `hlogger`, the next step was eliminating disk logging entirely in favor of a centralized, real-time observability platform.
 * **The Implementation:**  
-  - Provisioned and configured a dedicated observability VM.
+  - Provisioned and hardened a dedicated, isolated observability VM separate from production.
   - Deployed and tuned **Grafana** and **Loki** to ingest application and device logs centrally.
-  - Maintained declarative configuration tracking (nascent IaC) for services, log retention policies, and dashboards.
+  - Managed all host configurations, scrape targets, log retention policies, and dashboards in a git-tracked directory—implementing a pragmatic GitOps / Infrastructure-as-Code (IaC) workflow where updates were deployed via version-controlled pulls rather than ad-hoc server mutations.
 * **The Outcome:**  
   Gracefully retired `hlogger` and raw disk log dumping. The entire engineering organization (firmware, backend, mobile) gained instant, indexed query capabilities over real-time system logs without touching production hosts.
 
@@ -197,6 +197,18 @@
   - **Cold Storage Tiering:** Integrated ClickHouse storage policies to offload and archive compressed tables to Google Cloud Storage (GCS).
 * **The Outcome:**  
   Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining lightning-fast analytical queries over historical data.
+
+### Ending "Testing in Production": On-Prem Staging Environment & Parity
+
+* **The Dangerous Status Quo:**  
+  Historically, the company had no staging environment. New backend changes, schema updates, and bug fixes were deployed and tested directly against live production systems—leading to high deployment churn, customer-facing bugs, and constant emergency hotfixes.
+* **The Architecture:**  
+  Configured a dedicated server within the office network behind a static public IP:
+  - Mirrored production topology locally: configured the backend, databases, and dependencies to replicate production runtime conditions.
+  - Established a strict deployment lifecycle: all new features, refactors, and migrations were promoted and verified on this staging environment before receiving a production release ticket.
+* **The Impact:**  
+  Dramatically reduced production redeployments and hotfixes. Edge cases were caught during staging verification, giving the team a safe sandbox for experimental features and stabilizing the release cycle.
+
 
 
 
