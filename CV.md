@@ -1,6 +1,11 @@
 # Curriculum Vitae — Siddhant Kumar Upmanyu
 
-## 2022 — Zero-Downtime Blue-Green Deploys & Automated Delivery
+## 2022 — Sole Backend Ownership & Production Modernization
+
+> **Operating Reality & Scope:**  
+> I joined as the sole dedicated backend engineer. The only other backend contributor was a founding engineer splitting focus across Android and backend systems. There was no backend team to lean on, no deployment pipeline, and years of legacy infrastructure. I stepped into immediate, end-to-end ownership of backend architecture, delivery pipelines, and production reliability.
+
+### Zero-Downtime Blue-Green Deploys & Automated Delivery
 
 * **The Reality on the Ground:**  
   Production deployments were completely manual and caused downtime. The founding engineer manually SFTP’d Jetty WAR files onto bare-metal/cloud instances, killed the running Jetty process, and booted the new one—leaving IoT hubs and mobile apps hanging during restarts. There was no CI/CD pipeline in place.
@@ -21,7 +26,7 @@
 * **The Outcome:**  
   Shifted the company from manual, downtime-heavy deployments to push-to-deploy, zero-downtime releases.
 
-## 2022 — IoT Hub Load Simulation & The C10K Awakening
+### IoT Hub Load Simulation & The C10K Awakening
 
 * **The Mandate:**  
   Tasked with building a hub simulator/load-testing harness that would replay production hub traffic logs against the backend to evaluate server resilience under load.
@@ -37,7 +42,7 @@
 * **The Long-Term Impact:**  
   While the log-replay harness exposed the limits of synthetic replay testing, it permanently shifted my mental model away from naive synchronous blocking architectures. It planted the architectural seeds for everything that followed: async event loops, custom binary protocols, and years later, building on Project Loom and Helidon SE.
 
-## 2022 — Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD
+### Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD
 
 * **The Problem:**  
   The core backend was locked into a legacy Spring 4 codebase (circa 2018–2019). The configuration was tangled, manual, and slow to bootstrap. Crucially, writing fast, isolated automated tests and practicing Test-Driven Development (TDD) was virtually impossible under the legacy test harness and bean configuration.
