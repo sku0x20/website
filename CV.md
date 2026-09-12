@@ -218,16 +218,16 @@
   - Implemented a binary **gRPC interface** between the main backend monolith and the Go health service—avoiding HTTP/JSON overhead and establishing a strict Protocol Buffers contract.
   - Deployed this service onto the dedicated auxiliary VM, completely isolating analytical ingestion workloads from transactional smart home traffic.
 
-### SNode Product Architecture & The Git-Based Knowledge Base Revolution
+### SNode Architecture & The Git-Based Knowledge Base Revolution
 
-* **The Context (A Critical New Hardware Line):**  
-  The company embarked on a major new product category: the Smart Node (SNode). This triggered intense debates between firmware, mobile, and cloud teams over protocol design, state models, and edge-case execution.
+* **The Architectural Challenge (Virtual Node Abstraction):**  
+  The platform needed a way to aggregate disjoint physical hardware devices into unified logical entities—allowing users to club multiple independent hardware nodes (e.g., grouping multiple separate dimmers) into a single composite **Virtual Node** (a subtype of SNode) that behaves as one unified device. This triggered intense architectural debates between firmware, mobile, and cloud teams over state propagation, protocol contracts, and edge-case execution.
 * **Architectural Leadership & Protocol Design:**  
-  As the sole backend custodian, I was a primary technical decision-maker for the SNode specification:
+  As the backend custodian, I was a primary technical decision-maker defining how SNodes would behave:
   - Designed the UDP protocol behavior, packet structure, retry semantics, and hardware constraint models.
-  - Authored the cloud backend implementation completely from scratch using a clean polymorphic type hierarchy, execute-only configurations, and strict validation.
+  - Authored the backend implementation completely from scratch using a polymorphic type hierarchy, execute-only configurations, and strict validation to ensure disparate physical nodes acted cohesively.
 * **Establishing the Company Knowledge Base:**  
-  Prior to this, the company had zero centralized architectural documentation—everything lived in heads or scattered chats. I spearheaded and instituted a **Git-based Knowledge Base**: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before shipping hardware.
+  Prior to this, the company had zero centralized architectural documentation—everything lived in heads or scattered chats. I spearheaded and instituted a **Git-based Knowledge Base**: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before implementing features.
 
 ### Continuous Latency Optimization & Cloud Proactive Health Checks
 
