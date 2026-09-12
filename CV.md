@@ -209,6 +209,32 @@
 * **The Impact:**  
   Dramatically reduced production redeployments and hotfixes. Edge cases were caught during staging verification, giving the team a safe sandbox for experimental features and stabilizing the release cycle.
 
+### Decoupled Data Architecture: Go + gRPC Device Health Service (Encapsulating ClickHouse)
+
+* **The Architectural Decision:**  
+  While ClickHouse was the right engine for high-frequency device health telemetry, I refused to tightly couple the main Kotlin/Spring Boot monolith with ClickHouse drivers and analytical query logic.
+* **The Solution:**  
+  - Architected and built a standalone, lightweight **Go microservice** to own all ClickHouse interactions.
+  - Implemented a binary **gRPC interface** between the main backend monolith and the Go health service—avoiding HTTP/JSON overhead and establishing a strict Protocol Buffers contract.
+  - Deployed this service onto the dedicated auxiliary VM, completely isolating analytical ingestion workloads from transactional smart home traffic.
+
+### SNode Product Architecture & The Git-Based Knowledge Base Revolution
+
+* **The Context (A Critical New Hardware Line):**  
+  The company embarked on a major new product category: the Smart Node (SNode). This triggered intense debates between firmware, mobile, and cloud teams over protocol design, state models, and edge-case execution.
+* **Architectural Leadership & Protocol Design:**  
+  As the sole backend custodian, I was a primary technical decision-maker for the SNode specification:
+  - Designed the UDP protocol behavior, packet structure, retry semantics, and hardware constraint models.
+  - Authored the cloud backend implementation completely from scratch using a clean polymorphic type hierarchy, execute-only configurations, and strict validation.
+* **Establishing the Company Knowledge Base:**  
+  Prior to this, the company had zero centralized architectural documentation—everything lived in heads or scattered chats. I spearheaded and instituted a **Git-based Knowledge Base**: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before shipping hardware.
+
+### Continuous Latency Optimization & Cloud Proactive Health Checks
+
+* Shaved latency across core platform endpoints by eliminating redundant database queries and optimizing payload serialization.
+* Reconfigured Google Cloud Monitoring with automated uptime checks and synthetic probes against backend health endpoints, enabling proactive alerting before customers or mobile apps detected latency spikes.
+
+
 
 
 
