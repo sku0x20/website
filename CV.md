@@ -155,6 +155,23 @@
   - Mitigated churn using pooled buffers and `ThreadLocal` allocations for hot execution paths.
   - Tuned JVM garbage collection and memory geometry: pinned heap boundaries (`-Xms` = `-Xmx` at 4GB) to avoid OS page allocation latency and selected low-latency GC profiles to stabilize tail latency.
 
+### The Observability & High-Ingestion Data Odyssey: Discovering ClickHouse
+
+* **The Data Bottleneck (Dumping to Disk):**  
+  IoT devices were continuously streaming high-frequency telemetry (voltage fluctuations, wattage, power state changes) alongside application logs. Everything was being dumped onto raw disk files on the VM—unsearchable, saturating I/O bandwidth, and risking disk exhaustion.
+* **The Manual Research Journey (Pre-AI Evaluation):**  
+  Without AI shortcuts, I manually dissected the distributed logging and analytical database ecosystem:
+  - *Operational Logging:* Evaluated the Elastic Stack (ELK) vs. OpenSearch vs. the **Grafana Stack (Loki + Prometheus + Grafana)**. I recognized the architectural difference between indexing full log text (Elastic) vs. indexing only metadata labels (Loki), which fit our resource constraints far better.
+  - *High-Ingestion Time-Series Telemetry:* Researched Apache Druid, Hadoop (evaluating why map-reduce batch architectures were wrong for our real-time IoT needs), and Timescale.
+* **The ClickHouse Breakthrough & Modern Telemetry:**  
+  By late 2024, I identified **ClickHouse** as the ideal engine for our IoT write-heavy workload—its columnar storage, vectorized execution, and aggressive compression algorithms were tailor-made for high-throughput device state. I also explored **Vector** for pipeline routing and **OpenTelemetry (OTel)**, clarifying the conceptual boundary between unstructured logs, structured metrics, and time-series telemetry.
+
+### Stepping Into the Engineering Community
+
+* Attended the inaugural **Apache Kafka meetup in Bangalore** (the first official Kafka event in India)—my first developer conference—deepening my understanding of distributed log streams and event brokers.
+* Later attended tech events hosted by **Thoughtworks** in Bangalore, exchanging ideas with engineers solving high-scale distributed systems problems.
+
+
 
 
 
