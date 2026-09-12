@@ -1,9 +1,15 @@
 # Curriculum Vitae — Siddhant Kumar Upmanyu
 
-## 2022 — Sole Backend Ownership & Production Modernization
+**Current Title:** Senior Systems Architect  
+**Career Progression:** Software Engineer (2022–2024) → Senior Software Engineer (2024–2026) → Senior Systems Architect (Apr 2026–Present)  
+**Links:** [sku20.dev](https://www.sku20.dev/) · [GitHub](https://github.com/sku0x20) · [LinkedIn](https://www.linkedin.com/in/sku20) · [Zenodo](https://doi.org/10.5281/zenodo.21717242)
+
+---
+
+## 2022 — Software Engineer | Sole Backend Ownership & Production Modernization
 
 > **Operating Reality & Scope:**  
-> I joined as the sole dedicated backend engineer. The only other backend contributor was a founding engineer splitting focus across Android and backend systems. There was no backend team to lean on, no deployment pipeline, and years of legacy infrastructure. I stepped into immediate, end-to-end ownership of backend architecture, delivery pipelines, and production reliability.
+> I joined as Software Engineer and sole dedicated backend engineer. The only other backend contributor was a founding engineer splitting focus across Android and backend systems. There was no backend team to lean on, no deployment pipeline, and years of legacy infrastructure. I stepped into immediate, end-to-end ownership of backend architecture, delivery pipelines, and production reliability.
 
 ### Zero-Downtime Blue-Green Deploys & Automated Delivery
 
@@ -69,7 +75,7 @@
   While the spike was ultimately shelved due to hardware and commercial constraints, it provided early, invaluable exposure to strict protocol specifications, cryptographic handshakes, and local-first device networking.
 
 
-## 2023 — Inherited Firestorm & Production SRE Hardening
+## 2023 — Software Engineer | Inherited Firestorm & Production SRE Hardening
 
 > **Operating Reality & Expanded Custody:**  
 > In January 2023, the founding engineer departed, leaving me as the sole custodian of the entire backend, the production virtual machines, and cloud infrastructure. With no safety net, I was immediately thrust into heavy SRE firefighting—tackling cascading outages, resource starvation, and kernel bottlenecks while keeping feature development alive.
@@ -122,7 +128,7 @@
 * **Deepening Software Craftsmanship:**  
   Beyond frameworks, I immersed myself in Extreme Programming (XP) philosophies and London-style TDD. Working solo, I realized TDD was my only real safety net against regressions. I began restructuring code for true testability—isolating side effects, enforcing strict domain boundaries, and cultivating clean code practices.
 
-## 2024 — Security Hardening, Deep Profiling & Hard-Won Resilience
+## 2024 — Promoted to Senior Software Engineer | Security Hardening, Deep Profiling & Resilience
 
 > **Operating Reality & High-Stakes Ownership:**  
 > By 2024, my ownership spanned from daily database forensics and bug fixes to core infrastructure reliability. I transitioned from surviving production fires to proactively eliminating security vulnerabilities, profiling JVM runtime internals, and hardening automated recovery mechanisms.
@@ -171,7 +177,7 @@
 * Attended the inaugural **Apache Kafka meetup in Bangalore** (the first official Kafka event in India)—my first developer conference—deepening my understanding of distributed log streams and event brokers.
 * Later attended tech events hosted by **Thoughtworks** in Bangalore, exchanging ideas with engineers solving high-scale distributed systems problems.
 
-## 2025 — Production Observability, Modern Infra & High-Performance Pipelines
+## 2025 — Senior Software Engineer | Production Observability, Modern Infra & High-Performance Pipelines
 
 > **Operating Reality & Architectural Transition:**  
 > In 2025, the research from late 2024 materialized into production infrastructure. I moved the company away from single-node disk-dependent operations toward dedicated observability, declarative infrastructure, and purpose-built ingestion pipelines.
@@ -243,7 +249,7 @@
 * **Evaluating Next-Gen Telemetry (VictoriaLogs):**  
   Used the on-prem staging environment to benchmark alternatives to Loki for heavy ingestion streams, experimenting with **VictoriaLogs / VictoriaMetrics** to evaluate memory efficiency under high-cardinality time-series workloads.
 
-## 2026 — Senior Systems Architecture: Declarative Cloud, Kernel Networking & Toolmaker
+## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
 > In April 2026, I was promoted to **Senior Systems Architect**. My ownership expanded across the entire technical surface: domain and DNS administration (GoDaddy), edge networking (IPv6/IPv4), cloud infrastructure, protocol design, and software framework architecture.
