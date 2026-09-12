@@ -107,10 +107,14 @@
 * **The Implementation:**  
   Re-architected and ported all build, test, and release pipelines to GitHub Actions. Maintained the automated webhook-based zero-downtime deployment mechanism on the production servers without introducing service interruptions during the transition.
 
-### Platform Continuity: New Device APIs & Ecosystem Integrations
+### Platform Expansion: Multi-Hub Automations & Ecosystem Integrations
 
 * **The Balancing Act:**  
-  Alongside infrastructure firefighting, maintained product delivery: designed and shipped backend support for new IoT device types, cleaned up legacy API contracts, and stabilized third-party voice integrations (Google Home and Amazon Alexa).
+  Alongside infrastructure firefighting, maintained product delivery: designed and shipped backend support for new IoT device types and cleaned up legacy API contracts.
+* **Multi-Hub Automation Engine:**  
+  Extended the core scene and rule automation engine to support **multi-hub environments**—handling nested scene fragments for large command payloads, multi-hub scene sync, and reliable scheduled execution.
+* **Third-Party Ecosystem Integrations:**  
+  Engineered and stabilized cloud-to-cloud integrations across **Google Home**, **Amazon Alexa**, and **Yale Smart Locks** (OAuth backend, status filtering, and real-time lock/unlock event notifications).
 
 ### Critical Production State-Sync Remediation (Cloud & Hub Data Divergence)
 
@@ -176,6 +180,21 @@
 
 * Attended the inaugural **Apache Kafka meetup in Bangalore** (the first official Kafka event in India)—my first developer conference—deepening my understanding of distributed log streams and event brokers.
 * Later attended tech events hosted by **Thoughtworks** in Bangalore, exchanging ideas with engineers solving high-scale distributed systems problems.
+
+### Device Provisioning Rewrite & Hardware Replacement Operations
+
+* **The Problem:**  
+  The legacy onboarding flow was heavily coupled with the monolith, prone to timeouts, and lacked clear assertion boundaries during WiFi pairing and node commissioning.
+* **The Architecture & Rewrite:**  
+  - Extracted and overhauled the provisioning logic: implemented robust node validation assertions and completely rewrote the WiFi onboarding state machine.
+  - Designed and built the replacement flow for failed hardware nodes—allowing users and field technicians to swap defective physical devices seamlessly without losing room mappings, scenes, or automation rules.
+
+### Technical Recruitment & Engineering Standards
+
+* **Hiring Framework & Rubric:**  
+  Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems.
+* **Interviewing & Team Building:**  
+  Designed practical coding assessments evaluating core systems thinking and TDD discipline, conducted engineering interviews, and successfully hired an engineer into the team.
 
 ## 2025 — Senior Software Engineer | Production Observability, Modern Infra & High-Performance Pipelines
 
@@ -249,6 +268,22 @@
 * **Tackling Telemetry Cardinality: VictoriaMetrics & VictoriaLogs R&D:**  
   While Grafana Loki and Mimir served initial needs, they suffered from severe **high-cardinality bottlenecks**—in IoT environments with thousands of unique device IDs and dynamic event tags, label explosion causes excessive memory consumption, index bloat, and query degradation. I deployed and benchmarked **VictoriaMetrics** and **VictoriaLogs** on the staging setup to evaluate their cardinality-agnostic architecture, achieving significantly faster queries and vastly lower memory overhead under high-volume IoT log streams.
 
+### Feature Flags Engine & Controlled Rollouts
+
+* **The Problem:**  
+  Releasing high-impact changes across cloud APIs and mobile/firmware devices carried high blast radii if unexpected edge cases emerged in the field.
+* **The Solution:**  
+  Engineered an internal, lightweight **feature flags system** directly into the backend:
+  - Enabled dynamic runtime evaluation, percentage-based rollouts, and instant kill-switches.
+  - Allowed firmware and mobile teams to dark-launch new capabilities and gate risky protocol features without requiring backend code redeployments.
+
+### Consumer-Driven Contract Testing Spike (Pact)
+
+* **The Architectural Exploration:**  
+  Investigated **Consumer-Driven Contract Testing (Pact)** to establish bulletproof API safety between the cloud backend and the firmware delivery / OTA subsystem.
+* **The Spike:**  
+  Researched automated contract verification pipelines (`publish pact` → `can-i-deploy` → `release`), evaluating contract testing as an architectural safeguard to eliminate integration regressions before new firmware builds hit production.
+
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
@@ -308,6 +343,49 @@
   - Purged gigabytes of binary blob payloads from the primary database cluster.
 * **The Outcome:**  
   Slashed database memory pressure and backup windows, improved transactional query latency, and established cloud object storage as the standard for all unstructured media.
+
+---
+
+## Open-Source Systems & Research Projects
+
+* **[stopgap](https://github.com/sku0x20/stopgap) (Kotlin · Published to Maven Central):**  
+  Modern microservice framework built on **Helidon SE (Nima) + Project Loom** virtual threads. Features compile-time dependency injection via **KSP** (eliminating runtime reflection overhead) and an integrated three-tier testing harness (unit &rarr; in-process integration server &rarr; Docker E2E via Testcontainers). Published at `dev.sku20.stopgap:*:2.8.0`.
+* **[assertgo](https://github.com/sku0x20/assertgo) (Go):**  
+  Type-safe testing assertion library built with modern Go generics. Provides a fluent API, chainable negation (`Not()`), custom matchers, and zero external dependencies.
+* **[hrh](https://github.com/sku0x20/hrh) — Helm Release Helper (Rust):**  
+  Engineered during Kubernetes orchestration research to enable lean, declarative Helm releases without the bloat of heavy operators. Reads declarative YAML declarations and executes `helm upgrade --install` with diff previews and atomic rollback guarantees. Available via `cargo install`.
+* **[avoid](https://github.com/sku0x20/avoid) (Shell / Linux):**  
+  Minimal, purpose-built Linux distribution based on Void Linux for server recovery and lean headless appliances. Builds and publishes bootable `.img.gz` and `.qcow2` images via automated GitHub Actions pipelines.
+* **[c_oop](https://github.com/sku0x20/c_oop) (C):**  
+  Deep systems spike exploring Object-Oriented Programming and London-style TDD in pure C (written entirely pre-AI). Implements struct polymorphism via function-pointer interface tables, heap-allocated lifecycle constructors, and isolated unit test harnesses.
+
+---
+
+## Publications & Preprints
+
+* **[Connection-Agnostic Presence Tracking for Stateless Distributed Backends](https://doi.org/10.5281/zenodo.21717242)**  
+  *Preprint · Zenodo (v1.3.0)*  
+  Formulates a Redis-based architecture for real-time presence tracking across distributed, stateless backend nodes. Employs sorted sets scored by expiration deadlines, throttled batch synchronization, and asymmetric fault-tolerance guarantees ensuring offline transitions are never lost while mathematically bounding worst-case detection latency.
+
+---
+
+## Education
+
+* **Bachelor of Computer Applications (BCA)**  
+  *2019 – 2022*
+
+---
+
+## Technical Competencies
+
+* **Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell, SQL
+* **Frameworks & Architecture:** Spring Boot, Helidon SE (Nima), Project Loom, gRPC, Protocol Buffers, REST
+* **Cloud & Infrastructure:** Linux (Debian, Ubuntu), Google Cloud (Cloud Run, Cloud SQL, GCS, VPC), AWS (EKS), Terraform, Docker, Proxmox VE, GitHub Actions, Bitbucket Pipelines
+* **Databases & Storage:** ClickHouse, MongoDB, PostgreSQL, Redis
+* **Observability & SRE:** Grafana, Loki, Prometheus, VictoriaMetrics, VictoriaLogs, `async-profiler`, JMC, VisualVM, Flame Graphs, `sar`, `vmstat`, `iotop`
+* **Networking & Protocols:** Socket programming (TCP/UDP), `iptables`, `nftables`, NAT traversal / hole-punching, mTLS & PKI (Root/Intermediate CA, CRL)
+* **Testing & Methodology:** Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact), Testcontainers, Test Slices
+
 
 
 
