@@ -122,6 +122,40 @@
 * **Deepening Software Craftsmanship:**  
   Beyond frameworks, I immersed myself in Extreme Programming (XP) philosophies and London-style TDD. Working solo, I realized TDD was my only real safety net against regressions. I began restructuring code for true testability—isolating side effects, enforcing strict domain boundaries, and cultivating clean code practices.
 
+## 2024 — Security Hardening, Deep Profiling & Hard-Won Resilience
+
+> **Operating Reality & High-Stakes Ownership:**  
+> By 2024, my ownership spanned from daily database forensics and bug fixes to core infrastructure reliability. I transitioned from surviving production fires to proactively eliminating security vulnerabilities, profiling JVM runtime internals, and hardening automated recovery mechanisms.
+
+### Zero-Trust Internal Tooling: `hlogger` (Go, mTLS & Custom PKI)
+
+* **The Security Flaw:**  
+  Firmware and hardware engineers frequently required real-time device communication logs to debug edge-case firmware behavior. Historically, this was solved by handing out direct SSH access to production Linux instances—a massive security risk and audit failure.
+* **The Solution (`hlogger`):**  
+  Built a secure, audited client-server diagnostic tool in Go using Mutual TLS (mTLS) to replace raw SSH access:
+  - **PKI Architecture:** Designed a complete certificate hierarchy from scratch—Root CA, Intermediate CA, and per-developer client certificates with Certificate Revocation List (CRL) support.
+  - **Auditing & Containment:** The server daemon enforced strict mutual authentication, logged all incoming commands and access timestamps, and streamed filtered device logs back to the client CLI without exposing an interactive shell.
+
+### Production Resilience & The "Hospital Bed" Recovery Incident
+
+* **The Vulnerability:**  
+  While I had automated blue-green cutovers, the scripts still required operational discipline. In mid-2024, while I was hospitalized, a team member triggered a deployment swap during high lag, corrupting the `iptables` cutover state and taking down production.
+* **Triage from a Hospital Bed:**  
+  With a 1–2 hour downtime looming, the CEO got on a video call directly from my hospital room, aiming a camera at the engineer's terminal. I walked them through flushing corrupted routing rules, re-synchronizing connection state, and executing a clean cut-over to restore traffic.
+* **The Remediation:**  
+  The moment I recovered, I overhauled the swap tooling to be strictly idempotent, self-healing, and guarded with sanity checks—ensuring an errant command could never leave routing tables half-swapped or wedged again.
+
+### JVM Deep Profiling & Garbage Collection Engineering
+
+* **The Bottleneck:**  
+  As device density grew, the Spring Boot backend began experiencing intermittent latency spikes and CPU churn during peak traffic windows.
+* **Profiling & Forensics:**  
+  Moved beyond guessing by instrumenting the runtime with **`async-profiler`**, **Java Mission Control (JMC)**, and **VisualVM**, generating flame graphs under live traffic:
+  - Identified per-packet object allocation churn as a primary driver of young-gen GC pressure.
+  - Mitigated churn using pooled buffers and `ThreadLocal` allocations for hot execution paths.
+  - Tuned JVM garbage collection and memory geometry: pinned heap boundaries (`-Xms` = `-Xmx` at 4GB) to avoid OS page allocation latency and selected low-latency GC profiles to stabilize tail latency.
+
+
 
 
 
