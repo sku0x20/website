@@ -289,3 +289,194 @@
         margin-bottom: 4px;
     }
 }
+
+/* — Print Styles for PDF Generation — */
+
+@media print {
+    @page {
+        size: A4;
+        margin: 14mm 16mm;
+    }
+
+    body {
+        background: #ffffff !important;
+        color: #111827 !important;
+        font-size: 10.5pt;
+        line-height: 1.45;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+    }
+
+    .nav,
+    .cv-actions,
+    .cv-year-nav {
+        display: none !important;
+    }
+
+    .cv-container {
+        padding: 0 !important;
+        max-width: 100% !important;
+    }
+
+    .cv-header {
+        margin-bottom: 18px;
+        padding-bottom: 12px;
+        border-bottom: 2px solid #111827;
+    }
+
+    .cv-title-row h1 {
+        font-size: 24pt;
+        color: #111827 !important;
+    }
+
+    .cv-progression {
+        font-size: 10.5pt;
+        color: #475569 !important;
+        margin-top: 4px;
+    }
+
+    .cv-meta-links {
+        font-size: 9pt;
+        gap: 8px;
+        margin-top: 10px;
+        color: #475569 !important;
+    }
+
+    .cv-meta-links a {
+        color: #111827 !important;
+        text-decoration: none !important;
+    }
+
+    .cv-scope-box {
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: 4px solid #0f172a !important;
+        padding: 12px 16px !important;
+        margin-bottom: 20px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .cv-scope-box h2 {
+        font-size: 12pt;
+        margin-bottom: 8px;
+        color: #0f172a !important;
+    }
+
+    .cv-scope-box ul {
+        gap: 8px;
+    }
+
+    .cv-scope-box li {
+        font-size: 9.5pt;
+        line-height: 1.45;
+        color: #334155 !important;
+    }
+
+    .cv-year-block {
+        margin-bottom: 22px;
+        break-inside: auto;
+    }
+
+    .cv-year-header {
+        margin-bottom: 12px;
+        padding-bottom: 6px;
+        border-bottom: 1.5px solid #334155;
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .cv-year-badge {
+        font-size: 13pt;
+        color: #0f172a !important;
+    }
+
+    .cv-year-role {
+        font-size: 10pt;
+        color: #64748b !important;
+    }
+
+    .cv-milestone {
+        margin-bottom: 14px;
+        padding-bottom: 14px;
+        border-bottom: 1px dashed #cbd5e1;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .cv-milestone:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+        padding-bottom: 0;
+    }
+
+    .cv-milestone h3 {
+        font-size: 10.5pt;
+        margin-bottom: 6px;
+        color: #0f172a !important;
+        break-after: avoid;
+        page-break-after: avoid;
+    }
+
+    .cv-milestone ul {
+        gap: 6px;
+    }
+
+    .cv-milestone li {
+        font-size: 9pt;
+        line-height: 1.45;
+        color: #334155 !important;
+    }
+
+    .cv-milestone strong {
+        color: #0f172a !important;
+    }
+
+    .cv-milestone li::before {
+        color: #0f172a !important;
+    }
+
+    .cv-project-card {
+        background: #f8fafc !important;
+        border: 1px solid #e2e8f0 !important;
+        padding: 12px 14px !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .cv-project-card p {
+        font-size: 9pt;
+        line-height: 1.45;
+        color: #334155 !important;
+    }
+
+    .cv-project-header h3 a {
+        color: #0f172a !important;
+        text-decoration: none !important;
+    }
+
+    .cv-tag {
+        color: #475569 !important;
+    }
+
+    .cv-skills-list {
+        gap: 8px;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
+    .cv-skill-row {
+        font-size: 9pt;
+        line-height: 1.45;
+        color: #334155 !important;
+    }
+
+    .cv-skill-category {
+        color: #0f172a !important;
+    }
+
+    a {
+        color: #0f172a !important;
+        text-decoration: none !important;
+    }
+}
