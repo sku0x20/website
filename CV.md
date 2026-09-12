@@ -20,3 +20,20 @@
 
 * **The Outcome:**  
   Shifted the company from manual, downtime-heavy deployments to push-to-deploy, zero-downtime releases.
+
+## 2022 — IoT Hub Load Simulation & The C10K Awakening
+
+* **The Mandate:**  
+  Tasked with building a hub simulator/load-testing harness that would replay production hub traffic logs against the backend to evaluate server resilience under load.
+
+* **The Flawed Assumption & Immediate Bottleneck:**  
+  The conventional instinct was a thread-per-simulated-device model replaying recorded log streams. I recognized early on that this was fundamentally unscalable: simulating hundreds or thousands of concurrent IoT hubs using standard synchronous blocking sockets (`java.net.Socket`) rapidly exhausted JVM thread stacks and OS file descriptors. The simulator fell over long before the server did.
+
+* **The Research & Concurrency Epiphany:**  
+  This was my first deep collision with the C10K problem and socket multiplexing. I dove into:
+  - **Java NIO (`Selector`, `SocketChannel`)**: Understanding how a single OS thread could multiplex I/O across hundreds of connections rather than blocking 1:1 on reads/writes.
+  - **Emerging Concurrency Paradigms**: Researching Go’s M:N runtime scheduler, goroutines, and early preview builds of Project Loom (virtual threads), realizing the massive overhead of 1MB kernel thread stacks for idle IoT connections.
+
+* **The Long-Term Impact:**  
+  While the log-replay harness exposed the limits of synthetic replay testing, it permanently shifted my mental model away from naive synchronous blocking architectures. It planted the architectural seeds for everything that followed: async event loops, custom binary protocols, and years later, building on Project Loom and Helidon SE.
+
