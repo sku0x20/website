@@ -114,7 +114,7 @@
 * **Multi-Hub Automation Engine:**  
   Extended the core scene and rule automation engine to support **multi-hub environments**—handling nested scene fragments for large command payloads, multi-hub scene sync, and reliable scheduled execution.
 * **Third-Party Ecosystem Integrations:**  
-  Engineered and stabilized cloud-to-cloud integrations across **Google Home**, **Amazon Alexa**, and **Yale Smart Locks** (OAuth backend, status filtering, and real-time lock/unlock event notifications).
+  Engineered and stabilized cloud-to-cloud voice integrations across **Google Home** and **Amazon Alexa** (OAuth flows, payload serialization correctness, and real-time device action handlers).
 
 ### Critical Production State-Sync Remediation (Cloud & Hub Data Divergence)
 
@@ -181,7 +181,7 @@
 * Attended the inaugural **Apache Kafka meetup in Bangalore** (the first official Kafka event in India)—my first developer conference—deepening my understanding of distributed log streams and event brokers.
 * Later attended tech events hosted by **Thoughtworks** in Bangalore, exchanging ideas with engineers solving high-scale distributed systems problems.
 
-### Device Provisioning Rewrite & Hardware Replacement Operations
+### Device Provisioning Rewrite & Hardware Replacement Operations (Late 2024 – Early 2025)
 
 * **The Problem:**  
   The legacy onboarding flow was heavily coupled with the monolith, prone to timeouts, and lacked clear assertion boundaries during WiFi pairing and node commissioning.
@@ -189,12 +189,12 @@
   - Extracted and overhauled the provisioning logic: implemented robust node validation assertions and completely rewrote the WiFi onboarding state machine.
   - Designed and built the replacement flow for failed hardware nodes—allowing users and field technicians to swap defective physical devices seamlessly without losing room mappings, scenes, or automation rules.
 
-### Technical Recruitment & Engineering Standards
+### Consumer-Driven Contract Testing Spike: Pact (2024–2025)
 
-* **Hiring Framework & Rubric:**  
-  Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems.
-* **Interviewing & Team Building:**  
-  Designed practical coding assessments evaluating core systems thinking and TDD discipline, conducted engineering interviews, and successfully hired an engineer into the team.
+* **The Architectural Exploration:**  
+  Investigated **Consumer-Driven Contract Testing (Pact)** across 2024 and 2025 to establish bulletproof API safety between the cloud backend and the firmware delivery / OTA subsystem.
+* **The Spike:**  
+  Researched automated contract verification pipelines (`publish pact` → `can-i-deploy` → `release`), evaluating contract testing as an architectural safeguard to eliminate integration regressions before new firmware builds hit production.
 
 ## 2025 — Senior Software Engineer | Production Observability, Modern Infra & High-Performance Pipelines
 
@@ -268,7 +268,26 @@
 * **Tackling Telemetry Cardinality: VictoriaMetrics & VictoriaLogs R&D:**  
   While Grafana Loki and Mimir served initial needs, they suffered from severe **high-cardinality bottlenecks**—in IoT environments with thousands of unique device IDs and dynamic event tags, label explosion causes excessive memory consumption, index bloat, and query degradation. I deployed and benchmarked **VictoriaMetrics** and **VictoriaLogs** on the staging setup to evaluate their cardinality-agnostic architecture, achieving significantly faster queries and vastly lower memory overhead under high-volume IoT log streams.
 
-### Feature Flags Engine & Controlled Rollouts
+### Cloud-to-Cloud Integration: Yale Smart Locks (2025)
+
+* **The Expansion:**  
+  Integrated Yale smart locks natively into the cloud platform alongside existing voice assistants:
+  - Designed and implemented the cloud-to-cloud integration with Yale’s OAuth backend.
+  - Handled device state synchronization, access filtering, and real-time push notifications for remote lock and unlock events.
+
+### Technical Recruitment & Engineering Standards (Late 2025 – 2026)
+
+* **Hiring Framework & Rubric:**  
+  Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems.
+* **Interviewing & Team Building:**  
+  Designed practical coding assessments evaluating core systems thinking and TDD discipline, conducted engineering interviews, and successfully hired an engineer into the team.
+
+## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
+
+> **Operating Reality & Architectural Leadership:**  
+> In April 2026, I was promoted to **Senior Systems Architect**. My ownership expanded across the entire technical surface: domain and DNS administration (GoDaddy), edge networking (IPv6/IPv4), cloud infrastructure, protocol design, and software framework architecture.
+
+### Feature Flags Engine & Controlled Rollouts (2026)
 
 * **The Problem:**  
   Releasing high-impact changes across cloud APIs and mobile/firmware devices carried high blast radii if unexpected edge cases emerged in the field.
@@ -276,18 +295,6 @@
   Engineered an internal, lightweight **feature flags system** directly into the backend:
   - Enabled dynamic runtime evaluation, percentage-based rollouts, and instant kill-switches.
   - Allowed firmware and mobile teams to dark-launch new capabilities and gate risky protocol features without requiring backend code redeployments.
-
-### Consumer-Driven Contract Testing Spike (Pact)
-
-* **The Architectural Exploration:**  
-  Investigated **Consumer-Driven Contract Testing (Pact)** to establish bulletproof API safety between the cloud backend and the firmware delivery / OTA subsystem.
-* **The Spike:**  
-  Researched automated contract verification pipelines (`publish pact` → `can-i-deploy` → `release`), evaluating contract testing as an architectural safeguard to eliminate integration regressions before new firmware builds hit production.
-
-## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
-
-> **Operating Reality & Architectural Leadership:**  
-> In April 2026, I was promoted to **Senior Systems Architect**. My ownership expanded across the entire technical surface: domain and DNS administration (GoDaddy), edge networking (IPv6/IPv4), cloud infrastructure, protocol design, and software framework architecture.
 
 ### 100% Declarative Cloud Migration with Terraform (GCP Cloud Run & Cloud SQL)
 
