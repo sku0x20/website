@@ -59,6 +59,16 @@
 * **The Outcome:**  
   Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team.
 
+### Apple HomeKit Integration Spike: Protocol Forensics & HAP Bridging
+
+* **The Exploration:**  
+  Investigated bridging proprietary smart home devices natively into the Apple HomeKit ecosystem to evaluate local iOS control without cloud hops.
+* **The Research & Implementation:**  
+  Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP). Deep-dived into the low-level mechanics: local mDNS/Bonjour discovery, cryptographic pairing exchanges (SRP and Curve25519), session encryption, and mapping custom device states to Apple's strict accessory characteristic schemas.
+* **The Retrospective & Takeaway:**  
+  While the spike was ultimately shelved due to hardware and commercial constraints, it provided early, invaluable exposure to strict protocol specifications, cryptographic handshakes, and local-first device networking.
+
+
 ## 2023 — Inherited Firestorm & Production SRE Hardening
 
 > **Operating Reality & Expanded Custody:**  
