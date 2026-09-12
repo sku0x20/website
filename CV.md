@@ -185,6 +185,10 @@
   - Identified per-packet object allocation churn as a primary driver of young-gen GC pressure.
   - Mitigated churn using pooled buffers and `ThreadLocal` allocations for hot execution paths.
   - Tuned JVM garbage collection and memory geometry: pinned heap boundaries (`-Xms` = `-Xmx` at 4GB) to avoid OS page allocation latency and selected low-latency GC profiles to stabilize tail latency.
+* **Hot-Path Zero-Allocation Formatting:**  
+  Identified severe CPU hotspots within the core binary packet decoding loop driven by legacy `String.format` invocations; refactored hot paths to Java 17’s zero-allocation `HexFormat` and bitwise bit-shifting, drastically cutting per-packet CPU overhead.
+* **Redis Client Architecture & Connection Forensics:**  
+  Audited platform caching and Pub/Sub infrastructure: evaluated Redis client drivers (Jedis vs. Lettuce) to transition toward non-blocking asynchronous I/O, and debugged silent "ghost connection" leaks and poisoned connection pool states where hung socket connections cascaded into application timeouts.
 
 ### The Observability & High-Ingestion Data Odyssey: Discovering ClickHouse
 
@@ -352,12 +356,16 @@
 * **Eliminating Technical Debt:**  
   Audited and pruned legacy architecture: eliminated obsolete dynamic TCP port provisioning flows, stripped redundant in-memory state tracking, and streamlined protocol paths.
 
-### Low-Level Networking & Published Distributed Systems Research
+### Low-Level Kernel Networking & Edge Protocol Translation
 
-* **IPv6 to IPv4 Network Transition:**  
-  Engineered edge and backend routing adjustments to manage the transition from IPv6 to IPv4 dual-stack environments without dropping device heartbeats.
-* **Kernel-Level Packet Reflection (`nftables`):**  
-  Offloaded NAT traversal UDP echo handling directly into the Linux kernel using `nftables` packet reflection and dynamic per-source IP rate-limiting sets at prerouting priority—bypassing userspace context switches entirely.
+* **In-Kernel NAT64 & Dual-Stack Routing (Jool + `nftables`):**  
+  Addressed a critical network partition where cellular IoT clients operated exclusively over IPv6 while backend systems ran on IPv4:
+  - Ruled out enterprise services (Cloudflare Spectrum) and userspace reverse proxies (Nginx/HAProxy), which would drain CPU credits on burstable instances through double socket buffers and context switching.
+  - Engineered an in-kernel translation gateway: deployed the **Jool** Linux kernel module for stateful NAT64 (RFC 7915) via Explicit Address Mapping Tables (EAMT) alongside `nftables` DNAT.
+  - Partitioned non-overlapping source port ranges between Jool and `nftables` on the shared public IPv4 to eliminate port allocation collisions.
+* **Kernel-Level Packet Reflection & Dynamic Rate-Limiting:**  
+  - Offloaded UDP NAT traversal echo responses directly into the Linux kernel using `nftables` packet reflection at prerouting priority (`notrack`), bypassing userspace round-trips entirely.
+  - Implemented kernel-level DDoS/abuse protection using `nftables` dynamic sets (`limit rate over 10/second burst 20 packets` at prerouting priority -301) to drop traffic sweeps before socket allocation.
 * **Academic Preprint (Zenodo):**  
   Authored and published [*Connection-Agnostic Presence Tracking for Stateless Distributed Backends*](https://doi.org/10.5281/zenodo.21717242):
   - Formulated a Redis-based architecture using sorted sets scored by expiration deadlines and throttled batch writes to track IoT device online/offline transitions across stateless backends with mathematically bounded detection latency.
@@ -389,12 +397,23 @@
   Modern microservice framework built on **Helidon SE (Nima) + Project Loom** virtual threads. Features compile-time dependency injection via **KSP** (eliminating runtime reflection overhead) and an integrated three-tier testing harness (unit &rarr; in-process integration server &rarr; Docker E2E via Testcontainers). Published at `dev.sku20.stopgap:*:2.8.0`.
 * **[assertgo](https://github.com/sku0x20/assertgo) (Go):**  
   Type-safe testing assertion library built with modern Go generics. Provides a fluent API, chainable negation (`Not()`), custom matchers, and zero external dependencies.
+* **[relay](https://github.com/sku0x20/relay) (Zig):**  
+  Low-level TCP server implemented in pure Zig with a test-driven approach. Explores raw POSIX socket descriptors, manual memory management without libc runtime dependencies, port binding (`SO_REUSEADDR`), and preventing broken-pipe crashes (`SIGPIPE` suppression via `MSG_NOSIGNAL`).
 * **[hrh](https://github.com/sku0x20/hrh) — Helm Release Helper (Rust):**  
   Engineered during Kubernetes orchestration research to enable lean, declarative Helm releases without the bloat of heavy operators. Reads declarative YAML declarations and executes `helm upgrade --install` with diff previews and atomic rollback guarantees. Available via `cargo install`.
 * **[avoid](https://github.com/sku0x20/avoid) (Shell / Linux):**  
   Minimal, purpose-built Linux distribution based on Void Linux for server recovery and lean headless appliances. Builds and publishes bootable `.img.gz` and `.qcow2` images via automated GitHub Actions pipelines.
 * **[c_oop](https://github.com/sku0x20/c_oop) (C):**  
   Deep systems spike exploring Object-Oriented Programming and London-style TDD in pure C (written entirely pre-AI). Implements struct polymorphism via function-pointer interface tables, heap-allocated lifecycle constructors, and isolated unit test harnesses.
+
+---
+
+## Technical Thought Leadership & Forensic Systems Writing
+
+Authored 20+ in-depth technical post-mortems and distributed systems essays published at **[sku20.dev/blog](https://www.sku20.dev/blog)**, including:
+* **Kernel Networking & Edge Routing:** *Betting on NAT64 Over a Proxy*, *Negotiating with Jool*, *Low-Level UDP Echo Server for NAT Traversal via nftables*, and *Zero-Downtime Deployments with iptables*.
+* **Concurrency & JVM Internals:** *Java Exceptions Swallowed: The ThreadPool Trap*, *ThreadLocal Optimizations and Project Loom*, and *Optimizing Hex Formatting: String.format to Java 17 HexFormat*.
+* **Distributed Systems & Database Reliability:** *The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools*, *Rate-Limiting: Flow Control vs. Quota Control*, and *Hunting for a UDP Load Balancer*.
 
 ---
 
