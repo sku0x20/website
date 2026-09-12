@@ -37,3 +37,21 @@
 * **The Long-Term Impact:**  
   While the log-replay harness exposed the limits of synthetic replay testing, it permanently shifted my mental model away from naive synchronous blocking architectures. It planted the architectural seeds for everything that followed: async event loops, custom binary protocols, and years later, building on Project Loom and Helidon SE.
 
+## 2022 — Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD
+
+* **The Problem:**  
+  The core backend was locked into a legacy Spring 4 codebase (circa 2018–2019). The configuration was tangled, manual, and slow to bootstrap. Crucially, writing fast, isolated automated tests and practicing Test-Driven Development (TDD) was virtually impossible under the legacy test harness and bean configuration.
+
+* **The Leap & Research:**  
+  Rather than an incremental patch to Spring 5, I spearheaded a direct leap to Spring Boot 2.7.5 (the latest release at the time). Doing this in the pre-AI era meant manually untangling years of accumulated tech debt:
+  - Eliminating sprawling legacy XML/Java configuration in favor of Spring Boot auto-configuration and sensible defaults.
+  - Resolving deep transitive dependency incompatibilities, deprecated APIs, and altered bean lifecycle semantics.
+  - Overhauling database connection pooling, embedded servlet container management, and configuration profiles.
+
+* **The Core Motivation & Transformation:**  
+  The primary driver wasn't just "shiny new framework"—it was developer velocity and correctness. Moving to modern Spring Boot unlocked modern test slices (`@SpringBootTest`, `@WebMvcTest`, lightweight context caching) and test infrastructure.
+
+* **The Outcome:**  
+  Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team.
+
+
