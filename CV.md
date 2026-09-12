@@ -96,5 +96,22 @@
 * **The Balancing Act:**  
   Alongside infrastructure firefighting, maintained product delivery: designed and shipped backend support for new IoT device types, cleaned up legacy API contracts, and stabilized third-party voice integrations (Google Home and Amazon Alexa).
 
+### Critical Production State-Sync Remediation (Cloud & Hub Data Divergence)
+
+* **The Inherited Time Bomb:**  
+  Discovered a severe, months-old bug originating from legacy code in the scene and rule synchronization engine between the cloud backend and IoT hubs. Flawed ID generation and state mapping caused silent divergence—rules configured in the mobile app were corrupting or failing to trigger reliably on physical hubs.
+* **The High-Stakes Fix:**  
+  Because thousands of active homes were running corrupted IDs, a naive code fix wasn't enough. I had to:
+  1. Diagnose and rewrite the synchronization logic to guarantee deterministic ID mapping and conflict resolution.
+  2. Author, test, and execute production migration scripts to repair corrupted database records on the cloud while reconciling state across remote hubs over the air—without breaking active customer automations.
+
+### Architecture Research & Extreme Programming (XP) Foundations
+
+* **Questioning Scalability Paradigms:**  
+  Faced with scaling the single-server monolith, I conducted deep architectural research into horizontal scalability patterns: evaluating message brokers (Kafka vs. lightweight queues) for event streaming, and exploring container orchestration (Kubernetes) to understand trade-offs before jumping on hype trains.
+* **Deepening Software Craftsmanship:**  
+  Beyond frameworks, I immersed myself in Extreme Programming (XP) philosophies and London-style TDD. Working solo, I realized TDD was my only real safety net against regressions. I began restructuring code for true testability—isolating side effects, enforcing strict domain boundaries, and cultivating clean code practices.
+
+
 
 
