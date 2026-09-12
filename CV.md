@@ -98,11 +98,11 @@
 * **The Crisis (SSH Lockouts & Degraded State):**  
   The production VM suffered recurring catastrophic failures where the backend hung in a degraded state, unable to allocate new threads or accept connections. In the worst cases, OS-level file descriptor depletion locked out incoming SSH sessions entirely, forcing emergency hard VM restarts.
 * **The Root Cause & Diagnostics:**  
-  Using `iotop`, `vmstat`, and `sar`, I diagnosed two compounding bottlenecks:
-  1. *Log Flooding & Disk I/O Saturation:* Uncontrolled log dumps were thrashing the disk, creating massive I/O wait times that stalled thread execution.
-  2. *Systemd vs. User Limits:* Simply bumping `ulimit` or `rlimit` in shells didn't persist for daemon processes governed by systemd unit limits (`LimitNOFILE`).
+  Used a systematic systems profiling toolkit (`sar -b -dp`, `vmstat -w -t -d`, `iotop -b -a`, and `pidstat`) to untangle a compounded failure mode:
+  1. *Log Flooding & I/O Wait Bottlenecks:* Uncontrolled log dumps were thrashing the disk, creating massive `iowait` states that starved worker threads of CPU execution.
+  2. *Process Limit Inheritance Forensics:* Diagnosed that shell `ulimit` changes and `/etc/security/limits.conf` (PAM) were completely bypassed by daemons spawned via `systemd` or SSH sessions.
 * **The Remediation:**  
-  - Fixed systemd service unit limits to allow the backend process to scale its open file table properly.
+  - Reconfigured `systemd` service unit limits (`LimitNOFILE=262144`), executed clean daemon reloads (`systemctl daemon-reload`), and verified live kernel process tables using `prlimit`.
   - Tuned OS disk buffers and leveraged Linux process scheduling: assigned CPU priority with `nice` and prioritized disk I/O queues using `ionice` so core backend traffic was never starved by background disk writes.
   - Tuned kernel TCP and UDP buffer parameters and untangled messy, inefficient Nginx reverse proxy configurations.
 
@@ -230,9 +230,11 @@
 
 * **The Evolution:**  
   Having stabilized access security in 2024 with `hlogger`, the next step was eliminating disk logging entirely in favor of a centralized, real-time observability platform.
+* **The Architectural Philosophy:**  
+  Clarified a fundamental distinction often conflated: *"Is the service up?"* (external blackbox probes) vs. *"Why is the service struggling?"* (internal contextual metrics). While simple uptime checkers only see binary up/down states, real SRE requires correlating synthetic probes directly with internal resource pressure and traces.
 * **The Implementation:**  
   - Provisioned and hardened a dedicated, isolated observability VM separate from production.
-  - Deployed and tuned **Grafana** and **Loki** to ingest application and device logs centrally.
+  - Deployed and tuned **Grafana**, **Loki**, and **Mimir** fed by **Alloy** (running Blackbox HTTP/TCP probes alongside database and application metrics exporters)—consolidating fragmented tools into a single, unified telemetry pipeline.
   - Managed all host configurations, scrape targets, log retention policies, and dashboards in a git-tracked directory—implementing a pragmatic GitOps / Infrastructure-as-Code (IaC) workflow where updates were deployed via version-controlled pulls rather than ad-hoc server mutations.
 * **The Outcome:**  
   Gracefully retired `hlogger` and raw disk log dumping. The entire engineering organization (firmware, backend, mobile) gained instant, indexed query capabilities over real-time system logs without touching production hosts.
@@ -242,11 +244,13 @@
 * **The Production Disk & Inode Crisis:**  
   The production VM was facing recurring disk exhaustion from years of accumulated device health telemetry and high-churn activity logs. The legacy storage architecture had a severe filesystem flaw: files were saved across deeply nested two-letter directory trees (`/aa/bb/cc/...`), causing catastrophic filesystem **inode bloat** where directory metadata consumed massive disk space and degraded I/O throughput.
 * **The Migration & Codec Engineering:**  
-  Having evaluated ClickHouse in late 2024, I designed a pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse:
-  - **Schema & Codec Tuning:** Designed columnar schemas leveraging specialized compression: combined **Delta encoding** (for monotonically increasing timestamps and sequential device metrics) with **ZSTD (Zstandard)**, achieving an astonishing **95%+ storage reduction** (e.g., compressing ~90 GB down to ~3.7 GB).
-  - **Cold Storage Tiering:** Integrated ClickHouse storage policies to offload and archive compressed tables to Google Cloud Storage (GCS).
+  Having evaluated ClickHouse in late 2024, I engineered a pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse:
+  - **Schema & Codec Tuning:** Modeled columnar schemas (`device_health`, `pal_2024` activity logs, and `crm_logs`) with tight data types: `FixedString(23/29)`, `LowCardinality(String)`, and paired **Delta encoding** on sequential timestamps/metrics with **ZSTD compression**.
+  - **Compression Breakthrough:** Slashed storage footprint by **over 95%**—compressing `device_health` telemetry from **17 GB down to just 300 MB** on disk, and overall raw files from ~100 GB to under 6 GB.
+  - **Sparse Index Locality:** Designed composite primary keys ordered from low to high cardinality (`PRIMARY KEY (place_id, toStartOfDay(captured_at))`), maximizing block locality so ClickHouse's Generic Search Algorithm (GSA) skipped irrelevant blocks during range scans.
+  - **Cold Storage Tiering:** Configured storage policies to offload and archive compressed tables to Google Cloud Storage (GCS).
 * **The Outcome:**  
-  Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining lightning-fast analytical queries over historical data.
+  Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining sub-second analytical queries over historical data.
 
 ### Ending "Testing in Production": On-Prem Staging Environment & Parity
 
