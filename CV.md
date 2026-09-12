@@ -234,6 +234,16 @@
 * Shaved latency across core platform endpoints by eliminating redundant database queries and optimizing payload serialization.
 * Reconfigured Google Cloud Monitoring with automated uptime checks and synthetic probes against backend health endpoints, enabling proactive alerting before customers or mobile apps detected latency spikes.
 
+### Multi-Tier Rate Limiting & High-Ingestion Telemetry R&D
+
+* **Defense in Depth (Nginx + Bucket4j):**  
+  Protected the platform from traffic bombardment and abusive retry loops:
+  - Configured reverse-proxy rate limiting in **Nginx** to throttle excessive requests at the network perimeter (returning HTTP 429).
+  - Implemented token-bucket application rate limiting using **Bucket4j** inside the gRPC Activity Log service, ensuring fair scheduling and shielding internal database pools from client spikes.
+* **Evaluating Next-Gen Telemetry (VictoriaLogs):**  
+  Used the on-prem staging environment to benchmark alternatives to Loki for heavy ingestion streams, experimenting with **VictoriaLogs / VictoriaMetrics** to evaluate memory efficiency under high-cardinality time-series workloads.
+
+
 
 
 
