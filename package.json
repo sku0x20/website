@@ -7,8 +7,9 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run build:pdf",
+    "build": "astro build",
     "build:pdf": "node scripts/generate-pdf.mjs",
+    "build:all": "astro build && npm run build:pdf",
     "preview": "astro preview",
     "astro": "astro"
   },
