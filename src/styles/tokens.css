@@ -7,15 +7,23 @@
     --color-surface-hover: #eff1f5;
     --color-text: #16181d;
     --color-text-muted: #5e6573;
-    --color-accent: #e5391c;
-    --color-accent-hover: #ca2f15;
-    --color-accent-600: #ca2f15;
-    --color-accent-700: #b5270f;
-    --color-accent-subtle: rgba(229, 57, 28, 0.08);
+    
+    /* Calmer, warm copper/terracotta accent */
+    --color-accent: #c44727;
+    --color-accent-hover: #a8381a;
+    --color-accent-600: #a8381a;
+    --color-accent-700: #8f2e14;
+    --color-accent-subtle: rgba(196, 71, 39, 0.08);
+
     --color-divider: #e2e5eb;
     --color-border: #d3d7e0;
     --color-badge-bg: #ebedf2;
     --color-badge-text: #242934;
+
+    /* High-contrast Monochrome Button */
+    --color-btn-primary-bg: #16181d;
+    --color-btn-primary-text: #ffffff;
+    --color-btn-primary-hover: #262b34;
 
     --font-heading: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
     --font-body: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
@@ -24,7 +32,7 @@
     /* Shiki (code block) Light colors */
     --astro-code-color-background: #edf0f5;
     --astro-code-color-text: #16181d;
-    --astro-code-token-constant: #ca2f15;
+    --astro-code-token-constant: #c44727;
     --astro-code-token-string: #0969da;
     --astro-code-token-comment: #6e7781;
     --astro-code-token-keyword: #cf222e;
@@ -32,7 +40,7 @@
     --astro-code-token-function: #8250df;
     --astro-code-token-string-expression: #0969da;
     --astro-code-token-punctuation: #24292f;
-    --astro-code-token-link: #e5391c;
+    --astro-code-token-link: #c44727;
 }
 
 /* System Dark Preference */
@@ -43,20 +51,28 @@
         --color-surface-hover: #1b2029;
         --color-text: #e8ecf2;
         --color-text-muted: #8b94a5;
-        --color-accent: #ff4d2e;
-        --color-accent-hover: #ff6e54;
-        --color-accent-600: #ff6e54;
-        --color-accent-700: #ff4d2e;
-        --color-accent-subtle: rgba(255, 77, 46, 0.14);
+
+        /* Refined, warmer accent in dark mode */
+        --color-accent: #e56847;
+        --color-accent-hover: #ff7f5e;
+        --color-accent-600: #ff7f5e;
+        --color-accent-700: #e56847;
+        --color-accent-subtle: rgba(229, 104, 71, 0.12);
+
         --color-divider: #232731;
         --color-border: #2d3340;
         --color-badge-bg: #1c202a;
         --color-badge-text: #d2d8e4;
 
+        /* Stark White Button on Dark Theme */
+        --color-btn-primary-bg: #e8ecf2;
+        --color-btn-primary-text: #0d0f13;
+        --color-btn-primary-hover: #ffffff;
+
         /* Shiki (code block) Dark colors */
         --astro-code-color-background: #14171d;
         --astro-code-color-text: #e8ecf2;
-        --astro-code-token-constant: #ff7b63;
+        --astro-code-token-constant: #e56847;
         --astro-code-token-string: #79c0ff;
         --astro-code-token-comment: #6e7681;
         --astro-code-token-keyword: #ff7b72;
@@ -64,7 +80,7 @@
         --astro-code-token-function: #d2a8ff;
         --astro-code-token-string-expression: #79c0ff;
         --astro-code-token-punctuation: #c9d1d9;
-        --astro-code-token-link: #ff4d2e;
+        --astro-code-token-link: #e56847;
     }
 }
 
@@ -75,18 +91,25 @@
     --color-surface-hover: #1b2029;
     --color-text: #e8ecf2;
     --color-text-muted: #8b94a5;
-    --color-accent: #ff4d2e;
-    --color-accent-hover: #ff6e54;
-    --color-accent-subtle: rgba(255, 77, 46, 0.14);
+
+    --color-accent: #e56847;
+    --color-accent-hover: #ff7f5e;
+    --color-accent-600: #ff7f5e;
+    --color-accent-700: #e56847;
+    --color-accent-subtle: rgba(229, 104, 71, 0.12);
+
     --color-divider: #232731;
     --color-border: #2d3340;
     --color-badge-bg: #1c202a;
     --color-badge-text: #d2d8e4;
 
-    /* Shiki Dark colors */
+    --color-btn-primary-bg: #e8ecf2;
+    --color-btn-primary-text: #0d0f13;
+    --color-btn-primary-hover: #ffffff;
+
     --astro-code-color-background: #14171d;
     --astro-code-color-text: #e8ecf2;
-    --astro-code-token-constant: #ff7b63;
+    --astro-code-token-constant: #e56847;
     --astro-code-token-string: #79c0ff;
     --astro-code-token-comment: #6e7681;
     --astro-code-token-keyword: #ff7b72;
@@ -94,7 +117,7 @@
     --astro-code-token-function: #d2a8ff;
     --astro-code-token-string-expression: #79c0ff;
     --astro-code-token-punctuation: #c9d1d9;
-    --astro-code-token-link: #ff4d2e;
+    --astro-code-token-link: #e56847;
 }
 
 *, *::before, *::after {

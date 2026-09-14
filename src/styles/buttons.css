@@ -8,25 +8,27 @@
     padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    border: none;
+    border: 1px solid transparent;
     transition: all 0.15s ease;
     text-decoration: none;
 }
 
 .btn-primary {
-    background: var(--color-accent);
-    color: #ffffff;
+    background: var(--color-btn-primary-bg, var(--color-text));
+    color: var(--color-btn-primary-text, var(--color-bg));
+    border-color: var(--color-btn-primary-bg, var(--color-text));
 }
 
 .btn-primary:hover {
-    background: var(--color-accent-hover);
-    color: #ffffff;
+    background: var(--color-btn-primary-hover, var(--color-text));
+    color: var(--color-btn-primary-text, var(--color-bg));
+    border-color: var(--color-btn-primary-hover, var(--color-text));
 }
 
 .btn-secondary {
     background: var(--color-surface);
     color: var(--color-text);
-    border: 1px solid var(--color-border);
+    border-color: var(--color-border);
 }
 
 .btn-secondary:hover {
