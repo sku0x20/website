@@ -119,12 +119,54 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
             scrollTicking = false;
         }
 
+        function updateReadingProgress() {
+            const bar = document.getElementById('reading-progress');
+            if (!bar) return;
+            const total = document.documentElement.scrollHeight - window.innerHeight;
+            if (total <= 0) {
+                bar.style.transform = 'scaleX(0)';
+                return;
+            }
+            const progress = Math.min(1, Math.max(0, window.scrollY / total));
+            bar.style.transform = `scaleX(${progress})`;
+        }
+
         window.addEventListener('scroll', function() {
             if (!scrollTicking) {
-                requestAnimationFrame(handleNavScroll);
+                requestAnimationFrame(function() {
+                    handleNavScroll();
+                    updateReadingProgress();
+                });
                 scrollTicking = true;
             }
         }, { passive: true });
+
+        // Interactive Code Block Copy Buttons
+        function initCodeCopy() {
+            document.querySelectorAll('.prose pre').forEach(function(pre) {
+                if (pre.querySelector('.code-copy-btn')) return;
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'code-copy-btn';
+                btn.setAttribute('aria-label', 'Copy code snippet');
+                btn.textContent = 'Copy';
+                
+                btn.addEventListener('click', async function() {
+                    const code = pre.querySelector('code')?.innerText || pre.innerText;
+                    try {
+                        await navigator.clipboard.writeText(code.trim());
+                        btn.classList.add('copied');
+                        btn.textContent = 'Copied ✓';
+                        setTimeout(function() {
+                            btn.classList.remove('copied');
+                            btn.textContent = 'Copy';
+                        }, 2000);
+                    } catch (err) {}
+                });
+
+                pre.appendChild(btn);
+            });
+        }
 
         document.addEventListener('astro:after-swap', function() {
             lastScrollY = 0;
@@ -132,7 +174,26 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
             if (nav) {
                 nav.classList.remove('nav--hidden', 'nav--scrolled');
             }
+            initCodeCopy();
+            updateReadingProgress();
         });
+
+        // Developer Console Easter Egg
+        if (!window.__easterEggLogged) {
+            window.__easterEggLogged = true;
+            console.log(
+                '%c' +
+                '   ____  _     _     _                 _   \n' +
+                '  / ___|(_) __| | __| |__   __ _ _ __ | |_ \n' +
+                '  \\___ \\| |/ _` |/ _` \'_ \\ / _` | \'_ \\| __|\n' +
+                '   ___) | | (_| | (_| | | | (_| | | | | |_ \n' +
+                '  |____/|_|\\__,_|\\__,_| |_|\\__,_|_| |_|\\__|\n\n' +
+                '  Siddhant Kumar Upmanyu — Systems Architect\n' +
+                '  Backend Systems • Kernel Networking • Distributed Storage\n' +
+                '  https://github.com/sku0x20 // sku20.dev\n',
+                'color: #e56847; font-family: monospace; font-size: 11px; font-weight: bold;'
+            );
+        }
 
         // Interactive Distributed Systems Node Mesh
         function initMesh() {
@@ -274,18 +335,28 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
             });
         }
 
+        function initPageFeatures() {
+            initMesh();
+            initCodeCopy();
+            updateReadingProgress();
+        }
+
         if (!window.__meshInitialized) {
             window.__meshInitialized = true;
             if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', initMesh);
+                document.addEventListener('DOMContentLoaded', initPageFeatures);
             } else {
-                initMesh();
+                initPageFeatures();
             }
+        } else {
+            initCodeCopy();
+            updateReadingProgress();
         }
     </script>
 </head>
 <body>
     <canvas id="bg-canvas" class="bg-canvas" transition:persist="bg-canvas"></canvas>
+    {type === 'article' && <div id="reading-progress" class="reading-progress" aria-hidden="true" />}
     <nav class="nav">
         <a href="/" class="nav-brand">
             <span>S. UPMANYU</span>
