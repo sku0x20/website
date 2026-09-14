@@ -56,6 +56,13 @@ async function buildDeck(deck) {
         outDir,
     ]);
 
+    // Clean up temporary internal build cache left by Slidev
+    const deckDir = path.dirname(deck.filePath);
+    const localNodeModules = path.join(deckDir, 'node_modules');
+    if (fs.existsSync(localNodeModules)) {
+        fs.rmSync(localNodeModules, { recursive: true, force: true });
+    }
+
     console.log(`✓ [${deck.name}] built successfully.`);
 }
 
