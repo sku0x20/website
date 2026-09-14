@@ -4,7 +4,7 @@ import { execFile } from 'node:child_process';
 import { promisify } from 'node:util';
 
 const execFileAsync = promisify(execFile);
-const slidesRootDir = path.resolve(process.cwd(), 'slides');
+const slidesRootDir = path.resolve(process.cwd(), 'src/content/slides');
 const distDir = path.resolve(process.cwd(), 'dist');
 
 async function findSlideDecks() {

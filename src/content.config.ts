@@ -13,7 +13,7 @@ const blog = defineCollection({
 });
 
 const slides = defineCollection({
-    loader: glob({ pattern: '**/slides.md', base: './slides' }),
+    loader: glob({ pattern: '**/slides.md', base: './src/content/slides' }),
     schema: z.object({
         title: z.string(),
         subtitle: z.string().optional(),
