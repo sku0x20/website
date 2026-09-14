@@ -9,7 +9,7 @@
 .cv-header {
     margin-bottom: 48px;
     padding-bottom: 32px;
-    border-bottom: 2px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .cv-title-row {
@@ -140,7 +140,7 @@
     display: flex;
     align-items: baseline;
     gap: 14px;
-    border-bottom: 2px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
     padding-bottom: 12px;
     margin-bottom: 20px;
     flex-wrap: wrap;
@@ -321,7 +321,8 @@
 
     .nav,
     .cv-actions,
-    .cv-year-nav {
+    .cv-year-nav,
+    .site-footer {
         display: none !important;
     }
 

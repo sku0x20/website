@@ -1,17 +1,18 @@
 .article-header {
-    padding: 80px 0 40px;
-    border-bottom: 2px solid var(--color-divider);
+    padding: 72px 0 40px;
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .article-header-inner {
-    max-width: 960px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 0 64px 0 160px;
+    padding: 0 24px;
 }
 
 .article-header-inner h1 {
-    font-size: 40px;
-    max-width: 780px;
+    font-size: clamp(28px, 4vw, 42px);
+    line-height: 1.18;
+    letter-spacing: -0.02em;
     margin-bottom: 16px;
 }
 
@@ -20,15 +21,15 @@
 }
 
 .article-body-inner {
-    max-width: 960px;
+    max-width: 780px;
     margin: 0 auto;
-    padding: 0 64px 0 160px;
+    padding: 0 24px;
 }
 
 .prose {
-    max-width: 720px;
-    font-size: 16px;
-    line-height: 1.7;
+    max-width: 100%;
+    font-size: 16.5px;
+    line-height: 1.75;
 }
 
 .prose > *:first-child {

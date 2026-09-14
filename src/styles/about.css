@@ -2,12 +2,12 @@
 
 .section {
     padding: 64px 96px;
-    border-bottom: 2px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .section-intro {
     padding: 80px 96px;
-    border-bottom: 2px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .section-intro h1 {

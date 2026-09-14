@@ -1,6 +1,8 @@
+/* — Blog listing page — */
+
 .blog-header {
     padding: 80px 96px 40px;
-    border-bottom: 2px solid var(--color-divider);
+    border-bottom: 1px solid var(--color-divider);
 }
 
 .blog-header h1 {
@@ -10,7 +12,7 @@
 
 .blog-header p {
     font-size: 16px;
-    opacity: 0.7;
+    color: var(--color-text-muted);
 }
 
 .blog-grid-wrap {
@@ -20,66 +22,72 @@
 .blog-grid {
     display: flex;
     flex-direction: column;
-    max-width: 720px;
+    gap: 16px;
+    max-width: 780px;
     margin: 0 auto;
 }
 
 .post-card {
     display: block;
-    min-width: 0;
-    padding: 28px 0;
-    border-bottom: 2px solid var(--color-divider);
-    color: inherit;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: 6px;
+    padding: 20px 24px;
     text-decoration: none;
+    color: var(--color-text);
+    transition: all 0.15s ease;
 }
 
-.post-card:last-child {
-    border-bottom: none;
+.post-card:hover {
+    border-color: var(--color-accent);
+    transform: translateX(4px);
 }
 
-.post-card:hover h3,
-.post-card:hover .post-kicker {
-    color: var(--color-accent-600);
-}
-
-.post-kicker {
-    font-size: 10px;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--color-accent-700);
+.post-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 16px;
+    margin-bottom: 6px;
+    flex-wrap: wrap;
 }
 
 .post-card h3 {
-    font-size: 22px;
-    margin-bottom: 10px;
+    font-size: 17px;
+    margin: 0;
+    color: var(--color-text);
+    transition: color 0.15s ease;
 }
 
-.post-card p {
-    font-size: 14px;
-    max-width: 680px;
-    opacity: 0.75;
-    margin-bottom: 16px;
+.post-card:hover h3 {
+    color: var(--color-accent);
 }
 
-.post-meta-row {
-    display: flex;
-    flex-wrap: wrap;
-    align-items: center;
-    gap: 8px;
-}
-
-.post-meta-bullet {
+.post-card-date {
+    font-family: var(--font-mono);
     font-size: 12px;
-    opacity: 0.4;
-}
-
-.post-meta,
-.post-meta-bullet,
-.post-kicker {
+    color: var(--color-text-muted);
     white-space: nowrap;
 }
 
-.post-meta {
-    font-size: 12px;
-    opacity: 0.55;
+.post-card p {
+    font-size: 13.5px;
+    line-height: 1.5;
+    color: var(--color-text-muted);
+    margin: 0 0 12px;
+}
+
+.post-card-tags {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.post-tag {
+    font-family: var(--font-mono);
+    font-size: 10px;
+    padding: 2px 6px;
+    border-radius: 3px;
+    background: var(--color-badge-bg);
+    color: var(--color-badge-text);
 }

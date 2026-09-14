@@ -290,7 +290,8 @@
   }
 
   .nav,
-  .resume-actions {
+  .resume-actions,
+  .site-footer {
     display: none !important;
   }
 

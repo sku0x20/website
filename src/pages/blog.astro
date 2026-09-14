@@ -20,15 +20,14 @@ const getSlug = (id: string) => id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
             {posts.map((post) => (
                 <a href={`/blog/${getSlug(post.id)}`} class="post-card">
                     <article>
-                        <h3>{post.data.title}</h3>
+                        <div class="post-card-header">
+                            <h3>{post.data.title}</h3>
+                            <span class="post-card-date">{post.data.date}</span>
+                        </div>
                         <p>{post.data.description}</p>
-                        <div class="post-meta-row">
-                            <span class="post-meta">{post.data.date}</span>
+                        <div class="post-card-tags">
                             {post.data.tags.map((t) => (
-                                <>
-                                    <span class="post-meta-bullet">&bull;</span>
-                                    <span class="post-kicker">{t}</span>
-                                </>
+                                <span class="post-tag">{t}</span>
                             ))}
                         </div>
                     </article>
