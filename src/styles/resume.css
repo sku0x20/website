@@ -1,0 +1,334 @@
+/* — Resume Page Styles — */
+
+.resume-container {
+  max-width: 850px;
+  margin: 0 auto;
+  padding: 48px 32px 64px;
+}
+
+.resume-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.resume-paper {
+  background: #ffffff;
+  color: #18181b;
+  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 11.5px;
+  line-height: 1.42;
+  padding: 40px 48px;
+  border-radius: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
+  -webkit-font-smoothing: antialiased;
+}
+
+.resume-paper h1,
+.resume-paper h2,
+.resume-paper h3,
+.resume-paper h4 {
+  font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-weight: 800;
+  line-height: 1.2;
+  color: #09090b;
+}
+
+.resume-paper a {
+  color: #09090b;
+  text-decoration: none;
+  border-bottom: 1px solid #d4d4d8;
+}
+
+.resume-paper a:hover {
+  color: #ec3013;
+  border-bottom-color: #ec3013;
+}
+
+.resume-paper code {
+  font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+  font-size: 0.9em;
+  background: #f4f4f5;
+  padding: 1px 3px;
+  border-radius: 2px;
+}
+
+.resume-paper .muted {
+  color: #52525b;
+}
+
+/* — Header — */
+
+.resume-paper header {
+  padding-bottom: 10px;
+  margin-bottom: 12px;
+  border-bottom: 1.5px solid #18181b;
+}
+
+.resume-paper header h1 {
+  font-size: 24px;
+  letter-spacing: -0.02em;
+  margin-bottom: 2px;
+}
+
+.resume-paper .subtitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #3f3f46;
+  margin-bottom: 6px;
+}
+
+.resume-paper .links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 10px;
+  font-size: 11px;
+  color: #52525b;
+}
+
+.resume-paper .links a {
+  color: #18181b;
+}
+
+/* — Sections — */
+
+.resume-paper section {
+  margin-bottom: 12px;
+}
+
+.resume-paper section > h2 {
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #09090b;
+  border-bottom: 1px solid #18181b;
+  padding-bottom: 2px;
+  margin-bottom: 6px;
+}
+
+.resume-paper h2,
+.resume-paper h3,
+.resume-paper h4 {
+  break-after: avoid;
+  page-break-after: avoid;
+}
+
+.resume-paper .bio p {
+  font-size: 11px;
+  line-height: 1.42;
+  color: #27272a;
+}
+
+/* — Skills — */
+
+.resume-paper .skills-grid {
+  display: grid;
+  grid-template-columns: 140px 1fr;
+  row-gap: 3px;
+  column-gap: 8px;
+  font-size: 10.5px;
+  line-height: 1.35;
+}
+
+.resume-paper .skill-label {
+  font-weight: 800;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #09090b;
+}
+
+/* — Experience — */
+
+.resume-paper .company {
+  break-inside: auto;
+}
+
+.resume-paper .company-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.resume-paper .company-meta h3 {
+  font-size: 14px;
+}
+
+.resume-paper .company-location {
+  font-size: 11px;
+  color: #71717a;
+  font-weight: 600;
+}
+
+.resume-paper .roles-bar {
+  font-size: 11px;
+  font-weight: 600;
+  color: #3f3f46;
+  margin-bottom: 8px;
+  padding-bottom: 4px;
+  border-bottom: 1px dashed #e4e4e7;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.resume-paper .domain-group {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 9px;
+}
+
+.resume-paper .domain-group:last-child {
+  margin-bottom: 0;
+}
+
+.resume-paper .domain-group h4 {
+  font-size: 11.5px;
+  margin-bottom: 4px;
+  color: #09090b;
+}
+
+.resume-paper .domain-group ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.resume-paper .domain-group li {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  padding-left: 12px;
+  position: relative;
+  font-size: 10.5px;
+  line-height: 1.38;
+  color: #27272a;
+}
+
+.resume-paper .domain-group li::before {
+  content: '▪';
+  position: absolute;
+  left: 0;
+  font-size: 8px;
+  top: 1px;
+  color: #71717a;
+}
+
+.resume-paper .domain-group strong {
+  font-weight: 800;
+  color: #09090b;
+}
+
+/* — Projects & Publications — */
+
+.resume-paper .projects-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.resume-paper .project {
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+.resume-paper .project-header {
+  display: flex;
+  align-items: baseline;
+  gap: 8px;
+  margin-bottom: 2px;
+}
+
+.resume-paper .project-header a {
+  font-weight: 800;
+  font-size: 11.5px;
+  color: #09090b;
+}
+
+.resume-paper .project-header .muted {
+  font-size: 10.5px;
+}
+
+.resume-paper .project p {
+  font-size: 10.5px;
+  line-height: 1.35;
+  color: #27272a;
+}
+
+.resume-paper .education-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 11px;
+  break-inside: avoid;
+  page-break-inside: avoid;
+}
+
+/* — Print Styles (Faithful 2-page letter PDF) — */
+
+@media print {
+  @page {
+    size: letter;
+    margin: 0.42in 0.5in;
+  }
+
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  body {
+    background: #ffffff !important;
+    color: #18181b !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    font-size: 11.5px !important;
+    line-height: 1.42 !important;
+  }
+
+  .nav,
+  .resume-actions {
+    display: none !important;
+  }
+
+  .resume-container {
+    max-width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  .resume-paper {
+    padding: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+  }
+
+  .resume-paper a {
+    border-bottom: 1px solid #d4d4d8 !important;
+    color: #09090b !important;
+  }
+}
+
+@media (max-width: 600px) {
+  .resume-container {
+    padding: 24px 16px;
+  }
+
+  .resume-paper {
+    padding: 24px 18px;
+  }
+
+  .resume-paper .skills-grid {
+    grid-template-columns: 1fr;
+    row-gap: 6px;
+  }
+
+  .resume-paper .company-meta,
+  .resume-paper .education-row {
+    flex-direction: column;
+    gap: 2px;
+  }
+}

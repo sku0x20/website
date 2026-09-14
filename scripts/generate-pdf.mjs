@@ -70,7 +70,6 @@ function createStaticServer() {
     });
 }
 
-const resumeHtmlPath = path.resolve(process.cwd(), 'resume-pdf/resume.html');
 const resumeOutputFile = path.resolve(process.cwd(), 'public/resume.pdf');
 const distResumeOutputFile = path.resolve(distDir, 'resume.pdf');
 
@@ -106,7 +105,7 @@ async function main() {
     await new Promise((resolve) => server.listen(0, '127.0.0.1', resolve));
     const port = server.address().port;
     const cvUrl = `http://127.0.0.1:${port}/cv/`;
-    const resumeUrl = `file://${resumeHtmlPath}`;
+    const resumeUrl = `http://127.0.0.1:${port}/resume/`;
 
     try {
         await printDocument(chromePath, cvUrl, outputFile, distOutputFile);
