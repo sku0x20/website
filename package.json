@@ -9,8 +9,8 @@
     "dev": "astro dev",
     "build": "astro build && npm run build:slides",
     "build:slides": "node scripts/build-slides.mjs",
+    "build:all": "npm run build",
     "build:pdf": "node scripts/generate-pdf.mjs",
-    "build:all": "astro build && npm run build:slides && npm run build:pdf",
     "slides:dev": "slidev",
     "preview": "astro preview",
     "astro": "astro"
