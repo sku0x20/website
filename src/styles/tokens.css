@@ -20,7 +20,6 @@
     --color-badge-bg: #ebedf2;
     --color-badge-text: #242934;
     --color-grid-dot: rgba(22, 24, 29, 0.07);
-    --color-cursor-glow: rgba(196, 71, 39, 0.06);
 
     /* High-contrast Monochrome Button */
     --color-btn-primary-bg: #16181d;
@@ -66,7 +65,6 @@
         --color-badge-bg: #1c202a;
         --color-badge-text: #d2d8e4;
         --color-grid-dot: rgba(232, 236, 242, 0.055);
-        --color-cursor-glow: rgba(229, 104, 71, 0.08);
 
         /* Stark White Button on Dark Theme */
         --color-btn-primary-bg: #e8ecf2;
@@ -107,7 +105,6 @@
     --color-badge-bg: #1c202a;
     --color-badge-text: #d2d8e4;
     --color-grid-dot: rgba(232, 236, 242, 0.055);
-    --color-cursor-glow: rgba(229, 104, 71, 0.08);
 
     --color-btn-primary-bg: #e8ecf2;
     --color-btn-primary-text: #0d0f13;
@@ -159,18 +156,8 @@ body {
 main {
     flex: 1 0 auto;
     background-color: var(--color-bg);
-    background-image: 
-        radial-gradient(
-            340px circle at var(--mouse-viewport-x, -999px) var(--mouse-viewport-y, -999px),
-            var(--color-cursor-glow) 0%,
-            transparent 100%
-        ),
-        radial-gradient(
-            var(--color-grid-dot) 1px, 
-            transparent 1px
-        );
-    background-size: 100% 100%, 28px 28px;
-    background-attachment: fixed;
+    background-image: radial-gradient(var(--color-grid-dot) 1px, transparent 1px);
+    background-size: 28px 28px;
 }
 
 h1, h2, h3, h4 {
