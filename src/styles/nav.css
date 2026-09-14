@@ -1,10 +1,29 @@
 .nav {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     display: flex;
     align-items: center;
     gap: 28px;
-    padding: 20px 96px;
+    padding: 18px 96px;
     border-bottom: 1px solid var(--color-divider);
     background: var(--color-bg);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nav.nav--hidden {
+    transform: translateY(-100%);
+}
+
+.nav.nav--scrolled {
+    background: color-mix(in srgb, var(--color-bg) 85%, transparent);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+[data-theme="dark"] .nav.nav--scrolled {
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
 }
 
 .nav-brand {

@@ -95,6 +95,44 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
                 mouseRaf = null;
             });
         }, { passive: true });
+
+        // Smart sticky nav: reveal on scroll-up, hide on scroll-down
+        let lastScrollY = Math.max(0, window.scrollY);
+        let scrollTicking = false;
+
+        function handleNavScroll() {
+            const nav = document.querySelector('.nav');
+            if (!nav) return;
+            const currentScrollY = Math.max(0, window.scrollY);
+
+            if (currentScrollY <= 60) {
+                nav.classList.remove('nav--hidden', 'nav--scrolled');
+            } else {
+                nav.classList.add('nav--scrolled');
+                if (currentScrollY > lastScrollY + 8) {
+                    nav.classList.add('nav--hidden');
+                } else if (currentScrollY < lastScrollY - 8) {
+                    nav.classList.remove('nav--hidden');
+                }
+            }
+            lastScrollY = currentScrollY;
+            scrollTicking = false;
+        }
+
+        window.addEventListener('scroll', function() {
+            if (!scrollTicking) {
+                requestAnimationFrame(handleNavScroll);
+                scrollTicking = true;
+            }
+        }, { passive: true });
+
+        document.addEventListener('astro:after-swap', function() {
+            lastScrollY = 0;
+            const nav = document.querySelector('.nav');
+            if (nav) {
+                nav.classList.remove('nav--hidden', 'nav--scrolled');
+            }
+        });
     </script>
 </head>
 <body>
