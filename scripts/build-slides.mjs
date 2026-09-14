@@ -46,33 +46,20 @@ async function buildDeck(deck) {
     console.log(`  Base:   ${basePath}`);
 
     const slidevBin = path.resolve(process.cwd(), 'node_modules/.bin/slidev');
+
+    await execFileAsync(slidevBin, [
+        'build',
+        deck.filePath,
+        '--base',
+        basePath,
+        '--out',
+        outDir,
+    ]);
+
     const deckDir = path.dirname(deck.filePath);
     const localNodeModules = path.join(deckDir, 'node_modules');
-    const rootNodeModules = path.resolve(process.cwd(), 'node_modules');
-
-    // Route Slidev's internal cache directly into the root node_modules
-    const needSymlink = !fs.existsSync(localNodeModules);
-    if (needSymlink) {
-        fs.symlinkSync(rootNodeModules, localNodeModules, 'junction');
-    }
-
-    try {
-        await execFileAsync(slidevBin, [
-            'build',
-            deck.filePath,
-            '--base',
-            basePath,
-            '--out',
-            outDir,
-        ]);
-    } finally {
-        if (needSymlink && fs.existsSync(localNodeModules)) {
-            try {
-                fs.unlinkSync(localNodeModules);
-            } catch {
-                fs.rmSync(localNodeModules, { recursive: true, force: true });
-            }
-        }
+    if (fs.existsSync(localNodeModules)) {
+        fs.rmSync(localNodeModules, { recursive: true, force: true });
     }
 
     console.log(`✓ [${deck.name}] built successfully.`);
