@@ -19,7 +19,7 @@ interface Props {
 
 const {
     title,
-    description = 'Siddhant Kumar Upmanyu — notes on backend systems, debugging, and infrastructure.',
+    description = 'Siddhant Kumar Upmanyu — Senior Systems Architect. Notes on backend systems, kernel networking, and distributed storage.',
     image,
     type = 'website',
 } = Astro.props;
@@ -50,18 +50,71 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
     <meta name="twitter:title" content={title}>
     <meta name="twitter:description" content={description}>
     {ogImageURL && <meta name="twitter:image" content={ogImageURL}>}
+
+    <!-- Inline script to prevent theme flash -->
+    <script is:inline>
+        (function() {
+            try {
+                const stored = localStorage.getItem('theme');
+                if (stored === 'dark' || stored === 'light') {
+                    document.documentElement.setAttribute('data-theme', stored);
+                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                } else {
+                    document.documentElement.setAttribute('data-theme', 'light');
+                }
+            } catch (e) {}
+        })();
+    </script>
 </head>
 <body>
     <nav class="nav">
-        <a href="/" class="nav-brand">S. UPMANYU</a>
-        <a href="/" aria-current={isActive('/') ? 'page' : undefined}>Home</a>
-        <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>About</a>
-        <a href="/cv" aria-current={isActive('/cv') ? 'page' : undefined}>CV</a>
-        <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>Blog</a>
+        <a href="/" class="nav-brand">
+            <span>S. UPMANYU</span>
+            <span class="nav-brand-tag">SYS</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" aria-current={isActive('/') ? 'page' : undefined}>Home</a>
+            <a href="/about" aria-current={isActive('/about') ? 'page' : undefined}>About</a>
+            <a href="/cv" aria-current={isActive('/cv') ? 'page' : undefined}>CV</a>
+            <a href="/blog" aria-current={isActive('/blog') ? 'page' : undefined}>Blog</a>
+            <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode" title="Toggle theme">
+                <!-- Sun icon (shown in dark mode) -->
+                <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="5"></circle>
+                    <line x1="12" y1="1" x2="12" y2="3"></line>
+                    <line x1="12" y1="21" x2="12" y2="23"></line>
+                    <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                    <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                    <line x1="1" y1="12" x2="3" y2="12"></line>
+                    <line x1="21" y1="12" x2="23" y2="12"></line>
+                    <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                    <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <!-- Moon icon (shown in light mode) -->
+                <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+            </button>
+        </div>
     </nav>
 
     <main>
         <slot />
     </main>
+
+    <script is:inline>
+        (function() {
+            const toggle = document.getElementById('theme-toggle');
+            toggle?.addEventListener('click', () => {
+                const current = document.documentElement.getAttribute('data-theme');
+                const target = current === 'dark' ? 'light' : 'dark';
+                document.documentElement.setAttribute('data-theme', target);
+                try {
+                    localStorage.setItem('theme', target);
+                } catch (e) {}
+            });
+        })();
+    </script>
 </body>
 </html>

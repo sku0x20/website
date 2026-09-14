@@ -1,24 +1,119 @@
 ---
+import { getCollection } from 'astro:content';
 import Layout from '../layouts/Layout.astro';
+
+const allPosts = (await getCollection('blog')).sort(
+    (a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime()
+);
+const recentPosts = allPosts.slice(0, 3);
+const getSlug = (id: string) => id.replace(/^\d{4}-\d{2}-\d{2}-/, '');
 ---
 
-<Layout title="Siddhant Kumar Upmanyu — Senior Systems Architect" description="I design systems that hold up under load, and change without breaking. Platform architecture and infrastructure notes from a Sr. Systems Architect.">
+<Layout 
+    title="Siddhant Kumar Upmanyu — Senior Systems Architect" 
+    description="Hands-on Senior Systems Architect operating with Staff-level engineering scope over cloud infrastructure, Linux kernel networking, and columnar telemetry."
+>
     <section class="hero">
-        <div class="hero-kicker">Sr. Systems Architect &mdash; eGlu, WiZNSystems</div>
+        <div class="hero-kicker">
+            <span>Senior Systems Architect</span>
+            <span>&bull;</span>
+            <span>Bengaluru, India</span>
+        </div>
         <h1>I design systems that hold up under load, and change without breaking.</h1>
-        <p>I work on platform architecture and infrastructure &mdash; the parts of a product most people never see, but everyone depends on.</p>
+        <p class="hero-bio">
+            Hands-on systems engineer with sole technical custody over IoT platform infrastructure, Google Cloud Organization administration, low-level Linux kernel networking (<code>nftables</code>, <code>Jool</code>), and high-throughput columnar storage.
+        </p>
+
+        <div class="hero-metrics">
+            <div class="metric-badge">
+                <strong>95%+</strong> Telemetry Footprint Reduction (ClickHouse)
+            </div>
+            <div class="metric-badge">
+                <strong>In-Kernel</strong> Dual-Stack NAT64 (Jool + nftables)
+            </div>
+            <div class="metric-badge">
+                <strong>Zenodo</strong> Published Distributed Systems Preprint
+            </div>
+        </div>
+
         <div class="hero-actions">
-            <a href="/about" class="btn btn-primary">About me</a>
-            <a href="/blog" class="btn btn-secondary">Read the blog</a>
+            <a href="/cv" class="btn btn-primary">Curriculum Vitae &rarr;</a>
+            <a href="/resume" class="btn btn-secondary">Resume</a>
+            <a href="/blog" class="btn btn-secondary">Technical Writing</a>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="section-header-row">
+            <div>
+                <h2>Selected Systems &amp; Open Source</h2>
+            </div>
+            <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">View GitHub Profile &rarr;</a>
+        </div>
+
+        <div class="projects-grid-3">
+            <a href="https://github.com/sku0x20/stopgap" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-card-top">
+                    <h3>stopgap</h3>
+                    <span class="project-card-badge">Kotlin &bull; Maven Central 2.8.0</span>
+                </div>
+                <p>Microservice framework on Helidon SE (Nima) + Project Loom virtual threads. Custom compile-time DI via KSP and 3-tier testing harness.</p>
+                <div class="project-card-footer">github.com/sku0x20/stopgap &rarr;</div>
+            </a>
+
+            <a href="https://github.com/sku0x20/assertgo" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-card-top">
+                    <h3>assertgo</h3>
+                    <span class="project-card-badge">Go &bull; Generics</span>
+                </div>
+                <p>Type-safe testing assertion library built with modern Go generics. Provides fluent chainable assertions with zero external runtime dependencies.</p>
+                <div class="project-card-footer">github.com/sku0x20/assertgo &rarr;</div>
+            </a>
+
+            <a href="https://github.com/sku0x20/relay" target="_blank" rel="noopener noreferrer" class="project-card">
+                <div class="project-card-top">
+                    <h3>relay</h3>
+                    <span class="project-card-badge">Zig &bull; Systems</span>
+                </div>
+                <p>Low-level TCP server in pure Zig: raw POSIX socket descriptors, manual memory management without libc runtime dependencies, and SIGPIPE suppression.</p>
+                <div class="project-card-footer">github.com/sku0x20/relay &rarr;</div>
+            </a>
+        </div>
+    </section>
+
+    <section class="home-section">
+        <div class="section-header-row">
+            <div>
+                <h2>Recent Technical Notes</h2>
+            </div>
+            <a href="/blog">Browse All {allPosts.length} Posts &rarr;</a>
+        </div>
+
+        <div class="writing-list">
+            {recentPosts.map((post) => (
+                <a href={`/blog/${getSlug(post.id)}`} class="writing-item">
+                    <div class="writing-item-header">
+                        <h3>{post.data.title}</h3>
+                        <span class="writing-item-date">{post.data.date}</span>
+                    </div>
+                    <p>{post.data.description}</p>
+                    <div class="writing-item-tags">
+                        {post.data.tags.map((tag) => (
+                            <span class="writing-tag">{tag}</span>
+                        ))}
+                    </div>
+                </a>
+            ))}
         </div>
     </section>
 
     <footer class="site-footer">
-        <div>&copy; 2026 Siddhant Kumar Upmanyu</div>
+        <div>&copy; {new Date().getFullYear()} Siddhant Kumar Upmanyu &mdash; Systems &amp; Infrastructure</div>
         <div class="site-footer-links">
+            <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">GitHub</a>
+            <a href="https://www.linkedin.com/in/sku20" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+            <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer">Preprint</a>
             <a href="mailto:siddhantkumarupmanyu@gmail.com">Email</a>
-            <a href="https://www.linkedin.com/in/sku20" target="_blank">LinkedIn</a>
-            <a href="https://github.com/sku0x20" target="_blank">GitHub</a>
         </div>
     </footer>
 </Layout>
