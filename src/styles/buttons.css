@@ -13,6 +13,14 @@
     text-decoration: none;
 }
 
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+.btn:active {
+    transform: translateY(0) scale(0.98);
+}
+
 .btn-primary {
     background: var(--color-btn-primary-bg, var(--color-text));
     color: var(--color-btn-primary-text, var(--color-bg));

@@ -45,6 +45,12 @@
     border: 1px solid var(--color-border);
     border-radius: 4px;
     color: var(--color-text);
+    transition: all 0.15s ease;
+}
+
+.chip:hover {
+    border-color: var(--color-accent);
+    transform: translateY(-1px);
 }
 
 /* — Values grid — */

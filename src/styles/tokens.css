@@ -172,3 +172,37 @@ a:hover {
     outline: 2px solid var(--color-accent);
     outline-offset: 2px;
 }
+
+/* — View Transitions & Subtle Animations — */
+::view-transition-old(root),
+::view-transition-new(root) {
+    animation-duration: 160ms;
+    animation-timing-function: cubic-bezier(0.2, 0, 0, 1);
+}
+
+@keyframes pageIn {
+    from {
+        opacity: 0.88;
+        transform: translateY(3px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+main {
+    animation: pageIn 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *,
+    ::view-transition-group(*),
+    ::view-transition-old(*),
+    ::view-transition-new(*) {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+

@@ -31,6 +31,11 @@
     border-radius: 4px;
     background: var(--color-accent-subtle);
     color: var(--color-accent);
+    transition: transform 0.15s ease;
+}
+
+.nav-brand:hover .nav-brand-tag {
+    transform: scale(1.05);
 }
 
 .nav-links {
@@ -43,7 +48,6 @@
     font-size: 14px;
     font-weight: 500;
     color: var(--color-text-muted);
-    transition: color 0.12s ease;
 }
 
 .nav a[aria-current="page"] {
@@ -77,9 +81,18 @@
     background: var(--color-surface-hover);
 }
 
+.theme-toggle:active {
+    transform: scale(0.92);
+}
+
 .theme-toggle svg {
     width: 15px;
     height: 15px;
+    transition: transform 0.25s cubic-bezier(0.2, 0, 0, 1);
+}
+
+.theme-toggle:hover svg {
+    transform: rotate(20deg);
 }
 
 .theme-toggle .icon-sun {

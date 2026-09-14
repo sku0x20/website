@@ -1,4 +1,5 @@
 ---
+import { ClientRouter } from 'astro:transitions';
 import '../styles/tokens.css';
 import '../styles/nav.css';
 import '../styles/buttons.css';
@@ -51,9 +52,11 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
     <meta name="twitter:description" content={description}>
     {ogImageURL && <meta name="twitter:image" content={ogImageURL}>}
 
-    <!-- Inline script to prevent theme flash -->
+    <ClientRouter />
+
+    <!-- Inline script to prevent theme flash and maintain theme across transitions -->
     <script is:inline>
-        (function() {
+        function initTheme() {
             try {
                 const stored = localStorage.getItem('theme');
                 if (stored === 'dark' || stored === 'light') {
@@ -64,7 +67,20 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
                     document.documentElement.setAttribute('data-theme', 'light');
                 }
             } catch (e) {}
-        })();
+        }
+        initTheme();
+        document.addEventListener('astro:after-swap', initTheme);
+
+        document.addEventListener('click', function(e) {
+            const toggle = e.target.closest('#theme-toggle');
+            if (!toggle) return;
+            const current = document.documentElement.getAttribute('data-theme');
+            const target = current === 'dark' ? 'light' : 'dark';
+            document.documentElement.setAttribute('data-theme', target);
+            try {
+                localStorage.setItem('theme', target);
+            } catch (err) {}
+        });
     </script>
 </head>
 <body>
@@ -111,19 +127,5 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
             <a href="mailto:siddhantkumarupmanyu@gmail.com">Email</a>
         </div>
     </footer>
-
-    <script is:inline>
-        (function() {
-            const toggle = document.getElementById('theme-toggle');
-            toggle?.addEventListener('click', () => {
-                const current = document.documentElement.getAttribute('data-theme');
-                const target = current === 'dark' ? 'light' : 'dark';
-                document.documentElement.setAttribute('data-theme', target);
-                try {
-                    localStorage.setItem('theme', target);
-                } catch (e) {}
-            });
-        })();
-    </script>
 </body>
 </html>
