@@ -12,4 +12,15 @@ const blog = defineCollection({
     }),
 });
 
-export const collections = { blog };
+const slides = defineCollection({
+    loader: glob({ pattern: '**/slides.md', base: './slides' }),
+    schema: z.object({
+        title: z.string(),
+        subtitle: z.string().optional(),
+        description: z.string().optional(),
+        date: z.string(),
+        tags: z.array(z.string()).default([]),
+    }),
+});
+
+export const collections = { blog, slides };
