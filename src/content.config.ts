@@ -12,15 +12,4 @@ const blog = defineCollection({
     }),
 });
 
-const slides = defineCollection({
-    loader: glob({ pattern: '**/slides.md', base: './src/content/slides' }),
-    schema: z.object({
-        title: z.string(),
-        subtitle: z.string().optional(),
-        description: z.string().optional(),
-        date: z.string(),
-        tags: z.array(z.string()).default([]),
-    }),
-});
-
-export const collections = { blog, slides };
+export const collections = { blog };

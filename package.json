@@ -7,20 +7,14 @@
   },
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && npm run build:slides",
-    "build:slides": "node scripts/build-slides.mjs",
-    "build:all": "npm run build",
+    "build": "astro build",
+    "build:all": "astro build",
     "build:pdf": "node scripts/generate-pdf.mjs",
-    "slides:dev": "slidev",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/sitemap": "^3.7.3",
     "astro": "^7.2.0"
-  },
-  "devDependencies": {
-    "@slidev/cli": "^52.19.1",
-    "@slidev/theme-default": "^0.25.0"
   }
 }
