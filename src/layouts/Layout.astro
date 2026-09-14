@@ -81,6 +81,24 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
                 localStorage.setItem('theme', target);
             } catch (err) {}
         });
+
+        // Interactive cursor spotlight tracking for background grid and cards
+        let mouseRaf = null;
+        window.addEventListener('pointermove', function(e) {
+            if (mouseRaf) return;
+            mouseRaf = requestAnimationFrame(function() {
+                document.documentElement.style.setProperty('--mouse-viewport-x', e.clientX + 'px');
+                document.documentElement.style.setProperty('--mouse-viewport-y', e.clientY + 'px');
+
+                const card = e.target.closest('.project-card, .writing-item, .post-card');
+                if (card) {
+                    const rect = card.getBoundingClientRect();
+                    card.style.setProperty('--mouse-x', (e.clientX - rect.left) + 'px');
+                    card.style.setProperty('--mouse-y', (e.clientY - rect.top) + 'px');
+                }
+                mouseRaf = null;
+            });
+        }, { passive: true });
     </script>
 </head>
 <body>
@@ -121,6 +139,7 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
     <footer class="site-footer">
         <div>&copy; {new Date().getFullYear()} Siddhant Kumar Upmanyu &mdash; Systems &amp; Infrastructure</div>
         <div class="site-footer-links">
+            <span class="telemetry-pill">SYS_OK &bull; 0.4ms</span>
             <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">GitHub</a>
             <a href="https://www.linkedin.com/in/sku20" target="_blank" rel="noopener noreferrer">LinkedIn</a>
             <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer">Preprint</a>
