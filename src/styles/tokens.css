@@ -274,10 +274,14 @@ main {
     }
 }
 
-/* — Spotlight Interactive Cards (Cursor Tracking & Luminous Border) — */
+/* — Frosted Glass & Spotlight Interactive Cards Across All Pages — */
 .project-card,
 .writing-item,
-.post-card {
+.post-card,
+.value-cell,
+.cv-project-card,
+.cv-scope-box,
+.prose pre {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
@@ -286,14 +290,22 @@ main {
 
 .project-card > *,
 .writing-item > *,
-.post-card > * {
+.post-card > *,
+.value-cell > *,
+.cv-project-card > *,
+.cv-scope-box > *,
+.prose pre > * {
     position: relative;
     z-index: 2;
 }
 
 .project-card::before,
 .writing-item::before,
-.post-card::before {
+.post-card::before,
+.value-cell::before,
+.cv-project-card::before,
+.cv-scope-box::before,
+.prose pre::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -311,7 +323,11 @@ main {
 
 .project-card::after,
 .writing-item::after,
-.post-card::after {
+.post-card::after,
+.value-cell::after,
+.cv-project-card::after,
+.cv-scope-box::after,
+.prose pre::after {
     content: '';
     position: absolute;
     inset: -1px;
@@ -336,9 +352,17 @@ main {
 .project-card:hover::before,
 .writing-item:hover::before,
 .post-card:hover::before,
+.value-cell:hover::before,
+.cv-project-card:hover::before,
+.cv-scope-box:hover::before,
+.prose pre:hover::before,
 .project-card:hover::after,
 .writing-item:hover::after,
-.post-card:hover::after {
+.post-card:hover::after,
+.value-cell:hover::after,
+.cv-project-card:hover::after,
+.cv-scope-box:hover::after,
+.prose pre:hover::after {
     opacity: 1;
 }
 

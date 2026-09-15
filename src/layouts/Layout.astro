@@ -85,7 +85,7 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
         // Spotlight cursor tracking for cards
         let mouseRaf = null;
         window.addEventListener('pointermove', function(e) {
-            const card = e.target.closest('.project-card, .writing-item, .post-card');
+            const card = e.target.closest('.project-card, .writing-item, .post-card, .value-cell, .cv-project-card, .cv-scope-box, .prose pre');
             if (!card) return;
             if (mouseRaf) return;
             mouseRaf = requestAnimationFrame(function() {
