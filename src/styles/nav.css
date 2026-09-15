@@ -44,16 +44,17 @@
 .nav-brand-logo {
     display: block;
     flex-shrink: 0;
-    color: var(--color-text);
     transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .nav-brand-logo .logo-hex {
+    stroke: var(--color-border);
     transition: stroke 0.2s ease;
 }
 
 .nav-brand-logo .logo-axes {
-    transition: stroke-opacity 0.2s ease;
+    stroke: var(--color-border);
+    transition: stroke-opacity 0.2s ease, stroke 0.2s ease;
 }
 
 .nav-brand-logo .logo-trace {
@@ -65,15 +66,15 @@
 }
 
 .nav-brand:hover .nav-brand-logo {
-    transform: scale(1.1) rotate(15deg);
+    transform: scale(1.08) rotate(12deg);
 }
 
 .nav-brand:hover .nav-brand-logo .logo-hex {
-    stroke: var(--color-accent);
+    stroke: var(--color-text-muted);
 }
 
 .nav-brand:hover .nav-brand-logo .logo-axes {
-    stroke-opacity: 0.55;
+    stroke-opacity: 0.6;
 }
 
 .nav-brand:hover .nav-brand-logo .logo-core {

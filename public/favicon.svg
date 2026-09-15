@@ -3,13 +3,13 @@
     <rect width="128" height="128" rx="28" fill="#0d0f13"/>
     <rect x="1" y="1" width="126" height="126" rx="27" stroke="#232731" stroke-width="2"/>
     
-    <!-- Outer Isometric Hexagon -->
-    <path d="M64 16L105.56 40V88L64 112L22.44 88V40L64 16Z" stroke="#e8ecf2" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    <!-- Outer Isometric Hexagon (Subtle Framework) -->
+    <path d="M64 16L105.56 40V88L64 112L22.44 88V40L64 16Z" stroke="#353c4a" stroke-width="5" stroke-linejoin="round" stroke-linecap="round"/>
     
     <!-- Internal Isometric Axes -->
-    <path d="M64 16V64M64 64L105.56 88M64 64L22.44 88" stroke="#e8ecf2" stroke-width="4.5" stroke-opacity="0.32" stroke-linejoin="round"/>
+    <path d="M64 16V64M64 64L105.56 88M64 64L22.44 88" stroke="#353c4a" stroke-width="3.5" stroke-opacity="0.5" stroke-linejoin="round"/>
     
-    <!-- 0x20 / 'S' Circuit Trace -->
+    <!-- 0x20 / 'S' Circuit Trace (Hero Feature) -->
     <path d="M42 46L64 34L86 46V58L42 70V82L64 94L86 82" stroke="#e56847" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
     
     <!-- Terminal Circuit Nodes -->
