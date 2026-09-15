@@ -80,6 +80,8 @@
     border: 1px solid var(--color-border);
     border-radius: 4px;
     padding: 2px 6px;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
 }
 
 .prose pre {
@@ -90,6 +92,8 @@
     padding: 16px 20px;
     overflow-x: auto;
     margin: 0 0 24px;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose pre code {
@@ -106,8 +110,9 @@
     background: var(--color-surface);
     border-left: 3px solid var(--color-accent);
     border-radius: 0 6px 6px 0;
-    opacity: 0.9;
     font-style: italic;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose img {
@@ -132,6 +137,9 @@
     font-size: 14px;
     border: 1px solid var(--color-border);
     border-radius: 6px;
+    background: var(--color-surface);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose th,

@@ -3,8 +3,8 @@
 /* Default / Light Theme */
 :root {
     --color-bg: #f6f7f9;
-    --color-surface: #ffffff;
-    --color-surface-hover: #eff1f5;
+    --color-surface: rgba(255, 255, 255, 0.72);
+    --color-surface-hover: rgba(255, 255, 255, 0.9);
     --color-text: #16181d;
     --color-text-muted: #5e6573;
     
@@ -17,7 +17,7 @@
 
     --color-divider: #e2e5eb;
     --color-border: #d3d7e0;
-    --color-badge-bg: #ebedf2;
+    --color-badge-bg: rgba(235, 237, 242, 0.75);
     --color-badge-text: #242934;
     --color-grid-dot: rgba(22, 24, 29, 0.07);
 
@@ -31,7 +31,7 @@
     --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
     /* Shiki (code block) Light colors */
-    --astro-code-color-background: #edf0f5;
+    --astro-code-color-background: rgba(237, 240, 245, 0.75);
     --astro-code-color-text: #16181d;
     --astro-code-token-constant: #c44727;
     --astro-code-token-string: #0969da;
@@ -48,8 +48,8 @@
 @media (prefers-color-scheme: dark) {
     :root:not([data-theme="light"]) {
         --color-bg: #0d0f13;
-        --color-surface: #14171d;
-        --color-surface-hover: #1b2029;
+        --color-surface: rgba(20, 23, 29, 0.72);
+        --color-surface-hover: rgba(27, 32, 41, 0.9);
         --color-text: #e8ecf2;
         --color-text-muted: #8b94a5;
 
@@ -62,7 +62,7 @@
 
         --color-divider: #232731;
         --color-border: #2d3340;
-        --color-badge-bg: #1c202a;
+        --color-badge-bg: rgba(28, 32, 42, 0.75);
         --color-badge-text: #d2d8e4;
         --color-grid-dot: rgba(232, 236, 242, 0.055);
 
@@ -72,7 +72,7 @@
         --color-btn-primary-hover: #ffffff;
 
         /* Shiki (code block) Dark colors */
-        --astro-code-color-background: #14171d;
+        --astro-code-color-background: rgba(20, 23, 29, 0.75);
         --astro-code-color-text: #e8ecf2;
         --astro-code-token-constant: #e56847;
         --astro-code-token-string: #79c0ff;
@@ -89,8 +89,8 @@
 /* Explicit Dark Theme */
 [data-theme="dark"] {
     --color-bg: #0d0f13;
-    --color-surface: #14171d;
-    --color-surface-hover: #1b2029;
+    --color-surface: rgba(20, 23, 29, 0.72);
+    --color-surface-hover: rgba(27, 32, 41, 0.9);
     --color-text: #e8ecf2;
     --color-text-muted: #8b94a5;
 
@@ -102,7 +102,7 @@
 
     --color-divider: #232731;
     --color-border: #2d3340;
-    --color-badge-bg: #1c202a;
+    --color-badge-bg: rgba(28, 32, 42, 0.75);
     --color-badge-text: #d2d8e4;
     --color-grid-dot: rgba(232, 236, 242, 0.055);
 
@@ -110,7 +110,7 @@
     --color-btn-primary-text: #0d0f13;
     --color-btn-primary-hover: #ffffff;
 
-    --astro-code-color-background: #14171d;
+    --astro-code-color-background: rgba(20, 23, 29, 0.75);
     --astro-code-color-text: #e8ecf2;
     --astro-code-token-constant: #e56847;
     --astro-code-token-string: #79c0ff;
@@ -280,6 +280,8 @@ main {
 .post-card {
     position: relative;
     overflow: hidden;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
 }
 
 .project-card > *,
