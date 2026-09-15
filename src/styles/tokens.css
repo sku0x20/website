@@ -31,6 +31,8 @@
     --font-mono: "JetBrains Mono", "SF Mono", "Fira Code", monospace;
 
     /* Shiki (code block) Light colors */
+    --astro-code-background: rgba(237, 240, 245, 0.75);
+    --astro-code-foreground: #16181d;
     --astro-code-color-background: rgba(237, 240, 245, 0.75);
     --astro-code-color-text: #16181d;
     --astro-code-token-constant: #c44727;
@@ -72,6 +74,8 @@
         --color-btn-primary-hover: #ffffff;
 
         /* Shiki (code block) Dark colors */
+        --astro-code-background: rgba(20, 23, 29, 0.75);
+        --astro-code-foreground: #e8ecf2;
         --astro-code-color-background: rgba(20, 23, 29, 0.75);
         --astro-code-color-text: #e8ecf2;
         --astro-code-token-constant: #e56847;
@@ -110,6 +114,8 @@
     --color-btn-primary-text: #0d0f13;
     --color-btn-primary-hover: #ffffff;
 
+    --astro-code-background: rgba(20, 23, 29, 0.75);
+    --astro-code-foreground: #e8ecf2;
     --astro-code-color-background: rgba(20, 23, 29, 0.75);
     --astro-code-color-text: #e8ecf2;
     --astro-code-token-constant: #e56847;
@@ -280,8 +286,7 @@ main {
 .post-card,
 .value-cell,
 .cv-project-card,
-.cv-scope-box,
-.prose pre {
+.cv-scope-box {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
@@ -293,8 +298,7 @@ main {
 .post-card > *,
 .value-cell > *,
 .cv-project-card > *,
-.cv-scope-box > *,
-.prose pre > * {
+.cv-scope-box > * {
     position: relative;
     z-index: 2;
 }
@@ -304,8 +308,7 @@ main {
 .post-card::before,
 .value-cell::before,
 .cv-project-card::before,
-.cv-scope-box::before,
-.prose pre::before {
+.cv-scope-box::before {
     content: '';
     position: absolute;
     inset: 0;
@@ -326,8 +329,7 @@ main {
 .post-card::after,
 .value-cell::after,
 .cv-project-card::after,
-.cv-scope-box::after,
-.prose pre::after {
+.cv-scope-box::after {
     content: '';
     position: absolute;
     inset: -1px;
@@ -355,14 +357,12 @@ main {
 .value-cell:hover::before,
 .cv-project-card:hover::before,
 .cv-scope-box:hover::before,
-.prose pre:hover::before,
 .project-card:hover::after,
 .writing-item:hover::after,
 .post-card:hover::after,
 .value-cell:hover::after,
 .cv-project-card:hover::after,
-.cv-scope-box:hover::after,
-.prose pre:hover::after {
+.cv-scope-box:hover::after {
     opacity: 1;
 }
 
