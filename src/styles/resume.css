@@ -42,8 +42,8 @@
 }
 
 .resume-paper a:hover {
-  color: #ec3013;
-  border-bottom-color: #ec3013;
+  color: var(--color-accent);
+  border-bottom-color: var(--color-accent);
 }
 
 .resume-paper code {

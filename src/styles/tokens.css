@@ -12,7 +12,7 @@
     --color-accent: #c44727;
     --color-accent-hover: #a8381a;
     --color-accent-600: #a8381a;
-    --color-accent-700: #8f2e14;
+    --color-accent-700: #c44727;
     --color-accent-subtle: rgba(196, 71, 39, 0.08);
 
     --color-divider: #e2e5eb;
@@ -38,7 +38,7 @@
     --astro-code-token-constant: #c44727;
     --astro-code-token-string: #0969da;
     --astro-code-token-comment: #6e7781;
-    --astro-code-token-keyword: #cf222e;
+    --astro-code-token-keyword: #c44727;
     --astro-code-token-parameter: #16181d;
     --astro-code-token-function: #8250df;
     --astro-code-token-string-expression: #0969da;
@@ -81,7 +81,7 @@
         --astro-code-token-constant: #e56847;
         --astro-code-token-string: #79c0ff;
         --astro-code-token-comment: #6e7681;
-        --astro-code-token-keyword: #ff7b72;
+        --astro-code-token-keyword: #e56847;
         --astro-code-token-parameter: #e8ecf2;
         --astro-code-token-function: #d2a8ff;
         --astro-code-token-string-expression: #79c0ff;
@@ -121,7 +121,7 @@
     --astro-code-token-constant: #e56847;
     --astro-code-token-string: #79c0ff;
     --astro-code-token-comment: #6e7681;
-    --astro-code-token-keyword: #ff7b72;
+    --astro-code-token-keyword: #e56847;
     --astro-code-token-parameter: #e8ecf2;
     --astro-code-token-function: #d2a8ff;
     --astro-code-token-string-expression: #79c0ff;
