@@ -1,5 +1,21 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128">
-    <rect x="0" y="0" width="128" height="128" fill="#ffffff"/>
-    <rect x="0" y="0" width="128" height="14" fill="#ec3013"/>
-    <text x="64" y="71" text-anchor="middle" dominant-baseline="central" fill="#201e1d" font-size="80" font-weight="900" font-family="Arial, Helvetica, sans-serif">S</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="128" height="128" viewBox="0 0 128 128" fill="none">
+    <!-- Icon Backdrop -->
+    <rect width="128" height="128" rx="28" fill="#0d0f13"/>
+    <rect x="1" y="1" width="126" height="126" rx="27" stroke="#232731" stroke-width="2"/>
+    
+    <!-- Outer Isometric Hexagon -->
+    <path d="M64 16L105.56 40V88L64 112L22.44 88V40L64 16Z" stroke="#e8ecf2" stroke-width="7" stroke-linejoin="round" stroke-linecap="round"/>
+    
+    <!-- Internal Isometric Axes -->
+    <path d="M64 16V64M64 64L105.56 88M64 64L22.44 88" stroke="#e8ecf2" stroke-width="4.5" stroke-opacity="0.32" stroke-linejoin="round"/>
+    
+    <!-- 0x20 / 'S' Circuit Trace -->
+    <path d="M42 46L64 34L86 46V58L42 70V82L64 94L86 82" stroke="#e56847" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Terminal Circuit Nodes -->
+    <circle cx="42" cy="46" r="5" fill="#e56847"/>
+    <circle cx="86" cy="82" r="5" fill="#e56847"/>
+    
+    <!-- Central Core Node -->
+    <circle cx="64" cy="64" r="6.5" fill="#e56847"/>
 </svg>
