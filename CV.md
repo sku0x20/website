@@ -386,10 +386,10 @@
 * **The Inherited Anti-Pattern:**  
   From day one, binary image payloads were stored directly as blobs inside the primary database. Over four years, this bloated database backups, consumed expensive memory in database buffer pools, and degraded query throughput for routine transactional records.
 * **The Migration Pipeline:**  
-  Designed, authored, and executed a seamless production migration:
+  Designed, authored, and executed a zero-downtime live migration on production traffic:
   - Built a migration pipeline to extract stored binary images, upload them to secure Google Cloud Storage (GCS) buckets, and verify checksum integrity.
   - Refactored the backend schemas and APIs to store immutable GCS references instead of raw bytes.
-  - Purged gigabytes of binary blob payloads from the primary database cluster.
+  - Purged gigabytes of binary blob payloads from the primary database cluster without taking the service offline.
 * **The Outcome:**  
   Slashed database memory pressure and backup windows, improved transactional query latency, and established cloud object storage as the standard for all unstructured media.
 

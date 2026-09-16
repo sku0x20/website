@@ -128,7 +128,7 @@ import Layout from '../layouts/Layout.astro';
                 <h3>Binary Blob Decoupling: Migrating In-DB Images to Google Cloud Storage (GCS)</h3>
                 <ul>
                     <li><strong>The Inherited Anti-Pattern:</strong> From day one, binary image payloads were stored directly as blobs inside the primary database, bloating backups and memory buffer pools.</li>
-                    <li><strong>The Migration Pipeline:</strong> Engineered a production migration pipeline extracting stored binary images, streaming them to secure Google Cloud Storage (GCS) buckets with checksum verification, switching schemas to immutable URIs, and purging binary blobs from the primary database cluster.</li>
+                    <li><strong>The Migration Pipeline:</strong> Engineered a zero-downtime live migration pipeline extracting stored binary images, streaming them to secure Google Cloud Storage (GCS) buckets with checksum verification, switching schemas to immutable URIs, and purging binary blobs from the primary database cluster without disruption to active traffic.</li>
                 </ul>
             </div>
         </section>
