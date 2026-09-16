@@ -9,7 +9,7 @@
 ## Executive & Staff Engineering Scope
 
 * **Autonomous Technical Authority:**  
-  Serve as the definitive technical authority for the platform, operating under a product-focused manager (Head of Product) with zero backend or infrastructure hierarchy above me. Rather than executing top-down technical tasks, I autonomously drive the platform and engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&D spikes, and owning 100% of infrastructure decisions and production systems.
+  Serve as the definitive technical authority for the platform, operating under a product-focused manager (Head of Product) with zero backend or infrastructure hierarchy above me. Rather than executing top-down technical tasks, I autonomously drive the platform and engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&D spikes, and owning 100% of infrastructure decisions and production systems—architecting and executing every major database, platform, and infrastructure migration with strict zero-downtime guarantees on live production traffic.
 * **End-to-End Product & Infrastructure Custody:**  
   Hold sole administrative and architectural ownership over the entire operational footprint: domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPCs, project lifecycles), on-prem staging bare metal, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
@@ -76,7 +76,7 @@
   The primary driver wasn't just "shiny new framework"—it was developer velocity and correctness. Moving to modern Spring Boot unlocked modern test slices (`@SpringBootTest`, `@WebMvcTest`, lightweight context caching) and test infrastructure.
 
 * **The Outcome:**  
-  Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team.
+  Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team—cutting the new release over live onto production traffic via the kernel blue-green pipeline with zero downtime.
 
 ### Apple HomeKit Integration Spike: Protocol Forensics & HAP Bridging
 
@@ -136,7 +136,7 @@
 * **The High-Stakes Fix:**  
   Because thousands of active homes were running corrupted IDs, a naive code fix wasn't enough. I had to:
   1. Diagnose and rewrite the synchronization logic to guarantee deterministic ID mapping and conflict resolution.
-  2. Author, test, and execute production migration scripts to repair corrupted database records on the cloud while reconciling state across remote hubs over the air—without breaking active customer automations.
+  2. Author, test, and execute zero-downtime live production migration and state-reconciliation scripts across thousands of active homes without breaking customer automations or dropping hub connections.
 
 ### Architecture Research & Extreme Programming (XP) Foundations
 
@@ -244,13 +244,14 @@
 * **The Production Disk & Inode Crisis:**  
   The production VM was facing recurring disk exhaustion from years of accumulated device health telemetry and high-churn activity logs. The legacy storage architecture had a severe filesystem flaw: files were saved across deeply nested two-letter directory trees (`/aa/bb/cc/...`), causing catastrophic filesystem **inode bloat** where directory metadata consumed massive disk space and degraded I/O throughput.
 * **The Migration & Codec Engineering:**  
-  Having evaluated ClickHouse in late 2024, I engineered a pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse:
+  Having evaluated ClickHouse in late 2024, I engineered a zero-downtime live migration pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse while live device streams continued uninterrupted:
+  - **Optimized Partition-Level Backfilling:** Rather than running slow, memory-intensive `INSERT INTO` queries that would contend with live production traffic, backfilled historical data at the partition level (`ATTACH PARTITION`), maximizing ingestion throughput with zero system degradation.
   - **Schema & Codec Tuning:** Modeled columnar schemas (`device_health`, `pal_2024` activity logs, and `crm_logs`) with tight data types: `FixedString(23/29)`, `LowCardinality(String)`, and paired **Delta encoding** on sequential timestamps/metrics with **ZSTD compression**.
   - **Compression Breakthrough:** Slashed storage footprint by **over 95%**—compressing `device_health` telemetry from **17 GB down to just 300 MB** on disk, and overall raw files from ~100 GB to under 6 GB.
   - **Sparse Index Locality:** Designed composite primary keys ordered from low to high cardinality (`PRIMARY KEY (place_id, toStartOfDay(captured_at))`), maximizing block locality so ClickHouse's Generic Search Algorithm (GSA) skipped irrelevant blocks during range scans.
-  - **Cold Storage Tiering:** Configured storage policies to offload and archive compressed tables to Google Cloud Storage (GCS).
+  - **Partition Backup & Lifecycle Management:** Devised and owned end-to-end ClickHouse administration, engineering a partition-optimized backup and disaster recovery strategy (freezing and archiving yearly partitions to Google Cloud Storage) with zero operational downtime.
 * **The Outcome:**  
-  Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining sub-second analytical queries over historical data.
+  Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining sub-second analytical queries over historical data with zero downtime throughout the entire migration.
 
 ### Ending "Testing in Production": On-Prem Staging Environment & Parity
 
@@ -340,7 +341,7 @@
   Non-core public marketing website. The company's public marketing site was previously hosted on manually configured virtual machines, lacking clean isolation from core platform resources and declarative reproducibility.
 * **The Solution:**  
   Decoupled the marketing site completely from core backend infrastructure into its own isolated Google Cloud project driven 100% by **Terraform / OpenTofu IaC**:
-  - Containerized and migrated the marketing website onto serverless **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
+  - Executed a zero-downtime DNS and workload cutover, containerizing and migrating the marketing website onto serverless **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
   - Codified 100% of the project infrastructure in **Terraform / OpenTofu**—VPC networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations, ensuring marketing workloads have zero blast radius on core IoT backend systems.
 
 ### Bare-Metal Homelab & Cloud-Native Engineering (Proxmox, K8s, Nomad)

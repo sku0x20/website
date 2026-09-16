@@ -40,7 +40,7 @@ import Layout from '../layouts/Layout.astro';
             <h2>Executive &amp; Staff Engineering Scope</h2>
             <ul>
                 <li>
-                    <strong>Autonomous Technical Authority:</strong> Serve as the definitive technical authority for the platform, operating under a product-focused manager (Head of Product) with zero backend or infrastructure hierarchy above me. Rather than executing top-down technical tasks, I autonomously drive the platform and engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&amp;D spikes, and owning 100% of infrastructure decisions and production systems.
+                    <strong>Autonomous Technical Authority:</strong> Serve as the definitive technical authority for the platform, operating under a product-focused manager (Head of Product) with zero backend or infrastructure hierarchy above me. Rather than executing top-down technical tasks, I autonomously drive the platform and engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&amp;D spikes, and owning 100% of infrastructure decisions and production systems—architecting and executing every major database, platform, and infrastructure migration with strict zero-downtime guarantees on live production traffic.
                 </li>
                 <li>
                     <strong>End-to-End Product &amp; Infrastructure Custody:</strong> Hold sole administrative and architectural ownership over the entire operational footprint: domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPCs, project lifecycles), on-prem staging bare metal, and production compute clusters.
@@ -96,7 +96,7 @@ import Layout from '../layouts/Layout.astro';
                 <h3>100% Declarative Infrastructure for Marketing Website (Non-Core): Terraform / OpenTofu (Cloud Run &amp; Cloud SQL)</h3>
                 <ul>
                     <li><strong>The Scope &amp; Isolation:</strong> Non-core public marketing website. The company's public marketing website was previously hosted on manually configured virtual machines, lacking clean isolation from core platform resources and declarative reproducibility.</li>
-                    <li><strong>The Solution:</strong> Decoupled the marketing website completely from core backend infrastructure into its own isolated Google Cloud project driven 100% by Terraform / OpenTofu IaC: migrated the marketing site onto containerized Google Cloud Run paired with managed Google Cloud SQL (PostgreSQL), codifying VPC networking, service accounts, IAM bindings, secrets, and database provisioning with zero manual cloud console mutations—ensuring marketing workloads have zero blast radius on core IoT backend systems.</li>
+                    <li><strong>The Solution:</strong> Decoupled the marketing website completely from core backend infrastructure into its own isolated Google Cloud project driven 100% by Terraform / OpenTofu IaC: executed a zero-downtime DNS and workload cutover, migrating the marketing site onto containerized Google Cloud Run paired with managed Google Cloud SQL (PostgreSQL), codifying VPC networking, service accounts, IAM bindings, secrets, and database provisioning with zero manual cloud console mutations—ensuring marketing workloads have zero blast radius on core IoT backend systems.</li>
                 </ul>
             </div>
 
@@ -155,7 +155,8 @@ import Layout from '../layouts/Layout.astro';
                 <h3>High-Volume Telemetry Migration: ClickHouse, Delta+ZSTD Codecs &amp; GCS Offloading</h3>
                 <ul>
                     <li><strong>The Inode Crisis:</strong> The production VM was facing recurring disk exhaustion from telemetry saved across deeply nested two-letter directory trees (<code>/aa/bb/cc/...</code>), causing catastrophic filesystem inode bloat.</li>
-                    <li><strong>The Solution:</strong> Modeled columnar ClickHouse schemas (<code>device_health</code>, <code>pal_2024</code> activity logs, and <code>crm_logs</code>) with tight data types: <code>FixedString(23/29)</code>, <code>LowCardinality(String)</code>, Delta encoding, and ZSTD compression. Slashed storage footprint by over 95% (compressing <code>device_health</code> telemetry from 17 GB down to 300 MB on disk). Designed composite primary keys ordered from low to high cardinality to optimize block skip scans.</li>
+                    <li><strong>Zero-Downtime Migration &amp; Partition Backfilling:</strong> Engineered a zero-downtime live migration pipeline: rather than running slow, memory-intensive <code>INSERT INTO</code> queries, backfilled historical data at the partition level (<code>ATTACH PARTITION</code>) while live device writes continued uninterrupted. Devised full operational management with partition-optimized backup and disaster recovery strategies (freezing and archiving yearly partitions to GCS).</li>
+                    <li><strong>Schema &amp; Codec Engineering:</strong> Modeled columnar ClickHouse schemas (<code>device_health</code>, <code>pal_2024</code> activity logs, and <code>crm_logs</code>) with tight data types: <code>FixedString(23/29)</code>, <code>LowCardinality(String)</code>, Delta encoding, and ZSTD compression. Slashed storage footprint by over 95% (compressing <code>device_health</code> telemetry from 17 GB down to 300 MB on disk) with composite primary keys optimizing block skip scans.</li>
                 </ul>
             </div>
 
@@ -299,7 +300,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Critical Production State-Sync Remediation (Cloud &amp; Hub Data Divergence)</h3>
                 <ul>
-                    <li>Discovered a severe, months-old bug in legacy sync code where flawed ID generation silently corrupted scene and rule automations on physical hubs. Rewrote the sync logic for deterministic conflict resolution and executed live production migration scripts across thousands of homes without breaking automations.</li>
+                    <li>Discovered a severe, months-old bug in legacy sync code where flawed ID generation silently corrupted scene and rule automations on physical hubs. Rewrote the sync logic for deterministic conflict resolution and executed zero-downtime live production migration and state-reconciliation scripts across thousands of active homes without breaking customer automations or dropping hub connectivity.</li>
                 </ul>
             </div>
 
@@ -353,7 +354,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD</h3>
                 <ul>
-                    <li>Untangled legacy XML and bean configurations to leap directly from legacy Spring 4 (JDK 8) to Spring Boot 2.7.5 (JDK 17) in the pre-AI era. The primary driver was developer velocity: unlocking modern Spring test slices and making Test-Driven Development (TDD) viable across the backend.</li>
+                    <li>Untangled legacy XML and bean configurations to leap directly from legacy Spring 4 (JDK 8) to Spring Boot 2.7.5 (JDK 17) in the pre-AI era, cutting the modernized monolith over live via the kernel blue-green pipeline with zero downtime. The primary driver was developer velocity: unlocking modern Spring test slices and making Test-Driven Development (TDD) viable across the backend.</li>
                 </ul>
             </div>
 
