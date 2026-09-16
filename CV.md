@@ -382,17 +382,18 @@
 * **`assertgo` (Go Generics Assertion Library):**  
   Deprecated the older `assertG` in favor of a complete rewrite leveraging modern Go generics—providing a fluent, type-safe, zero-dependency testing library for the Go community.
 
-### Binary Blob Decoupling: Migrating In-DB Images to Google Cloud Storage (GCS)
+### Zero-Downtime Storage Architecture: Decoupling In-DB Payloads to Google Cloud Storage (GCS)
 
-* **The Inherited Anti-Pattern:**  
-  From day one, binary image payloads were stored directly as blobs inside the primary database. Over four years, this bloated database backups, consumed expensive memory in database buffer pools, and degraded query throughput for routine transactional records.
-* **The Migration Pipeline:**  
-  Designed, authored, and executed a zero-downtime live migration on production traffic:
-  - Built a migration pipeline to extract stored binary images, upload them to secure Google Cloud Storage (GCS) buckets, and verify checksum integrity.
-  - Refactored the backend schemas and APIs to store immutable GCS references instead of raw bytes.
-  - Purged gigabytes of binary blob payloads from the primary database cluster without taking the service offline.
+* **The Architecture Challenge:**  
+  Legacy systems stored raw binary image payloads directly inside primary database tables, degrading transactional throughput, ballooning backup sizes, and stressing database memory caches.
+* **Multi-Phase Rollout & Dual-Write Strategy:**  
+  Conceived, planned, and orchestrated a zero-downtime, multi-stage migration lifecycle coordinating mobile clients and backend services:
+  - **Phased Dual-Write Rollout:** Designed a dual-write API contract and coordinated new mobile app releases so active legacy and updated clients operated simultaneously without write loss or read inconsistency.
+  - **Asynchronous Backfill & Verification:** Engineered an asynchronous extraction pipeline to stream historical blobs into GCS buckets with strict checksum and payload verification.
+  - **Graceful Cutover & Deprecation:** Orchestrated backend cutover to single-write GCS URLs, enforced minimum client versions via app force-updates, deprecated legacy binary endpoints, and cleanly purged legacy blob storage from the primary database cluster.
 * **The Outcome:**  
-  Slashed database memory pressure and backup windows, improved transactional query latency, and established cloud object storage as the standard for all unstructured media.
+  Zero customer disruption or downtime across the transition, significant reduction in database memory and backup overhead, and a standardized cloud object storage pattern across all platforms.
+
 
 ### Production Database Administration (MongoDB): Schema Refactoring & Compound Index Optimization
 

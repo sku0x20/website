@@ -125,10 +125,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Binary Blob Decoupling: Migrating In-DB Images to Google Cloud Storage (GCS)</h3>
+                <h3>Zero-Downtime Storage Architecture: Decoupling In-DB Payloads to Google Cloud Storage (GCS)</h3>
                 <ul>
-                    <li><strong>The Inherited Anti-Pattern:</strong> From day one, binary image payloads were stored directly as blobs inside the primary database, bloating backups and memory buffer pools.</li>
-                    <li><strong>The Migration Pipeline:</strong> Engineered a zero-downtime live migration pipeline extracting stored binary images, streaming them to secure Google Cloud Storage (GCS) buckets with checksum verification, switching schemas to immutable URIs, and purging binary blobs from the primary database cluster without disruption to active traffic.</li>
+                    <li><strong>The Architecture Challenge:</strong> Legacy systems stored raw binary image payloads directly inside primary database tables, degrading transactional throughput, ballooning backup sizes, and stressing database memory buffer pools.</li>
+                    <li><strong>Multi-Phase Rollout &amp; Dual-Write Strategy:</strong> Conceived and orchestrated a zero-downtime, multi-stage migration lifecycle coordinating mobile clients and backend services: designed dual-write API contracts to ensure backward compatibility during client rollouts, engineered an asynchronous backfill pipeline streaming historical blobs to GCS with checksum verification, orchestrated backend cutover to single-write GCS, enforced minimum client versions via app force-updates, and purged legacy blob storage from the primary database cluster without disruption to live traffic.</li>
                 </ul>
             </div>
 
