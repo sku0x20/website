@@ -131,6 +131,15 @@ import Layout from '../layouts/Layout.astro';
                     <li><strong>The Migration Pipeline:</strong> Engineered a zero-downtime live migration pipeline extracting stored binary images, streaming them to secure Google Cloud Storage (GCS) buckets with checksum verification, switching schemas to immutable URIs, and purging binary blobs from the primary database cluster without disruption to active traffic.</li>
                 </ul>
             </div>
+
+            <div class="cv-milestone">
+                <h3>Production Database Administration (MongoDB): Schema Refactoring &amp; Compound Index Optimization</h3>
+                <ul>
+                    <li><strong>The Challenge (Sustained Heavy-Load Production):</strong> As IoT write velocity and active homes surged, the primary production MongoDB cluster faced elevated disk I/O and memory pressure in the WiredTiger cache caused by legacy schema anti-patterns and accumulated index sprawl.</li>
+                    <li><strong>Query Plan Audits &amp; Index Hygiene:</strong> Profiled live production query traffic using <code>explain</code> execution stats and slow query logs. Audited and pruned redundant, low-selectivity, and duplicate indexes that were imposing heavy write overhead on high-frequency IoT inserts and wasting working-set RAM.</li>
+                    <li><strong>Compound Key Engineering &amp; Schema Optimization:</strong> Engineered selective compound indexes applying strict key ordering (Equality, Sort, Range — ESR pattern), ensuring high-frequency queries were satisfied entirely within index trees and eliminating expensive collection scans and in-memory sorts. Refactored legacy document schemas to curb unbounded growth and eliminate fragmented on-disk document allocations.</li>
+                </ul>
+            </div>
         </section>
 
         <!-- 2025 -->

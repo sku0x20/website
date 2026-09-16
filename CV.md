@@ -394,6 +394,16 @@
 * **The Outcome:**  
   Slashed database memory pressure and backup windows, improved transactional query latency, and established cloud object storage as the standard for all unstructured media.
 
+### Production Database Administration (MongoDB): Schema Refactoring & Compound Index Optimization
+
+* **The Challenge (Sustained Heavy-Load Production):**  
+  As IoT write velocity and active homes surged, the primary production MongoDB cluster faced elevated disk I/O and memory pressure in the WiredTiger cache caused by legacy schema anti-patterns and accumulated index sprawl.
+* **Query Plan Audits & Index Hygiene:**  
+  Profiled live production query traffic using `explain` execution stats and slow query logs. Audited and pruned redundant, low-selectivity, and duplicate indexes that were imposing heavy write overhead on high-frequency IoT inserts and wasting working-set RAM.
+* **Compound Key Engineering & Schema Optimization:**  
+  - Engineered selective compound indexes applying strict key ordering (Equality, Sort, Range — ESR pattern), ensuring high-frequency queries were satisfied entirely within index trees and eliminating expensive collection scans and in-memory sorts.
+  - Refactored legacy document schemas to curb unbounded growth and eliminate fragmented on-disk document allocations.
+
 ---
 
 ## Open-Source Systems & Research Projects
