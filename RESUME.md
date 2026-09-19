@@ -37,7 +37,7 @@ Hands-on Senior Systems Architect operating with Staff-level engineering scope a
 #### High-Throughput Telemetry & Storage Systems
 * **ClickHouse Ingestion Engine (95%+ Compression):** Resolved a filesystem inode exhaustion crisis caused by nested directory log dumps. Designed high-throughput columnar ClickHouse schemas (`FixedString`, `LowCardinality`, Delta + ZSTD codecs, sparse composite primary keys), slashing telemetry footprint by 95%+ (compressing `device_health` telemetry from 17 GB down to 300 MB on disk). Executed zero-downtime partition-level backfilling and restore operations without slow `INSERT INTO` batches, and devised partition-level disaster recovery backup and restore policies.
 * **Decoupled Ingestion Microservice:** Engineered an auxiliary Go microservice communicating via binary gRPC with strict Protocol Buffers contracts to encapsulate ClickHouse, shielding the primary Kotlin/Spring Boot monolith from database driver coupling.
-* **Zero-Downtime Storage Architecture:** Architected and orchestrated an end-to-end multi-phase data migration decoupling binary image blobs from primary DB tables to GCS; designed dual-write API contracts, coordinated backward-compatible mobile rollouts, and executed historical data backfill with zero user downtime.
+* **Zero-Downtime Storage Architecture:** Architected and orchestrated an end-to-end multi-phase data migration decoupling binary Base64 image blobs from primary MongoDB collections to GCS with zero downtime; designed dual-write API contracts with document guardrails (`imageMigrated`), executed an asynchronous backfill pipeline with immutable GCS caching headers, coordinated backward-compatible mobile rollouts, and purged legacy blobs via `$unset`, slashing database storage by 54x (3.6 GB to 67 MB) and runtime memory by 89% (4.6 GB to 500 MB).
 * **Production MongoDB DBA & Index Engineering:** Acted as hands-on DBA across heavy-load production MongoDB clusters. Audited slow query logs and execution plans (`explain`), pruned redundant/overlapping indexes to reclaim WiredTiger cache memory and reduce write amplification, refactored hot document schemas, and engineered selective compound indexes (strict Equality-Sort-Range ordering) to eliminate collection scans and in-memory sorts under sustained IoT write traffic.
 
 #### Concurrency, Runtime & JVM Performance
@@ -68,8 +68,8 @@ Hands-on Senior Systems Architect operating with Staff-level engineering scope a
 ## Technical Thought Leadership & Writing
 Authored 20+ forensic post-mortems and distributed systems analyses published at [sku20.dev/blog](https://www.sku20.dev/blog):
 * *Betting on NAT64 Over a Proxy* · *Negotiating with Jool* · *Zero-Downtime Deployments with iptables*
-* *Java Exceptions Swallowed: The ThreadPool Trap* · *ThreadLocal Optimizations and Project Loom*
-* *The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools* · *Low-Level UDP Echo Server via nftables*
+* *The 100ms Password* · *Java Exceptions Swallowed: The ThreadPool Trap* · *ThreadLocal Optimizations and Project Loom*
+* *Decoupling Blobs: A Zero-Downtime Migration from MongoDB to GCS* · *The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools*
 
 ---
 

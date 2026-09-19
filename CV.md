@@ -385,14 +385,14 @@
 ### Zero-Downtime Storage Architecture: Decoupling In-DB Payloads to Google Cloud Storage (GCS)
 
 * **The Architecture Challenge:**  
-  Legacy systems stored raw binary image payloads directly inside primary database tables, degrading transactional throughput, ballooning backup sizes, and stressing database memory caches.
+  Legacy systems stored raw binary image payloads (Base64) directly inside primary MongoDB collections, degrading transactional throughput, ballooning nightly backup archives, and polluting WiredTiger cache memory with heavy document pages.
 * **Multi-Phase Rollout & Dual-Write Strategy:**  
   Conceived, planned, and orchestrated a zero-downtime, multi-stage migration lifecycle coordinating mobile clients and backend services:
-  - **Phased Dual-Write Rollout:** Designed a dual-write API contract and coordinated new mobile app releases so active legacy and updated clients operated simultaneously without write loss or read inconsistency.
-  - **Asynchronous Backfill & Verification:** Engineered an asynchronous extraction pipeline to stream historical blobs into GCS buckets with strict checksum and payload verification.
-  - **Graceful Cutover & Deprecation:** Orchestrated backend cutover to single-write GCS URLs, enforced minimum client versions via app force-updates, deprecated legacy binary endpoints, and cleanly purged legacy blob storage from the primary database cluster.
-* **The Outcome:**  
-  Zero customer disruption or downtime across the transition, significant reduction in database memory and backup overhead, and a standardized cloud object storage pattern across all platforms.
+  - **Phased Dual-Write Rollout:** Designed dual-write API contracts and introduced a document-level guardrail flag (`imageMigrated`) to allow legacy mobile clients to update metadata without accidentally overwriting migrated GCS links with stale Base64 data.
+  - **Asynchronous Backfill & Caching:** Engineered an asynchronous extraction pipeline to stream decoded blobs to GCS with automatic stream MIME sniffing and immutable HTTP caching headers (`Cache-Control: public, max-age=31536000, immutable`), handling corrupted legacy payloads with clean asset fallbacks.
+  - **Graceful Cutover & Database Purge:** Maintained backward-compatibility across a 2–3 day mobile rollout buffer (~99% adoption), then executed a second deployment deprecating legacy Base64 endpoints and running MongoDB `$unset` operations to purge all legacy blobs and migration flags.
+* **The Measurable Outcome:**  
+  Zero customer downtime across live production. Reduced primary database size by **54x** (3.6 GB &rarr; 67 MB, cutting backup sizes by 98%), shrank runtime server memory footprint by **89%** (4.6 GB &rarr; ~500 MB), and eliminated Base64 encoding overhead across all entities.
 
 
 ### Production Database Administration (MongoDB): Schema Refactoring & Compound Index Optimization
@@ -428,8 +428,8 @@
 
 Authored 20+ in-depth technical post-mortems and distributed systems essays published at **[sku20.dev/blog](https://www.sku20.dev/blog)**, including:
 * **Kernel Networking & Edge Routing:** *Betting on NAT64 Over a Proxy*, *Negotiating with Jool*, *Low-Level UDP Echo Server for NAT Traversal via nftables*, and *Zero-Downtime Deployments with iptables*.
-* **Concurrency & JVM Internals:** *Java Exceptions Swallowed: The ThreadPool Trap*, *ThreadLocal Optimizations and Project Loom*, and *Optimizing Hex Formatting: String.format to Java 17 HexFormat*.
-* **Distributed Systems & Database Reliability:** *The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools*, *Rate-Limiting: Flow Control vs. Quota Control*, and *Hunting for a UDP Load Balancer*.
+* **Concurrency & JVM Internals:** *The 100ms Password*, *Java Exceptions Swallowed: The ThreadPool Trap*, *ThreadLocal Optimizations and Project Loom*, and *Optimizing Hex Formatting: String.format to Java 17 HexFormat*.
+* **Distributed Systems & Database Reliability:** *Decoupling Blobs: A Zero-Downtime Migration from MongoDB to GCS*, *The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools*, *Rate-Limiting: Flow Control vs. Quota Control*, and *Hunting for a UDP Load Balancer*.
 
 ---
 

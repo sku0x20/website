@@ -127,8 +127,10 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Zero-Downtime Storage Architecture: Decoupling In-DB Payloads to Google Cloud Storage (GCS)</h3>
                 <ul>
-                    <li><strong>The Architecture Challenge:</strong> Legacy systems stored raw binary image payloads directly inside primary database tables, degrading transactional throughput, ballooning backup sizes, and stressing database memory buffer pools.</li>
-                    <li><strong>Multi-Phase Rollout &amp; Dual-Write Strategy:</strong> Conceived and orchestrated a zero-downtime, multi-stage migration lifecycle coordinating mobile clients and backend services: designed dual-write API contracts to ensure backward compatibility during client rollouts, engineered an asynchronous backfill pipeline streaming historical blobs to GCS with checksum verification, orchestrated backend cutover to single-write GCS, enforced minimum client versions via app force-updates, and purged legacy blob storage from the primary database cluster without disruption to live traffic.</li>
+                    <li><strong>The Architecture Challenge:</strong> Legacy systems stored raw binary image payloads (Base64) directly inside primary MongoDB collections, degrading transactional throughput, ballooning nightly backup archives, and polluting WiredTiger cache memory.</li>
+                    <li><strong>Multi-Phase Rollout &amp; Dual-Write Strategy:</strong> Conceived and orchestrated a zero-downtime, multi-stage migration lifecycle coordinating mobile clients and backend services: designed dual-write API contracts with document-level guardrail flags (<code>imageMigrated</code>) preventing legacy client overwrites, engineered an asynchronous backfill pipeline streaming decoded historical blobs to GCS with automatic stream MIME sniffing and immutable caching headers (<code>Cache-Control: public, max-age=31536000, immutable</code>), and handled corrupted legacy payloads with clean asset fallbacks.</li>
+                    <li><strong>Graceful Cutover &amp; Database Purge:</strong> Maintained backward compatibility during a 2–3 day mobile client rollout buffer (~99% adoption), followed by a second deployment deprecating legacy Base64 endpoints and running MongoDB <code>$unset</code> operations to completely purge in-document blobs and migration flags.</li>
+                    <li><strong>The Measurable Outcome:</strong> Zero user downtime across live production. Slashed primary database storage by <strong>54x</strong> (3.6 GB &rarr; 67 MB, a 98% reduction in backup footprint), dropped runtime server memory footprint by <strong>89%</strong> (4.6 GB &rarr; ~500 MB), and eliminated binary blob overhead across all collections.</li>
                 </ul>
             </div>
 
@@ -456,6 +458,7 @@ import Layout from '../layouts/Layout.astro';
                         <h3>Concurrency &amp; Runtime Internals</h3>
                     </div>
                     <p>
+                        <a href="/blog/the-100ms-password">The 100ms Password</a> &bull; 
                         <a href="/blog/java-exceptions-swallowed">Java Exceptions Swallowed: The ThreadPool Trap</a> &bull; 
                         <a href="/blog/threadlocal-optimizations-and-project-loom">ThreadLocal Optimizations and Project Loom</a> &bull; 
                         <a href="/blog/optimizing-hex-formatting">Optimizing Hex Formatting: String.format to Java 17 HexFormat</a>
@@ -466,6 +469,7 @@ import Layout from '../layouts/Layout.astro';
                         <h3>Distributed Systems &amp; Database Reliability</h3>
                     </div>
                     <p>
+                        <a href="/blog/decoupling-blobs-a-zero-downtime-migration-from-mongodb-to-gcs">Decoupling Blobs: A Zero-Downtime Migration from MongoDB to GCS</a> &bull; 
                         <a href="/blog/ghost-connection-redis-pubsub">The Ghost Connection: Poisoned Redis Pub/Sub Connection Pools</a> &bull; 
                         <a href="/blog/what-is-ratelimiting">Rate-Limiting: Flow Control vs. Quota Control</a> &bull; 
                         <a href="/blog/hunting-for-a-udp-load-balancer">Hunting for a UDP Load Balancer</a>
