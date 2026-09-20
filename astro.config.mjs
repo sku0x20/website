@@ -14,4 +14,9 @@ export default defineConfig({
   },
 
   integrations: [sitemap()],
+  vite: {
+    build: {
+      cssMinify: 'esbuild',
+    },
+  },
 });
