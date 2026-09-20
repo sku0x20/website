@@ -290,7 +290,6 @@ main {
     position: relative;
     overflow: hidden;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .project-card > *,

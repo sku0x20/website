@@ -8,7 +8,6 @@
     padding: 18px 96px;
     border-bottom: 1px solid var(--color-divider);
     background: color-mix(in srgb, var(--color-bg) 48%, transparent);
-    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -19,7 +18,6 @@
 
 .nav.nav--scrolled {
     background: color-mix(in srgb, var(--color-bg) 64%, transparent);
-    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
 }
@@ -194,7 +192,6 @@
     font-size: 13px;
     color: var(--color-text-muted);
     background: color-mix(in srgb, var(--color-bg) 48%, transparent);
-    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
     border-top: 1px solid var(--color-divider);
 }
@@ -222,7 +219,6 @@
     display: inline-flex;
     align-items: center;
     gap: 6px;
-    -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
 }
 

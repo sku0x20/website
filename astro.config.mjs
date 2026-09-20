@@ -16,7 +16,7 @@ export default defineConfig({
   integrations: [sitemap()],
   vite: {
     build: {
-      cssMinify: 'esbuild',
+      cssTarget: ['chrome100', 'firefox100', 'safari15', 'ios15'],
     },
   },
 });

@@ -81,7 +81,6 @@
     border-radius: 4px;
     padding: 2px 6px;
     backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
 }
 
 .prose pre {
@@ -93,7 +92,6 @@
     overflow-x: auto;
     margin: 0 0 24px;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose pre code {
@@ -112,7 +110,6 @@
     border-radius: 0 6px 6px 0;
     font-style: italic;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose img {
@@ -139,7 +136,6 @@
     border-radius: 6px;
     background: var(--color-surface);
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .prose th,

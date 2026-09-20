@@ -47,7 +47,6 @@
     color: var(--color-text);
     transition: all 0.15s ease;
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
 }
 
 .chip:hover {
@@ -69,7 +68,6 @@
     border-radius: 6px;
     padding: 24px;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .value-cell h3 {
@@ -104,7 +102,6 @@
     border-radius: 4px;
     color: var(--color-text);
     backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
     transition: all 0.15s ease;
 }
 

@@ -67,7 +67,6 @@
     padding: 24px 28px;
     margin-bottom: 32px;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .cv-scope-box h2 {
@@ -112,7 +111,6 @@
     border: 1px solid var(--color-border);
     border-radius: 6px;
     backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
 }
 
 .cv-year-nav a {
