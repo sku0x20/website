@@ -27,13 +27,13 @@ For JSON alone, the codebase was pulling in:
 
 Every developer who touched the codebase over a decade had just imported whatever library they remembered from their first programming job. One controller serialized with FlexJSON, another deserialized with `org.json`, and Spring was trying to wire everything in the middle with Jackson.
 
-Over months of systematic cleanup, I cut the dependency tree down: from 114 dependencies down to 108, and eventually down to 94. Stripped out the dead weight. Consolidated everything onto Jackson—the tool Spring already ships with and optimizes for.
+Over months of systematic cleanup, I audited the dependency tree and stripped out the dead weight. The backend artifact size dropped from 114 MB down to 108 MB, and finally down to 94 MB. Pruned unnecessary libraries, banned duplicate parsers, and consolidated everything onto Jackson—the tool Spring already provides out of the box.
 
 You'd think the worst was behind us. But the dependency bloat was merely a symptom. The real horror lived in the payloads.
 
 ## The Double-Encoding Abomination
 
-Take a look at this HTTP response payload and tell me what you feel:
+Take a look at what was being passed into our HTTP request bodies (and regurgitated right back out in responses):
 
 ```json
 {
@@ -45,23 +45,23 @@ Take a look at this HTTP response payload and tell me what you feel:
 
 Look at `data`. Look at `settings`.
 
-It is not an object. It is a JSON-encoded string, sitting inside another JSON-encoded string, sitting inside a JSON response body.
+It is not an object. It is a JSON-encoded string, sitting inside another JSON-encoded string, sitting inside a JSON payload.
 
 ```
-HTTP Response
+HTTP Body
  └─ JSON Object
      └─ "data": String (Escaped JSON)
          └─ "settings": String (Double-Escaped JSON)
 ```
 
-Someone took a Java object, serialized it to a string using one library, stuffed that raw string into another map, serialized *that* map using a second library, and shipped it out over HTTP. 
+Someone took an object, serialized it to a string using one library, stuffed that raw string into another map, serialized *that* map using a second library, and shipped it over HTTP. 
 
-On the client side, to get a single user preference, you have to:
-1. Parse the HTTP response body into JSON.
-2. Extract the `data` field as a string.
-3. Parse that string *again* into JSON.
-4. Extract `settings` as a string.
-5. Parse *that* string a third time into JSON.
+On the server, instead of letting Spring do its job and deserialize the request cleanly into a typed DTO, the controller had to perform manual gymnastics:
+1. Spring deserializes the outer HTTP body into a generic wrapper or map.
+2. The controller extracts `data` as a raw `String`.
+3. It manually invokes a second JSON parser to turn that string into an intermediate object or map.
+4. To get a nested preference, it extracts `settings` as yet another raw `String`.
+5. It invokes a *third* parser call to deserialize that string into a settings object.
 
 If an unescaped quote or an encoding hiccup occurs anywhere along the line, the entire deserialization chain explodes with a syntax error that no schema validator can catch.
 
