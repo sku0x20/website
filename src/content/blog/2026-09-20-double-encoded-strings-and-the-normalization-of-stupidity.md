@@ -69,6 +69,24 @@ Why? Why would anyone ever do this?
 
 There is no caching reason. There is no polymorphous blob requirement. It was sheer, unadulterated laziness: someone didn't want to define a nested DTO or didn't know how Jackson handles nested object mapping, so they called `.toString()` or `.serialize()` on an intermediate object, assigned it to a `String` field, and called it a day.
 
+### The Leaning Tower of Backslashes
+
+It gets worse. Once you normalize encoding JSON into strings, that disease inevitably leaks into your persistence layer.
+
+I have opened database tables in this system and found records containing literally more backslashes (`\`) than actual data. 
+
+Because what happens when a service reads a stringified JSON field, wraps it in another object, serializes it again, and saves it back? The backslashes compound exponentially:
+
+```
+Pass 1: "{\"key\": \"val\"}"
+Pass 2: "{\\\"key\\\": \\\"val\\\"}"
+Pass 3: "{\\\\\\\"key\\\\\\\": \\\\\\\"val\\\\\\\"}"
+```
+
+A few roundtrips through buggy update pipelines, and you end up with single database values drowning in thousands of consecutive backslashes. It is a mathematical monument to bad design: $2^n$ escape characters multiplying with every layer of indirection.
+
+It broke parsers completely. JSON serialization libraries are written by competent engineers who optimize for the real world; they do not write test cases for a single field containing four thousand backslashes because no sane person expects this level of architectural rot. Deserializers would hang, memory would spike, and the logs would drown in cryptic unescaping errors.
+
 ## "It's a Convention"
 
 The bad code itself isn't what drives you mad. What truly drains your life force as an engineer is the conversation that follows when you try to fix it.
