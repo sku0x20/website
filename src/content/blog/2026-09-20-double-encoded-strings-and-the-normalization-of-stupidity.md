@@ -107,4 +107,12 @@ The irony of modern backend work is that writing the fix usually takes ten minut
 
 The exhausting part—the part that leaves you staring at the ceiling at 6 PM wondering why you write software—is having to spend two weeks in review meetings debating whether valid JSON is better than doubly-escaped string blobs.
 
-Fixing legacy code isn't just about refactoring syntax; it's about holding the line against the normalization of mediocrity. If you see a stringified JSON blob living inside a JSON payload in your codebase, don't document it. Don't call it a convention. Kill it.
+And it’s never just this one endpoint. You face this exact battle on every single decision.
+
+Every refactor, every decoupled service, every attempt to remove deadweight dependencies turns into an uphill philosophical trial. You find yourself repeatedly having to explain why a blatant anti-pattern is bad. You find yourself trying to articulate what a "code smell" is to someone who fundamentally cannot smell it. 
+
+How do you explain that something stinks to someone who has lived in the dumpster so long they think the odor is just company culture? What do you even say at that point?
+
+When someone doesn't understand basic cohesion, coupling, or data hygiene, every technical critique gets flattened into mere personal preference: *"Well, it works, doesn't it?"* Yes, a car held together with duct tape and zip ties can roll down the street, but that doesn't mean it’s roadworthy.
+
+Fixing legacy code isn't just about refactoring syntax; it’s an exhausting psychological war against the normalization of mediocrity. If you see a stringified JSON blob living inside a JSON payload in your codebase, don't document it. Don't call it a convention. Kill it.
