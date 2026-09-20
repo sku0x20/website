@@ -67,7 +67,21 @@ If an unescaped quote or an encoding hiccup occurs anywhere along the line, the 
 
 Why? Why would anyone ever do this?
 
-There is no caching reason. There is no polymorphous blob requirement. It was sheer, unadulterated laziness: someone didn't want to define a nested DTO or didn't know how Jackson handles nested object mapping, so they called `.toString()` or `.serialize()` on an intermediate object, assigned it to a `String` field, and called it a day.
+When I dug into the commit history and asked around, the justification finally emerged:
+
+> *"Our data is variable, and we can't easily support a generic `Map<String, Any>` inside a typed DTO! The client libraries don't deserialize arbitrary maps cleanly, so we had to make it a string."*
+
+I am not an app developer. I spend my days deep in backend architecture, databases, and network protocols. But if I were an app developer, I would never let this pass code review. This is plain stupidity.
+
+First of all, turning a JSON object into a string **does not solve the client's parsing problem**. It merely kicks the can down the road. The mobile app *still* has to parse that JSON into usable fields—except now, instead of letting its HTTP client decode the response in one standard pass, it has to parse the outer payload, extract the string, and manually fire up another parser instance to decode the inner payload. You haven't simplified the client; you've saddled it with a brittle two-pass decode and manual string-unescaping gymnastics.
+
+Second, dealing with variable or arbitrary JSON is a solved problem across every modern language and ecosystem:
+- **In iOS (Swift):** While `Decodable` is strictly typed by design, you don't break the wire format to appease the compiler. You either use `JSONSerialization` to parse into `[String: Any]`, or you drop in an `AnyCodable` wrapper to decode dynamic structures cleanly.
+- **In Android (Gson):** You don't stringify; you parse variable structures directly into `JsonObject` or `JsonElement`. Gson handles arbitrary JSON trees natively without requiring you to mangle the HTTP body into a string.
+- **In Spring / Jackson:** You deserialize arbitrary trees into `JsonNode` or `Map<String, Object>`.
+- **Or better yet, polymorphism:** If the data varies between known shapes, you use standard polymorphic serialization with a discriminator field (e.g., `@JsonTypeInfo` in Jackson) instead of abandoning typing altogether.
+
+Punting fundamental deserialization ignorance into the wire protocol—and expecting the entire backend, database, and client apps to swallow the cost—is inexcusable.
 
 ### The Leaning Tower of Backslashes
 
