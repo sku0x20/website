@@ -1,5 +1,5 @@
 ---
-title: "Double-Encoded Strings and Other Sins of Legacy Backend"
+title: "Double-Encoded Strings and the Normalization of Stupidity"
 description: "Trimming 10k-line controllers, banishing three competing JSON libraries, and the soul-crushing battle against JSON strings escaped inside JSON payloads."
 date: "Sep 20, 2026"
 tags: ["Backend", "Java", "Spring", "Architecture", "Rant"]
