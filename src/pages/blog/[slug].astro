@@ -20,13 +20,13 @@ const { title, description, date, tags, image } = post.data;
         <div class="article-header-inner">
             <h1>{title}</h1>
             <div class="post-meta-row">
-                <span class="post-meta">{date}</span>
-                {tags.map((t) => (
-                    <>
-                        <span class="post-meta-bullet">&bull;</span>
-                        <span class="post-kicker">{t}</span>
-                    </>
-                ))}
+                <span class="post-meta-date">{date}</span>
+                <span class="post-meta-divider" aria-hidden="true">&bull;</span>
+                <div class="post-meta-tags">
+                    {tags.map((t) => (
+                        <span class="post-tag">{t}</span>
+                    ))}
+                </div>
             </div>
         </div>
     </section>
