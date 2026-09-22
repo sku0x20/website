@@ -20,18 +20,11 @@
 
     .value-grid {
         grid-template-columns: 1fr;
+        gap: 16px;
     }
 
     .value-cell {
-        padding: 24px 0;
-    }
-
-    .value-cell:first-child {
-        padding-top: 0;
-    }
-
-    .value-cell:last-child {
-        padding-bottom: 0;
+        padding: 20px;
     }
 
     .site-footer {
