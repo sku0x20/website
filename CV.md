@@ -6,16 +6,16 @@
 
 ---
 
-## Executive & Staff Engineering Scope
+## Platform Architecture & Technical Scope
 
-* **Autonomous Technical Authority:**  
-  Serve as the definitive technical authority for the platform, operating under a product-focused manager (Head of Product) with zero backend or infrastructure hierarchy above me. Rather than executing top-down technical tasks, I autonomously drive the platform and engineering agenda: discovering hidden architectural risks, formulating foundational system hypotheses, leading deep R&D spikes, and owning 100% of infrastructure decisions and production systems—architecting and executing every major database, platform, and infrastructure migration with strict zero-downtime guarantees on live production traffic.
-* **End-to-End Product & Infrastructure Custody:**  
-  Hold sole administrative and architectural ownership over the entire operational footprint: domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPCs, project lifecycles), on-prem staging bare metal, and production compute clusters.
+* **Platform Architecture & Technical Ownership:**  
+  Direct the end-to-end technical strategy and engineering roadmap for the platform, reporting to the Head of Product. Autonomously drive system architecture: identifying foundational risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
+* **Infrastructure Custody & Governance:**  
+  Hold full administrative and architectural custody across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
-  Directly responsible for infrastructure burn and capacity planning. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
-* **Cross-Organizational Technical Direction:**  
-  Act as the definitive decision-maker for platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and system boundaries—establishing written specifications that firmware, hardware, mobile, and backend teams build against.
+  Directly responsible for infrastructure capacity planning and cloud spend. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
+* **Cross-Team Technical Standards:**  
+  Define and maintain platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and architectural boundaries—authoring the technical specifications that firmware, hardware, mobile, and backend teams implement against.
 
 ---
 
