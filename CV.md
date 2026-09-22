@@ -2,6 +2,7 @@
 
 **Current Title:** Senior Systems Architect  
 **Career Progression:** Software Engineer (2022–2024) → Senior Software Engineer (2024–2026) → Senior Systems Architect (Apr 2026–Present)  
+**Location:** Bengaluru, India · [siddhantkumarupmanyu@gmail.com](mailto:siddhantkumarupmanyu@gmail.com)  
 **Links:** [sku20.dev](https://www.sku20.dev/) · [GitHub](https://github.com/sku0x20) · [LinkedIn](https://www.linkedin.com/in/sku20) · [Zenodo](https://doi.org/10.5281/zenodo.21717242)
 
 ---
