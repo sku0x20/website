@@ -347,7 +347,7 @@
 * **In-Kernel NAT64 & Dual-Stack Routing (Jool + `nftables`):**  
   Addressed a critical network partition where cellular IoT clients operated exclusively over IPv6 while backend systems ran on IPv4:
   - Ruled out enterprise services (Cloudflare Spectrum) and userspace reverse proxies (Nginx/HAProxy), which would drain CPU credits on burstable instances through double socket buffers and context switching.
-  - Engineered an in-kernel translation gateway: deployed the **Jool** Linux kernel module for stateful NAT64 (RFC 7915) via Explicit Address Mapping Tables (EAMT) alongside `nftables` DNAT.
+  - Engineered an in-kernel translation gateway: deployed the **Jool** Linux kernel module for stateful NAT64 (RFC 7915) alongside `nftables` DNAT.
   - Partitioned non-overlapping source port ranges between Jool and `nftables` on the shared public IPv4 to eliminate port allocation collisions.
 * **Kernel-Level Packet Reflection & Dynamic Rate-Limiting:**  
   - Offloaded UDP NAT traversal echo responses directly into the Linux kernel using `nftables` packet reflection at prerouting priority (`notrack`), bypassing userspace round-trips entirely.
