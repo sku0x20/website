@@ -1,7 +1,7 @@
 /* — CV Page Styles (Matching Resume Paper Aesthetic) — */
 
 .cv-container {
-  max-width: 850px;
+  max-width: 880px;
   margin: 0 auto;
   padding: 48px 32px 64px;
 }
@@ -17,9 +17,9 @@
   background: #ffffff;
   color: #18181b;
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  font-size: 11.5px;
-  line-height: 1.42;
-  padding: 40px 48px;
+  font-size: 13.5px;
+  line-height: 1.55;
+  padding: 48px 56px;
   border-radius: 4px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.05);
   -webkit-font-smoothing: antialiased;
@@ -31,7 +31,7 @@
 .cv-paper h4 {
   font-family: "Archivo", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-weight: 800;
-  line-height: 1.2;
+  line-height: 1.25;
   color: #09090b;
 }
 
@@ -50,8 +50,8 @@
   font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
   font-size: 0.9em;
   background: #f4f4f5;
-  padding: 1px 3px;
-  border-radius: 2px;
+  padding: 1px 4px;
+  border-radius: 3px;
 }
 
 .cv-paper .muted {
@@ -61,30 +61,30 @@
 /* — Header — */
 
 .cv-paper header {
-  padding-bottom: 10px;
-  margin-bottom: 14px;
+  padding-bottom: 14px;
+  margin-bottom: 18px;
   border-bottom: 1.5px solid #18181b;
 }
 
 .cv-paper header h1 {
-  font-size: 24px;
+  font-size: 28px;
   letter-spacing: -0.02em;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .cv-paper .subtitle {
-  font-size: 12px;
+  font-size: 13.5px;
   font-weight: 600;
   color: #3f3f46;
-  margin-bottom: 6px;
+  margin-bottom: 8px;
 }
 
 .cv-paper .links {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 4px 10px;
-  font-size: 11px;
+  gap: 6px 12px;
+  font-size: 12.5px;
   color: #52525b;
 }
 
@@ -97,36 +97,36 @@
 .cv-paper .cv-scope-box {
   background: #fafafa;
   border: 1px solid #e4e4e7;
-  border-left: 3px solid #18181b;
+  border-left: 3.5px solid #18181b;
   border-radius: 3px;
-  padding: 14px 18px;
-  margin-bottom: 16px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
 }
 
 .cv-paper .cv-scope-box h2 {
-  font-size: 11px;
+  font-size: 12px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
   color: #09090b;
   border-bottom: 1px solid #e4e4e7;
-  padding-bottom: 3px;
-  margin-bottom: 8px;
+  padding-bottom: 4px;
+  margin-bottom: 10px;
 }
 
 .cv-paper .cv-scope-box ul {
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 8px;
   padding: 0;
   margin: 0;
 }
 
 .cv-paper .cv-scope-box li {
-  padding-left: 12px;
+  padding-left: 14px;
   position: relative;
-  font-size: 11px;
-  line-height: 1.42;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #27272a;
 }
 
@@ -134,7 +134,7 @@
   content: '▪';
   position: absolute;
   left: 0;
-  font-size: 8px;
+  font-size: 9px;
   top: 1px;
   color: #71717a;
 }
@@ -150,9 +150,9 @@
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: 6px;
-  margin-bottom: 24px;
-  padding: 8px 12px;
+  gap: 8px;
+  margin-bottom: 28px;
+  padding: 10px 14px;
   background: #f4f4f5;
   border: 1px solid #e4e4e7;
   border-radius: 4px;
@@ -161,8 +161,8 @@
 .cv-paper .cv-year-nav a {
   font-family: 'SF Mono', 'Fira Code', monospace;
   font-weight: 600;
-  font-size: 11px;
-  padding: 3px 8px;
+  font-size: 12px;
+  padding: 4px 10px;
   border-radius: 3px;
   color: #52525b;
   background: #ffffff;
@@ -180,7 +180,7 @@
 /* — Year Sections — */
 
 .cv-paper .cv-year-section {
-  margin-bottom: 24px;
+  margin-bottom: 32px;
 }
 
 .cv-paper .cv-year-heading {
@@ -189,15 +189,15 @@
   justify-content: space-between;
   gap: 12px;
   border-bottom: 1.5px solid #18181b;
-  padding-bottom: 3px;
-  margin-bottom: 10px;
+  padding-bottom: 4px;
+  margin-bottom: 12px;
   flex-wrap: wrap;
   break-after: avoid;
   page-break-after: avoid;
 }
 
 .cv-paper .cv-year-heading h2 {
-  font-size: 15px;
+  font-size: 18px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #09090b;
@@ -205,19 +205,19 @@
 }
 
 .cv-paper .cv-role-badge {
-  font-size: 11px;
+  font-size: 12.5px;
   font-weight: 600;
   color: #52525b;
 }
 
 .cv-paper .cv-context-quote {
   background: #fafafa;
-  border-left: 2px solid #71717a;
-  padding: 8px 12px;
-  font-size: 11px;
-  line-height: 1.42;
+  border-left: 2.5px solid #71717a;
+  padding: 10px 16px;
+  font-size: 13px;
+  line-height: 1.55;
   color: #3f3f46;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
   border-radius: 0 2px 2px 0;
   font-style: italic;
   break-inside: avoid;
@@ -227,8 +227,8 @@
 /* — Milestones — */
 
 .cv-paper .cv-milestone {
-  margin-bottom: 12px;
-  padding-bottom: 10px;
+  margin-bottom: 16px;
+  padding-bottom: 14px;
   border-bottom: 1px dashed #e4e4e7;
   break-inside: avoid;
   page-break-inside: avoid;
@@ -241,9 +241,9 @@
 }
 
 .cv-paper .cv-milestone h3 {
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 800;
-  margin-bottom: 4px;
+  margin-bottom: 6px;
   color: #09090b;
   break-after: avoid;
   page-break-after: avoid;
@@ -253,7 +253,7 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
   padding: 0;
   margin: 0;
 }
@@ -261,10 +261,10 @@
 .cv-paper .cv-milestone li {
   break-inside: avoid;
   page-break-inside: avoid;
-  padding-left: 12px;
+  padding-left: 14px;
   position: relative;
-  font-size: 10.5px;
-  line-height: 1.38;
+  font-size: 13px;
+  line-height: 1.52;
   color: #27272a;
 }
 
@@ -272,8 +272,8 @@
   content: '▪';
   position: absolute;
   left: 0;
-  font-size: 8px;
-  top: 1px;
+  font-size: 9px;
+  top: 2px;
   color: #71717a;
 }
 
@@ -285,23 +285,23 @@
 /* — Projects & Writing — */
 
 .cv-paper .cv-intro-text {
-  font-size: 11px;
-  line-height: 1.4;
+  font-size: 13.5px;
+  line-height: 1.55;
   color: #27272a;
-  margin-bottom: 10px;
+  margin-bottom: 12px;
 }
 
 .cv-paper .cv-projects-grid {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 10px;
 }
 
 .cv-paper .cv-project-card {
   background: #fafafa;
   border: 1px solid #e4e4e7;
   border-radius: 3px;
-  padding: 8px 12px;
+  padding: 12px 16px;
   break-inside: avoid;
   page-break-inside: avoid;
 }
@@ -309,12 +309,12 @@
 .cv-paper .cv-project-header {
   display: flex;
   align-items: baseline;
-  gap: 8px;
-  margin-bottom: 2px;
+  gap: 10px;
+  margin-bottom: 4px;
 }
 
 .cv-paper .cv-project-header h3 {
-  font-size: 11.5px;
+  font-size: 13.5px;
   margin: 0;
 }
 
@@ -324,13 +324,13 @@
 }
 
 .cv-paper .cv-tag {
-  font-size: 10.5px;
+  font-size: 11.5px;
   color: #52525b;
 }
 
 .cv-paper .cv-project-card p {
-  font-size: 10.5px;
-  line-height: 1.35;
+  font-size: 12.5px;
+  line-height: 1.48;
   color: #27272a;
   margin: 0;
 }
@@ -340,21 +340,21 @@
 .cv-paper .cv-skills-list {
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 6px;
 }
 
 .cv-paper .cv-skill-row {
   display: grid;
-  grid-template-columns: 160px 1fr;
-  column-gap: 10px;
-  font-size: 10.5px;
-  line-height: 1.35;
+  grid-template-columns: 180px 1fr;
+  column-gap: 12px;
+  font-size: 13px;
+  line-height: 1.48;
   color: #27272a;
 }
 
 .cv-paper .cv-skill-category {
   font-weight: 800;
-  font-size: 10px;
+  font-size: 11.5px;
   letter-spacing: 0.04em;
   text-transform: uppercase;
   color: #09090b;
@@ -363,15 +363,15 @@
 .cv-paper .cv-education-row {
   display: flex;
   justify-content: space-between;
-  font-size: 11px;
-  margin-top: 10px;
-  padding-top: 8px;
+  font-size: 13px;
+  margin-top: 12px;
+  padding-top: 10px;
   border-top: 1px dashed #e4e4e7;
   break-inside: avoid;
   page-break-inside: avoid;
 }
 
-/* — Print Styles (Faithful letter/A4 PDF) — */
+/* — Print Styles (Clean, balanced multi-page letter/A4 PDF) — */
 
 @media print {
   @page {
@@ -392,8 +392,8 @@
     color: #18181b !important;
     margin: 0 !important;
     padding: 0 !important;
-    font-size: 11.5px !important;
-    line-height: 1.42 !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
   }
 
   .nav,
@@ -414,11 +414,102 @@
     padding: 0 !important;
     border-radius: 0 !important;
     box-shadow: none !important;
+    font-size: 11px !important;
+    line-height: 1.4 !important;
+  }
+
+  .cv-paper header {
+    padding-bottom: 8px !important;
+    margin-bottom: 10px !important;
+  }
+
+  .cv-paper header h1 {
+    font-size: 22px !important;
+  }
+
+  .cv-paper .subtitle {
+    font-size: 11px !important;
+    margin-bottom: 4px !important;
+  }
+
+  .cv-paper .links {
+    font-size: 10px !important;
   }
 
   .cv-paper a {
     border-bottom: 1px solid #d4d4d8 !important;
     color: #09090b !important;
+  }
+
+  .cv-paper .cv-scope-box {
+    padding: 12px 14px !important;
+    margin-bottom: 14px !important;
+  }
+
+  .cv-paper .cv-scope-box li {
+    font-size: 10px !important;
+    line-height: 1.38 !important;
+  }
+
+  .cv-paper .cv-year-section {
+    margin-bottom: 18px !important;
+  }
+
+  .cv-paper .cv-year-heading {
+    margin-bottom: 8px !important;
+    padding-bottom: 2px !important;
+  }
+
+  .cv-paper .cv-year-heading h2 {
+    font-size: 14px !important;
+  }
+
+  .cv-paper .cv-role-badge {
+    font-size: 10px !important;
+  }
+
+  .cv-paper .cv-context-quote {
+    padding: 6px 10px !important;
+    font-size: 10px !important;
+    line-height: 1.38 !important;
+    margin-bottom: 10px !important;
+  }
+
+  .cv-paper .cv-milestone {
+    margin-bottom: 10px !important;
+    padding-bottom: 8px !important;
+  }
+
+  .cv-paper .cv-milestone h3 {
+    font-size: 11px !important;
+    margin-bottom: 3px !important;
+  }
+
+  .cv-paper .cv-milestone li {
+    font-size: 10px !important;
+    line-height: 1.36 !important;
+  }
+
+  .cv-paper .cv-project-card {
+    padding: 6px 10px !important;
+  }
+
+  .cv-paper .cv-project-header h3 {
+    font-size: 11px !important;
+  }
+
+  .cv-paper .cv-project-card p {
+    font-size: 9.5px !important;
+    line-height: 1.32 !important;
+  }
+
+  .cv-paper .cv-skill-row {
+    font-size: 10px !important;
+    line-height: 1.35 !important;
+  }
+
+  .cv-paper .cv-education-row {
+    font-size: 10.5px !important;
   }
 }
 
