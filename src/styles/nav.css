@@ -36,6 +36,8 @@
     display: inline-flex;
     align-items: center;
     gap: 10px;
+    white-space: nowrap;
+    flex-shrink: 0;
     transition: color 0.15s ease;
 }
 
