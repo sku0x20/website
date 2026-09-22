@@ -79,7 +79,13 @@ The Kotlin compiler generates `isOffline()` as the getter—identical to the fie
 
 Jackson doesn't know or care about Kotlin's conventions. It sees a getter starting with `is`, follows JavaBean rules, strips `is`, and decides the JSON key is `"offline"`.
 
-Suddenly:
+This isolates the exact mechanism: without `KotlinModule`, Jackson falls back to classic JavaBean introspection on compiled bytecode. Because Kotlin emits the getter for `isOffline` as literally `isOffline()` (not `getIsOffline()`), classic Jackson sees a method starting with `is` and strips it, exactly as it would for a plain Java bean:
+- `isOffline` &rarr; `offline` (stripped)
+- `visibleInMenus` (compiled getter: `getVisibleInMenus()`) &rarr; stays `visibleInMenus` untouched
+
+Registration is trivial thanks to `ServiceLoader`—put `jackson-module-kotlin` on the classpath and call `ObjectMapper().findAndRegisterModules()`. With `KotlinModule` active, Jackson reads Kotlin's `@Metadata` and preserves property names properly, no annotations needed.
+
+The catch is legacy backends littered with rogue `new ObjectMapper()` instances that never invoked `findAndRegisterModules()`, or persistence mappers where classic introspection still rules. In those places, the stripping comes right back:
 - Mongo document expects: `isOffline`
 - Kotlin property is: `isOffline`
 - Jackson serializes: `offline`
