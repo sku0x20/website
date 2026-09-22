@@ -236,10 +236,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Production Resilience &amp; The "Hospital Bed" Recovery Incident</h3>
+                <h3>Production Network Recovery &amp; Deployment Hardening</h3>
                 <ul>
-                    <li><strong>The Vulnerability:</strong> While hospitalized in mid-2024, an engineer triggered a deployment swap during high lag, corrupting iptables routing rules and taking down production.</li>
-                    <li><strong>Triage &amp; Remediation:</strong> The CEO video-called directly from my hospital room, aiming a camera at the engineer's terminal; I walked them through flushing corrupted rules and restoring traffic. Upon recovery, I overhauled the swap tooling to be strictly idempotent, self-healing, and guarded with sanity checks.</li>
+                    <li><strong>Incident Triage:</strong> Diagnosed and resolved a critical production network outage triggered by an interrupted <code>iptables</code> cutover state under high lag, rapidly restoring traffic routing.</li>
+                    <li><strong>Architectural Remediation:</strong> Overhauled the deployment tooling to be strictly atomic and idempotent: implemented automated pre-flight health checks, atomic kernel routing swaps, and automated rollback guards to eliminate race conditions and partial state corruption during cutovers.</li>
                 </ul>
             </div>
 

@@ -167,14 +167,15 @@
   - **PKI Architecture:** Designed a complete certificate hierarchy from scratch—Root CA, Intermediate CA, and per-developer client certificates with Certificate Revocation List (CRL) support.
   - **Auditing & Containment:** The server daemon enforced strict mutual authentication, logged all incoming commands and access timestamps, and streamed filtered device logs back to the client CLI without exposing an interactive shell.
 
-### Production Resilience & The "Hospital Bed" Recovery Incident
+### Production Network Recovery & Deployment Hardening
 
-* **The Vulnerability:**  
-  While I had automated blue-green cutovers, the scripts still required operational discipline. In mid-2024, while I was hospitalized, a team member triggered a deployment swap during high lag, corrupting the `iptables` cutover state and taking down production.
-* **Triage from a Hospital Bed:**  
-  With a 1–2 hour downtime looming, the CEO got on a video call directly from my hospital room, aiming a camera at the engineer's terminal. I walked them through flushing corrupted routing rules, re-synchronizing connection state, and executing a clean cut-over to restore traffic.
-* **The Remediation:**  
-  The moment I recovered, I overhauled the swap tooling to be strictly idempotent, self-healing, and guarded with sanity checks—ensuring an errant command could never leave routing tables half-swapped or wedged again.
+* **Incident Triage:**  
+  Diagnosed and resolved a critical production network outage triggered by an interrupted `iptables` cutover state under high lag, directing real-time connection state recovery and restoring traffic routing under high pressure.
+* **System Hardening & Idempotency Overhaul:**  
+  Overhauled deployment tooling from scratch to eliminate race conditions and partial state corruption:
+  - Made blue-green traffic cutovers strictly idempotent with atomic kernel routing table transactions.
+  - Implemented automated pre-flight health checks verifying socket availability and connection drains prior to kernel routing mutation.
+  - Built automatic fallback rules returning traffic to the active pool if cutovers fail mid-flight.
 
 ### JVM Deep Profiling & Garbage Collection Engineering
 
