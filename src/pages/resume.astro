@@ -33,7 +33,7 @@ import Layout from '../layouts/Layout.astro';
 
             <section class="bio">
                 <h2>Summary</h2>
-                <p>Senior Systems Architect with architectural responsibility across Google Cloud Platform administration, domain/DNS governance, on-prem staging bare metal, and production compute clusters. Specialist in Linux kernel networking, high-throughput databases, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.</p>
+                <p>Senior Systems Architect with architectural responsibility across Google Cloud Platform administration, on-prem staging infrastructure, and production compute clusters. Specialist in Linux kernel networking, high-throughput databases, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.</p>
             </section>
 
             <section class="skills">
@@ -49,13 +49,13 @@ import Layout from '../layouts/Layout.astro';
                     <span>ClickHouse (columnar modeling, Delta+ZSTD codecs), Redis, PostgreSQL, MongoDB, gRPC, Protocol Buffers, REST</span>
 
                     <span class="skill-label">Cloud &amp; SRE</span>
-                    <span>Google Cloud (Org Admin, Cloud Run, Cloud SQL, VPC, GCS, IAM), AWS, Terraform / OpenTofu IaC, Docker, Proxmox VE, GitHub Actions, Linux administration (Debian, Ubuntu)</span>
+                    <span>Google Cloud (IAM, VPC, Cloud Run, Cloud SQL, GCS), AWS (Lambda, EKS spike), Terraform / OpenTofu IaC, Docker, Proxmox VE, GitHub Actions, Linux administration (Debian, Ubuntu)</span>
 
                     <span class="skill-label">Observability</span>
-                    <span>Grafana, Loki, Mimir, Alloy, VictoriaMetrics, VictoriaLogs, <code>async-profiler</code>, JMC, VisualVM, Linux performance tools (<code>sar</code>, <code>vmstat</code>, <code>iotop</code>, <code>pidstat</code>)</span>
+                    <span>Grafana, Loki, VictoriaMetrics, VictoriaLogs, Alloy, <code>async-profiler</code>, JMC, VisualVM, Linux performance tools (<code>sar</code>, <code>vmstat</code>, <code>iotop</code>, <code>pidstat</code>)</span>
 
                     <span class="skill-label">Methodology</span>
-                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact), Testcontainers</span>
+                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact spike), Testcontainers</span>
                 </div>
             </section>
 
@@ -104,13 +104,13 @@ import Layout from '../layouts/Layout.astro';
                     <div class="domain-group">
                         <h4>Platform Engineering, Governance &amp; Cloud FinOps</h4>
                         <ul>
-                            <li><strong>Organizational Cloud Governance &amp; FinOps:</strong> Google Cloud Platform Administrator managing IAM policies, VPCs, and corporate DNS zone files. Analyzed multi-year resource utilization to execute a 3-year Google Cloud Committed Use Discount (CUD) on compute instances; currently leading workload evaluation for migrating production workloads from legacy N1 to modern N4 machine types.</li>
-                            <li><strong>Production Observability Stack:</strong> Replaced legacy ad-hoc disk logging and custom diagnostic tooling with an enterprise observability stack: Grafana, Loki, and Mimir fed by Alloy with blackbox HTTP/TCP probes, managed under git-tracked configuration (pragmatic GitOps).</li>
+                            <li><strong>Google Cloud Platform Administration &amp; FinOps:</strong> Google Cloud Platform Administrator managing IAM policies, VPC networks, Cloud Storage, and compute infrastructure. Evaluated spend-based vs. resource-based CUD models and executed a 3-year resource-based Committed Use Discount (CUD) on core compute instances.</li>
+                            <li><strong>Observability &amp; Telemetry Infrastructure:</strong> Replaced ad-hoc raw log dumping on production VM disks with centralized log aggregation using Grafana and Loki. Built a pre-production Docker Compose telemetry stack integrating Grafana, Loki, VictoriaMetrics, VictoriaLogs, and Alloy with host and container performance dashboards.</li>
                             <li><strong>Zero-Trust Diagnostic Tooling (<code>hlogger</code>):</strong> Built a secure client-server log inspection utility in Go using Mutual TLS (mTLS) with a custom PKI hierarchy (Root CA, Intermediate CA, client certificates, CRL), eliminating unauthenticated engineer SSH access to production instances.</li>
-                            <li><strong>On-Prem Staging Parity &amp; Bare-Metal Homelab:</strong> Built a dedicated on-prem staging environment replicating production network topology, establishing a mandatory pre-production validation gate. Configured a Proxmox VE bare-metal cluster to evaluate container orchestration (Kubernetes CNI/CSI, HashiCorp Nomad) for future platform containerization.</li>
+                            <li><strong>On-Prem Staging Parity &amp; Bare-Metal Homelab:</strong> Built an on-prem staging environment replicating production network topology, establishing a mandatory pre-production validation gate. Configured a Proxmox VE bare-metal host provisioned via OpenTofu and <code>cloud-init</code> to evaluate container orchestration (k3s, HashiCorp Nomad, AWS EKS spikes).</li>
                             <li><strong>Declarative Marketing Infrastructure:</strong> Decoupled the public marketing website completely from core backend infrastructure into its own isolated GCP project, codifying 100% of Cloud Run, Cloud SQL (PostgreSQL), networking, and IAM via Terraform / OpenTofu.</li>
                             <li><strong>Platform Automation &amp; Integrations:</strong> Extended scene/rule automation engines for multi-hub environments (fragment handling, cross-hub synchronization); built cloud-to-cloud OAuth integrations for Yale smart locks, Google Home, and Alexa; rewrote hardware device provisioning flows and replacement operations for failed nodes.</li>
-                            <li><strong>Technical Hiring:</strong> Formulated backend engineering evaluation rubrics and practical TDD assessments; interviewed and hired software engineering talent for the platform.</li>
+                            <li><strong>Technical Hiring:</strong> Formulated structured, multi-step technical hiring assessments and evaluation rubrics for backend engineering; interviewed candidates and hired software engineering talent for the platform.</li>
                         </ul>
                     </div>
                 </div>
