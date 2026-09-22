@@ -19,4 +19,5 @@
 
 ## Blog Posts
 
+- Write for me, by me, reading to me. No generic tutorial fluff, textbook hand-holding, or preaching to an imaginary crowd. Cut unnecessary setup and boilerplate explanations—focus strictly on the actual battle scars, exact mechanics, and personal takeaways.
 - Filename must be prefixed with its publication date (`YYYY-MM-DD-`) and match the slugified `title` in frontmatter (e.g., `2026-09-03-local-development-with-strapi.md`). If the title changes during editing, rename the file to match before considering the post done.
