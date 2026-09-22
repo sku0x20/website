@@ -43,10 +43,10 @@ import Layout from '../layouts/Layout.astro';
                     <strong>Platform &amp; Infrastructure Architecture:</strong> Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&amp;D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
                 </li>
                 <li>
-                    <strong>Infrastructure &amp; Platform Governance:</strong> Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
+                    <strong>Infrastructure &amp; Platform Governance:</strong> Hold administrative and architectural responsibility across the operational footprint: Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging infrastructure, and production compute clusters.
                 </li>
                 <li>
-                    <strong>Cloud FinOps &amp; Infrastructure Economics:</strong> Directly responsible for infrastructure capacity planning and cloud spend. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
+                    <strong>Cloud FinOps &amp; Infrastructure Economics:</strong> Directly responsible for infrastructure capacity planning and cloud spend. Researched spend-based vs. resource-based CUD models and structured a 3-year Google Cloud Committed Use Discount (CUD) on compute instances that slashed long-term infrastructure costs.
                 </li>
                 <li>
                     <strong>Cross-Team Technical Standards:</strong> Define and maintain platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and architectural boundaries—authoring the technical specifications that firmware, hardware, mobile, and backend teams implement against.
@@ -77,10 +77,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Google Cloud Platform Administration &amp; Compute Lifecycle (N1 &rarr; N4)</h3>
+                <h3>Google Cloud Platform Administration &amp; Infrastructure Operations</h3>
                 <ul>
-                    <li><strong>Administrative &amp; Platform Governance:</strong> Manage foundational platform resources as Google Cloud Platform Administrator (IAM policies, project topologies, VPC networks, firewall rules) and administrator for corporate DNS zone files and domains via GoDaddy.</li>
-                    <li><strong>Compute Lifecycle &amp; Next-Gen Hardware Migration (N1 &rarr; N4):</strong> As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation N4 machine types—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.</li>
+                    <li><strong>Administrative &amp; Platform Governance:</strong> Sole administrator for Google Cloud Platform, managing foundational platform resources including IAM roles and policies, project topologies, VPC networks, firewall rules, and Cloud Storage lifecycles.</li>
+                    <li><strong>Operational Independence &amp; System Hardening:</strong> Autonomously manage compute instances, automated backups, and storage buckets without external DevOps dependencies, ensuring high operational uptime and principle-of-least-privilege access across environments.</li>
                 </ul>
             </div>
 
@@ -101,9 +101,9 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Bare-Metal Homelab &amp; Cloud-Native Engineering (Proxmox, K8s, Nomad)</h3>
+                <h3>Bare-Metal Homelab &amp; Cloud-Native Engineering (Proxmox, k3s, Nomad, EKS)</h3>
                 <ul>
-                    <li><strong>Preparing for Platform Containerization:</strong> Built an on-prem bare-metal testbed running Proxmox VE to chart the company's future containerization roadmap: automated VM provisioning via <code>cloud-init</code>, bootstrapped and benchmarked Kubernetes clusters from scratch (evaluating CNI, CSI, and Pod Identities), and benchmarked HashiCorp Nomad vs. Kubernetes (EKS).</li>
+                    <li><strong>Exploring Future Platform Containerization:</strong> Maintained an on-prem bare-metal host running Proxmox VE to evaluate container orchestration and workload isolation: automated VM provisioning via OpenTofu and <code>cloud-init</code>, spiked lightweight Kubernetes with k3s, evaluated HashiCorp Nomad, and spiked AWS EKS using Terraform.</li>
                 </ul>
             </div>
 
@@ -155,10 +155,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Production Observability Rollout: Grafana &amp; Loki (Retiring `hlogger`)</h3>
+                <h3>Production Log Observability Rollout: Grafana &amp; Loki (Retiring `hlogger`)</h3>
                 <ul>
-                    <li><strong>The Architectural Philosophy:</strong> Clarified the fundamental distinction between <em>"Is the service up?"</em> (external blackbox probes) vs. <em>"Why is the service struggling?"</em> (internal contextual metrics).</li>
-                    <li><strong>The Implementation:</strong> Provisioned a dedicated, isolated observability VM. Deployed and tuned Grafana, Loki, and Mimir fed by Alloy (running Blackbox HTTP/TCP probes alongside database and application metrics exporters). Managed all configurations in a git-tracked directory (pragmatic GitOps/IaC). Gracefully retired <code>hlogger</code> and disk log dumping.</li>
+                    <li><strong>The Operational Challenge:</strong> Production applications dumped raw log files directly to VM disks, creating I/O pressure and requiring engineers to manually filter files or use custom tooling.</li>
+                    <li><strong>The Implementation:</strong> Provisioned an isolated observability VM and deployed Grafana and Loki for centralized log ingestion and querying. Managed service and scrape configurations in a git-tracked directory (pragmatic GitOps). Gracefully retired <code>hlogger</code> and disk log dumping, giving the engineering team real-time indexed search across live services.</li>
                 </ul>
             </div>
 
@@ -195,10 +195,10 @@ import Layout from '../layouts/Layout.astro';
             </div>
 
             <div class="cv-milestone">
-                <h3>Multi-Tier Rate Limiting &amp; High-Ingestion Telemetry R&amp;D</h3>
+                <h3>Multi-Tier Rate Limiting &amp; Pre-Production Telemetry Stack</h3>
                 <ul>
                     <li><strong>Defense in Depth (Nginx + Bucket4j):</strong> Configured reverse-proxy rate limiting in Nginx (HTTP 429) and token-bucket application rate limiting via Bucket4j inside the gRPC Activity Log service.</li>
-                    <li><strong>Tackling Cardinality (VictoriaMetrics &amp; VictoriaLogs):</strong> Benchmarked VictoriaMetrics and VictoriaLogs on staging to evaluate their cardinality-agnostic architecture over Loki/Mimir when handling thousands of dynamic IoT device IDs.</li>
+                    <li><strong>Staging Telemetry Stack (Docker Compose, VictoriaMetrics, Alloy):</strong> Built a complete pre-production telemetry stack using Docker Compose: deployed Grafana, Loki, VictoriaMetrics, VictoriaLogs, and Alloy; evaluated and migrated away from Mimir; created and imported dashboards for host and container resource metrics.</li>
                 </ul>
             </div>
 
@@ -212,7 +212,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Technical Recruitment &amp; Engineering Standards (Late 2025 – 2026)</h3>
                 <ul>
-                    <li>Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems. Designed practical coding assessments evaluating systems thinking and TDD, conducted engineering interviews, and successfully hired an engineer into the team.</li>
+                    <li>Designed a structured, multi-step hiring flow and evaluation rubric for backend engineering. Formulated practical technical assessments evaluating systems thinking and TDD, conducted interviews across stages, and successfully hired an engineer into the team.</li>
                 </ul>
             </div>
         </section>
@@ -270,7 +270,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Consumer-Driven Contract Testing Spike: Pact (2024–2025)</h3>
                 <ul>
-                    <li>Investigated Consumer-Driven Contract Testing (Pact) across 2024 and 2025 for OTA firmware delivery APIs, researching automated verification pipelines (<code>publish pact</code> &rarr; <code>can-i-deploy</code> &rarr; <code>release</code>) to eliminate integration regressions.</li>
+                    <li>Executed an exploratory R&amp;D spike with Consumer-Driven Contract Testing (Pact) on a project to evaluate automated contract verification between frontend clients and backend APIs, analyzing workflows to catch contract breakages before deployment.</li>
                 </ul>
             </div>
         </section>
@@ -318,7 +318,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Cloud FinOps &amp; Infrastructure Economics: 3-Year Committed Use Discount (CUD)</h3>
                 <ul>
-                    <li>Reported cloud spend forecasts directly to the CEO. Analyzed baseline vs. burst utilization and committed to a 3-year Google Cloud Committed Use Discount (CUD) on core compute instances—locking in aggressive cost reductions for the company over a multi-year horizon.</li>
+                    <li>Evaluated cloud spend and compute efficiency models, analyzing spend-based versus resource-based commitments. Executed a 3-year resource-based Google Cloud Committed Use Discount (CUD) on core compute instances, substantially reducing long-term compute overhead.</li>
                 </ul>
             </div>
 
@@ -372,7 +372,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-milestone">
                 <h3>Apple HomeKit Integration Spike: Protocol Forensics &amp; HAP Bridging</h3>
                 <ul>
-                    <li>Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP). Deep-dived into mDNS/Bonjour discovery, cryptographic pairing exchanges (SRP and Curve25519), and session encryption.</li>
+                    <li>Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP), successfully engineering a backend bridge with mDNS/Bonjour discovery, cryptographic pairing (SRP and Curve25519), and session encryption. While the backend bridge succeeded, the initiative was shelved after client application integration stalled.</li>
                 </ul>
             </div>
         </section>
@@ -494,7 +494,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="cv-skill-row">
                     <span class="cv-skill-category">Cloud &amp; Infrastructure:</span>
-                    <span>Linux (Debian, Ubuntu), Google Cloud (Cloud Run, Cloud SQL, GCS, VPC), AWS (EKS), Terraform, Docker, Proxmox VE, GitHub Actions, Bitbucket</span>
+                    <span>Linux (Debian, Ubuntu), Google Cloud (IAM, VPC, Cloud Run, Cloud SQL, GCS), AWS (Lambda, EKS spike), Terraform / OpenTofu, Docker, Proxmox VE, GitHub Actions</span>
                 </div>
                 <div class="cv-skill-row">
                     <span class="cv-skill-category">Databases &amp; Storage:</span>
@@ -502,7 +502,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="cv-skill-row">
                     <span class="cv-skill-category">Observability &amp; SRE:</span>
-                    <span>Grafana, Loki, Mimir, Prometheus, VictoriaMetrics, VictoriaLogs, Alloy, <code>async-profiler</code>, JMC, VisualVM, Flame Graphs, <code>sar</code>, <code>vmstat</code>, <code>iotop</code></span>
+                    <span>Grafana, Loki, VictoriaMetrics, VictoriaLogs, Alloy, <code>async-profiler</code>, JMC, VisualVM, Flame Graphs, <code>sar</code>, <code>vmstat</code>, <code>iotop</code></span>
                 </div>
                 <div class="cv-skill-row">
                     <span class="cv-skill-category">Networking &amp; Security:</span>
@@ -510,7 +510,7 @@ import Layout from '../layouts/Layout.astro';
                 </div>
                 <div class="cv-skill-row">
                     <span class="cv-skill-category">Methodology:</span>
-                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contracts (Pact), Testcontainers</span>
+                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contracts (Pact spike), Testcontainers</span>
                 </div>
                 <div class="cv-skill-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--color-divider);">
                     <span class="cv-skill-category">Education:</span>
