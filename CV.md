@@ -6,9 +6,9 @@
 
 ---
 
-## Backend Architecture & Platform Infrastructure Scope
+## Executive Summary
 
-* **Backend Architecture & Infrastructure Ownership:**  
+* **Platform & Infrastructure Architecture:**  
   Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
 * **Infrastructure & Platform Governance:**  
   Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
