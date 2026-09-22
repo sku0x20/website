@@ -6,10 +6,10 @@
 
 ---
 
-## Platform Architecture & Technical Scope
+## Backend Architecture & Platform Infrastructure Scope
 
-* **Platform Architecture & Technical Ownership:**  
-  Direct the end-to-end technical strategy and engineering roadmap for the platform. Autonomously drive system architecture: identifying foundational risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
+* **Backend Architecture & Infrastructure Ownership:**  
+  Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
 * **Infrastructure & Platform Governance:**  
   Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
@@ -298,7 +298,7 @@
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
-> In April 2026, I was promoted to **Senior Systems Architect**. My mandate covers platform architecture, cloud infrastructure, kernel networking, and long-term technical strategy across IoT firmware, mobile interfaces, and distributed backends.
+> In April 2026, I was promoted to **Senior Systems Architect**. My mandate covers backend systems architecture, cloud infrastructure, kernel networking, and defining platform data contracts and transport protocols implemented by connected devices and client apps.
 
 ### Organization Administration & Compute Lifecycle: DNS & Compute (N1 → N4)
 
