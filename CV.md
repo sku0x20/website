@@ -10,8 +10,8 @@
 
 * **Platform Architecture & Technical Ownership:**  
   Direct the end-to-end technical strategy and engineering roadmap for the platform, reporting to the Head of Product. Autonomously drive system architecture: identifying foundational risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
-* **Infrastructure Custody & Governance:**  
-  Hold full administrative and architectural custody across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
+* **Infrastructure & Platform Governance:**  
+  Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
   Directly responsible for infrastructure capacity planning and cloud spend. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
 * **Cross-Team Technical Standards:**  
@@ -315,14 +315,12 @@
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
-> In April 2026, I was promoted to **Senior Systems Architect**. Operating alongside a product-focused manager (Head of Product overseeing mobile, firmware, and platform), I hold sole autonomous authority over platform architecture, technical strategy, and cloud expenditure. With full infrastructure and product custody under my control, my mandate spans domain governance, multi-cloud infrastructure, protocol standards, and framework architecture.
+> In April 2026, I was promoted to **Senior Systems Architect**, reporting directly to the Head of Product. My mandate covers platform architecture, cloud infrastructure, kernel networking, and long-term technical strategy across IoT firmware, mobile interfaces, and distributed backends.
 
-### Total Organizational & Cloud Custody: DNS & Compute Lifecycle (N1 → N4)
+### Organization Administration & Compute Lifecycle: DNS & Compute (N1 → N4)
 
-* **Autonomous Administrative & Platform Custody:**  
-  Hold single-point ownership over all foundational product resources:
-  - **Organization-Level Cloud Administration:** Google Cloud Organization Administrator holding root authority over IAM policies, project topologies, VPC networks, and firewall rules.
-  - **Edge & Domain Governance:** Full management of corporate DNS zone files and domains via GoDaddy.
+* **Administrative & Platform Governance:**  
+  Manage foundational platform resources as Google Cloud Organization Administrator (IAM policies, project topologies, VPC networks, firewall rules) and administrator for corporate DNS zone files and domains via GoDaddy.
 * **Compute Lifecycle & Next-Gen Hardware Migration (N1 → N4):**  
   As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation **N4 machine types**—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.
 
