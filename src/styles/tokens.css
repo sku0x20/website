@@ -365,3 +365,29 @@ main {
     opacity: 1;
 }
 
+/* — Global Print Styles — */
+@media print {
+    :root,
+    html,
+    html[data-theme="dark"],
+    html[data-theme="light"],
+    body {
+        color-scheme: light !important;
+        background: #ffffff !important;
+        background-color: #ffffff !important;
+        color: #111827 !important;
+        --color-bg: #ffffff !important;
+        --color-surface: #ffffff !important;
+        --color-surface-hover: #ffffff !important;
+        --color-text: #16181d !important;
+        --color-text-muted: #5e6573 !important;
+        --color-divider: #e2e5eb !important;
+        --color-border: #d3d7e0 !important;
+        --color-accent: #c44727 !important;
+    }
+
+    .bg-canvas {
+        display: none !important;
+    }
+}
+

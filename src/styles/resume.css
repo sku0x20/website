@@ -280,8 +280,11 @@
     print-color-adjust: exact !important;
   }
 
+  html,
   body {
+    color-scheme: light !important;
     background: #ffffff !important;
+    background-color: #ffffff !important;
     color: #18181b !important;
     margin: 0 !important;
     padding: 0 !important;
@@ -291,7 +294,8 @@
 
   .nav,
   .resume-actions,
-  .site-footer {
+  .site-footer,
+  .bg-canvas {
     display: none !important;
   }
 

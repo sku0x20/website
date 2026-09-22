@@ -312,8 +312,11 @@
         margin: 14mm 16mm;
     }
 
+    html,
     body {
+        color-scheme: light !important;
         background: #ffffff !important;
+        background-color: #ffffff !important;
         color: #111827 !important;
         font-size: 10.5pt;
         line-height: 1.45;
@@ -324,7 +327,8 @@
     .nav,
     .cv-actions,
     .cv-year-nav,
-    .site-footer {
+    .site-footer,
+    .bg-canvas {
         display: none !important;
     }
 
@@ -372,6 +376,18 @@
         page-break-inside: avoid;
     }
 
+    .cv-context-quote {
+        background: #f8fafc !important;
+        border: 1px solid #cbd5e1 !important;
+        border-left: 3px solid #0f172a !important;
+        color: #334155 !important;
+        padding: 10px 14px !important;
+        margin-bottom: 16px !important;
+        font-size: 9pt !important;
+        break-inside: avoid;
+        page-break-inside: avoid;
+    }
+
     .cv-scope-box h2 {
         font-size: 12pt;
         margin-bottom: 8px;
@@ -393,7 +409,11 @@
         break-inside: auto;
     }
 
+    .cv-year-heading,
     .cv-year-header {
+        display: flex;
+        align-items: baseline;
+        gap: 12px;
         margin-bottom: 12px;
         padding-bottom: 6px;
         border-bottom: 1.5px solid #334155;
@@ -401,11 +421,13 @@
         page-break-after: avoid;
     }
 
+    .cv-year-heading h2,
     .cv-year-badge {
         font-size: 13pt;
         color: #0f172a !important;
     }
 
+    .cv-role-badge,
     .cv-year-role {
         font-size: 10pt;
         color: #64748b !important;
