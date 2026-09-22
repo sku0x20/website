@@ -11,7 +11,7 @@
 * **Platform & Infrastructure Architecture:**  
   Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
 * **Infrastructure & Platform Governance:**  
-  Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Organization Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
+  Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
   Directly responsible for infrastructure capacity planning and cloud spend. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
 * **Cross-Team Technical Standards:**  
@@ -300,10 +300,10 @@
 > **Operating Reality & Architectural Leadership:**  
 > In April 2026, I was promoted to **Senior Systems Architect**. My mandate covers backend systems architecture, cloud infrastructure, kernel networking, and defining platform data contracts and transport protocols implemented by connected devices and client apps.
 
-### Organization Administration & Compute Lifecycle: DNS & Compute (N1 → N4)
+### Google Cloud Platform Administration & Compute Lifecycle: DNS & Compute (N1 → N4)
 
 * **Administrative & Platform Governance:**  
-  Manage foundational platform resources as Google Cloud Organization Administrator (IAM policies, project topologies, VPC networks, firewall rules) and administrator for corporate DNS zone files and domains via GoDaddy.
+  Manage foundational platform resources as Google Cloud Platform Administrator (IAM policies, project topologies, VPC networks, firewall rules) and administrator for corporate DNS zone files and domains via GoDaddy.
 * **Compute Lifecycle & Next-Gen Hardware Migration (N1 → N4):**  
   As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation **N4 machine types**—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.
 
