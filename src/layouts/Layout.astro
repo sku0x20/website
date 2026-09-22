@@ -31,7 +31,7 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
 ---
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -59,9 +59,7 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
         function initTheme() {
             try {
                 const stored = localStorage.getItem('theme');
-                if (stored === 'dark' || stored === 'light') {
-                    document.documentElement.setAttribute('data-theme', stored);
-                } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                if (stored === 'dark') {
                     document.documentElement.setAttribute('data-theme', 'dark');
                 } else {
                     document.documentElement.setAttribute('data-theme', 'light');
@@ -256,8 +254,7 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
             function render() {
                 ctx.clearRect(0, 0, width, height);
 
-                const isDark = document.documentElement.getAttribute('data-theme') === 'dark' ||
-                    (!document.documentElement.getAttribute('data-theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
+                const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
 
                 const nodeColor = isDark ? 'rgba(229, 104, 71, 0.7)' : 'rgba(196, 71, 39, 0.65)';
                 const linkBase = isDark ? '232, 236, 242' : '22, 24, 29';

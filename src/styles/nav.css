@@ -172,15 +172,6 @@
     display: none;
 }
 
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .theme-toggle .icon-sun {
-        display: block;
-    }
-    :root:not([data-theme="light"]) .theme-toggle .icon-moon {
-        display: none;
-    }
-}
-
 /* — Global Site Footer — */
 .site-footer {
     display: flex;

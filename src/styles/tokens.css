@@ -46,50 +46,6 @@
     --astro-code-token-link: #c44727;
 }
 
-/* System Dark Preference */
-@media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-        --color-bg: #0d0f13;
-        --color-surface: rgba(20, 23, 29, 0.72);
-        --color-surface-hover: rgba(27, 32, 41, 0.9);
-        --color-text: #e8ecf2;
-        --color-text-muted: #8b94a5;
-
-        /* Refined, warmer accent in dark mode */
-        --color-accent: #e56847;
-        --color-accent-hover: #ff7f5e;
-        --color-accent-600: #ff7f5e;
-        --color-accent-700: #e56847;
-        --color-accent-subtle: rgba(229, 104, 71, 0.12);
-
-        --color-divider: #232731;
-        --color-border: #2d3340;
-        --color-badge-bg: rgba(28, 32, 42, 0.75);
-        --color-badge-text: #d2d8e4;
-        --color-grid-dot: rgba(232, 236, 242, 0.055);
-
-        /* Stark White Button on Dark Theme */
-        --color-btn-primary-bg: #e8ecf2;
-        --color-btn-primary-text: #0d0f13;
-        --color-btn-primary-hover: #ffffff;
-
-        /* Shiki (code block) Dark colors */
-        --astro-code-background: rgba(20, 23, 29, 0.75);
-        --astro-code-foreground: #e8ecf2;
-        --astro-code-color-background: rgba(20, 23, 29, 0.75);
-        --astro-code-color-text: #e8ecf2;
-        --astro-code-token-constant: #e56847;
-        --astro-code-token-string: #79c0ff;
-        --astro-code-token-comment: #6e7681;
-        --astro-code-token-keyword: #e56847;
-        --astro-code-token-parameter: #e8ecf2;
-        --astro-code-token-function: #d2a8ff;
-        --astro-code-token-string-expression: #79c0ff;
-        --astro-code-token-punctuation: #c9d1d9;
-        --astro-code-token-link: #e56847;
-    }
-}
-
 /* Explicit Dark Theme */
 [data-theme="dark"] {
     --color-bg: #0d0f13;
@@ -136,7 +92,7 @@
 }
 
 html {
-    color-scheme: light dark;
+    color-scheme: light;
 }
 
 html[data-theme="light"] {
