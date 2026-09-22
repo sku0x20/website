@@ -11,7 +11,7 @@
 * **Platform & Infrastructure Architecture:**  
   Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
 * **Infrastructure & Platform Governance:**  
-  Hold administrative and architectural responsibility across the operational footprint: Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging infrastructure, and production compute clusters.
+  Hold administrative and architectural responsibility across Google Cloud Platform (IAM policies, VPC topologies, and project lifecycles).
 * **Cloud FinOps & Infrastructure Economics:**  
   Directly responsible for infrastructure capacity planning and cloud spend. Researched spend-based vs. resource-based CUD models and structured a 3-year Google Cloud Committed Use Discount (CUD) on compute instances that slashed long-term infrastructure costs.
 * **Cross-Team Technical Standards:**  

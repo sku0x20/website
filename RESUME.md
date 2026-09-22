@@ -6,7 +6,7 @@ Bengaluru, India · [siddhantkumarupmanyu@gmail.com](mailto:siddhantkumarupmanyu
 ---
 
 ## Summary
-Senior Systems Architect with architectural responsibility across Google Cloud Platform administration, on-prem staging infrastructure, and production compute clusters. Specialist in Linux kernel networking, high-throughput databases, JVM runtime optimization, and autonomous SRE triage. Published distributed systems author and open-source framework maintainer.
+Senior Systems Architect with architectural responsibility across Google Cloud Platform administration. Specialist in Linux kernel networking, high-throughput databases, JVM runtime optimization, and autonomous SRE triage.
 
 ---
 
