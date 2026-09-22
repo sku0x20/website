@@ -6,34 +6,30 @@ import Layout from '../layouts/Layout.astro';
     title="Curriculum Vitae — Siddhant Kumar Upmanyu" 
     description="Exhaustive career dossier of Siddhant Kumar Upmanyu — Senior Systems Architect specializing in platform, cloud, and kernel architecture. Chronological systems engineering journey from 2022 to 2026."
 >
-    <article class="cv-container">
-        <header class="cv-header">
-            <div class="cv-title-row">
-                <div>
-                    <h1>Siddhant Kumar Upmanyu</h1>
-                    <div class="cv-progression">
-                        Software Engineer (2022–2024) &rarr; Senior Software Engineer (2024–2026) &rarr; Senior Systems Architect (Apr 2026–Present)
-                    </div>
+    <div class="cv-container">
+        <div class="cv-actions">
+            <a href="/cv.pdf" class="btn btn-primary" download="cv.pdf">Download PDF</a>
+            <a href="/resume" class="btn btn-secondary">2-Page Resume</a>
+        </div>
+
+        <article class="cv-paper">
+            <header>
+                <h1>Siddhant Kumar Upmanyu</h1>
+                <p class="subtitle">Software Engineer (2022–2024) &rarr; Senior Software Engineer (2024–2026) &rarr; Senior Systems Architect (Apr 2026–Present)</p>
+                <div class="links">
+                    <span>Bengaluru, India</span>
+                    <span>•</span>
+                    <a href="https://www.sku20.dev/">sku20.dev</a>
+                    <span>•</span>
+                    <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">github.com/sku0x20</a>
+                    <span>•</span>
+                    <a href="https://linkedin.com/in/sku20" target="_blank" rel="noopener noreferrer">linkedin.com/in/sku20</a>
+                    <span>•</span>
+                    <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
+                    <span>•</span>
+                    <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer">Zenodo Preprint</a>
                 </div>
-                <div class="cv-actions">
-                    <a href="/cv.pdf" class="btn btn-primary" download>Download PDF</a>
-                    <a href="/blog" class="btn btn-secondary">Technical Blog</a>
-                </div>
-            </div>
-            <div class="cv-meta-links">
-                <span><strong>Location:</strong> Bengaluru, India</span>
-                <span>&bull;</span>
-                <a href="https://www.sku20.dev/">sku20.dev</a>
-                <span>&bull;</span>
-                <a href="https://github.com/sku0x20" target="_blank">GitHub</a>
-                <span>&bull;</span>
-                <a href="https://www.linkedin.com/in/sku20" target="_blank">LinkedIn</a>
-                <span>&bull;</span>
-                <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
-                <span>&bull;</span>
-                <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank">Zenodo Preprint</a>
-            </div>
-        </header>
+            </header>
 
         <!-- Summary -->
         <section class="cv-scope-box">
@@ -438,7 +434,7 @@ import Layout from '../layouts/Layout.astro';
             <div class="cv-year-heading">
                 <h2>Technical Writing &amp; Systems Engineering Analysis</h2>
             </div>
-            <p style="margin-bottom: 20px; font-size: 14.5px;">
+            <p class="cv-intro-text">
                 Authored 20+ in-depth technical post-mortems and distributed systems essays published at <a href="/blog"><strong>sku20.dev/blog</strong></a>:
             </p>
             <div class="cv-projects-grid">
@@ -512,11 +508,12 @@ import Layout from '../layouts/Layout.astro';
                     <span class="cv-skill-category">Methodology:</span>
                     <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contracts (Pact spike), Testcontainers</span>
                 </div>
-                <div class="cv-skill-row" style="margin-top: 12px; padding-top: 12px; border-top: 1px dashed var(--color-divider);">
-                    <span class="cv-skill-category">Education:</span>
-                    <span><strong>Bachelor of Computer Applications (BCA)</strong> &bull; 2019 – 2022</span>
+                <div class="cv-education-row">
+                    <span><strong>Bachelor of Computer Applications (BCA)</strong></span>
+                    <span class="muted">2019 – 2022</span>
                 </div>
             </div>
         </section>
     </article>
+</div>
 </Layout>
