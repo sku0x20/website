@@ -11,9 +11,9 @@
 * **Platform & Infrastructure Architecture:**  
   Direct the technical strategy and architecture for backend systems and cloud infrastructure. Autonomously drive systems engineering: identifying foundational architectural risks, conducting R&D spikes, making core infrastructure decisions, and executing zero-downtime database and platform migrations on live production traffic.
 * **Infrastructure & Platform Governance:**  
-  Hold administrative and architectural responsibility across the operational footprint: corporate domain and DNS governance (GoDaddy), Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging bare metal, and production compute clusters.
+  Hold administrative and architectural responsibility across the operational footprint: Google Cloud Platform Administration (IAM policies, VPC topologies, and project lifecycles), on-prem staging infrastructure, and production compute clusters.
 * **Cloud FinOps & Infrastructure Economics:**  
-  Directly responsible for infrastructure capacity planning and cloud spend. Analyzed historical utilization to structure a 3-year Google Cloud Committed Use Discount (CUD) that slashed compute costs; currently driving next-gen hardware migrations (legacy N1 to modern N4 instances) to maximize throughput per cloud dollar.
+  Directly responsible for infrastructure capacity planning and cloud spend. Researched spend-based vs. resource-based CUD models and structured a 3-year Google Cloud Committed Use Discount (CUD) on compute instances that slashed long-term infrastructure costs.
 * **Cross-Team Technical Standards:**  
   Define and maintain platform data contracts, binary IoT transport protocols, kernel-level traffic routing, and architectural boundaries—authoring the technical specifications that firmware, hardware, mobile, and backend teams implement against.
 
@@ -66,9 +66,9 @@
 * **The Objective:**  
   Evaluate integrating Apple HomeKit locally without requiring hardware MFi authentication chips, utilizing Apple's HomeKit Accessory Protocol (HAP).
 * **The Research & Implementation:**  
-  Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP). Deep-dived into the low-level mechanics: local mDNS/Bonjour discovery, cryptographic pairing exchanges (SRP and Curve25519), session encryption, and mapping custom device states to Apple's strict accessory characteristic schemas.
+  Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP), successfully engineering a backend bridge with mDNS/Bonjour discovery, cryptographic pairing (SRP and Curve25519), and session encryption.
 * **The Retrospective & Takeaway:**  
-  While the spike was ultimately shelved due to hardware and commercial constraints, it provided early, invaluable exposure to strict protocol specifications, cryptographic handshakes, and local-first device networking.
+  While the backend bridge succeeded, the initiative was shelved after client application integration stalled. The spike provided early exposure to strict protocol specifications, cryptographic handshakes, and local-first device networking.
 
 
 ## 2023 — Software Engineer | Production Reliability & Systems Engineering
@@ -130,11 +130,10 @@
 
 ### Cloud FinOps & Infrastructure Economics: 3-Year Committed Use Discount (CUD)
 
-* **Direct Economic Ownership:**  
-  With the founding engineer's exit, cloud cost management became my direct responsibility, reporting spend forecasts directly to the CEO. Unreserved on-demand VM billing was inflating monthly operational burn.
+* **Economic Optimization:**  
+  Evaluated cloud spend and compute efficiency models, analyzing spend-based versus resource-based commitments across core platform workloads.
 * **The Strategy & Commitment:**  
-  - Conducted workload utilization analysis across CPU, memory, and networking to establish true minimum baseline requirements vs. variable peaks.
-  - Negotiated and committed to a **3-year Google Cloud Committed Use Discount (CUD)** on core compute instances—locking in aggressive cost reductions for the company while guaranteeing production compute availability over a multi-year horizon.
+  Executed a **3-year resource-based Google Cloud Committed Use Discount (CUD)** on core compute instances—locking in aggressive cost reductions for the company while guaranteeing production compute availability over a multi-year horizon.
 
 ## 2024 — Promoted to Senior Software Engineer | Security Hardening, Deep Profiling & Resilience
 
@@ -201,9 +200,9 @@
 ### Consumer-Driven Contract Testing Spike: Pact (2024–2025)
 
 * **The Architectural Exploration:**  
-  Investigated **Consumer-Driven Contract Testing (Pact)** across 2024 and 2025 to establish bulletproof API safety between the cloud backend and the firmware delivery / OTA subsystem.
+  Investigated **Consumer-Driven Contract Testing (Pact)** across 2024 and 2025 to evaluate automated contract verification between frontend clients and backend APIs.
 * **The Spike:**  
-  Researched automated contract verification pipelines (`publish pact` → `can-i-deploy` → `release`), evaluating contract testing as an architectural safeguard to eliminate integration regressions before new firmware builds hit production.
+  Researched automated contract verification pipelines (`publish pact` → `can-i-deploy` → `release`), evaluating contract testing as an architectural safeguard to eliminate integration regressions before changes hit production.
 
 ## 2025 — Senior Software Engineer | Production Observability, Modern Infra & High-Performance Pipelines
 
@@ -212,13 +211,11 @@
 
 ### Production Observability Rollout: Grafana & Loki (Retiring `hlogger`)
 
-* **The Evolution:**  
-  Having stabilized access security in 2024 with `hlogger`, the next step was eliminating disk logging entirely in favor of a centralized, real-time observability platform.
-* **The Architectural Philosophy:**  
-  Clarified a fundamental distinction often conflated: *"Is the service up?"* (external blackbox probes) vs. *"Why is the service struggling?"* (internal contextual metrics). While simple uptime checkers only see binary up/down states, real SRE requires correlating synthetic probes directly with internal resource pressure and traces.
+* **The Operational Bottleneck:**  
+  Production applications dumped raw log files directly to VM disks, creating I/O pressure and requiring engineers to manually filter files or use custom tooling.
 * **The Implementation:**  
   - Provisioned and hardened a dedicated, isolated observability VM separate from production.
-  - Deployed and tuned **Grafana**, **Loki**, and **Mimir** fed by **Alloy** (running Blackbox HTTP/TCP probes alongside database and application metrics exporters)—consolidating fragmented tools into a single, unified telemetry pipeline.
+  - Deployed and tuned **Grafana** and **Loki** for centralized log ingestion and querying, consolidating fragmented tools into a single, unified telemetry pipeline.
   - Managed all host configurations, scrape targets, log retention policies, and dashboards in a git-tracked directory—implementing a pragmatic GitOps / Infrastructure-as-Code (IaC) workflow where updates were deployed via version-controlled pulls rather than ad-hoc server mutations.
 * **The Outcome:**  
   Gracefully retired `hlogger` and raw disk log dumping. The entire engineering organization (firmware, backend, mobile) gained instant, indexed query capabilities over real-time system logs without touching production hosts.
@@ -272,14 +269,14 @@
 * Shaved latency across core platform endpoints by eliminating redundant database queries and optimizing payload serialization.
 * Reconfigured Google Cloud Monitoring with automated uptime checks and synthetic probes against backend health endpoints, enabling proactive alerting before customers or mobile apps detected latency spikes.
 
-### Multi-Tier Rate Limiting & High-Ingestion Telemetry R&D
+### Multi-Tier Rate Limiting & Pre-Production Telemetry Stack
 
 * **Defense in Depth (Nginx + Bucket4j):**  
   Protected the platform from traffic bombardment and abusive retry loops:
   - Configured reverse-proxy rate limiting in **Nginx** to throttle excessive requests at the network perimeter (returning HTTP 429).
   - Implemented token-bucket application rate limiting using **Bucket4j** inside the gRPC Activity Log service, ensuring fair scheduling and shielding internal database pools from client spikes.
-* **Tackling Telemetry Cardinality: VictoriaMetrics & VictoriaLogs R&D:**  
-  While Grafana Loki and Mimir served initial needs, they suffered from severe **high-cardinality bottlenecks**—in IoT environments with thousands of unique device IDs and dynamic event tags, label explosion causes excessive memory consumption, index bloat, and query degradation. I deployed and benchmarked **VictoriaMetrics** and **VictoriaLogs** on the staging setup to evaluate their cardinality-agnostic architecture, achieving significantly faster queries and vastly lower memory overhead under high-volume IoT log streams.
+* **Staging Telemetry Stack (Docker Compose, VictoriaMetrics, Alloy):**  
+  Built a complete pre-production telemetry stack using Docker Compose: deployed Grafana, Loki, VictoriaMetrics, VictoriaLogs, and Alloy; evaluated and migrated away from Mimir; created and imported dashboards for host and container resource metrics.
 
 ### Cloud-to-Cloud Integration: Yale Smart Locks (2025)
 
@@ -291,21 +288,21 @@
 ### Technical Recruitment & Engineering Standards (Late 2025 – 2026)
 
 * **Hiring Framework & Rubric:**  
-  Partnered with HR to establish the company's first structured technical Job Description and candidate evaluation rubric for backend systems.
+  Designed a structured, multi-step hiring flow and candidate evaluation rubric for backend engineering.
 * **Interviewing & Team Building:**  
-  Designed practical coding assessments evaluating core systems thinking and TDD discipline, conducted engineering interviews, and successfully hired an engineer into the team.
+  Designed practical coding assessments evaluating core systems thinking and TDD discipline, conducted engineering interviews across stages, and successfully hired an engineer into the team.
 
 ## 2026 — Promoted to Senior Systems Architect | Declarative Cloud, Kernel Networking & Toolmaker
 
 > **Operating Reality & Architectural Leadership:**  
 > In April 2026, I was promoted to **Senior Systems Architect**. My mandate covers backend systems architecture, cloud infrastructure, kernel networking, and defining platform data contracts and transport protocols implemented by connected devices and client apps.
 
-### Google Cloud Platform Administration & Compute Lifecycle: DNS & Compute (N1 → N4)
+### Google Cloud Platform Administration & Infrastructure Operations
 
 * **Administrative & Platform Governance:**  
-  Manage foundational platform resources as Google Cloud Platform Administrator (IAM policies, project topologies, VPC networks, firewall rules) and administrator for corporate DNS zone files and domains via GoDaddy.
-* **Compute Lifecycle & Next-Gen Hardware Migration (N1 → N4):**  
-  As the 2023 3-year CUD agreement approached completion, I led the technical evaluation and capacity planning to migrate core production workloads from legacy Google Cloud N1 instances to next-generation **N4 machine types**—benchmarking instructions-per-cycle (IPC) gains, memory throughput, and optimizing cost-per-workload.
+  Sole administrator for Google Cloud Platform, managing foundational platform resources including IAM roles and policies, project topologies, VPC networks, firewall rules, and Cloud Storage lifecycles.
+* **Operational Independence & System Hardening:**  
+  Autonomously manage compute instances, automated backups, and storage buckets without external DevOps dependencies, ensuring high operational uptime and principle-of-least-privilege access across environments.
 
 ### Feature Flags Engine & Controlled Rollouts (2026)
 
@@ -325,13 +322,13 @@
   - Executed a zero-downtime DNS and workload cutover, containerizing and migrating the marketing website onto serverless **Google Cloud Run** paired with managed **Google Cloud SQL (PostgreSQL)**.
   - Codified 100% of the project infrastructure in **Terraform / OpenTofu**—VPC networking, service accounts, IAM bindings, secrets, and database instances are fully declarative with zero manual cloud console mutations, ensuring marketing workloads have zero blast radius on core IoT backend systems.
 
-### Bare-Metal Homelab & Cloud-Native Engineering (Proxmox, K8s, Nomad)
+### Bare-Metal Homelab & Cloud-Native Engineering (Proxmox, k3s, Nomad, EKS)
 
-* **Preparing for Platform Containerization:**  
-  To chart the company's future migration from single-server VMs to orchestrated containers, I built an on-prem bare-metal testbed running **Proxmox VE**:
-  - Automated repeatable VM provisioning using `cloud-init` / `user-data` scripts.
-  - Bootstrapped and benchmarked **Kubernetes clusters** from scratch—exploring **CNI** (Container Network Interface), **CSI** (Container Storage Interface), and **Pod Identities** (workload identity federation).
-  - Evaluated **HashiCorp Nomad vs. Kubernetes (EKS)** to make a data-backed recommendation on operational complexity vs. ecosystem maturity for our IoT platform.
+* **Exploring Future Platform Containerization:**  
+  Maintained an on-prem bare-metal host running **Proxmox VE** to evaluate container orchestration and workload isolation:
+  - Automated repeatable VM provisioning using OpenTofu and `cloud-init` / `user-data` scripts.
+  - Spiked lightweight Kubernetes with **k3s**, exploring CNI and pod configurations.
+  - Evaluated **HashiCorp Nomad** vs. **AWS EKS** (spiked using Terraform) to make data-backed recommendations on operational complexity vs. ecosystem maturity for future platform containerization.
 
 ### Concurrency Overhaul: Dynamic IoT-Aware ThreadPool vs. ForkJoinPool
 
@@ -433,11 +430,11 @@ Authored 20+ in-depth technical post-mortems and distributed systems essays publ
 
 * **Languages:** Kotlin, Java, Go, Rust, Zig, C, Shell, SQL
 * **Frameworks & Architecture:** Spring Boot, Helidon SE (Nima), Project Loom, gRPC, Protocol Buffers, REST
-* **Cloud & Infrastructure:** Linux (Debian, Ubuntu), Google Cloud (Cloud Run, Cloud SQL, GCS, VPC), AWS (EKS), Terraform, Docker, Proxmox VE, GitHub Actions, Bitbucket Pipelines
+* **Cloud & Infrastructure:** Linux (Debian, Ubuntu), Google Cloud (IAM, VPC, Cloud Run, Cloud SQL, GCS), AWS (Lambda, EKS spike), Terraform / OpenTofu, Docker, Proxmox VE, GitHub Actions
 * **Databases & Storage:** ClickHouse, MongoDB, PostgreSQL, Redis
-* **Observability & SRE:** Grafana, Loki, Prometheus, VictoriaMetrics, VictoriaLogs, `async-profiler`, JMC, VisualVM, Flame Graphs, `sar`, `vmstat`, `iotop`
-* **Networking & Protocols:** Socket programming (TCP/UDP), `iptables`, `nftables`, NAT traversal / hole-punching, mTLS & PKI (Root/Intermediate CA, CRL)
-* **Testing & Methodology:** Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact), Testcontainers, Test Slices
+* **Observability & SRE:** Grafana, Loki, VictoriaMetrics, VictoriaLogs, Alloy, `async-profiler`, JMC, VisualVM, Flame Graphs, `sar`, `vmstat`, `iotop`
+* **Networking & Protocols:** Socket programming (TCP/UDP), `iptables`, `nftables`, NAT64 (Jool), NAT traversal / hole-punching, mTLS & PKI (Root/Intermediate CA, CRL)
+* **Testing & Methodology:** Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact spike), Testcontainers, Test Slices
 
 
 
