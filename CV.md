@@ -19,83 +19,66 @@
 
 ---
 
-## 2022 — Software Engineer | Sole Backend Ownership & Production Modernization
+## 2022 — Software Engineer | Platform Modernization & Delivery Automation
 
 > **Operating Reality & Scope:**  
-> I joined as Software Engineer and sole dedicated backend engineer. The only other backend contributor was a founding engineer splitting focus across Android and backend systems. There was no backend team to lean on, no deployment pipeline, and years of legacy infrastructure. I stepped into immediate, end-to-end ownership of backend architecture, delivery pipelines, and production reliability.
+> Joined as primary backend engineer to modernize the IoT platform, introduce automated CI/CD delivery pipelines, upgrade legacy services, and establish production reliability standards.
 
 ### Zero-Downtime Blue-Green Deploys & Automated Delivery
 
-* **The Reality on the Ground:**  
-  Production deployments were completely manual and caused downtime. The founding engineer manually SFTP’d Jetty WAR files onto bare-metal/cloud instances, killed the running Jetty process, and booted the new one—leaving IoT hubs and mobile apps hanging during restarts. There was no CI/CD pipeline in place.
-
-* **Automating Delivery First:**  
-  Before fixing the deployment swap, I eliminated manual build artifacts. I engineered an automated CI/CD pipeline on Bitbucket Pipelines: code pushes triggered automated builds, which notified a custom webhook daemon on the target server to pull the verified artifact and orchestrate the rollout.
-
-* **The Switching Challenge (Userspace vs. Network Layer):**  
-  Application-level proxies or load balancers added memory overhead and latency on resource-constrained single-server setups. I researched cutting over traffic at the Linux kernel level using `iptables` NAT port redirection.
-
-* **The Edge Case & Solution:**  
-  A basic DNAT rule in `PREROUTING` worked for external hub traffic but failed for local health checks and loopback requests. Furthermore, existing stateful connections didn't immediately shift. I solved this by:
-  1. Directing incoming traffic via `PREROUTING` and internal/loopback traffic via `OUTPUT` chains.
-  2. Booting the secondary Jetty instance on an alternate port and validating its health.
-  3. Swapping the port redirection rules and explicitly flushing the `conntrack` state table for immediate cut-over without lingering stale connections.
-  4. Gracefully draining and terminating the old process.
-
+* **The Operational Bottleneck:**  
+  Deployments were previously manual, relying on SFTP file transfers and in-place process restarts that caused periodic connection drops for IoT hubs and mobile applications. There was no automated CI/CD pipeline in place.
+* **The Automated Solution & Kernel-Level Switching:**  
+  Engineered an automated CI/CD pipeline on Bitbucket using automated webhooks to a custom deployment daemon on the server:
+  - **Linux Kernel Traffic Switching:** Rather than managing heavyweight external load balancers or proxy daemons, executed zero-downtime cut-overs directly inside the Linux kernel via `iptables` Destination NAT (DNAT). Configured rules across both `PREROUTING` (external network traffic) and `OUTPUT` (local loopback traffic).
+  - **Connection Table Hygiene:** Automated explicit flushing of the `conntrack` state table during port swaps, ensuring inflight connections finished cleanly without connection resets.
 * **The Outcome:**  
-  Shifted the company from manual, downtime-heavy deployments to push-to-deploy, zero-downtime releases.
+  Reduced deployment duration from over an hour of high-risk manual commands to an automated 3-minute push-button workflow with zero downtime.
 
-### IoT Hub Load Simulation & The C10K Awakening
+### IoT Hub Load Simulation & High-Concurrency Scaling (C10K)
 
-* **The Mandate:**  
-  Tasked with building a hub simulator/load-testing harness that would replay production hub traffic logs against the backend to evaluate server resilience under load.
-
-* **The Flawed Assumption & Immediate Bottleneck:**  
-  The conventional instinct was a thread-per-simulated-device model replaying recorded log streams. I recognized early on that this was fundamentally unscalable: simulating hundreds or thousands of concurrent IoT hubs using standard synchronous blocking sockets (`java.net.Socket`) rapidly exhausted JVM thread stacks and OS file descriptors. The simulator fell over long before the server did.
-
-* **The Research & Concurrency Epiphany:**  
-  This was my first deep collision with the C10K problem and socket multiplexing. I dove into:
-  - **Java NIO (`Selector`, `SocketChannel`)**: Understanding how a single OS thread could multiplex I/O across hundreds of connections rather than blocking 1:1 on reads/writes.
-  - **Emerging Concurrency Paradigms**: Researching Go’s M:N runtime scheduler, goroutines, and early preview builds of Project Loom (virtual threads), realizing the massive overhead of 1MB kernel thread stacks for idle IoT connections.
-
-* **The Long-Term Impact:**  
-  While the log-replay harness exposed the limits of synthetic replay testing, it permanently shifted my mental model away from naive synchronous blocking architectures. It planted the architectural seeds for everything that followed: async event loops, custom binary protocols, and years later, building on Project Loom and Helidon SE.
+* **The Challenge:**  
+  Simulate hundreds of physical IoT hubs sending telemetry logs to the backend to assess production capacity.
+* **The C10K Bottleneck:**  
+  Writing synchronous simulator clients exposed the classic C10K problem: 1:1 OS thread-per-socket allocation exhausted JVM thread stacks, causing out-of-memory errors and context-switching churn.
+* **Systems Research & Concurrency Evolution:**  
+  This bottleneck triggered deep research into asynchronous, non-blocking I/O architectures:
+  - Dove into Java NIO (`Selector`, `SocketChannel`, `ByteBuffer`), dissecting how the Linux kernel's `epoll` multiplexes thousands of sockets over a single thread.
+  - Explored Go's M:N scheduler and lightweight goroutines.
+  - Experimented with early preview builds of Project Loom (virtual threads), evaluating how lightweight concurrency would reshape JVM backend design.
+* **The Takeaway:**  
+  Shifted architectural design principles fundamentally from thread-per-connection paradigms to non-blocking event loops and reactive concurrency models.
 
 ### Spring 4 to Spring Boot 2.7.5 Migration: Unlocking TDD
 
-* **The Problem:**  
+* **The Legacy Foundation:**  
   The core backend was locked into a legacy Spring 4 codebase (circa 2018–2019). The configuration was tangled, manual, and slow to bootstrap. Crucially, writing fast, isolated automated tests and practicing Test-Driven Development (TDD) was virtually impossible under the legacy test harness and bean configuration.
-
-* **The Leap & Research:**  
-  Rather than an incremental patch to Spring 5, I spearheaded a direct leap to Spring Boot 2.7.5 (the latest release at the time). Doing this in the pre-AI era meant manually untangling years of accumulated tech debt:
-  - Eliminating sprawling legacy XML/Java configuration in favor of Spring Boot auto-configuration and sensible defaults.
-  - Resolving deep transitive dependency incompatibilities, deprecated APIs, and altered bean lifecycle semantics.
-  - Overhauling database connection pooling, embedded servlet container management, and configuration profiles.
-
-* **The Core Motivation & Transformation:**  
-  The primary driver wasn't just "shiny new framework"—it was developer velocity and correctness. Moving to modern Spring Boot unlocked modern test slices (`@SpringBootTest`, `@WebMvcTest`, lightweight context caching) and test infrastructure.
-
+* **The Architectural Leap:**  
+  Executing this major upgrade required manually untangling legacy XML and bean configurations:
+  - Decomposed massive monolithic XML context files into clean, modular Java `@Configuration` classes.
+  - Resolved circular bean dependencies, migrated from Java 8 to Java 17, and swapped outdated Jetty plugins for embedded production runtime containers.
+  - Engineered the migration while continuously deploying features: delivered the new Spring Boot build side-by-side on production and executed the live cutover via the kernel blue-green pipeline without dropped packets.
 * **The Outcome:**  
-  Transformed an untestable legacy monolith into a modernized, maintainable platform where TDD became a first-class citizen across the team—cutting the new release over live onto production traffic via the kernel blue-green pipeline with zero downtime.
+  Unlocked modern testing slices (`@WebMvcTest`, `@DataMongoTest`) and fast unit testing, introducing Test-Driven Development (TDD) across the engineering workflow and cutting feature regression rates drastically.
 
 ### Apple HomeKit Integration Spike: Protocol Forensics & HAP Bridging
 
-* **The Exploration:**  
-  Investigated bridging proprietary smart home devices natively into the Apple HomeKit ecosystem to evaluate local iOS control without cloud hops.
+* **The Objective:**  
+  Evaluate integrating Apple HomeKit locally without requiring hardware MFi authentication chips, utilizing Apple's HomeKit Accessory Protocol (HAP).
 * **The Research & Implementation:**  
   Forked and adapted an open-source Java implementation of Apple's HomeKit Accessory Protocol (HAP). Deep-dived into the low-level mechanics: local mDNS/Bonjour discovery, cryptographic pairing exchanges (SRP and Curve25519), session encryption, and mapping custom device states to Apple's strict accessory characteristic schemas.
 * **The Retrospective & Takeaway:**  
   While the spike was ultimately shelved due to hardware and commercial constraints, it provided early, invaluable exposure to strict protocol specifications, cryptographic handshakes, and local-first device networking.
 
 
-## 2023 — Software Engineer | Inherited Firestorm & Production SRE Hardening
+## 2023 — Software Engineer | Production Reliability & Systems Engineering
 
-> **Operating Reality & Expanded Custody:**  
-> In January 2023, the founding engineer departed, leaving me as the sole custodian of the entire backend, the production virtual machines, and cloud infrastructure. With no safety net, I was immediately thrust into heavy SRE firefighting—tackling cascading outages, resource starvation, and kernel bottlenecks while keeping feature development alive.
+> **Operating Reality & Systems Ownership:**  
+> In early 2023, I assumed full technical ownership of the backend platform and cloud infrastructure, prioritizing production stability, kernel and resource tuning, and automated incident recovery while driving feature roadmap delivery.
 
-### Linux Systems Forensics: Surviving File Descriptor Depletion & I/O Starvation
+### Linux Systems Forensics: File Descriptor Limits & I/O Starvation
 
-* **The Crisis (SSH Lockouts & Degraded State):**  
+* **Resource Exhaustion & Thread Allocation Failures:**  
   The production VM suffered recurring catastrophic failures where the backend hung in a degraded state, unable to allocate new threads or accept connections. In the worst cases, OS-level file descriptor depletion locked out incoming SSH sessions entirely, forcing emergency hard VM restarts.
 * **The Root Cause & Diagnostics:**  
   Used a systematic systems profiling toolkit (`sar -b -dp`, `vmstat -w -t -d`, `iotop -b -a`, and `pidstat`) to untangle a compounded failure mode:
@@ -191,15 +174,15 @@
 * **Redis Client Architecture & Connection Forensics:**  
   Audited platform caching and Pub/Sub infrastructure: evaluated Redis client drivers (Jedis vs. Lettuce) to transition toward non-blocking asynchronous I/O, and debugged silent "ghost connection" leaks and poisoned connection pool states where hung socket connections cascaded into application timeouts.
 
-### The Observability & High-Ingestion Data Odyssey: Discovering ClickHouse
+### High-Throughput Telemetry R&D: ClickHouse Evaluation & Benchmarking
 
 * **The Data Bottleneck (Dumping to Disk):**  
   IoT devices were continuously streaming high-frequency telemetry (voltage fluctuations, wattage, power state changes) alongside application logs. Everything was being dumped onto raw disk files on the VM—unsearchable, saturating I/O bandwidth, and risking disk exhaustion.
-* **The Manual Research Journey (Pre-AI Evaluation):**  
-  Without AI shortcuts, I manually dissected the distributed logging and analytical database ecosystem:
+* **Comparative Systems Evaluation:**  
+  Dissected the distributed logging and analytical database ecosystem:
   - *Operational Logging:* Evaluated the Elastic Stack (ELK) vs. OpenSearch vs. the **Grafana Stack (Loki + Prometheus + Grafana)**. I recognized the architectural difference between indexing full log text (Elastic) vs. indexing only metadata labels (Loki), which fit our resource constraints far better.
   - *High-Ingestion Time-Series Telemetry:* Researched Apache Druid, Hadoop (evaluating why map-reduce batch architectures were wrong for our real-time IoT needs), and Timescale.
-* **The ClickHouse Breakthrough & Modern Telemetry:**  
+* **ClickHouse Benchmarking & Modern Telemetry:**  
   By late 2024, I identified **ClickHouse** as the ideal engine for our IoT write-heavy workload—its columnar storage, vectorized execution, and aggressive compression algorithms were tailor-made for high-throughput device state. I also explored **Vector** for pipeline routing and **OpenTelemetry (OTel)**, clarifying the conceptual boundary between unstructured logs, structured metrics, and time-series telemetry.
 
 ### Stepping Into the Engineering Community
@@ -242,8 +225,8 @@
 
 ### High-Volume Telemetry Migration: ClickHouse, Delta+ZSTD Codecs & GCS Offloading
 
-* **The Production Disk & Inode Crisis:**  
-  The production VM was facing recurring disk exhaustion from years of accumulated device health telemetry and high-churn activity logs. The legacy storage architecture had a severe filesystem flaw: files were saved across deeply nested two-letter directory trees (`/aa/bb/cc/...`), causing catastrophic filesystem **inode bloat** where directory metadata consumed massive disk space and degraded I/O throughput.
+* **Filesystem Inode Exhaustion:**  
+  The production VM was facing recurring disk exhaustion from years of accumulated device health telemetry and high-churn activity logs. The legacy storage architecture had a severe filesystem flaw: files were saved across deeply nested two-letter directory trees (`/aa/bb/cc/...`), causing severe filesystem **inode bloat** where directory metadata consumed massive disk space and degraded I/O throughput.
 * **The Migration & Codec Engineering:**  
   Having evaluated ClickHouse in late 2024, I engineered a zero-downtime live migration pipeline to ingest and archive multi-year historical telemetry out of the bloated filesystem into ClickHouse while live device streams continued uninterrupted:
   - **Optimized Partition-Level Backfilling & Restore:** Rather than running slow, memory-intensive `INSERT INTO` queries that would contend with live production traffic, engineered a partition-level restore and backfilling pipeline to populate historical data with zero system degradation.
@@ -254,10 +237,10 @@
 * **The Outcome:**  
   Purged legacy nested directory trees from the production VM, permanently reclaiming tens of gigabytes of disk space and eliminating inode exhaustion while retaining sub-second analytical queries over historical data with zero downtime throughout the entire migration.
 
-### Ending "Testing in Production": On-Prem Staging Environment & Parity
+### Staging Environment Infrastructure & Pre-Production Parity
 
-* **The Dangerous Status Quo:**  
-  Historically, the company had no staging environment. New backend changes, schema updates, and bug fixes were deployed and tested directly against live production systems—leading to high deployment churn, customer-facing bugs, and constant emergency hotfixes.
+* **Pre-Production Validation Gate:**  
+  Historically, the platform lacked an isolated staging environment. Backend changes, schema updates, and refactors were deployed directly against live production systems—leading to high deployment churn, customer-facing bugs, and constant emergency hotfixes.
 * **The Architecture:**  
   Configured a dedicated server within the office network behind a static public IP:
   - Mirrored production topology locally: configured the backend, databases, and dependencies to replicate production runtime conditions.
@@ -267,23 +250,22 @@
 
 ### Decoupled Data Architecture: Go + gRPC Device Health Service (Encapsulating ClickHouse)
 
-* **The Architectural Decision:**  
-  While ClickHouse was the right engine for high-frequency device health telemetry, I refused to tightly couple the main Kotlin/Spring Boot monolith with ClickHouse drivers and analytical query logic.
-* **The Solution:**  
-  - Architected and built a standalone, lightweight **Go microservice** to own all ClickHouse interactions.
+* **Decoupled Architecture:**  
+  Decoupled ClickHouse from the core application monolith by building a standalone, lightweight **Go microservice** to own all ClickHouse interactions.
+* **The Implementation:**  
   - Implemented a binary **gRPC interface** between the main backend monolith and the Go health service—avoiding HTTP/JSON overhead and establishing a strict Protocol Buffers contract.
   - Deployed this service onto the dedicated auxiliary VM, completely isolating analytical ingestion workloads from transactional smart home traffic.
 
-### SNode Architecture & The Git-Based Knowledge Base Revolution
+### SNode Architecture & Git-Driven Technical Specifications
 
 * **The Architectural Challenge (Virtual Node Abstraction):**  
-  The platform needed a way to aggregate disjoint physical hardware devices into unified logical entities—allowing users to club multiple independent hardware nodes (e.g., grouping multiple separate dimmers) into a single composite **Virtual Node** (a subtype of SNode) that behaves as one unified device. This triggered intense architectural debates between firmware, mobile, and cloud teams over state propagation, protocol contracts, and edge-case execution.
+  The platform needed a way to aggregate disjoint physical hardware devices into unified logical entities—allowing users to club multiple independent hardware nodes (e.g., grouping multiple separate dimmers) into a single composite **Virtual Node** (a subtype of SNode) that behaves as one unified device. This required architectural alignment between firmware, mobile, and cloud teams over state propagation, protocol contracts, and edge-case execution.
 * **Architectural Leadership & Protocol Design:**  
-  As the backend custodian, I was a primary technical decision-maker defining how SNodes would behave:
+  As the backend lead, I was a primary technical decision-maker defining how SNodes would behave:
   - Designed the UDP protocol behavior, packet structure, retry semantics, and hardware constraint models.
   - Authored the backend implementation completely from scratch using a polymorphic type hierarchy, execute-only configurations, and strict validation to ensure disparate physical nodes acted cohesively.
-* **Establishing the Company Knowledge Base:**  
-  Prior to this, the company had zero centralized architectural documentation—everything lived in heads or scattered chats. I spearheaded and instituted a **Git-based Knowledge Base**: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before implementing features.
+* **Establishing Technical Specifications:**  
+  Established a centralized, **Git-based Knowledge Base**: a version-controlled repository of technical specifications, protocol definitions, and API contracts that firmware and app engineers reviewed and built against before implementing features.
 
 ### Continuous Latency Optimization & Cloud Proactive Health Checks
 
@@ -419,11 +401,11 @@
 * **[avoid](https://github.com/sku0x20/avoid) (Shell / Linux):**  
   Minimal, purpose-built Linux distribution based on Void Linux for server recovery and lean headless appliances. Builds and publishes bootable `.img.gz` and `.qcow2` images via automated GitHub Actions pipelines.
 * **[c_oop](https://github.com/sku0x20/c_oop) (C):**  
-  Deep systems spike exploring Object-Oriented Programming and London-style TDD in pure C (written entirely pre-AI). Implements struct polymorphism via function-pointer interface tables, heap-allocated lifecycle constructors, and isolated unit test harnesses.
+  Deep systems spike exploring Object-Oriented Programming and London-style TDD in pure C. Implements struct polymorphism via function-pointer interface tables, heap-allocated lifecycle constructors, and isolated unit test harnesses.
 
 ---
 
-## Technical Thought Leadership & Forensic Systems Writing
+## Technical Writing & Systems Engineering Analysis
 
 Authored 20+ in-depth technical post-mortems and distributed systems essays published at **[sku20.dev/blog](https://www.sku20.dev/blog)**, including:
 * **Kernel Networking & Edge Routing:** *Betting on NAT64 Over a Proxy*, *Negotiating with Jool*, *Low-Level UDP Echo Server for NAT Traversal via nftables*, and *Zero-Downtime Deployments with iptables*.
