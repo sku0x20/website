@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 
 <Layout 
     title="Resume — Siddhant Kumar Upmanyu" 
-    description="Resume of Siddhant Kumar Upmanyu — Senior Systems Architect · Staff-Level Systems Engineer specializing in platform, cloud, and kernel architecture."
+    description="Resume of Siddhant Kumar Upmanyu — Senior Systems Architect specializing in distributed systems, IoT platforms, and high-ingestion systems."
 >
     <div class="resume-container">
         <div class="resume-actions">
@@ -18,7 +18,7 @@ import Layout from '../layouts/Layout.astro';
                     <h1>Siddhant Kumar Upmanyu</h1>
                     <span class="location">Bengaluru, India</span>
                 </div>
-                <p class="subtitle">Senior Systems Architect · Distributed Systems &amp; Platform</p>
+                <p class="subtitle">Senior Systems Architect · Distributed Systems, IoT Platform &amp; High-Ingestion Systems</p>
                 <div class="links">
                     <a href="https://www.sku20.dev/">sku20.dev</a>
                     <span>•</span>
@@ -34,7 +34,7 @@ import Layout from '../layouts/Layout.astro';
 
             <section class="bio">
                 <h2>Summary</h2>
-                <p>Senior Systems Architect with architectural responsibility across Google Cloud Platform administration. Specialist in Linux kernel networking, high-throughput databases, JVM runtime optimization, and autonomous SRE triage.</p>
+                <p>Senior Systems Architect owning the backend platform and cloud infrastructure of a smart-home IoT product. Took over a legacy, manually deployed stack and turned it into a stable, high-ingestion platform: refactored legacy services, removed recurring outage causes at the root, and made zero-downtime migrations and controlled rollouts the default. Own the custom binary UDP transport the device fleet speaks today and drive R&amp;D on its next-generation successor. Author the protocol specs and data contracts that firmware, mobile app, and backend teams build against, and propose architectural changes across those teams.</p>
             </section>
 
             <section class="skills">
@@ -74,11 +74,28 @@ import Layout from '../layouts/Layout.astro';
                     </div>
 
                     <div class="domain-group">
+                        <h4>IoT Platform &amp; High-Ingestion Protocols</h4>
+                        <ul>
+                            <li><strong>Custom UDP Transport for the Device Fleet:</strong> Define and maintain the custom binary UDP protocol that smart-home hubs use to talk to the cloud, and the high-ingestion backend that decodes it. Tuned the ingest path end to end, from kernel-level packet handling to a load-adaptive JVM thread pool and allocation-free packet decoding.</li>
+                            <li><strong>Next-Generation Protocol R&amp;D:</strong> Driving R&amp;D on the next-generation device transport protocol to succeed the current UDP transport.</li>
+                            <li><strong>Cross-Team Protocol &amp; Architecture Proposals:</strong> Author the binary protocol definitions, API contracts, and technical specs (Git-based knowledge base) that firmware, mobile app, and backend teams review and implement against before releases. Propose architectural changes to the firmware and app teams, including the SNode virtual-node abstraction (aggregating disjoint physical devices into one composite device) and backward-compatible mobile rollout contracts.</li>
+                        </ul>
+                    </div>
+
+                    <div class="domain-group">
+                        <h4>Legacy Revamp &amp; Platform Stabilization</h4>
+                        <ul>
+                            <li><strong>Legacy Platform Modernization:</strong> Took full technical ownership of the backend and cloud infrastructure in 2023. Replaced manual SFTP WAR deployments with automated CI/CD, migrated Spring 4 (JDK 8) to Spring Boot 2.7.5 (JDK 17) to unlock TDD, rewrote the device provisioning and WiFi onboarding state machine, and removed obsolete dynamic TCP port provisioning and redundant in-memory state tracking.</li>
+                            <li><strong>Stabilizing Production:</strong> Eliminated recurring outages at the root: systemd file-descriptor limits starving thread allocation and locking out SSH, an auxiliary service leaking unpooled MongoDB connections, and silent "ghost connections" poisoning Redis Pub/Sub pools (Lettuce vs. Jedis). Fixed a months-old legacy sync bug silently corrupting hub automations and reconciled state across thousands of live homes without breaking customer automations.</li>
+                            <li><strong>Reducing Downtime with Deliberate Release Strategy:</strong> Made zero-downtime the default: kernel-level blue-green cutovers (<code>iptables</code> DNAT across <code>PREROUTING</code> and <code>OUTPUT</code>, <code>conntrack</code> flush), atomic and idempotent deploy tooling with pre-flight health checks and rollback guards after a live incident, a mandatory on-prem staging gate mirroring production topology, and a feature flags engine (percentage rollouts, instant kill switches) for high-blast-radius cloud, mobile, and firmware changes.</li>
+                        </ul>
+                    </div>
+
+                    <div class="domain-group">
                         <h4>Systems Architecture &amp; Kernel Networking</h4>
                         <ul>
                             <li><strong>In-Kernel Dual-Stack NAT64 (<code>Jool</code> + <code>nftables</code>):</strong> Resolved an edge network partition where cellular IoT hubs operated strictly over IPv6 while backend services were IPv4. Bypassed userspace proxies to preserve CPU credits; deployed the <code>Jool</code> kernel module for stateful NAT64 alongside <code>nftables</code> DNAT to cleanly partition source port ranges on a shared public IPv4.</li>
                             <li><strong>Prerouting Packet Reflection &amp; Dynamic Abuse Mitigation:</strong> Offloaded UDP NAT traversal echo responses directly into the Linux kernel using <code>nftables</code> packet reflection (<code>notrack</code>) at prerouting priority, avoiding userspace context switches. Implemented kernel-level DDoS mitigation via <code>nftables</code> dynamic sets (<code>limit rate over 10/second burst 20 packets</code> at prerouting priority -301) dropping sweeps before socket allocation.</li>
-                            <li><strong>Zero-Downtime Kernel Switching:</strong> Designed zero-downtime deployment pipelines using <code>iptables</code> DNAT cutovers across both <code>PREROUTING</code> and <code>OUTPUT</code> chains, explicitly flushing the <code>conntrack</code> state table to switch backend traffic without dropping active connections. Hardened deployment and recovery tooling with atomic routing mutations and pre-flight health checks following high-pressure live incident triage.</li>
                             <li><strong>Academic Preprint Publication (Zenodo):</strong> Authored and published <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer"><em>Connection-Agnostic Presence Tracking for Stateless Distributed Backends</em></a>: formulated a Redis sorted-set architecture with expiration deadlines and throttled batch writes to track IoT device state with mathematically bounded detection latency.</li>
                         </ul>
                     </div>
@@ -98,7 +115,6 @@ import Layout from '../layouts/Layout.astro';
                         <ul>
                             <li><strong>Dynamic IoT-Aware ThreadPool:</strong> Overhauled JVM thread management under bursty IoT packet waves by replacing default thread pools with an adaptive dynamic ThreadPool that scales worker threads based on real-time packet velocity and queue depth.</li>
                             <li><strong>Deep JVM Profiling &amp; Zero-Allocation Hot Paths:</strong> Instrumented live production systems with <code>async-profiler</code> and JMC flame graphs. Mitigated allocation churn with buffer pooling and <code>ThreadLocal</code> storage; refactored critical packet decoding loops from <code>String.format</code> to Java 17 <code>HexFormat</code> and bitwise arithmetic, eliminating hot-path CPU bottlenecks. Pinned heap boundaries (<code>-Xms = -Xmx</code> at 4GB) and tuned GC for low pause times.</li>
-                            <li><strong>Redis Connection Pool Forensics:</strong> Diagnosed and eliminated silent "ghost connections" and thread pool poisoning in Redis Pub/Sub drivers (Lettuce vs. Jedis) that caused cascading application timeouts under transient network partitions.</li>
                         </ul>
                     </div>
 
@@ -108,9 +124,9 @@ import Layout from '../layouts/Layout.astro';
                             <li><strong>Google Cloud Platform Administration &amp; FinOps:</strong> Google Cloud Platform Administrator managing IAM policies, VPC networks, Cloud Storage, and compute infrastructure. Evaluated spend-based vs. resource-based CUD models and executed a 3-year resource-based Committed Use Discount (CUD) on core compute instances.</li>
                             <li><strong>Observability &amp; Telemetry Infrastructure:</strong> Replaced ad-hoc raw log dumping on production VM disks with centralized log aggregation using Grafana and Loki. Built a pre-production Docker Compose telemetry stack integrating Grafana, Loki, VictoriaMetrics, VictoriaLogs, and Alloy with host and container performance dashboards.</li>
                             <li><strong>Zero-Trust Diagnostic Tooling (<code>hlogger</code>):</strong> Built a secure client-server log inspection utility in Go using Mutual TLS (mTLS) with a custom PKI hierarchy (Root CA, Intermediate CA, client certificates, CRL), eliminating unauthenticated engineer SSH access to production instances.</li>
-                            <li><strong>On-Prem Staging Parity &amp; Bare-Metal Homelab:</strong> Built an on-prem staging environment replicating production network topology, establishing a mandatory pre-production validation gate. Configured a Proxmox VE bare-metal host provisioned via OpenTofu and <code>cloud-init</code> to evaluate container orchestration (k3s, HashiCorp Nomad, AWS EKS spikes).</li>
+                            <li><strong>Bare-Metal Homelab:</strong> Configured a Proxmox VE bare-metal host provisioned via OpenTofu and <code>cloud-init</code> to evaluate container orchestration (k3s, HashiCorp Nomad, AWS EKS spikes).</li>
                             <li><strong>Declarative Marketing Infrastructure:</strong> Decoupled the public marketing website completely from core backend infrastructure into its own isolated GCP project, codifying 100% of Cloud Run, Cloud SQL (PostgreSQL), networking, and IAM via Terraform / OpenTofu.</li>
-                            <li><strong>Platform Automation &amp; Integrations:</strong> Extended scene/rule automation engines for multi-hub environments (fragment handling, cross-hub synchronization); built cloud-to-cloud OAuth integrations for Yale smart locks, Google Home, and Alexa; rewrote hardware device provisioning flows and replacement operations for failed nodes.</li>
+                            <li><strong>Platform Automation &amp; Integrations:</strong> Extended scene/rule automation engines for multi-hub environments (fragment handling, cross-hub synchronization); built cloud-to-cloud OAuth integrations for Yale smart locks, Google Home, and Alexa; built replacement operations for failed hardware nodes without losing room mappings or automations.</li>
                             <li><strong>Technical Hiring:</strong> Formulated structured, multi-step technical hiring assessments and evaluation rubrics for backend engineering; interviewed candidates and hired software engineering talent for the platform.</li>
                         </ul>
                     </div>
