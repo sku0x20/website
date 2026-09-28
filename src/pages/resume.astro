@@ -76,7 +76,7 @@ import Layout from '../layouts/Layout.astro';
                     <div class="domain-group">
                         <h4>IoT Platform &amp; High-Ingestion Protocols</h4>
                         <ul>
-                            <li><strong>Custom UDP Transport for the Device Fleet:</strong> Define and maintain the custom binary UDP protocol that smart-home hubs use to talk to the cloud, and the high-ingestion backend that decodes it. Tuned the ingest path end to end, from kernel-level packet handling to a load-adaptive JVM thread pool and allocation-free packet decoding.</li>
+                            <li><strong>Custom UDP Transport for the Device Fleet:</strong> Define and maintain the custom binary UDP protocol that smart-home hubs use to talk to the cloud, and the high-ingestion backend that decodes it. Tuned the ingest path end to end for throughput and low per-packet latency, from kernel-level packet handling to a load-adaptive JVM thread pool and allocation-free packet decoding.</li>
                             <li><strong>Next-Generation Protocol R&amp;D:</strong> Driving R&amp;D on the next-generation device transport protocol to succeed the current UDP transport.</li>
                             <li><strong>Cross-Team Protocol &amp; Architecture Proposals:</strong> Author the binary protocol definitions, API contracts, and technical specs (Git-based knowledge base) that firmware, mobile app, and backend teams review and implement against before releases. Propose architectural changes to the firmware and app teams, including the SNode virtual-node abstraction (aggregating disjoint physical devices into one composite device) and backward-compatible mobile rollout contracts.</li>
                         </ul>
