@@ -2,9 +2,9 @@
 import Layout from '../layouts/Layout.astro';
 ---
 
-<Layout 
-    title="Resume — Siddhant Kumar Upmanyu" 
-    description="Resume of Siddhant Kumar Upmanyu — Senior Systems Architect specializing in distributed systems, IoT platforms, and high-ingestion systems."
+<Layout
+    title="Resume — Siddhant Kumar Upmanyu"
+    description="Resume of Siddhant Kumar Upmanyu — Senior Platform Engineer and sole owner of cloud architecture and infrastructure for 10,000+ IoT hubs."
 >
     <div class="resume-container">
         <div class="resume-actions">
@@ -14,174 +14,110 @@ import Layout from '../layouts/Layout.astro';
 
         <article class="resume-paper">
             <header>
-                <div class="header-top">
-                    <h1>Siddhant Kumar Upmanyu</h1>
-                    <span class="location">Bengaluru, India</span>
-                </div>
-                <p class="subtitle">Senior Systems Architect · Distributed Systems, IoT Platform &amp; High-Ingestion Systems</p>
-                <div class="links">
-                    <a href="https://www.sku20.dev/">sku20.dev</a>
-                    <span>•</span>
-                    <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">github.com/sku0x20</a>
-                    <span>•</span>
-                    <a href="https://linkedin.com/in/sku20" target="_blank" rel="noopener noreferrer">linkedin.com/in/sku20</a>
-                    <span>•</span>
+                <h1>Siddhant Kumar Upmanyu</h1>
+                <p class="subtitle">Senior Platform Engineer · SRE · Cloud Architecture</p>
+                <p class="contact">
+                    Bengaluru, India
+                    <span>|</span>
                     <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
-                    <span>•</span>
-                    <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer">Zenodo Preprint</a>
-                </div>
+                    <span>|</span>
+                    <a href="https://linkedin.com/in/sku20" target="_blank" rel="noopener noreferrer">linkedin.com/in/sku20</a>
+                    <span>|</span>
+                    <a href="https://github.com/sku0x20" target="_blank" rel="noopener noreferrer">github.com/sku0x20</a>
+                    <span>|</span>
+                    <a href="https://www.sku20.dev/">sku20.dev</a>
+                </p>
             </header>
 
-            <section class="bio">
+            <section>
                 <h2>Summary</h2>
-                <p>Senior Systems Architect owning the backend platform and cloud infrastructure of a smart-home IoT product. Took over a legacy, manually deployed stack and turned it into a stable, high-ingestion platform: refactored legacy services, removed recurring outage causes at the root, and made zero-downtime migrations and controlled rollouts the default. Own the custom binary UDP transport the device fleet speaks today and drive R&amp;D on its next-generation successor. Author the protocol specs and data contracts that firmware, mobile app, and backend teams build against, and propose architectural changes across those teams.</p>
+                <p>Platform and infrastructure engineer with 4+ years at a smart-home IoT company. Sole engineer responsible for its cloud platform and infrastructure, which supports 10,000+ hubs and about 1 million connected devices. Make the architecture, reliability and cost decisions for the cloud side, and write the protocol and API specs that a core team of about 10 firmware, mobile and backend engineers build against. Took over a manually deployed legacy stack and made it stable, with automated, zero-downtime releases.</p>
             </section>
 
             <section class="skills">
-                <h2>Technical Competencies</h2>
-                <div class="skills-grid">
-                    <span class="skill-label">Architecture</span>
-                    <span>IoT Platform, Distributed Systems, High-Ingestion Pipelines, Binary Protocol Design, Zero-Downtime Migrations</span>
+                <h2>Skills</h2>
+                <p><strong>Cloud &amp; Infrastructure:</strong> Google Cloud Platform (GCP: Compute Engine, Cloud Run, Cloud SQL, Cloud Storage, IAM, VPC), AWS (EKS), Kubernetes (k8s), Helm, Docker, Docker Compose, Terraform, OpenTofu, Infrastructure as Code (IaC), Proxmox, cloud-init</p>
+                <p><strong>CI/CD &amp; Releases:</strong> GitHub Actions, GitOps, blue-green deployments, canary releases, feature flags, automated rollback</p>
+                <p><strong>Observability:</strong> Grafana, Loki, Prometheus, VictoriaMetrics, VictoriaLogs, Grafana Alloy, OpenTelemetry, distributed tracing</p>
+                <p><strong>Reliability:</strong> Incident response, root cause analysis (RCA), high availability, disaster recovery, performance and JVM tuning, cost optimization (FinOps)</p>
+                <p><strong>Linux &amp; Networking:</strong> Linux (Debian, Ubuntu), systemd, Nginx, DNS, TCP/UDP, iptables, nftables, NAT64, rate limiting, DDoS mitigation</p>
+                <p><strong>Security:</strong> TLS certificates, Let's Encrypt, mTLS, PKI, IAM, least privilege, zero trust</p>
+                <p><strong>Databases &amp; Messaging:</strong> PostgreSQL, MongoDB, Redis (Pub/Sub), ClickHouse, database administration, query optimization, indexing, data migration</p>
+                <p><strong>Languages &amp; Frameworks:</strong> Go, Kotlin, Java, Python, Rust, Bash, SQL, C, Spring Boot, gRPC, Protocol Buffers, REST APIs, microservices</p>
+                <p><strong>Practices:</strong> Test-driven development (TDD), Extreme Programming (XP), API and protocol design</p>
+            </section>
 
-                    <span class="skill-label">Languages</span>
-                    <span>Kotlin, Java, Go, Rust, Zig, C, Shell scripting (POSIX/Bash), SQL</span>
+            <section>
+                <h2>Experience</h2>
 
-                    <span class="skill-label">Kernel &amp; Networking</span>
-                    <span>Linux kernel (<code>nftables</code>, <code>iptables</code>), in-kernel NAT64 (<code>Jool</code>), TCP/UDP socket programming, mTLS &amp; custom PKI (CA/CRL), packet reflection, conntrack tuning</span>
-
-                    <span class="skill-label">Distributed &amp; Storage</span>
-                    <span>ClickHouse (columnar modeling, Delta+ZSTD codecs), Redis, PostgreSQL, MongoDB, gRPC, Protocol Buffers, REST</span>
-
-                    <span class="skill-label">Cloud &amp; SRE</span>
-                    <span>Google Cloud (IAM, VPC, Cloud Run, Cloud SQL, GCS), AWS (Lambda, EKS spike), Terraform / OpenTofu IaC, Docker, Proxmox VE, GitHub Actions, Linux administration (Debian, Ubuntu)</span>
-
-                    <span class="skill-label">Observability</span>
-                    <span>Grafana, Loki, VictoriaMetrics, VictoriaLogs, Alloy, <code>async-profiler</code>, JMC, VisualVM, Linux performance tools (<code>sar</code>, <code>vmstat</code>, <code>iotop</code>, <code>pidstat</code>)</span>
-
-                    <span class="skill-label">Methodology</span>
-                    <span>Extreme Programming (XP), London-Style TDD, Consumer-Driven Contract Testing (Pact spike), Testcontainers</span>
+                <div class="job">
+                    <div class="row">
+                        <h3>eGlu Smart Homes (WiZNSystems)</h3>
+                        <span>Bengaluru, India</span>
+                    </div>
+                    <div class="row role">
+                        <span>Senior Systems Architect</span>
+                        <span>Apr 2026 – Present</span>
+                    </div>
+                    <div class="row role">
+                        <span>Senior Software Engineer</span>
+                        <span>Apr 2024 – Mar 2026</span>
+                    </div>
+                    <div class="row role">
+                        <span>Software Engineer</span>
+                        <span>Mar 2022 – Mar 2024</span>
+                    </div>
+                    <ul>
+                        <li>Write the protocol and API specs that firmware, mobile and backend teams build against before each release. Designed the backend hiring process and hired a backend engineer.</li>
+                        <li>Made zero-downtime releases the default: blue-green cutovers using iptables, deploy scripts with health checks and automatic rollback, a staging environment that mirrors production, and feature flags for gradual rollouts.</li>
+                        <li>Fixed the root causes of recurring outages: file-descriptor limits that blocked new threads and SSH logins, a service leaking MongoDB connections, and stale Redis connections that silently dropped messages.</li>
+                        <li>Took over a manually deployed legacy stack in 2023. Replaced manual uploads over SFTP with automated CI/CD and upgraded Spring 4 on Java 8 to Spring Boot 2.7 on Java 17.</li>
+                        <li>Set up centralized logging and monitoring with Grafana, Loki and VictoriaMetrics, replacing log files stored on production servers.</li>
+                        <li>Administer Google Cloud (IAM, networking, storage, compute). Moved the marketing website to its own project, fully managed with Terraform, and reduced compute costs with a 3-year committed use discount.</li>
+                        <li>Moved device telemetry from raw log files into ClickHouse, cutting storage by over 95% across three datasets (largest: 90 GB to 3.7 GB). Wrote the ingestion service in Go, connected to the main backend over gRPC.</li>
+                        <li>Moved image data out of MongoDB into Cloud Storage with zero downtime, shrinking the database 54x (3.6 GB to 67 MB) and its memory use by 89% (4.6 GB to 500 MB). Removed redundant indexes and added targeted ones to stop full collection scans.</li>
+                        <li>Connected IPv6-only cellular hubs to IPv4 backend services with in-kernel NAT64 (Jool and nftables), without adding a proxy. Added kernel-level rate limiting to drop abusive traffic before it reaches the application.</li>
+                        <li>Built a Go tool for reading production logs over mutual TLS with a private certificate authority, so engineers no longer need SSH access to production.</li>
+                        <li>Maintain the custom UDP protocol that hubs use to talk to the cloud, and the service behind it, built for peaks of up to 50,000 packets per second. Tuned it for low latency, from kernel packet handling to an adaptive JVM thread pool and allocation-free decoding. Leading R&amp;D on its next-generation replacement.</li>
+                    </ul>
                 </div>
             </section>
 
-            <section class="experience">
-                <h2>Professional Experience</h2>
-
-                <div class="company">
-                    <div class="company-meta">
-                        <h3>eGlu Smart Homes <span class="muted">(WiZNSystems)</span></h3>
-                        <span class="company-location">Bengaluru, India · 2022 – Present</span>
+            <section>
+                <h2>Projects</h2>
+                <div class="project">
+                    <div class="row">
+                        <h3>hrh — Helm release helper</h3>
+                        <a href="https://github.com/sku0x20/hrh" target="_blank" rel="noopener noreferrer">github.com/sku0x20/hrh</a>
                     </div>
-
-                    <div class="roles-bar">
-                        Senior Systems Architect (Apr 2026 – Present) &nbsp;|&nbsp; Senior Software Engineer (2024 – 2026) &nbsp;|&nbsp; Software Engineer (2022 – 2024)
+                    <p>Rust CLI for Helm deployments. Shows a diff before applying a release and rolls back automatically on failure.</p>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <h3>avoid — Minimal Linux distribution</h3>
+                        <a href="https://github.com/sku0x20/avoid" target="_blank" rel="noopener noreferrer">github.com/sku0x20/avoid</a>
                     </div>
-
-                    <div class="domain-group">
-                        <h4>IoT Platform &amp; High-Ingestion Protocols</h4>
-                        <ul>
-                            <li><strong>Custom UDP Transport for the Device Fleet:</strong> Define and maintain the custom binary UDP protocol that smart-home hubs use to talk to the cloud, and the high-ingestion backend that decodes it. Tuned the ingest path end to end for throughput and low per-packet latency, from kernel-level packet handling to a load-adaptive JVM thread pool and allocation-free packet decoding.</li>
-                            <li><strong>Next-Generation Protocol R&amp;D:</strong> Driving R&amp;D on the next-generation device transport protocol to succeed the current UDP transport.</li>
-                            <li><strong>Cross-Team Protocol &amp; Architecture Proposals:</strong> Author the binary protocol definitions, API contracts, and technical specs (Git-based knowledge base) that firmware, mobile app, and backend teams review and implement against before releases. Propose architectural changes to the firmware and app teams, including the SNode virtual-node abstraction (aggregating disjoint physical devices into one composite device) and backward-compatible mobile rollout contracts.</li>
-                        </ul>
+                    <p>Bootable Linux distribution based on Void Linux, built for server disaster recovery and small headless machines.</p>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <h3>stopgap — Kotlin microservice framework</h3>
+                        <a href="https://github.com/sku0x20/stopgap" target="_blank" rel="noopener noreferrer">github.com/sku0x20/stopgap</a>
                     </div>
-
-                    <div class="domain-group">
-                        <h4>Legacy Revamp &amp; Platform Stabilization</h4>
-                        <ul>
-                            <li><strong>Legacy Platform Modernization:</strong> Took full technical ownership of the backend and cloud infrastructure in 2023. Replaced manual SFTP WAR deployments with automated CI/CD, migrated Spring 4 (JDK 8) to Spring Boot 2.7.5 (JDK 17) to unlock TDD, rewrote the device provisioning and WiFi onboarding state machine, and removed obsolete dynamic TCP port provisioning and redundant in-memory state tracking.</li>
-                            <li><strong>Stabilizing Production:</strong> Eliminated recurring outages at the root: systemd file-descriptor limits starving thread allocation and locking out SSH, an auxiliary service leaking unpooled MongoDB connections, and silent "ghost connections" poisoning Redis Pub/Sub pools (Lettuce vs. Jedis). Fixed a months-old legacy sync bug silently corrupting hub automations and reconciled state across thousands of live homes without breaking customer automations.</li>
-                            <li><strong>Reducing Downtime with Deliberate Release Strategy:</strong> Made zero-downtime the default: kernel-level blue-green cutovers (<code>iptables</code> DNAT across <code>PREROUTING</code> and <code>OUTPUT</code>, <code>conntrack</code> flush), atomic, idempotent deploy tooling with pre-flight health checks and rollback guards, a mandatory on-prem staging gate mirroring production, and a feature flags engine (percentage rollouts, kill switches) for risky cloud, mobile, and firmware changes.</li>
-                        </ul>
-                    </div>
-
-                    <div class="domain-group">
-                        <h4>Systems Architecture &amp; Kernel Networking</h4>
-                        <ul>
-                            <li><strong>In-Kernel Dual-Stack NAT64 (<code>Jool</code> + <code>nftables</code>):</strong> Resolved an edge network partition where cellular IoT hubs operated strictly over IPv6 while backend services were IPv4. Bypassed userspace proxies to preserve CPU credits; deployed the <code>Jool</code> kernel module for stateful NAT64 alongside <code>nftables</code> DNAT to cleanly partition source port ranges on a shared public IPv4.</li>
-                            <li><strong>Prerouting Packet Reflection &amp; Dynamic Abuse Mitigation:</strong> Offloaded UDP NAT traversal echo responses directly into the Linux kernel using <code>nftables</code> packet reflection (<code>notrack</code>) at prerouting priority, avoiding userspace context switches. Implemented kernel-level DDoS mitigation via <code>nftables</code> dynamic sets (<code>limit rate over 10/second burst 20 packets</code> at prerouting priority -301) dropping sweeps before socket allocation.</li>
-                            <li><strong>Academic Preprint Publication (Zenodo):</strong> Authored and published <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer"><em>Connection-Agnostic Presence Tracking for Stateless Distributed Backends</em></a>: formulated a Redis sorted-set architecture with expiration deadlines and throttled batch writes to track IoT device state with bounded detection latency.</li>
-                        </ul>
-                    </div>
-
-                    <div class="domain-group">
-                        <h4>High-Throughput Telemetry &amp; Storage Systems</h4>
-                        <ul>
-                            <li><strong>ClickHouse Ingestion Engine (95%+ Compression):</strong> Resolved filesystem inode exhaustion caused by legacy directory log dumps. Designed high-throughput columnar ClickHouse schemas (<code>FixedString</code>, <code>LowCardinality</code>, Delta + ZSTD codecs, sparse composite primary keys), slashing telemetry footprint by 95%+ (compressing <code>device_health</code> telemetry from 17 GB down to 300 MB on disk). Executed zero-downtime partition-level backfilling and restore operations without slow <code>INSERT INTO</code> batches, and devised partition-level disaster recovery backup and restore policies.</li>
-                            <li><strong>Decoupled Ingestion Microservice:</strong> Engineered an auxiliary Go microservice communicating via binary gRPC with strict Protocol Buffers contracts to encapsulate ClickHouse, shielding the primary Kotlin/Spring Boot monolith from database driver coupling.</li>
-                            <li><strong>Zero-Downtime Storage Architecture:</strong> Architected and orchestrated an end-to-end multi-phase data migration decoupling binary Base64 image blobs from primary MongoDB collections to GCS with zero downtime; designed dual-write API contracts with document guardrails (<code>imageMigrated</code>), executed an asynchronous backfill pipeline with immutable GCS caching headers, coordinated backward-compatible mobile rollouts, and purged legacy blobs via <code>$unset</code>, slashing database storage by 54x (3.6 GB to 67 MB) and runtime memory by 89% (4.6 GB to 500 MB).</li>
-                            <li><strong>Production MongoDB DBA &amp; Index Engineering:</strong> Acted as hands-on DBA across heavy-load production MongoDB clusters. Audited slow query logs and execution plans (<code>explain</code>), pruned redundant/overlapping indexes to reclaim WiredTiger cache memory and reduce write amplification, refactored hot document schemas, and engineered selective compound indexes (strict Equality-Sort-Range ordering) to eliminate collection scans and in-memory sorts under sustained IoT write traffic.</li>
-                        </ul>
-                    </div>
-
-                    <div class="domain-group">
-                        <h4>Concurrency, Runtime &amp; JVM Performance</h4>
-                        <ul>
-                            <li><strong>Dynamic IoT-Aware ThreadPool:</strong> Overhauled JVM thread management under bursty IoT packet waves by replacing default thread pools with an adaptive dynamic ThreadPool that scales worker threads based on real-time packet velocity and queue depth.</li>
-                            <li><strong>Deep JVM Profiling &amp; Zero-Allocation Hot Paths:</strong> Instrumented live production systems with <code>async-profiler</code> and JMC flame graphs. Mitigated allocation churn with buffer pooling and <code>ThreadLocal</code> storage; refactored critical packet decoding loops from <code>String.format</code> to Java 17 <code>HexFormat</code> and bitwise arithmetic, eliminating hot-path CPU bottlenecks. Pinned heap boundaries (<code>-Xms = -Xmx</code> at 4GB) and tuned GC for low pause times.</li>
-                        </ul>
-                    </div>
-
-                    <div class="domain-group">
-                        <h4>Platform Engineering, Governance &amp; Cloud FinOps</h4>
-                        <ul>
-                            <li><strong>Google Cloud Platform Administration &amp; FinOps:</strong> Google Cloud Platform Administrator managing IAM policies, VPC networks, Cloud Storage, and compute infrastructure. Evaluated spend-based vs. resource-based CUD models and executed a 3-year resource-based Committed Use Discount (CUD) on core compute instances.</li>
-                            <li><strong>Observability &amp; Telemetry Infrastructure:</strong> Replaced ad-hoc raw log dumping on production VM disks with centralized log aggregation using Grafana and Loki. Built a pre-production Docker Compose telemetry stack integrating Grafana, Loki, VictoriaMetrics, VictoriaLogs, and Alloy with host and container performance dashboards.</li>
-                            <li><strong>Zero-Trust Diagnostic Tooling (<code>hlogger</code>):</strong> Built a secure client-server log inspection utility in Go using Mutual TLS (mTLS) with a custom PKI hierarchy (Root CA, Intermediate CA, client certificates, CRL), eliminating unauthenticated engineer SSH access to production instances.</li>
-                            <li><strong>Bare-Metal Homelab:</strong> Configured a Proxmox VE bare-metal host provisioned via OpenTofu and <code>cloud-init</code> to evaluate container orchestration (k3s, HashiCorp Nomad, AWS EKS spikes).</li>
-                            <li><strong>Declarative Marketing Infrastructure:</strong> Decoupled the public marketing website completely from core backend infrastructure into its own isolated GCP project, codifying 100% of Cloud Run, Cloud SQL (PostgreSQL), networking, and IAM via Terraform / OpenTofu.</li>
-                            <li><strong>Platform Automation &amp; Integrations:</strong> Extended scene/rule automation engines for multi-hub environments (fragment handling, cross-hub synchronization); built cloud-to-cloud OAuth integrations for Yale smart locks, Google Home, and Alexa; built replacement operations for failed hardware nodes without losing room mappings or automations.</li>
-                            <li><strong>Technical Hiring:</strong> Formulated structured, multi-step technical hiring assessments and evaluation rubrics for backend engineering; interviewed candidates and hired software engineering talent for the platform.</li>
-                        </ul>
-                    </div>
+                    <p>Built on Helidon SE and Java virtual threads. Published on Maven Central, with unit, integration and Docker end-to-end testing.</p>
                 </div>
             </section>
 
-            <section class="open-source">
-                <h2>Open-Source Systems &amp; Research</h2>
-                <div class="projects-grid">
-                    <div class="project">
-                        <div class="project-header">
-                            <a href="https://github.com/sku0x20/stopgap" target="_blank" rel="noopener noreferrer">stopgap</a>
-                            <span class="muted">Kotlin · Maven Central (<code>2.8.0</code>)</span>
-                        </div>
-                        <p>Microservice framework on Helidon SE (Nima) + Project Loom virtual threads. Custom compile-time DI via KSP (zero runtime reflection). Three-tier testing harness: unit → in-process integration server → Docker E2E via Testcontainers.</p>
-                    </div>
-                    <div class="project">
-                        <div class="project-header">
-                            <a href="https://github.com/sku0x20/assertgo" target="_blank" rel="noopener noreferrer">assertgo</a>
-                            <span class="muted">Go · Generics</span>
-                        </div>
-                        <p>Type-safe testing assertion library built with modern Go generics. Provides a fluent assertion API, chainable <code>Not()</code>, custom matchers, and zero external dependencies.</p>
-                    </div>
-                    <div class="project">
-                        <div class="project-header">
-                            <a href="https://github.com/sku0x20/relay" target="_blank" rel="noopener noreferrer">relay</a>
-                            <span class="muted">Zig · Systems</span>
-                        </div>
-                        <p>Low-level TCP server in pure Zig: raw POSIX sockets, manual memory management, no libc runtime, <code>SIGPIPE</code> suppression.</p>
-                    </div>
-                    <div class="project">
-                        <div class="project-header">
-                            <a href="https://github.com/sku0x20/hrh" target="_blank" rel="noopener noreferrer">hrh</a>
-                            <span class="muted">Rust · CLI</span>
-                        </div>
-                        <p>Helm Release Helper CLI — automated declarative Helm deployments with diff previews and atomic rollback guarantees via <code>cargo install</code>.</p>
-                    </div>
-                    <div class="project">
-                        <div class="project-header">
-                            <a href="https://github.com/sku0x20/avoid" target="_blank" rel="noopener noreferrer">avoid</a>
-                            <span class="muted">Shell / Linux · Distro</span>
-                        </div>
-                        <p>Minimal, bootable Linux distribution based on Void Linux engineered for server disaster recovery and lightweight headless appliances.</p>
-                    </div>
-                </div>
+            <section>
+                <h2>Publications</h2>
+                <p><em>Connection-Agnostic Presence Tracking for Stateless Distributed Backends</em>. Zenodo preprint. <a href="https://doi.org/10.5281/zenodo.21717242" target="_blank" rel="noopener noreferrer">doi.org/10.5281/zenodo.21717242</a></p>
             </section>
 
-            <section class="education">
+            <section>
                 <h2>Education</h2>
-                <div class="education-row">
+                <div class="row">
                     <span><strong>Bachelor of Computer Applications (BCA)</strong></span>
-                    <span class="muted">2019 – 2022</span>
+                    <span>2019 – 2022</span>
                 </div>
             </section>
         </article>
