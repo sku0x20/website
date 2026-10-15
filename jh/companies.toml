@@ -1,0 +1,449 @@
+# Boards the crawler pulls from. Every slug here was probed live on 2026-10-16.
+# Stages are best-effort estimates; fix them as you learn more.
+# stage: seed | A | B | C | late
+# ats: greenhouse | lever | ashby  (slug = the part after the domain in the jobs URL)
+
+# --- India-based ---
+[[company]]
+name = "Plane"
+ats = "ashby"
+slug = "plane"
+stage = "A"
+
+[[company]]
+name = "SigNoz"
+ats = "ashby"
+slug = "signoz"
+stage = "A"
+
+[[company]]
+name = "Composio"
+ats = "ashby"
+slug = "composio"
+stage = "B"
+
+[[company]]
+name = "Atlan"
+ats = "ashby"
+slug = "atlan"
+stage = "C"
+
+[[company]]
+name = "Hevo Data"
+ats = "lever"
+slug = "hevodata"
+stage = "C"
+
+[[company]]
+name = "Sarvam AI"
+ats = "ashby"
+slug = "sarvam"
+stage = "B"
+
+[[company]]
+name = "Zeta"
+ats = "lever"
+slug = "zeta"
+stage = "late"
+
+[[company]]
+name = "CRED"
+ats = "lever"
+slug = "cred"
+stage = "late"
+
+[[company]]
+name = "Safe Security"
+ats = "lever"
+slug = "safe"
+stage = "C"
+
+# --- Infra / platform / devtools (remote-friendly) ---
+[[company]]
+name = "Tailscale"
+ats = "greenhouse"
+slug = "tailscale"
+stage = "C"
+
+[[company]]
+name = "Railway"
+ats = "ashby"
+slug = "railway"
+stage = "B"
+
+[[company]]
+name = "Render"
+ats = "ashby"
+slug = "render"
+stage = "C"
+
+[[company]]
+name = "PlanetScale"
+ats = "greenhouse"
+slug = "planetscale"
+stage = "C"
+
+[[company]]
+name = "Coder"
+ats = "ashby"
+slug = "coder"
+stage = "C"
+
+[[company]]
+name = "Zed"
+ats = "ashby"
+slug = "zed"
+stage = "B"
+
+[[company]]
+name = "Warp"
+ats = "ashby"
+slug = "warp"
+stage = "B"
+
+[[company]]
+name = "Akuity"
+ats = "greenhouse"
+slug = "akuity"
+stage = "A"
+
+[[company]]
+name = "Upbound"
+ats = "greenhouse"
+slug = "upbound"
+stage = "B"
+
+[[company]]
+name = "Cortex"
+ats = "greenhouse"
+slug = "cortex"
+stage = "B"
+
+[[company]]
+name = "OpsLevel"
+ats = "ashby"
+slug = "opslevel"
+stage = "B"
+
+[[company]]
+name = "incident.io"
+ats = "ashby"
+slug = "incident"
+stage = "B"
+
+[[company]]
+name = "Infisical"
+ats = "ashby"
+slug = "infisical"
+stage = "A"
+
+[[company]]
+name = "Doppler"
+ats = "ashby"
+slug = "doppler"
+stage = "B"
+
+[[company]]
+name = "Oso"
+ats = "ashby"
+slug = "oso"
+stage = "B"
+
+[[company]]
+name = "Linear"
+ats = "ashby"
+slug = "linear"
+stage = "C"
+
+[[company]]
+name = "Mintlify"
+ats = "ashby"
+slug = "mintlify"
+stage = "B"
+
+[[company]]
+name = "Inngest"
+ats = "ashby"
+slug = "inngest"
+stage = "A"
+
+[[company]]
+name = "Nango"
+ats = "ashby"
+slug = "nango"
+stage = "A"
+
+[[company]]
+name = "Resend"
+ats = "ashby"
+slug = "resend"
+stage = "A"
+
+[[company]]
+name = "Clerk"
+ats = "ashby"
+slug = "clerk"
+stage = "C"
+
+[[company]]
+name = "LiveKit"
+ats = "ashby"
+slug = "livekit"
+stage = "B"
+
+[[company]]
+name = "Vapi"
+ats = "ashby"
+slug = "vapi"
+stage = "A"
+
+# --- Observability ---
+[[company]]
+name = "Dash0"
+ats = "ashby"
+slug = "dash0"
+stage = "A"
+
+[[company]]
+name = "Checkly"
+ats = "ashby"
+slug = "checkly"
+stage = "B"
+
+[[company]]
+name = "LogRocket"
+ats = "lever"
+slug = "logrocket"
+stage = "C"
+
+[[company]]
+name = "Honeycomb"
+ats = "greenhouse"
+slug = "honeycomb"
+stage = "late"
+
+[[company]]
+name = "Grafana Labs"
+ats = "greenhouse"
+slug = "grafanalabs"
+stage = "late"
+
+[[company]]
+name = "Sentry"
+ats = "ashby"
+slug = "sentry"
+stage = "late"
+
+# --- Data / databases ---
+[[company]]
+name = "ClickHouse"
+ats = "ashby"
+slug = "clickhouse"
+stage = "late"
+
+[[company]]
+name = "Tiger Data (Timescale)"
+ats = "ashby"
+slug = "tigerdata"
+stage = "C"
+
+[[company]]
+name = "Materialize"
+ats = "ashby"
+slug = "materialize"
+stage = "C"
+
+[[company]]
+name = "Tinybird"
+ats = "lever"
+slug = "tinybird"
+stage = "B"
+
+[[company]]
+name = "MotherDuck"
+ats = "ashby"
+slug = "motherduck"
+stage = "B"
+
+[[company]]
+name = "Airbyte"
+ats = "ashby"
+slug = "airbyte"
+stage = "B"
+
+[[company]]
+name = "Prefect"
+ats = "ashby"
+slug = "prefect"
+stage = "B"
+
+[[company]]
+name = "Astronomer"
+ats = "ashby"
+slug = "astronomer"
+stage = "late"
+
+[[company]]
+name = "Hightouch"
+ats = "ashby"
+slug = "hightouch"
+stage = "C"
+
+[[company]]
+name = "Yugabyte"
+ats = "greenhouse"
+slug = "yugabyte"
+stage = "C"
+
+[[company]]
+name = "Temporal"
+ats = "ashby"
+slug = "temporal"
+stage = "late"
+
+[[company]]
+name = "Supabase"
+ats = "ashby"
+slug = "supabase"
+stage = "late"
+
+[[company]]
+name = "PostHog"
+ats = "ashby"
+slug = "posthog"
+stage = "late"
+
+[[company]]
+name = "Percona"
+ats = "ashby"
+slug = "percona"
+stage = "late"
+
+# --- AI infra / compute ---
+[[company]]
+name = "Modal"
+ats = "ashby"
+slug = "modal"
+stage = "B"
+
+[[company]]
+name = "Together AI"
+ats = "greenhouse"
+slug = "togetherai"
+stage = "B"
+
+[[company]]
+name = "Fireworks AI"
+ats = "ashby"
+slug = "fireworks"
+stage = "C"
+
+[[company]]
+name = "Anyscale"
+ats = "ashby"
+slug = "anyscale"
+stage = "C"
+
+[[company]]
+name = "Baseten"
+ats = "ashby"
+slug = "baseten"
+stage = "late"
+
+[[company]]
+name = "Weaviate"
+ats = "ashby"
+slug = "weaviate"
+stage = "B"
+
+[[company]]
+name = "Zilliz"
+ats = "lever"
+slug = "zilliz"
+stage = "B"
+
+[[company]]
+name = "LanceDB"
+ats = "ashby"
+slug = "lancedb"
+stage = "A"
+
+[[company]]
+name = "Crusoe"
+ats = "ashby"
+slug = "crusoe"
+stage = "late"
+
+[[company]]
+name = "Lambda"
+ats = "ashby"
+slug = "lambda"
+stage = "late"
+
+# --- Security ---
+[[company]]
+name = "Chainguard"
+ats = "greenhouse"
+slug = "chainguard"
+stage = "late"
+
+[[company]]
+name = "Socket"
+ats = "ashby"
+slug = "socket"
+stage = "B"
+
+[[company]]
+name = "Secureframe"
+ats = "lever"
+slug = "secureframe"
+stage = "B"
+
+[[company]]
+name = "Tines"
+ats = "greenhouse"
+slug = "tines"
+stage = "C"
+
+[[company]]
+name = "Torq"
+ats = "greenhouse"
+slug = "torq"
+stage = "C"
+
+[[company]]
+name = "Drata"
+ats = "ashby"
+slug = "drata"
+stage = "C"
+
+# --- IoT ---
+[[company]]
+name = "Hologram"
+ats = "greenhouse"
+slug = "hologram"
+stage = "B"
+
+[[company]]
+name = "Samsara"
+ats = "greenhouse"
+slug = "samsara"
+stage = "late"
+
+[[company]]
+name = "Verkada"
+ats = "greenhouse"
+slug = "verkada"
+stage = "late"
+
+[[company]]
+name = "Nabu Casa"
+ats = "ashby"
+slug = "nabucasa"
+stage = "seed"
+
+[[company]]
+name = "HiveMQ"
+ats = "ashby"
+slug = "hivemq"
+stage = "B"

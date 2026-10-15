@@ -20,7 +20,7 @@ interface Props {
 
 const {
     title,
-    description = 'Siddhant Kumar Upmanyu — Senior Systems Architect. Notes on backend systems, kernel networking, and distributed storage.',
+    description = 'Siddhant Kumar Upmanyu — Senior Systems Architect (Platform & SRE) in Bengaluru. Notes on cloud infrastructure, Kubernetes, Linux networking and databases.',
     image,
     type = 'website',
 } = Astro.props;
@@ -28,6 +28,18 @@ const path = Astro.url.pathname.replace(/\/$/, '') || '/';
 const isActive = (href: string) => path === href || (href !== '/' && path.startsWith(href + '/'));
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 const ogImageURL = image ? new URL(image, Astro.site) : undefined;
+const person = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Siddhant Kumar Upmanyu',
+    jobTitle: 'Senior Systems Architect',
+    url: 'https://www.sku20.dev/',
+    email: 'mailto:siddhantkumarupmanyu@gmail.com',
+    address: { '@type': 'PostalAddress', addressLocality: 'Bengaluru', addressCountry: 'IN' },
+    worksFor: { '@type': 'Organization', name: 'eGlu Smart Homes' },
+    knowsAbout: ['Platform Engineering', 'Site Reliability Engineering', 'Kubernetes', 'Terraform', 'Google Cloud Platform', 'AWS', 'Linux', 'Observability', 'ClickHouse', 'Go'],
+    sameAs: ['https://linkedin.com/in/sku20', 'https://github.com/sku0x20'],
+};
 ---
 
 <!DOCTYPE html>
@@ -51,6 +63,8 @@ const ogImageURL = image ? new URL(image, Astro.site) : undefined;
     <meta name="twitter:title" content={title}>
     <meta name="twitter:description" content={description}>
     {ogImageURL && <meta name="twitter:image" content={ogImageURL}>}
+
+    {path === '/' && <script type="application/ld+json" set:html={JSON.stringify(person)} />}
 
     <ClientRouter />
 
