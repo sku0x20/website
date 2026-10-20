@@ -447,3 +447,194 @@ name = "HiveMQ"
 ats = "ashby"
 slug = "hivemq"
 stage = "B"
+
+# --- added 2026-10-19 ---
+
+# India product, infra-heavy backend
+[[company]]
+name = "Razorpay"
+ats = "greenhouse"
+slug = "razorpaysoftwareprivatelimited"
+stage = "late"
+
+[[company]]
+name = "Groww"
+ats = "greenhouse"
+slug = "groww"
+stage = "late"
+
+[[company]]
+name = "Meesho"
+ats = "lever"
+slug = "meesho"
+stage = "late"
+
+[[company]]
+name = "Tekion"
+ats = "ashby"
+slug = "tekion"
+stage = "late"
+
+[[company]]
+name = "FamPay"
+ats = "lever"
+slug = "fampay"
+stage = "B"
+
+[[company]]
+name = "DevRev"
+ats = "greenhouse"
+slug = "devrev"
+stage = "A"
+
+[[company]]
+name = "TrueFoundry"
+ats = "greenhouse"
+slug = "truefoundry"
+stage = "A"
+
+[[company]]
+name = "Mindtickle"
+ats = "lever"
+slug = "mindtickle"
+stage = "late"
+
+[[company]]
+name = "HackerRank"
+ats = "greenhouse"
+slug = "hackerrank"
+stage = "late"
+
+[[company]]
+name = "Druva"
+ats = "greenhouse"
+slug = "druva"
+stage = "late"
+
+[[company]]
+name = "Rubrik"
+ats = "greenhouse"
+slug = "rubrik"
+stage = "late"
+
+[[company]]
+name = "Harness"
+ats = "greenhouse"
+slug = "harnessinc"
+stage = "late"
+
+[[company]]
+name = "Nium"
+ats = "lever"
+slug = "nium"
+stage = "late"
+
+[[company]]
+name = "Observe.AI"
+ats = "greenhouse"
+slug = "observeai"
+stage = "C"
+
+[[company]]
+name = "Pocket FM"
+ats = "lever"
+slug = "pocketfm"
+stage = "late"
+
+[[company]]
+name = "Glean"
+ats = "greenhouse"
+slug = "gleanwork"
+stage = "late"
+
+[[company]]
+name = "Databricks"
+ats = "greenhouse"
+slug = "databricks"
+stage = "late"
+
+[[company]]
+name = "Stripe"
+ats = "greenhouse"
+slug = "stripe"
+stage = "late"
+
+[[company]]
+name = "Coinbase"
+ats = "greenhouse"
+slug = "coinbase"
+stage = "late"
+
+
+# Networking (L3/L4, SASE, real-time/UDP)
+[[company]]
+name = "Zscaler"
+ats = "greenhouse"
+slug = "zscaler"
+stage = "late"
+
+[[company]]
+name = "Netskope"
+ats = "greenhouse"
+slug = "netskope"
+stage = "late"
+
+[[company]]
+name = "Aviatrix"
+ats = "greenhouse"
+slug = "aviatrix"
+stage = "late"
+
+[[company]]
+name = "Kong"
+ats = "ashby"
+slug = "kong"
+stage = "late"
+
+[[company]]
+name = "Tigera"
+ats = "greenhouse"
+slug = "tigera"
+stage = "C"
+
+[[company]]
+name = "NetBird"
+ats = "ashby"
+slug = "netbird"
+stage = "A"
+
+[[company]]
+name = "Twingate"
+ats = "lever"
+slug = "twingate"
+stage = "B"
+
+[[company]]
+name = "ngrok"
+ats = "greenhouse"
+slug = "ngrokinc"
+stage = "B"
+
+[[company]]
+name = "Cloudflare"
+ats = "greenhouse"
+slug = "cloudflare"
+stage = "late"
+
+[[company]]
+name = "Fastly"
+ats = "greenhouse"
+slug = "fastly"
+stage = "late"
+
+[[company]]
+name = "100ms"
+ats = "lever"
+slug = "100ms"
+stage = "B"
+
+[[company]]
+name = "Twilio"
+ats = "greenhouse"
+slug = "twilio"
+stage = "late"

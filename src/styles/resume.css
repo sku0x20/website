@@ -178,6 +178,10 @@
     display: none !important;
   }
 
+  .page-break {
+    break-before: page;
+  }
+
   .resume-container {
     max-width: 100% !important;
     margin: 0 !important;

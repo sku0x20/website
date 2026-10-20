@@ -15,9 +15,11 @@ import Layout from '../layouts/Layout.astro';
         <article class="resume-paper">
             <header>
                 <h1>Siddhant Kumar Upmanyu</h1>
-                <p class="subtitle">Senior Platform Engineer · SRE · Cloud Architecture</p>
+                <p class="subtitle">Senior Systems Architect · Platform &amp; SRE</p>
                 <p class="contact">
                     Bengaluru, India
+                    <span>|</span>
+                    <a href="tel:+918383056329">+91 83830 56329</a>
                     <span>|</span>
                     <a href="mailto:siddhantkumarupmanyu@gmail.com">siddhantkumarupmanyu@gmail.com</a>
                     <span>|</span>
@@ -31,20 +33,17 @@ import Layout from '../layouts/Layout.astro';
 
             <section>
                 <h2>Summary</h2>
-                <p>Platform and infrastructure engineer with 4+ years at a smart-home IoT company. Sole engineer responsible for its cloud platform and infrastructure, which supports 10,000+ hubs and about 1 million connected devices. Make the architecture, reliability and cost decisions for the cloud side, and write the protocol and API specs that a core team of about 10 firmware, mobile and backend engineers build against. Took over a manually deployed legacy stack and made it stable, with automated, zero-downtime releases.</p>
+                <p>The only infrastructure engineer at a smart-home IoT company for 4+ years. Own the cloud side end to end (architecture, reliability, cost, security and data) for a platform serving 10,000+ hubs and about 1 million connected devices. Write the protocol and API specs that a core team of about 10 firmware, mobile and backend engineers build against. Took over a manually deployed legacy stack, made it stable with automated, zero-downtime releases, and cut the monthly cloud bill by about 40%.</p>
             </section>
 
             <section class="skills">
                 <h2>Skills</h2>
-                <p><strong>Cloud &amp; Infrastructure:</strong> Google Cloud Platform (GCP: Compute Engine, Cloud Run, Cloud SQL, Cloud Storage, IAM, VPC), AWS (EKS), Kubernetes (k8s), Helm, Docker, Docker Compose, Terraform, OpenTofu, Infrastructure as Code (IaC), Proxmox, cloud-init</p>
-                <p><strong>CI/CD &amp; Releases:</strong> GitHub Actions, GitOps, blue-green deployments, canary releases, feature flags, automated rollback</p>
-                <p><strong>Observability:</strong> Grafana, Loki, Prometheus, VictoriaMetrics, VictoriaLogs, Grafana Alloy, OpenTelemetry, distributed tracing</p>
-                <p><strong>Reliability:</strong> Incident response, root cause analysis (RCA), high availability, disaster recovery, performance and JVM tuning, cost optimization (FinOps)</p>
-                <p><strong>Linux &amp; Networking:</strong> Linux (Debian, Ubuntu), systemd, Nginx, DNS, TCP/UDP, iptables, nftables, NAT64, rate limiting, DDoS mitigation</p>
-                <p><strong>Security:</strong> TLS certificates, Let's Encrypt, mTLS, PKI, IAM, least privilege, zero trust</p>
-                <p><strong>Databases &amp; Messaging:</strong> PostgreSQL, MongoDB, Redis (Pub/Sub), ClickHouse, database administration, query optimization, indexing, data migration</p>
-                <p><strong>Languages &amp; Frameworks:</strong> Go, Kotlin, Java, Python, Rust, Bash, SQL, C, Spring Boot, gRPC, Protocol Buffers, REST APIs, microservices</p>
-                <p><strong>Practices:</strong> Test-driven development (TDD), Extreme Programming (XP), API and protocol design</p>
+                <p><strong>Cloud &amp; Infrastructure:</strong> Google Cloud Platform (GCP: Compute Engine, Cloud Run, Cloud SQL, Cloud Storage, IAM, VPC), AWS (EKS), Kubernetes (k8s), Helm, Docker, Terraform, OpenTofu, Infrastructure as Code (IaC), Proxmox, cloud-init</p>
+                <p><strong>Reliability &amp; Delivery:</strong> CI/CD, GitHub Actions, GitOps, blue-green and canary releases, feature flags, automated rollback, incident response, root cause analysis (RCA), high availability, disaster recovery, cost optimization (FinOps)</p>
+                <p><strong>Observability &amp; Performance:</strong> Grafana, Loki, Prometheus, VictoriaMetrics, VictoriaLogs, Grafana Alloy, OpenTelemetry, distributed tracing, low-latency and JVM tuning</p>
+                <p><strong>Linux, Networking &amp; Security:</strong> Linux (Debian, Ubuntu), systemd, L3/L4 networking, TCP/UDP, Nginx, DNS, iptables, nftables, NAT64, rate limiting, DDoS mitigation, TLS, mTLS, PKI, SSO, zero trust</p>
+                <p><strong>Data (OLTP &amp; OLAP):</strong> PostgreSQL, MongoDB, Redis (Pub/Sub), Valkey, ClickHouse, high-ingestion pipelines, query optimization, indexing, data migration</p>
+                <p><strong>Languages &amp; Design:</strong> Go, Kotlin, Java, Python, Rust, Bash, SQL, C, Spring Boot, gRPC, Protocol Buffers, REST APIs, microservices, system design, API and protocol design, TDD</p>
             </section>
 
             <section>
@@ -56,7 +55,7 @@ import Layout from '../layouts/Layout.astro';
                         <span>Bengaluru, India</span>
                     </div>
                     <div class="row role">
-                        <span>Senior Systems Architect</span>
+                        <span>Senior Systems Architect (Platform &amp; Infrastructure)</span>
                         <span>Apr 2026 – Present</span>
                     </div>
                     <div class="row role">
@@ -68,29 +67,30 @@ import Layout from '../layouts/Layout.astro';
                         <span>Mar 2022 – Mar 2024</span>
                     </div>
                     <ul>
-                        <li>Write the protocol and API specs that firmware, mobile and backend teams build against before each release. Designed the backend hiring process and hired a backend engineer.</li>
+                        <li>Write the protocol and API specs that firmware, mobile and backend teams build against before each release, and lead R&amp;D on the next-generation hub-to-cloud protocol.</li>
+                        <li>Designed the backend hiring process from scratch and hired a backend engineer.</li>
+                        <li>Took over a manually deployed legacy stack in 2023: replaced manual SFTP uploads with automated CI/CD and upgraded Spring 4 on Java 8 to Spring Boot 2.7 on Java 17.</li>
                         <li>Made zero-downtime releases the default: blue-green cutovers using iptables, deploy scripts with health checks and automatic rollback, a staging environment that mirrors production, and feature flags for gradual rollouts.</li>
                         <li>Fixed the root causes of recurring outages: file-descriptor limits that blocked new threads and SSH logins, a service leaking MongoDB connections, and stale Redis connections that silently dropped messages.</li>
-                        <li>Took over a manually deployed legacy stack in 2023. Replaced manual uploads over SFTP with automated CI/CD and upgraded Spring 4 on Java 8 to Spring Boot 2.7 on Java 17.</li>
-                        <li>Set up centralized logging and monitoring with Grafana, Loki and VictoriaMetrics, replacing log files stored on production servers.</li>
-                        <li>Administer Google Cloud (IAM, networking, storage, compute). Moved the marketing website to its own project, fully managed with Terraform, and reduced compute costs with a 3-year committed use discount.</li>
-                        <li>Moved device telemetry from raw log files into ClickHouse, cutting storage by over 95% across three datasets (largest: 90 GB to 3.7 GB). Wrote the ingestion service in Go, connected to the main backend over gRPC.</li>
+                        <li>Cut the monthly cloud bill by about 40% from its peak, with the new ClickHouse server still running, through committed use discounts, storage tuning and moving images out of the database.</li>
+                        <li>Split the marketing website out of the shared production Google Cloud project into its own project, isolating its access, billing and blast radius from the device platform. Moved it off a VM to Cloud Run, Cloud SQL and Cloud Storage, fully managed with Terraform, and served static assets straight from the bucket so Cloud Run only handles dynamic requests, cutting its runtime and cost.</li>
+                        <li>Traced disk I/O thrashing on production servers to raw telemetry log dumps. Rescheduling backups only shifted the spikes, so moved telemetry into ClickHouse with a Go ingestion service (gRPC), ending the I/O contention and cutting storage by over 95% (largest dataset: 90 GB to 3.7 GB).</li>
                         <li>Moved image data out of MongoDB into Cloud Storage with zero downtime, shrinking the database 54x (3.6 GB to 67 MB) and its memory use by 89% (4.6 GB to 500 MB). Removed redundant indexes and added targeted ones to stop full collection scans.</li>
                         <li>Connected IPv6-only cellular hubs to IPv4 backend services with in-kernel NAT64 (Jool and nftables), without adding a proxy. Added kernel-level rate limiting to drop abusive traffic before it reaches the application.</li>
-                        <li>Built a Go tool for reading production logs over mutual TLS with a private certificate authority, so engineers no longer need SSH access to production.</li>
-                        <li>Maintain the custom UDP protocol that hubs use to talk to the cloud, and the service behind it, built for peaks of up to 50,000 packets per second. Tuned it for low latency, from kernel packet handling to an adaptive JVM thread pool and allocation-free decoding. Leading R&amp;D on its next-generation replacement.</li>
+                        <li>Removed the need for SSH access to production: first built a Go tool for reading logs over mutual TLS with a private certificate authority, then moved to centralized logging and monitoring (Grafana, Loki, VictoriaMetrics) behind single sign-on (SSO).</li>
+                        <li>Maintain the custom UDP protocol that hubs use to talk to the cloud, and the service behind it, built for peaks of up to 50,000 packets per second. Tuned it for low latency, from kernel packet handling to an adaptive JVM thread pool and allocation-free decoding.</li>
                     </ul>
                 </div>
             </section>
 
-            <section>
+            <section class="page-break">
                 <h2>Projects</h2>
                 <div class="project">
                     <div class="row">
-                        <h3>hrh — Helm release helper</h3>
-                        <a href="https://github.com/sku0x20/hrh" target="_blank" rel="noopener noreferrer">github.com/sku0x20/hrh</a>
+                        <h3>gke-lab — Kubernetes migration prototype on GKE</h3>
+                        <a href="https://github.com/sku0x20/gke-lab" target="_blank" rel="noopener noreferrer">github.com/sku0x20/gke-lab</a>
                     </div>
-                    <p>Rust CLI for Helm deployments. Shows a diff before applying a release and rolls back automatically on failure.</p>
+                    <p>In progress. Prototyping the IoT platform's move from VMs to Kubernetes: a private GKE Autopilot cluster built with OpenTofu, running a 3-member MongoDB replica set (Percona operator) and Valkey, with secrets from Secret Manager via Workload Identity. Includes FinOps cost notes and a staged plan to self-manage nodes and the control plane.</p>
                 </div>
                 <div class="project">
                     <div class="row">
@@ -105,6 +105,13 @@ import Layout from '../layouts/Layout.astro';
                         <a href="https://github.com/sku0x20/stopgap" target="_blank" rel="noopener noreferrer">github.com/sku0x20/stopgap</a>
                     </div>
                     <p>Built on Helidon SE and Java virtual threads. Published on Maven Central, with unit, integration and Docker end-to-end testing.</p>
+                </div>
+                <div class="project">
+                    <div class="row">
+                        <h3>assertgo — Assertion library for Go</h3>
+                        <a href="https://github.com/sku0x20/assertgo" target="_blank" rel="noopener noreferrer">github.com/sku0x20/assertgo</a>
+                    </div>
+                    <p>Type-safe, fluent assertions for Go tests using generics, with negation, custom comparators and custom matchers. Released v1.1.0 with CI.</p>
                 </div>
             </section>
 
