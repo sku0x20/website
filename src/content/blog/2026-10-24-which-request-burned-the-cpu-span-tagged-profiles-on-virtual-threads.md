@@ -181,7 +181,9 @@ That's the part that bugs me. A missing feature is fine. A feature that silently
 
 ### A cheap tell
 
-On a single thread, a span can't use more CPU than its own duration. If samples × interval is bigger than the span's duration (Y: 870ms of CPU inside a 20ms span), the tags are wrong.
+On a single thread, a span can't use more CPU than its own duration. If samples × interval is bigger than the span's duration (Y: 870ms of CPU inside a 20ms span), the tags are wrong.\*
+
+\* That's for the JVM setup here. In general, a span's CPU can be more than its duration: fan its work out to four threads for 20ms and that's 80ms of CPU in a 20ms span. Go gets this right, since new goroutines inherit their parent's labels, so there the tell doesn't apply. Here, only the thread that starts the root span gets the id, so fanned-out work can't add to the span. Its samples go untagged on a pool thread, or to whichever request the carrier held last on a virtual thread. So for now, anything past the duration is misattribution. It's a check for today's bugs, not general advice: once workers carry the id, a span with real parallel work goes past its duration too, and the check stops working.
 
 ---
 
