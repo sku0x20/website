@@ -30,7 +30,7 @@ Then list for the user: outline, conflicts found, and open questions. Wait for a
 
 - File: `src/content/blog/YYYY-MM-DD-<slugified-title>.md`. Rename if the title changes.
 - Frontmatter: `title`, `description`, `date: "Mon DD, YYYY"`, `tags: [...]`.
-- Voice: first person singular ("I"), sassy and jabby, battle scars and exact mechanics over tutorial fluff. No stock closers reused from other posts.
+- Voice: first person singular ("I"), plain and direct, battle scars and exact mechanics over tutorial fluff. No stock closers reused from other posts.
 - Privacy: no employer name next to criticism, look-alike schemas (main columns only), no secret gist links.
 - Hedge what isn't known ("presumably"), don't invent fleet sizes or scale numbers.
 
