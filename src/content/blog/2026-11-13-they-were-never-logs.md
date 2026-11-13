@@ -1,11 +1,11 @@
 ---
 title: "They Were Never Logs"
-description: "Every UDP packet between eglu's cloud and ~5,000 hubs went to Loki as a line of hex text. It was analytics data all along. 10.6 GB a day into Loki became 190.6 MB in ClickHouse."
+description: "Every UDP packet between eglu's cloud and ~5,000 hubs went to Loki as a line of hex text. It was analytics data all along. A 1.065 GB gzipped day became 190.6 MB in ClickHouse, and queryable."
 date: "Nov 13, 2026"
 tags: ["ClickHouse", "Loki", "Grafana", "IoT", "Observability"]
 ---
 
-Every packet between eglu's cloud and its hubs got written to Loki as a line of hex text. We called them hex logs. They were 86.4% of everything going into Loki.
+Every packet between eglu's cloud and its hubs got written to Loki as a line of hex text: hex logs. They were 86.4% of everything going into Loki.
 
 I've put real work into making that faster. A while back I [profiled the backend and found hex formatting near the top](/blog/optimizing-hex-formatting), and swapped `String.format` for `HexFormat`. It was a good fix. It made the wrong thing cheaper.
 
@@ -32,7 +32,7 @@ None of this is Loki's fault. It's a log store, and I'd handed it something that
 
 ## The Click
 
-I was messing around with Google Cloud associate certification material, which means a lot of BigQuery. Somewhere in there it clicked: this is analytics data.
+I was just messing around, going through Google Cloud associate certification material. Somewhere in the BigQuery part it clicked: this is analytics data.
 
 Logs are for reading what happened. These packets are for asking questions. Which hub floods, which command dominates, what one hub said between 14:00 and 14:05. Append-only, a few columns read over many rows, never updated. That's the textbook case for a columnar store, and I already ran one: [ClickHouse holds eglu's device health data](/blog/moving-iot-telemetry-from-nested-folders-to-clickhouse) on the same VM.
 
@@ -107,7 +107,7 @@ So the backend batches after all, but it never waits:
 - A **packet recorder** sits on the hub UDP path. Inbound packets are recorded on receive, before parsing, so duplicates are included. Outbound packets are recorded after a successful send, at the one place every send goes through.
 - Rows go into a **bounded `ArrayBlockingQueue` of 100k**. The packet path calls `offer()`, never `put()`. If the queue is full, the row is dropped and counted. Hub traffic matters more than its record.
 - One drainer thread sends a batch every **200 ms or at 5,000 rows**, in RowBinary over HTTP.
-- **One retry, then drop with an error log.** Delivery is at least once, sometimes twice.
+- **One retry, then drop with an error log.** Most rows land once. A retried batch can land twice, and a dropped or overflowed row not at all.
 - `async_insert = 1` with `wait_for_async_insert = 0` is locked on the ingest user's profile, so every insert from it is async, whatever the client sends.
 
 The cost of `wait_for_async_insert = 0` is that a failed flush on the server never reaches the app. I took that trade over juggling futures under load, and moved the signal to ClickHouse's side: an alert on any non-OK row in `system.asynchronous_insert_log`, and another if no packets arrive for 10 minutes.
@@ -129,7 +129,7 @@ I tested it under live load: a 15-day query over all devices read 93M rows in 5.
 
 I skipped materialized views. They add work to every insert, and a failing view fails the insert, which would lose device data. Instead, ClickHouse's query cache is set to 15 minutes, matching how often devices report. A repeated chart went from **523 ms to 1 ms**.
 
-I also tried OS-level thread priority for Grafana's queries. The official ClickHouse image blocks it by design, and the [upstream PR](https://github.com/ClickHouse/ClickHouse/pull/70945) to change that was closed without merging. Running ClickHouse as root or maintaining a custom image wasn't worth it, so ClickHouse's own priority setting does the job.
+I also tried OS-level thread priority for Grafana's queries. The official ClickHouse image blocks it by design, and the [upstream PR](https://github.com/ClickHouse/ClickHouse/pull/70945) to keep Linux capabilities in the Docker image was closed without merging. Running ClickHouse as root or maintaining a custom image wasn't worth it, so ClickHouse's own priority setting does the job.
 
 For packets, I added a second user, because "show me this hub's last hour" and "which hubs flood" are different jobs:
 
@@ -142,7 +142,7 @@ Two things bit me here.
 
 **The Grafana ClickHouse plugin adds 4 s to your timeout.** I set the datasource to 30 s. The plugin sent `max_execution_time = 34`, above the user's 30 s cap, so ClickHouse refused every live query with code 452. The datasource health check kept passing the whole time. Setting the plugin's timeout to 6 (which sends 10) fixed it.
 
-**An empty hub box isn't an empty query.** `hub_id = unhex('')` doesn't narrow the key, so ClickHouse estimated the full scan and the 2M cap refused it. That's 46 refusals on day 1, all with an empty hub, none for a real one. The cap did its job, but the panel showed an error where it should have shown nothing. Guarding it with `match(hub, '^[0-9a-fA-F]{16}$') AND hub_id = unhex(hub)` lets ClickHouse fold an empty hub to `false` and read 0 parts.
+**An empty hub box isn't an empty query.** `hub_id = unhex('')` doesn't narrow the key, so ClickHouse estimated the full scan and the 2M cap refused it. That's 46 refusals in the first three days, all with an empty hub, none for a real one. The cap did its job, but the panel showed an error where it should have shown nothing. Guarding it with `match(hub, '^[0-9a-fA-F]{16}$') AND hub_id = unhex(hub)` lets ClickHouse fold an empty hub to `false` and read 0 parts.
 
 ---
 
@@ -152,7 +152,7 @@ Every night, one query exports yesterday's partition as Parquet straight to cold
 
 Parquet because it's open, columnar like the table, and anything reads it without me: BigQuery, DuckDB, Spark. No gzip on top, since that blocks column reads. No Iceberg for one append-only file a day with one writer; it can adopt the files later.
 
-The gotcha: ClickHouse can export `String` columns as UTF-8 strings in Parquet, and the default has changed between versions. My body column is raw bytes, so it would be labeled as text. `output_format_parquet_string_as_string = 0` exports it as a plain byte array. I checked the Parquet types on the real file, and a full hub-day read back from it matches byte for byte.
+The gotcha: ClickHouse can export `String` columns as UTF-8 strings in Parquet. My body column is raw bytes, so it would be labeled as text. `output_format_parquet_string_as_string = 0` exports it as a plain byte array. I checked the Parquet types on the real file, and a full hub-day read back from it matches byte for byte.
 
 ---
 
@@ -167,7 +167,7 @@ Hex logs still went to Loki in parallel, which made Loki the reference. UTC day 
 | Size per day | 10.6 GB into Loki; 1.065 GB gzipped backup | **190.6 MB** stored, 17.9% of the gzip |
 | Backup per day | 1.065 GB gzipped text | **322 MB** Parquet |
 | One busy hub, full day | fails as one query; ~1 min in slices (estimate) | **27–65 ms** per panel |
-| Insert errors | — | **0 of 1,069,060** flushes |
+| Insert errors | — | **0 of 1,069,060** flushes (Nov 11 onward) |
 | Data loss | — | **0** against Loki over 3 hours, including the 7,465/s burst hour |
 
 The compression test predicted ~210 MB a day with ping ACKs. Prod came in at 190.6 MB. Single-hub dashboard queries: p50 24 ms, p95 58 ms. A full day across all hubs takes 3–10 s.
@@ -178,7 +178,7 @@ The compression test predicted ~210 MB a day with ping ACKs. Prod came in at 190
 
 Per-hub traffic had never been visible, so day 1 also turned up things nobody had asked about:
 
-- **The busiest hub** had 5 scheduled rules each reporting about once a second, until midnight. Every report costs a database read on the backend.
+- **The busiest hub** had 5 scheduled rules reporting about once a second, until midnight. Every report costs a database read on the backend.
 - **Two hubs** send more than 80% of their traffic as hub log packets.
 - **The ingest user was writing 97.5% of ClickHouse's own query log**, about 0.22 GB a day. That would have taken the disk to ~80% within 90 days. I turned query logging off for that user only and removed its old rows: **652.9 MB → 51.8 MB**, no restart.
 
